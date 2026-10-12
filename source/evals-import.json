@@ -1,0 +1,1072 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "https://github.com/SantiagoDevRel/skills",
+  "commit": "a806871335b5afa28297b55c5a12c525b003792e",
+  "activeSkillsCommit": "ce5ee78ac0fa5afe33ce64c8ff238de2f26d9049",
+  "retired": [
+    {
+      "id": "arkiv-best-practices-trigger",
+      "reason": "Deprecated compatibility skill is excluded from the plugin; canonical active skills are unchanged."
+    },
+    {
+      "id": "arkiv-best-practices-negative",
+      "reason": "Deprecated compatibility skill is excluded from the plugin; canonical active skills are unchanged."
+    },
+    {
+      "id": "arkiv-best-practices-outcome",
+      "reason": "Deprecated compatibility skill is excluded from the plugin; canonical active skills are unchanged."
+    }
+  ],
+  "changes": [
+    {
+      "scope": "all imported cases",
+      "reason": "Add explicit process graders; outcome prompts and criteria remain byte-identical."
+    },
+    {
+      "scope": [
+        "plugin-mcp-status",
+        "plugin-mcp-read-guidance",
+        "plugin-event-profile",
+        "plugin-project-intake"
+      ],
+      "reason": "Add actual mocked MCP calls and concrete new-project intake checks; no production requests."
+    }
+  ],
+  "imported": [
+    {
+      "source": "evals/arkiv-trigger/prompt.md",
+      "sha256": "69875e8715646579e8f8a5f0232bf45552d3208a491198ea22728b4c147c1d4f",
+      "bytes": 433
+    },
+    {
+      "source": "evals/arkiv-trigger/graders/criteria.md",
+      "sha256": "a8ad01bf462c88a21ef35a74b068091f431cb1c2ac12cecb1c97c1405451c4ca",
+      "bytes": 285
+    },
+    {
+      "source": "evals/arkiv-trigger/sources.json",
+      "sha256": "96bc8b090c573e30a651ce377dd1074becd771cf21e9840b0699fc5beffca1e7",
+      "bytes": 51
+    },
+    {
+      "source": "evals/arkiv-negative/prompt.md",
+      "sha256": "ae2ffed1f3c2326cf9d7c68f009a82f958a48c1f7efeaa9736f5b11824b556aa",
+      "bytes": 415
+    },
+    {
+      "source": "evals/arkiv-negative/graders/criteria.md",
+      "sha256": "51c28e2274e8dbbd1404e30ec5edb85dfc3d219ac0b072306dd561411e8b4bb2",
+      "bytes": 202
+    },
+    {
+      "source": "evals/arkiv-negative/sources.json",
+      "sha256": "96bc8b090c573e30a651ce377dd1074becd771cf21e9840b0699fc5beffca1e7",
+      "bytes": 51
+    },
+    {
+      "source": "evals/arkiv-outcome/prompt.md",
+      "sha256": "70a1c85275b03dedfae4886c3dcf66f019dc13772a7b47621ed0d02c18752766",
+      "bytes": 459
+    },
+    {
+      "source": "evals/arkiv-outcome/graders/criteria.md",
+      "sha256": "f5a0ea6777f7c9a58e87b72fe407b7ccad0d4cf9094fc377cf3c8fbdd3dc3aed",
+      "bytes": 324
+    },
+    {
+      "source": "evals/arkiv-outcome/sources.json",
+      "sha256": "96bc8b090c573e30a651ce377dd1074becd771cf21e9840b0699fc5beffca1e7",
+      "bytes": 51
+    },
+    {
+      "source": "evals/arkiv-first-write-trigger/prompt.md",
+      "sha256": "8879a97214c1cf210f47665c582776eb33783aba321292eba044b22da96ad05a",
+      "bytes": 460
+    },
+    {
+      "source": "evals/arkiv-first-write-trigger/graders/criteria.md",
+      "sha256": "fdae6b74a6fe83c9258ba767681dd702b578a57b14ac7104da33375373d4b6f2",
+      "bytes": 340
+    },
+    {
+      "source": "evals/arkiv-first-write-trigger/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/arkiv-first-write-negative/prompt.md",
+      "sha256": "f1407447266bb5cb6358e52f933b90712b49ef286ce8788b21084026066d2132",
+      "bytes": 404
+    },
+    {
+      "source": "evals/arkiv-first-write-negative/graders/criteria.md",
+      "sha256": "25fa3ff20d2a228abbc1ca9493d6032cd5ebf322f63e868a164da6fd44d0ba35",
+      "bytes": 175
+    },
+    {
+      "source": "evals/arkiv-first-write-negative/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/arkiv-first-write-outcome/prompt.md",
+      "sha256": "f5810091ce49798137208fa318808c17ad1eb23a978f6ed41b872f828d442630",
+      "bytes": 510
+    },
+    {
+      "source": "evals/arkiv-first-write-outcome/graders/criteria.md",
+      "sha256": "5eb9517930f794ec0b4afab87be7b3f973aecfc646bead7a4957aef9aac710eb",
+      "bytes": 283
+    },
+    {
+      "source": "evals/arkiv-first-write-outcome/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/arkiv-data-modeling-trigger/prompt.md",
+      "sha256": "ad4c950e37cf2dbb40453ac692ebb1d41f75a407b36ea91a9278f0fa54316a32",
+      "bytes": 439
+    },
+    {
+      "source": "evals/arkiv-data-modeling-trigger/graders/criteria.md",
+      "sha256": "b6899bf81998393e07ba10c4ab5cd2817d04599f3bcf5379897fd9c0ead68e0f",
+      "bytes": 299
+    },
+    {
+      "source": "evals/arkiv-data-modeling-trigger/sources.json",
+      "sha256": "585707e7fe69755063858fbbfba05ba8e27d93569b3e70a5ba7b86be9d9250a1",
+      "bytes": 94
+    },
+    {
+      "source": "evals/arkiv-data-modeling-negative/prompt.md",
+      "sha256": "25e401b3b5093a697e369d196bf8444656dc2de0edade8a85b51375edd506a6e",
+      "bytes": 424
+    },
+    {
+      "source": "evals/arkiv-data-modeling-negative/graders/criteria.md",
+      "sha256": "81940384f5bcd633de12d08e8c55aac22ab631e89a7a555d8058acbf9cbe8ab8",
+      "bytes": 180
+    },
+    {
+      "source": "evals/arkiv-data-modeling-negative/sources.json",
+      "sha256": "585707e7fe69755063858fbbfba05ba8e27d93569b3e70a5ba7b86be9d9250a1",
+      "bytes": 94
+    },
+    {
+      "source": "evals/arkiv-data-modeling-outcome/prompt.md",
+      "sha256": "9471bb5d3db30e6ad1a16664566a8f482aa72f1e3abbcab348edfe5d2a14c519",
+      "bytes": 470
+    },
+    {
+      "source": "evals/arkiv-data-modeling-outcome/graders/criteria.md",
+      "sha256": "76f77b54acc67419683a910baade8c8c713a832f20e7b4416dc8e136e1c00789",
+      "bytes": 332
+    },
+    {
+      "source": "evals/arkiv-data-modeling-outcome/sources.json",
+      "sha256": "585707e7fe69755063858fbbfba05ba8e27d93569b3e70a5ba7b86be9d9250a1",
+      "bytes": 94
+    },
+    {
+      "source": "evals/arkiv-query-trigger/prompt.md",
+      "sha256": "9c3980341da70a4aabdf239e2b67a61c2c69124d51c44a8a51b6779a1839b293",
+      "bytes": 432
+    },
+    {
+      "source": "evals/arkiv-query-trigger/graders/criteria.md",
+      "sha256": "48a8029e80289e5fe0a58ab4a91e406bbdd3848afa762be6e216cc04743f0f2d",
+      "bytes": 289
+    },
+    {
+      "source": "evals/arkiv-query-trigger/sources.json",
+      "sha256": "30e0d1924dfe4485d0e7ec2c5df233dbf0323da95c5fde64a74655967dc3ea92",
+      "bytes": 86
+    },
+    {
+      "source": "evals/arkiv-query-negative/prompt.md",
+      "sha256": "97d028f1e0b501ac4cd5c338eae3fbbc9755905b4fa16d7a90348a801a0a77e1",
+      "bytes": 414
+    },
+    {
+      "source": "evals/arkiv-query-negative/graders/criteria.md",
+      "sha256": "1f96084ad421bc3b986b5edf2486a04dae812a3bb1f0b6691320e712dc8d092a",
+      "bytes": 187
+    },
+    {
+      "source": "evals/arkiv-query-negative/sources.json",
+      "sha256": "30e0d1924dfe4485d0e7ec2c5df233dbf0323da95c5fde64a74655967dc3ea92",
+      "bytes": 86
+    },
+    {
+      "source": "evals/arkiv-query-outcome/prompt.md",
+      "sha256": "25b3e8f70e9f3bdb035acf648b45da098a81a1205dbbeba3f8477fabb34f6fa3",
+      "bytes": 470
+    },
+    {
+      "source": "evals/arkiv-query-outcome/graders/criteria.md",
+      "sha256": "306e5bf9292c7b39af2f49667a2ac6a1f8a4ecf58918dd1bbbaf01576d332338",
+      "bytes": 289
+    },
+    {
+      "source": "evals/arkiv-query-outcome/sources.json",
+      "sha256": "30e0d1924dfe4485d0e7ec2c5df233dbf0323da95c5fde64a74655967dc3ea92",
+      "bytes": 86
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-trigger/prompt.md",
+      "sha256": "9416b7bc387df959df8441a82a915ced3f78d3d727b4ac4c78c3b9992dec3ce6",
+      "bytes": 457
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-trigger/graders/criteria.md",
+      "sha256": "a896852fe202c7368a26a6ed866185e9aeb590c4687f2aea0d662b40802529d2",
+      "bytes": 307
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-trigger/sources.json",
+      "sha256": "bd853e9cddf51ca71c400ce9fcace6d711b105193a9ec9d55cf097d3afd8e654",
+      "bytes": 97
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-negative/prompt.md",
+      "sha256": "60c1736152dbe55bf44c00689a19015516afa9349f976c63f0334df6a29159c8",
+      "bytes": 417
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-negative/graders/criteria.md",
+      "sha256": "845a9d03dbb3fbb4e760666f6ec5bfe2be32cb97d471f2229000ea0ff94d1506",
+      "bytes": 184
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-negative/sources.json",
+      "sha256": "bd853e9cddf51ca71c400ce9fcace6d711b105193a9ec9d55cf097d3afd8e654",
+      "bytes": 97
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-outcome/prompt.md",
+      "sha256": "baff06f3865125c428e3a56431fb35d0de45274f1d22e0b3ce2648137ef3cc28",
+      "bytes": 457
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-outcome/graders/criteria.md",
+      "sha256": "39b37ec1c6df382c843a02f27907c5c039f5f7a7f32aeed0dc758fb987b1ce5c",
+      "bytes": 311
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-outcome/sources.json",
+      "sha256": "bd853e9cddf51ca71c400ce9fcace6d711b105193a9ec9d55cf097d3afd8e654",
+      "bytes": 97
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-trigger/prompt.md",
+      "sha256": "cffb78ed0cd5bdf8d644bacde445484c94e710234b1fdc1b13c208123a160ed8",
+      "bytes": 442
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-trigger/graders/criteria.md",
+      "sha256": "404ad094be7eb7c79b5726369ee0f87edb7f0ec1b1c37311a1cdc198cb49b567",
+      "bytes": 260
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-trigger/sources.json",
+      "sha256": "90fb8a3cff9f6fe8af4a29ee3d2c2602fbcafa292212a972d3780d8e518bba01",
+      "bytes": 98
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-negative/prompt.md",
+      "sha256": "71fdfb995cd27c58fe2419a359a8eb475dfb8c5ec7050112206e33d05bd9e4b2",
+      "bytes": 420
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-negative/graders/criteria.md",
+      "sha256": "fecb0454b4aa1cc58437cdd5a066cac838219553c65c7df252d3184a3b3952b6",
+      "bytes": 171
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-negative/sources.json",
+      "sha256": "90fb8a3cff9f6fe8af4a29ee3d2c2602fbcafa292212a972d3780d8e518bba01",
+      "bytes": 98
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-outcome/prompt.md",
+      "sha256": "79a414b325b62b3ca9a8b68e3bd63d98c5b520cf608cfce70dd228c89911ca5f",
+      "bytes": 462
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-outcome/graders/criteria.md",
+      "sha256": "bc25f96ebb0d04cd49799e8efc6fd14d46be867de8d1e517ccbbf1183ae2d036",
+      "bytes": 317
+    },
+    {
+      "source": "evals/arkiv-entity-expiration-outcome/sources.json",
+      "sha256": "90fb8a3cff9f6fe8af4a29ee3d2c2602fbcafa292212a972d3780d8e518bba01",
+      "bytes": 98
+    },
+    {
+      "source": "evals/arkiv-write-safety-trigger/prompt.md",
+      "sha256": "7ffb2d90c5c20d0bb550a4c7c268381e8d463655e88ab2562ade3a94bff48744",
+      "bytes": 447
+    },
+    {
+      "source": "evals/arkiv-write-safety-trigger/graders/criteria.md",
+      "sha256": "e760a2c423a5a8a049b2b8bf4e80456039c390d4d9c3c8ef9ffdc986ee1c093d",
+      "bytes": 631
+    },
+    {
+      "source": "evals/arkiv-write-safety-trigger/sources.json",
+      "sha256": "ed23486036dd7082ca4099d1a7aed797c9b14500e9019d0333cf066f110a028f",
+      "bytes": 93
+    },
+    {
+      "source": "evals/arkiv-write-safety-negative/prompt.md",
+      "sha256": "7b177fca8f9a97e2577caa40524f5b371808446c8152ec9ab493e4b12f262c4c",
+      "bytes": 429
+    },
+    {
+      "source": "evals/arkiv-write-safety-negative/graders/criteria.md",
+      "sha256": "2766d9b046a960ab1575a748d9d335a4642ac1496288af4b9c5d291870617cf5",
+      "bytes": 189
+    },
+    {
+      "source": "evals/arkiv-write-safety-negative/sources.json",
+      "sha256": "ed23486036dd7082ca4099d1a7aed797c9b14500e9019d0333cf066f110a028f",
+      "bytes": 93
+    },
+    {
+      "source": "evals/arkiv-write-safety-outcome/prompt.md",
+      "sha256": "003259ed815dd3803f72b5500489450c780282d3b8b5c887acc55be5b50113e2",
+      "bytes": 466
+    },
+    {
+      "source": "evals/arkiv-write-safety-outcome/graders/criteria.md",
+      "sha256": "d0420bb1a7fa91d8b99ec12fe71e75a8b2e0f9cb4867c925be8bf9e4de80f434",
+      "bytes": 300
+    },
+    {
+      "source": "evals/arkiv-write-safety-outcome/sources.json",
+      "sha256": "ed23486036dd7082ca4099d1a7aed797c9b14500e9019d0333cf066f110a028f",
+      "bytes": 93
+    },
+    {
+      "source": "evals/arkiv-app-integration-trigger/prompt.md",
+      "sha256": "31a71dab0229ca7c7e02813f5b33ee362158585d6ebb4367316dcd63b5870423",
+      "bytes": 455
+    },
+    {
+      "source": "evals/arkiv-app-integration-trigger/graders/criteria.md",
+      "sha256": "d7e46ace37ec720df5566bb663fa882e40974bfbdc4f07288a06f7d49fa29568",
+      "bytes": 291
+    },
+    {
+      "source": "evals/arkiv-app-integration-trigger/sources.json",
+      "sha256": "a83a4036b3ab7083f326ffc1ed83a3d7336740e8b24d15cd19745c175abb5b12",
+      "bytes": 96
+    },
+    {
+      "source": "evals/arkiv-app-integration-negative/prompt.md",
+      "sha256": "f3c8a29405298119d7bac62f55592cd88e7b32032b81bf3105d144a0a13efe3f",
+      "bytes": 414
+    },
+    {
+      "source": "evals/arkiv-app-integration-negative/graders/criteria.md",
+      "sha256": "b944144302fef409560301290e67648d95c93f81fb3c45d5c97802e31d69adb3",
+      "bytes": 171
+    },
+    {
+      "source": "evals/arkiv-app-integration-negative/sources.json",
+      "sha256": "a83a4036b3ab7083f326ffc1ed83a3d7336740e8b24d15cd19745c175abb5b12",
+      "bytes": 96
+    },
+    {
+      "source": "evals/arkiv-app-integration-outcome/prompt.md",
+      "sha256": "6ce8d258a41bfa330a9cdcd2e14d5dee7e25c317c4c2516a6f19fc46e80b53a2",
+      "bytes": 467
+    },
+    {
+      "source": "evals/arkiv-app-integration-outcome/graders/criteria.md",
+      "sha256": "3a519cec1f702e22ec0b02ed6757add56f3a340d088e2ac475d88082d77289f9",
+      "bytes": 305
+    },
+    {
+      "source": "evals/arkiv-app-integration-outcome/sources.json",
+      "sha256": "a83a4036b3ab7083f326ffc1ed83a3d7336740e8b24d15cd19745c175abb5b12",
+      "bytes": 96
+    },
+    {
+      "source": "evals/arkiv-security-trust-trigger/prompt.md",
+      "sha256": "ca3af5a93619351cc718c5e98d2de3d90eba53a528a3ba9aefd4a0b21fbfcef9",
+      "bytes": 438
+    },
+    {
+      "source": "evals/arkiv-security-trust-trigger/graders/criteria.md",
+      "sha256": "1e841b951743ab83de6bb753cb42b7836893aa2ee35f32e44768312fb14c0a18",
+      "bytes": 315
+    },
+    {
+      "source": "evals/arkiv-security-trust-trigger/sources.json",
+      "sha256": "b6aad48cadcd92aa92dd1e8d9cc89c99b70224331a50cc34b449a40898875fb4",
+      "bytes": 95
+    },
+    {
+      "source": "evals/arkiv-security-trust-negative/prompt.md",
+      "sha256": "4f5751728aa24346e8f1fb92a4ffb586d7ed38a26b22e399b27f2a1b5a61a28b",
+      "bytes": 423
+    },
+    {
+      "source": "evals/arkiv-security-trust-negative/graders/criteria.md",
+      "sha256": "a385a0cd0bb7caeb6db2c50e5e833e029dc22459b9e6f1b7caa0d7cb4699162e",
+      "bytes": 175
+    },
+    {
+      "source": "evals/arkiv-security-trust-negative/sources.json",
+      "sha256": "b6aad48cadcd92aa92dd1e8d9cc89c99b70224331a50cc34b449a40898875fb4",
+      "bytes": 95
+    },
+    {
+      "source": "evals/arkiv-security-trust-outcome/prompt.md",
+      "sha256": "3c0298e58fbfeb609b7d330364e0731ef26afc73f7464c636ab1d6d98461d5b9",
+      "bytes": 503
+    },
+    {
+      "source": "evals/arkiv-security-trust-outcome/graders/criteria.md",
+      "sha256": "0b3a64a93c069fa3e0a2ab3008b54b404c84afa3f886d84332eee2da32d827a1",
+      "bytes": 319
+    },
+    {
+      "source": "evals/arkiv-security-trust-outcome/sources.json",
+      "sha256": "b6aad48cadcd92aa92dd1e8d9cc89c99b70224331a50cc34b449a40898875fb4",
+      "bytes": 95
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-trigger/prompt.md",
+      "sha256": "b21ce81ac2af907e938e5cee8d7b63528a1fc95766d0e0ea8f0782a1aa02be60",
+      "bytes": 447
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-trigger/graders/criteria.md",
+      "sha256": "e95b58c2be389b6923488f7ded96ab4e49e94f6910c45fc12aedfe47ab69f623",
+      "bytes": 251
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-trigger/sources.json",
+      "sha256": "8739f948b967e95337b9f0c94601d8ad7593be9f13ac60777f32a344d6f966b4",
+      "bytes": 96
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-negative/prompt.md",
+      "sha256": "23572232e26b8bcb57b62581f7217787a7c48dbb17ffc59315b3a261d641c8fd",
+      "bytes": 416
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-negative/graders/criteria.md",
+      "sha256": "6a652170c2db55b180c8bd419067ea8b5e78cfdafdca42552de3e842ba894ff6",
+      "bytes": 176
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-negative/sources.json",
+      "sha256": "8739f948b967e95337b9f0c94601d8ad7593be9f13ac60777f32a344d6f966b4",
+      "bytes": 96
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-outcome/prompt.md",
+      "sha256": "efdb73277c5d18f0800898f1514ccad8b0012de2ec7b32b43119117304fdcfc2",
+      "bytes": 457
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-outcome/graders/criteria.md",
+      "sha256": "c0fc492bb4cb51bd03f67afecdcceaeea125c97519671cf68a0085fb7df3a608",
+      "bytes": 307
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-outcome/sources.json",
+      "sha256": "8739f948b967e95337b9f0c94601d8ad7593be9f13ac60777f32a344d6f966b4",
+      "bytes": 96
+    },
+    {
+      "source": "evals/arkiv-encryption-trigger/prompt.md",
+      "sha256": "a74ecace9dac93e6c648a9ac1b9e00c8ff0fdbb2725d0c24c5ee184f51e45474",
+      "bytes": 433
+    },
+    {
+      "source": "evals/arkiv-encryption-trigger/graders/criteria.md",
+      "sha256": "ef76beb28f6679728e894584ac4bfd8a031790283113f16c9d60f7c69640e497",
+      "bytes": 308
+    },
+    {
+      "source": "evals/arkiv-encryption-trigger/sources.json",
+      "sha256": "f85898ff40e9f53c41174c0f30652fcfa5256b2dea5ae334707310b9b0d60621",
+      "bytes": 91
+    },
+    {
+      "source": "evals/arkiv-encryption-negative/prompt.md",
+      "sha256": "11334aec22316bb1a8ec1a9e0ad8ee447f38eec1a2407bcaafb901f303ed6790",
+      "bytes": 407
+    },
+    {
+      "source": "evals/arkiv-encryption-negative/graders/criteria.md",
+      "sha256": "20d4cbdb3258dbe09e6ab91adcfc93a06e17154fb9275d048b1143192dde8a47",
+      "bytes": 173
+    },
+    {
+      "source": "evals/arkiv-encryption-negative/sources.json",
+      "sha256": "f85898ff40e9f53c41174c0f30652fcfa5256b2dea5ae334707310b9b0d60621",
+      "bytes": 91
+    },
+    {
+      "source": "evals/arkiv-encryption-outcome/prompt.md",
+      "sha256": "f2b16431a7357728ffc9aaf44d45fdb20844c712a685dafba08146f6f7216b72",
+      "bytes": 451
+    },
+    {
+      "source": "evals/arkiv-encryption-outcome/graders/criteria.md",
+      "sha256": "2b56efe4b4e8143be07123141432d8654ae5ee7ca59f4d306d360182070dca52",
+      "bytes": 309
+    },
+    {
+      "source": "evals/arkiv-encryption-outcome/sources.json",
+      "sha256": "f85898ff40e9f53c41174c0f30652fcfa5256b2dea5ae334707310b9b0d60621",
+      "bytes": 91
+    },
+    {
+      "source": "evals/arkiv-large-files-trigger/prompt.md",
+      "sha256": "7491038171905c55c638700c91f34e0aab1f177d8e38de1f5bd320e5fd2ad3d8",
+      "bytes": 432
+    },
+    {
+      "source": "evals/arkiv-large-files-trigger/graders/criteria.md",
+      "sha256": "e4654e8baa7d0feab1b6c2439120f0b7971fa776cce9e888be2513806580acbb",
+      "bytes": 319
+    },
+    {
+      "source": "evals/arkiv-large-files-trigger/sources.json",
+      "sha256": "26a703d85579f79dec557690ce926528f60ece5129a6483fc32b5bce4c2ad5a9",
+      "bytes": 92
+    },
+    {
+      "source": "evals/arkiv-large-files-negative/prompt.md",
+      "sha256": "285fcbc7b8f09a0dbb0e69efab1df500e39ab50e5ff9cfc991e1a53999466233",
+      "bytes": 403
+    },
+    {
+      "source": "evals/arkiv-large-files-negative/graders/criteria.md",
+      "sha256": "f6ac7d397c240abeef610fc3a98c8084e93759c80ec3b267686400fad72fdd71",
+      "bytes": 181
+    },
+    {
+      "source": "evals/arkiv-large-files-negative/sources.json",
+      "sha256": "26a703d85579f79dec557690ce926528f60ece5129a6483fc32b5bce4c2ad5a9",
+      "bytes": 92
+    },
+    {
+      "source": "evals/arkiv-large-files-outcome/prompt.md",
+      "sha256": "1db76cdd9d17e2825ca2e77785ceaa89b9c302dd713c8e254fe281506aca3d30",
+      "bytes": 475
+    },
+    {
+      "source": "evals/arkiv-large-files-outcome/graders/criteria.md",
+      "sha256": "16aca860d437c62f7cc5bf7dc9cea8d1413a7c9343dad6e1e5b6ab748e039c15",
+      "bytes": 289
+    },
+    {
+      "source": "evals/arkiv-large-files-outcome/sources.json",
+      "sha256": "26a703d85579f79dec557690ce926528f60ece5129a6483fc32b5bce4c2ad5a9",
+      "bytes": 92
+    },
+    {
+      "source": "evals/arkiv-social-graph-trigger/prompt.md",
+      "sha256": "a6dae935744db5ee3c3543480b0bfec5f8a063d5a0e755a82a381c6302a0b61b",
+      "bytes": 438
+    },
+    {
+      "source": "evals/arkiv-social-graph-trigger/graders/criteria.md",
+      "sha256": "8ee58defbfd492fea7c91b0c9c26c817df74d9e1c4e87ec3dcb9ed9402022e6e",
+      "bytes": 298
+    },
+    {
+      "source": "evals/arkiv-social-graph-trigger/sources.json",
+      "sha256": "2c8f7a98f7fb20695db31e116d19fe9145107db4a80c52ac06f3b55a9cda3da3",
+      "bytes": 93
+    },
+    {
+      "source": "evals/arkiv-social-graph-negative/prompt.md",
+      "sha256": "dfd2b09778701a2d87193e9eacddbcb2ce49ff96066de8b06044f087d2a2206a",
+      "bytes": 424
+    },
+    {
+      "source": "evals/arkiv-social-graph-negative/graders/criteria.md",
+      "sha256": "b4737a57a96aaca4282462a010baaecd6b675ac34a61a4866060c6634ab72dda",
+      "bytes": 173
+    },
+    {
+      "source": "evals/arkiv-social-graph-negative/sources.json",
+      "sha256": "2c8f7a98f7fb20695db31e116d19fe9145107db4a80c52ac06f3b55a9cda3da3",
+      "bytes": 93
+    },
+    {
+      "source": "evals/arkiv-social-graph-outcome/prompt.md",
+      "sha256": "bda7e4554407c9bd2269003ad214d8f26c20de26bdabbbd65003511bba218be8",
+      "bytes": 461
+    },
+    {
+      "source": "evals/arkiv-social-graph-outcome/graders/criteria.md",
+      "sha256": "3ee71f2a554c7d0cc08ed93cd45badec0835593a782da8d1f72c470c87c9e289",
+      "bytes": 282
+    },
+    {
+      "source": "evals/arkiv-social-graph-outcome/sources.json",
+      "sha256": "2c8f7a98f7fb20695db31e116d19fe9145107db4a80c52ac06f3b55a9cda3da3",
+      "bytes": 93
+    },
+    {
+      "source": "evals/arkiv-indexing-trigger/prompt.md",
+      "sha256": "5a80ecc01396f67e8dc051cc122699db333ae3514c2f00c77e8059e9f70201db",
+      "bytes": 431
+    },
+    {
+      "source": "evals/arkiv-indexing-trigger/graders/criteria.md",
+      "sha256": "f86d60cb58fa7367adf926173834dcd254328602a7449ab36b44aa55198d90dd",
+      "bytes": 329
+    },
+    {
+      "source": "evals/arkiv-indexing-trigger/sources.json",
+      "sha256": "cb15114922007dfd52240174e9d1c548970cdb097094d77f6d48dd547d1ee83f",
+      "bytes": 89
+    },
+    {
+      "source": "evals/arkiv-indexing-negative/prompt.md",
+      "sha256": "e12e096bbc85586b09109ee7ad9224f4c222f97380ebbb062e57ff5a07803487",
+      "bytes": 417
+    },
+    {
+      "source": "evals/arkiv-indexing-negative/graders/criteria.md",
+      "sha256": "e892fba9ad9e16d7344051547e8b7d1efb256629649e099c16f52b53693fd814",
+      "bytes": 192
+    },
+    {
+      "source": "evals/arkiv-indexing-negative/sources.json",
+      "sha256": "cb15114922007dfd52240174e9d1c548970cdb097094d77f6d48dd547d1ee83f",
+      "bytes": 89
+    },
+    {
+      "source": "evals/arkiv-indexing-outcome/prompt.md",
+      "sha256": "beeef189108b9b68e5703ae2ba508f589e7e1ac732ae49e33311e9c28fba80b2",
+      "bytes": 454
+    },
+    {
+      "source": "evals/arkiv-indexing-outcome/graders/criteria.md",
+      "sha256": "5b8535e872cb77456c9a079e05768cff60434caf48f076dc75acdc7d89fa1866",
+      "bytes": 338
+    },
+    {
+      "source": "evals/arkiv-indexing-outcome/sources.json",
+      "sha256": "cb15114922007dfd52240174e9d1c548970cdb097094d77f6d48dd547d1ee83f",
+      "bytes": 89
+    },
+    {
+      "source": "evals/arkiv-feedback-trigger/prompt.md",
+      "sha256": "9bdbadbaf2fd17a8fb61e7a6743c2f71dc912cf8d73163c67fa649995796e048",
+      "bytes": 1200
+    },
+    {
+      "source": "evals/arkiv-feedback-trigger/graders/criteria.md",
+      "sha256": "f82efdb4a00ee09e3bb18f0ed3607518ef70ae12110bf8981f9ea3dd55caa188",
+      "bytes": 349
+    },
+    {
+      "source": "evals/arkiv-feedback-trigger/sources.json",
+      "sha256": "17092489f7fff88d3e650a1e8058dc7234a3215cd8f58ae0cb8b502418cb3038",
+      "bytes": 89
+    },
+    {
+      "source": "evals/arkiv-feedback-negative/prompt.md",
+      "sha256": "3f71b29fae9b300e040817f1dd82f3ffb27567f00ab511df4cc84f3290577ab2",
+      "bytes": 426
+    },
+    {
+      "source": "evals/arkiv-feedback-negative/graders/criteria.md",
+      "sha256": "c65bc8226fc3db1c629fe35cc28dba850469aae8a44d93448b72d7a2e251367a",
+      "bytes": 221
+    },
+    {
+      "source": "evals/arkiv-feedback-negative/sources.json",
+      "sha256": "17092489f7fff88d3e650a1e8058dc7234a3215cd8f58ae0cb8b502418cb3038",
+      "bytes": 89
+    },
+    {
+      "source": "evals/arkiv-feedback-outcome/prompt.md",
+      "sha256": "a78525e53545dcc9ff405aa7b468c6bd25a3fefcba6aafeb686a8af6e637a962",
+      "bytes": 476
+    },
+    {
+      "source": "evals/arkiv-feedback-outcome/graders/criteria.md",
+      "sha256": "38232a07afabf25aac4ebd7eaddadd325d174e2587fc604d0b9bdde7bf1e58c8",
+      "bytes": 340
+    },
+    {
+      "source": "evals/arkiv-feedback-outcome/sources.json",
+      "sha256": "17092489f7fff88d3e650a1e8058dc7234a3215cd8f58ae0cb8b502418cb3038",
+      "bytes": 89
+    },
+    {
+      "source": "evals/arkiv-mcp-trigger/prompt.md",
+      "sha256": "26921bcb1115fe602c92f997882adbbcaf409b0c9fe669657b8deff8bb90616b",
+      "bytes": 438
+    },
+    {
+      "source": "evals/arkiv-mcp-trigger/graders/criteria.md",
+      "sha256": "e2eb05fd215bade811f74a9dcc4c7489dc5d7f14593cd407e355f75d3b39e0dc",
+      "bytes": 313
+    },
+    {
+      "source": "evals/arkiv-mcp-trigger/sources.json",
+      "sha256": "880ed071adc83678e41a098f1f7b301866f4ab94ff777156a6d97d647ce71167",
+      "bytes": 84
+    },
+    {
+      "source": "evals/arkiv-mcp-negative/prompt.md",
+      "sha256": "d8b1edc6ccc45b1255c2c60696ef055fdf8f290800d839a8b49c82a17d317ffc",
+      "bytes": 398
+    },
+    {
+      "source": "evals/arkiv-mcp-negative/graders/criteria.md",
+      "sha256": "ff8fe3dce32586bcf2199590e7dd9188c6f7fc1038f9abec4c2fb2dd0353d7f0",
+      "bytes": 187
+    },
+    {
+      "source": "evals/arkiv-mcp-negative/sources.json",
+      "sha256": "880ed071adc83678e41a098f1f7b301866f4ab94ff777156a6d97d647ce71167",
+      "bytes": 84
+    },
+    {
+      "source": "evals/arkiv-mcp-outcome/prompt.md",
+      "sha256": "31c357427f7d46a3ddd57e7ff5bf9ad74bd1c6d2c2c16a8be443fe8901b9a712",
+      "bytes": 481
+    },
+    {
+      "source": "evals/arkiv-mcp-outcome/graders/criteria.md",
+      "sha256": "dcc0dda35f48d6089471f268f94de4a9334a3f47fab035d5417b6daa22a25d3b",
+      "bytes": 357
+    },
+    {
+      "source": "evals/arkiv-mcp-outcome/sources.json",
+      "sha256": "880ed071adc83678e41a098f1f7b301866f4ab94ff777156a6d97d647ce71167",
+      "bytes": 84
+    },
+    {
+      "source": "evals/multi-encrypted-expiring/prompt.md",
+      "sha256": "a49a872109870d8bf244cffe7e9c730771ff7fe8578a42767e868af6aaec721f",
+      "bytes": 254
+    },
+    {
+      "source": "evals/multi-encrypted-expiring/graders/criteria.md",
+      "sha256": "601e04c8a56c0839d9f258b96644159494a01cac26638abe2e89060784aa68c3",
+      "bytes": 212
+    },
+    {
+      "source": "evals/multi-encrypted-expiring/sources.json",
+      "sha256": "6d34b945f14b9913dcda2dc671c2fea966d7e4965b60f5b2adb2866d6e40a2d3",
+      "bytes": 109
+    },
+    {
+      "source": "evals/adversarial-untrusted-payload/prompt.md",
+      "sha256": "44d6b4f50f0c8285e04539e5f8fde6dc3cb0120bb9952a705710377c351defd3",
+      "bytes": 284
+    },
+    {
+      "source": "evals/adversarial-untrusted-payload/graders/criteria.md",
+      "sha256": "969995e8a021dfa909f91035cc3680bb6b5120dd7c837bee9136fffcc347b628",
+      "bytes": 204
+    },
+    {
+      "source": "evals/adversarial-untrusted-payload/sources.json",
+      "sha256": "6d8afca3102b7ff1e1fdd96f9dc40a2360ca3adcc354cf142f41dbaa982bc8ac",
+      "bytes": 66
+    },
+    {
+      "source": "evals/adversarial-rpc-url/prompt.md",
+      "sha256": "06511658b37934738133c1c10ec15efc1055d0024362ca6b2de9b1d4e21ff9a5",
+      "bytes": 271
+    },
+    {
+      "source": "evals/adversarial-rpc-url/graders/criteria.md",
+      "sha256": "da7b965ebd73a8bbda3b31c88c693cbdecf24e4e802639b2d9b9430b8454480b",
+      "bytes": 200
+    },
+    {
+      "source": "evals/adversarial-rpc-url/sources.json",
+      "sha256": "c5376b595d299dddbe6d9f83e0c27e5add83d6234c5cec4439b8a53a94481e4c",
+      "bytes": 152
+    },
+    {
+      "source": "evals/adversarial-key-custody/prompt.md",
+      "sha256": "56ad6c14c391fdaafe5348a64413130b4f402a8374a394a67c349d82a2ca1557",
+      "bytes": 256
+    },
+    {
+      "source": "evals/adversarial-key-custody/graders/criteria.md",
+      "sha256": "4a05e62395b92252bd47da2263da000e5be306dd9fd401a61ca1686a30cfab8d",
+      "bytes": 239
+    },
+    {
+      "source": "evals/adversarial-key-custody/sources.json",
+      "sha256": "f355d359115127e66bbe35354f41a4005d787c5746b573f4156db174ed69be59",
+      "bytes": 99
+    },
+    {
+      "source": "evals/version-mismatch/prompt.md",
+      "sha256": "4dbc3079630063b0f45bd2d7d5b7e9463ba37fb77341cadf7eaec2d2a035d33f",
+      "bytes": 254
+    },
+    {
+      "source": "evals/version-mismatch/graders/criteria.md",
+      "sha256": "a029370e08d52f6c39e71c61c80c6e2956ae45636df1df9af5f8c113e9fa3a79",
+      "bytes": 256
+    },
+    {
+      "source": "evals/version-mismatch/sources.json",
+      "sha256": "8739f948b967e95337b9f0c94601d8ad7593be9f13ac60777f32a344d6f966b4",
+      "bytes": 96
+    },
+    {
+      "source": "evals/rule-version-without-block/prompt.md",
+      "sha256": "2b76ee090a46fbd1e7cbf465caae70ebc68bc3346a7a3781f142171873dbcc5b",
+      "bytes": 282
+    },
+    {
+      "source": "evals/rule-version-without-block/graders/criteria.md",
+      "sha256": "17b62235e94d8b95683ce0ae74ada77e2c86618f91ab5308917f6ac7498e724c",
+      "bytes": 283
+    },
+    {
+      "source": "evals/rule-version-without-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-version-with-block/prompt.md",
+      "sha256": "803cf2f3295eb239440a57d0640a79900e70437a05d8c439d489f170479dbd02",
+      "bytes": 924
+    },
+    {
+      "source": "evals/rule-version-with-block/graders/criteria.md",
+      "sha256": "17b62235e94d8b95683ce0ae74ada77e2c86618f91ab5308917f6ac7498e724c",
+      "bytes": 283
+    },
+    {
+      "source": "evals/rule-version-with-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-names-without-block/prompt.md",
+      "sha256": "f52bcd189b4a7edf335e1a49a53961852fec254c1b0fbe9fc4694377a2681c7b",
+      "bytes": 261
+    },
+    {
+      "source": "evals/rule-names-without-block/graders/criteria.md",
+      "sha256": "6cbad1495b50c8cdd8138c049e22a37e5767f895accc5b862cec5c187b0d31bb",
+      "bytes": 222
+    },
+    {
+      "source": "evals/rule-names-without-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-names-with-block/prompt.md",
+      "sha256": "87e388d13a416100e6ad3b4dcf7558fdef7324b9481513c451085e5968842c56",
+      "bytes": 903
+    },
+    {
+      "source": "evals/rule-names-with-block/graders/criteria.md",
+      "sha256": "6cbad1495b50c8cdd8138c049e22a37e5767f895accc5b862cec5c187b0d31bb",
+      "bytes": 222
+    },
+    {
+      "source": "evals/rule-names-with-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-timestamps-without-block/prompt.md",
+      "sha256": "6c20b06fd6aa37322b9fca59af9737281360d805ec7d64c2f86e43c14adaca8b",
+      "bytes": 494
+    },
+    {
+      "source": "evals/rule-timestamps-without-block/graders/criteria.md",
+      "sha256": "78d64fa8d095f22a2d0438b7e20ce21b70cf9e6ce959a728a2f1e566e190b7a4",
+      "bytes": 209
+    },
+    {
+      "source": "evals/rule-timestamps-without-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-timestamps-with-block/prompt.md",
+      "sha256": "ebf05ac6f9bd39b8152b8741198918c072a66972c695b20ef7a0e0a31ffa4566",
+      "bytes": 1136
+    },
+    {
+      "source": "evals/rule-timestamps-with-block/graders/criteria.md",
+      "sha256": "78d64fa8d095f22a2d0438b7e20ce21b70cf9e6ce959a728a2f1e566e190b7a4",
+      "bytes": 209
+    },
+    {
+      "source": "evals/rule-timestamps-with-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-custody-without-block/prompt.md",
+      "sha256": "cde156cf49132863dde9174e7e166012247995594ed0f1e90fce640fd54c21b9",
+      "bytes": 280
+    },
+    {
+      "source": "evals/rule-custody-without-block/graders/criteria.md",
+      "sha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974",
+      "bytes": 268
+    },
+    {
+      "source": "evals/rule-custody-without-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-custody-with-block/prompt.md",
+      "sha256": "c45184d5c05c312e29a57de622df4c4d4e2727977a867b0383e2391189bc68b9",
+      "bytes": 922
+    },
+    {
+      "source": "evals/rule-custody-with-block/graders/criteria.md",
+      "sha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974",
+      "bytes": 268
+    },
+    {
+      "source": "evals/rule-custody-with-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-native-without-block/prompt.md",
+      "sha256": "b78c106f9d5e5cffa247f647d74be328371ccc79436abaac877b9f3ccd5a911c",
+      "bytes": 246
+    },
+    {
+      "source": "evals/rule-native-without-block/graders/criteria.md",
+      "sha256": "fd38c38582ee6f06bb498046445ae60acecfaaf6322a0f3e09d834bfa4b50854",
+      "bytes": 230
+    },
+    {
+      "source": "evals/rule-native-without-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-native-with-block/prompt.md",
+      "sha256": "85c9bb39c4c370bed44ef66ec616f4ce54e12972e7a408aa5ebb5aeb513b3ebd",
+      "bytes": 888
+    },
+    {
+      "source": "evals/rule-native-with-block/graders/criteria.md",
+      "sha256": "fd38c38582ee6f06bb498046445ae60acecfaaf6322a0f3e09d834bfa4b50854",
+      "bytes": 230
+    },
+    {
+      "source": "evals/rule-native-with-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-router-without-block/prompt.md",
+      "sha256": "9319fb576c41abdac1578fc0a679050df31953cad5fe7fa6a78bf277ee3e08e4",
+      "bytes": 264
+    },
+    {
+      "source": "evals/rule-router-without-block/graders/criteria.md",
+      "sha256": "fb476e1d4b9ac2ea2c8cbd201e6d4584dd14d38010c874a72e38ac45f0dadf74",
+      "bytes": 327
+    },
+    {
+      "source": "evals/rule-router-without-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/rule-router-with-block/prompt.md",
+      "sha256": "a747854b54b677ed424e8f973fa1d62819bab8ee5032beddd092e5f7b59506ef",
+      "bytes": 906
+    },
+    {
+      "source": "evals/rule-router-with-block/graders/criteria.md",
+      "sha256": "fb476e1d4b9ac2ea2c8cbd201e6d4584dd14d38010c874a72e38ac45f0dadf74",
+      "bytes": 327
+    },
+    {
+      "source": "evals/rule-router-with-block/sources.json",
+      "sha256": "9d5c72c08a2b555abc5e4b340bdba66b01be6f4da8693e1d37c099533919ea71",
+      "bytes": 92
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-readonly-typo/prompt.md",
+      "sha256": "21ec46d8945a70c6416b6d38f9b6b0c2210d4b8620327494fab0bf05add62948",
+      "bytes": 583
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-readonly-typo/graders/criteria.md",
+      "sha256": "aa35ef067f91dbf1455a63d2b7ab336e94ee2986bb9234d736910894be6fff26",
+      "bytes": 1036
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-readonly-typo/sources.json",
+      "sha256": "bd853e9cddf51ca71c400ce9fcace6d711b105193a9ec9d55cf097d3afd8e654",
+      "bytes": 97
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-anyone-keepalive/prompt.md",
+      "sha256": "f9c932625e963afea3f30fa2fac08aaf4334a8f793ed765040d06bda4f5dd9d4",
+      "bytes": 621
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-anyone-keepalive/graders/criteria.md",
+      "sha256": "b0dd49ba59ad8bc1a1fb800fc548fdd697321ad1ba22c739626829dbfce8a351",
+      "bytes": 1225
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-anyone-keepalive/sources.json",
+      "sha256": "37e61bb0cc68411d0d67f5f41156874615d912ffee7674bb2424adebb20ad1e9",
+      "bytes": 144
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-transfer-authorship/prompt.md",
+      "sha256": "c7935f93c9dec6f40be883c0e486e90e731fd2c5509406504e0df471d4f9faeb",
+      "bytes": 621
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-transfer-authorship/graders/criteria.md",
+      "sha256": "0a0ed3eab84b3b2d403cb67b9aac1b2810322438ade4abe43d89269791bb800f",
+      "bytes": 1206
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-transfer-authorship/sources.json",
+      "sha256": "23a81aa08ba0c1aa084486525c53909b0c320bf3c0c0b341a8416ea35f785280",
+      "bytes": 141
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-patch-delete/prompt.md",
+      "sha256": "caf5264bb230b71f01189366af099802d4100a5977aeb1f5f593c75e87c3d140",
+      "bytes": 621
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-patch-delete/graders/criteria.md",
+      "sha256": "9f3ee0371728c0d2abe89010e130b9b89572c478cc02b12a70b44fb9595913df",
+      "bytes": 1088
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-patch-delete/sources.json",
+      "sha256": "bd853e9cddf51ca71c400ce9fcace6d711b105193a9ec9d55cf097d3afd8e654",
+      "bytes": 97
+    }
+  ]
+}

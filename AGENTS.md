@@ -2,18 +2,34 @@
 
 ## Purpose and current state
 
-This repository will distribute the Arkiv Claude Code plugin. It is currently a documentation bootstrap, with no installable plugin or running service. Read README.md before proposing implementation.
+This repository distributes the `arkiv` Claude Code plugin through the `arkiv` marketplace. Read README.md for consumer installation. The marketplace is at `.claude-plugin/marketplace.json`; its plugin is nested at `plugins/arkiv` so this repository's existing `CLAUDE.md` pointer is outside the plugin's strict validation surface.
 
 ## Configuration and commands
 
-No dependencies, runtime configuration, or build commands exist yet. Check the current bootstrap with:
+Use Node.js 20+ and Claude Code 2.1.296+. There are no package dependencies to install. Generated manifests, hosted MCP configuration, hook configuration and the short rules snippet come from `plugin.config.json` and `source/always-on.md`:
 
-~~~bash
-git ls-files
+```bash
+node scripts/build-plugin.mjs
+node scripts/build-plugin.mjs --check
+node scripts/check-static.mjs
+node --test tests/*.test.mjs
+claude plugin validate --strict .
+claude plugin validate --strict plugins/arkiv
 git diff --check
-~~~
+```
 
-Use the official skills README for standalone installation. Do not invent a plugin installation command before a marketplace and plugin have been validated.
+Set `ARKIV_TEST_TMP` to an owned temporary directory if the host requires test artifacts in a specific location. The hook timing test measures actual Node startup and requires p95 below 200 ms; preserve a first failure and diagnose machine load before repeating it. The hook itself performs no network or mutations.
+
+To import or verify canonical guidance, use a local clone containing the exact full Git revision in `plugin.config.json`:
+
+```bash
+node scripts/sync-skills.mjs /absolute/local/skills-clone --write
+node scripts/sync-skills.mjs /absolute/local/skills-clone --check
+```
+
+The script reads fixed Git objects rather than the clone's working tree and writes no source checkout. `source/skills.lock.json` binds Git blobs, SHA-256 digests and byte counts. It refuses symlinks and unexpected bundle files instead of deleting them. Current active skill content must stay byte-identical to the selected canonical commit. Change guidance upstream, then explicitly update the full revision and import it here.
+
+The historical eval import is pinned separately in `scripts/import-evals.mjs`. Re-import only before freezing evaluation inputs; authored cases remain separate. `source/evals-import.json` preserves original prompt/rubric digests and retirement reasons. See `plugins/arkiv/evals/README.md` for the native ablation command and grader semantics.
 
 ## Invariants
 
@@ -24,9 +40,29 @@ Use the official skills README for standalone installation. Do not invent a plug
 - Never publish private service source, local operating notes, credentials, or user data as part of packaging.
 - Do not modify service deployments, account settings, user profiles, or the Hub as a side effect of plugin implementation.
 - Repository preparation, static validation, and actual consumer installation are distinct evidence.
+- Keep repository `CLAUDE.md` as its existing `@AGENTS.md` pointer. Never add a `CLAUDE.md` inside `plugins/arkiv`: Claude Code does not load it and strict validation warns.
+- Bump `plugin.config.json` version for any bundled skill, hook, MCP configuration or rule change, then regenerate. Do not repeat the version in the marketplace entry. Tag a verified release with the supported `claude plugin tag` command after checking its current help; never tag an unverified candidate.
+- Preserve imported skill license declarations. No repository-wide upstream LICENSE was present at the current source revision; do not invent one or add plugin license metadata until the maintainer confirms the distribution license.
+- Namespaced skills are `arkiv:<name>`. The deprecated compatibility stub is intentionally absent in both direct and marketplace loading.
+
+## Isolated tests and telemetry
+
+Before any plugin command, record the SHA-256 of the user's existing Claude settings, known-marketplace and installed-plugin files. Set `CLAUDE_CONFIG_DIR` to a new owned directory for tests; project scope alone does not isolate shared marketplace/plugin caches. Verify the original hashes afterwards. Never restore or overwrite user settings to hide a difference. Install/uninstall only the resources created by the test.
+
+Native sessions auto-connect plugin MCPs. Use `--strict-mcp-config --mcp-config <safe-local-config>` and first prove the bundled server is suppressed. If that override does not suppress it, use an owned scratch copy with its MCP endpoint replaced by a loopback fixture. Never health-check General in tests. Eval runs use `--mocks record --no-publish` and must never enable real servers. Synthetic feedback and outcome tools may run only against local sinks; this suite exposes read-only mocks only.
+
+The public General endpoint does not currently classify tests with known verification keys. Do not send direct fetch/curl requests or run `claude mcp list` against it. Any authorized remote Devfolio test must use the existing operator tooling, verify `trafficClass === 'verification'` before other calls, and respect operator pacing. Tokens remain in environment variables, never logs or source. Missing credentials are a coverage limit, not a reason to change credentials or ask for them in chat.
+
+Use an operation deadline for installs, native sessions and eval runs. Inspect actual exit state and fresh artifacts when progress stops. Preserve first-run failures, separate harness/provider problems from product defects, and never weaken an outcome rubric to obtain a pass.
 
 ## Required developer inputs
 
-Before implementation, obtain the authorized public source/distribution policy, service owner's confirmed MCP connection and authentication contract, chosen skills revision, and supported Claude Code version. Ask for credentials only if an authenticated test requires them; keep them outside source, URLs, and chat. The service owner remains responsible for live service changes.
+Ask only for decisions that available source evidence cannot answer:
 
-Use the current official Claude Code plugin and marketplace documentation. Test in an isolated consumer profile and publish installation instructions only after actual execution succeeds.
+- Existing package/lockfile/installed SDK declarations, or permission to obtain them before executable SDK code.
+- The requested screen/query, filters, sort and expected cardinality; stable application IDs and trusted creator scope.
+- Which fields can be public, who may create/update, and the retention or Entity Expiration policy.
+- Browser-wallet versus server architecture, application authentication, and signer custody. Never request signing keys in chat.
+- For any write: explicit operation, network, authorized signer and spending scope. Plugin installation does not authorize a transaction.
+
+Use current official Claude Code plugin, marketplace, hooks and eval documentation. Test actual consumer installation before advertising release availability. The service owner remains responsible for backend changes; this repository packages the existing public connection only.

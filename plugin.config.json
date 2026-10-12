@@ -1,0 +1,21 @@
+{
+  "name": "arkiv",
+  "displayName": "Arkiv",
+  "version": "0.1.0",
+  "description": "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
+  "author": { "name": "Arkiv Network" },
+  "repository": "https://github.com/Arkiv-Network/claude-plugin",
+  "homepage": "https://hub.arkiv.network/ai-tools#claude-plugin",
+  "mcpUrl": "https://mcp.arkiv.network/",
+  "sdkVersion": "0.8.1",
+  "sdkRange": ">=0.8.1 <0.9",
+  "network": "tiramisu",
+  "networkLabel": "Tiramisu",
+  "chainId": 7738577,
+  "minimumClaudeCode": "2.1.296",
+  "skillsSource": {
+    "repository": "https://github.com/Arkiv-Network/skills",
+    "commit": "ce5ee78ac0fa5afe33ce64c8ff238de2f26d9049",
+    "excludedSkills": ["arkiv-best-practices"]
+  }
+}

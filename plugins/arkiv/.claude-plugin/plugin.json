@@ -1,0 +1,18 @@
+{
+  "name": "arkiv",
+  "displayName": "Arkiv",
+  "version": "0.1.0",
+  "description": "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
+  "author": {
+    "name": "Arkiv Network"
+  },
+  "homepage": "https://hub.arkiv.network/ai-tools#claude-plugin",
+  "repository": "https://github.com/Arkiv-Network/claude-plugin",
+  "keywords": [
+    "arkiv",
+    "web3 database",
+    "ethereum-aligned",
+    "skills",
+    "mcp"
+  ]
+}
