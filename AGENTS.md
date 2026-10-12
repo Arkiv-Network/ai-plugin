@@ -6,19 +6,19 @@ This repository distributes the `arkiv` Claude Code plugin through the `arkiv` m
 
 ## Configuration and commands
 
-Use Node.js 20+ and Claude Code 2.1.296+. There are no package dependencies to install. Generated manifests, hosted MCP configuration, hook configuration and the short rules snippet come from `plugin.config.json` and `source/always-on.md`:
+The package requires Node.js 20+. Windows checks used Claude Code 2.1.296; this tested version is not a claimed CLI minimum. There are no package dependencies to install. Generated manifests, hosted MCP configuration, hook configuration and the short rules snippet come from `plugin.config.json` and `source/always-on.md`:
 
 ```bash
 node scripts/build-plugin.mjs
 node scripts/build-plugin.mjs --check
 node scripts/check-static.mjs
-node --test tests/*.test.mjs
+node --test --test-concurrency=1 tests/*.test.mjs
 claude plugin validate --strict .
 claude plugin validate --strict plugins/arkiv
 git diff --check
 ```
 
-Set `ARKIV_TEST_TMP` to an owned temporary directory if the host requires test artifacts in a specific location. The hook timing test measures actual Node startup and requires p95 below 200 ms; preserve a first failure and diagnose machine load before repeating it. The hook itself performs no network or mutations.
+Set `ARKIV_TEST_TMP` to an owned temporary directory if the host requires test artifacts in a specific location. Run test files serially so source-import checks do not compete with hook startup measurements. The timing test measures actual Node startup and requires p95 below 200 ms; measurements depend on machine load. Preserve a first failure and diagnose load before repeating it. The hook itself performs no network or mutations.
 
 To import or verify canonical guidance, use a local clone containing the exact full Git revision in `plugin.config.json`:
 

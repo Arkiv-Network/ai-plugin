@@ -4,10 +4,10 @@ Arkiv skills, MCP source discovery, and project rules for the Web3 database, pac
 
 ## Install
 
-Use Claude Code **2.1.296 or newer** and Node.js **20 or newer**. Node must be on `PATH` for the project-rules hook. GitHub authentication is needed when this repository is private.
+Verified on Windows with Claude Code **2.1.296**. The package requires Node.js **20 or newer**, on `PATH` for the project-rules hook. This candidate is on the private `feat/claude-plugin-20261012` branch; a default-branch release remains pending. GitHub authentication is required.
 
 ```bash
-claude plugin marketplace add Arkiv-Network/claude-plugin
+claude plugin marketplace add https://github.com/Arkiv-Network/claude-plugin.git#feat/claude-plugin-20261012
 claude plugin install arkiv@arkiv
 ```
 
@@ -16,7 +16,7 @@ The defaults install for your user account. For one project, add `--scope projec
 In an existing Claude Code session, the equivalent commands are:
 
 ```text
-/plugin marketplace add Arkiv-Network/claude-plugin
+/plugin marketplace add https://github.com/Arkiv-Network/claude-plugin.git#feat/claude-plugin-20261012
 /plugin install arkiv@arkiv
 ```
 
@@ -87,7 +87,7 @@ Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/s
 ```bash
 node scripts/build-plugin.mjs --check
 node scripts/check-static.mjs
-node --test tests/*.test.mjs
+node --test --test-concurrency=1 tests/*.test.mjs
 claude plugin validate --strict .
 claude plugin validate --strict plugins/arkiv
 ```
@@ -95,3 +95,5 @@ claude plugin validate --strict plugins/arkiv
 The repository has no package dependencies. [Behavioral evals](plugins/arkiv/evals/README.md) compare the plugin with a no-plugin baseline using synthetic MCP tools. Static checks, installation, behavior and live MCP health are separate evidence. The controlled project-rule cases do not replace native hook tests. General production test traffic remains excluded because it cannot currently be classified with the known operator keys.
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
+
+See [verification scope](docs/verification.md) for installed-cache onboarding, the membership smoke and the full campaign's retained failures. The full campaign reached the membership session limit; outcome and process findings remain open. No behavioral pass or release GO is claimed.
