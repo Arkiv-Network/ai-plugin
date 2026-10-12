@@ -23,6 +23,26 @@ function frontmatter(text) {
   return values;
 }
 
+export function checkProcessExpectation(item, markdown) {
+  assert.ok(/^arkiv(?:-[a-z0-9]+)*$/.test(item.processSkill ?? ''), `Invalid process skill: ${item.id}`);
+  assert.ok(Array.isArray(item.rationaleSources), `Missing process rationale sources: ${item.id}`);
+  assert.equal(new Set(item.rationaleSources).size, item.rationaleSources.length, `Duplicate process rationale source: ${item.id}`);
+  for (const source of item.rationaleSources) {
+    assert.ok(/^skills\/[a-z0-9-]+\/SKILL\.md$/.test(source), `Invalid process rationale source: ${item.id}`);
+  }
+  assert.ok(item.rationaleSources.includes('skills/arkiv/SKILL.md'), `Missing canonical router rationale: ${item.id}`);
+  assert.ok(item.rationaleSources.includes(`skills/${item.processSkill}/SKILL.md`), `Missing target skill rationale: ${item.id}`);
+  const process = frontmatter(markdown);
+  const pattern = `"skill"\\s*:\\s*"(?:arkiv:)?${item.processSkill}"`;
+  assert.equal(process.type, 'tool_used', `Invalid process grader type: ${item.id}`);
+  assert.equal(process.tool, 'Skill', `Invalid process tool: ${item.id}`);
+  assert.equal(process.arm, 'with-only', `Invalid process arm: ${item.id}`);
+  assert.equal(process.weight, '1', `Invalid process weight: ${item.id}`);
+  assert.equal(process.min, '1', `Invalid process minimum: ${item.id}`);
+  assert.equal(process.input_match, JSON.stringify(pattern), `Process skill expectation drift: ${item.id}`);
+  return {skill: item.processSkill, pattern};
+}
+
 export async function checkSkillImport(root = repositoryRoot) {
   const config = validateConfig(await json(path.join(root, 'plugin.config.json')));
   const lock = await json(path.join(root, 'source/skills.lock.json'));
@@ -61,7 +81,8 @@ export async function checkEvalSuite(root = repositoryRoot) {
     assert.ok(Number(promptFields.timeout_seconds) > 0 && Number(promptFields.timeout_seconds) <= 180, 'Unbounded evaluation');
     assert.ok(!/\b(?:Bash|Write|Edit|WebFetch)\b/.test(promptFields.allowed_tools), `Unsafe tool grant: ${item.id}`);
     const outcome = frontmatter(await readFile(path.join(base, item.id, 'graders/criteria.md'), 'utf8'));
-    const process = frontmatter(await readFile(path.join(base, item.id, 'graders/process.md'), 'utf8'));
+    const processMarkdown = await readFile(path.join(base, item.id, 'graders/process.md'), 'utf8');
+    const process = frontmatter(processMarkdown);
     assert.ok(['llm', 'regex'].includes(outcome.type), `Missing answer outcome: ${item.id}`);
     assert.equal(process.type, 'tool_used', `Missing tool-use process grader: ${item.id}`);
     if (item.category === 'negative') {
@@ -75,6 +96,10 @@ export async function checkEvalSuite(root = repositoryRoot) {
     if (item.category === 'mcp') {
       mocked++; assert.ok(process.tool.startsWith('mcp__plugin_arkiv_arkiv__'));
       assert.equal(process.arm, 'with-only'); assert.ok(process.input_match);
+    }
+    if (Object.hasOwn(item, 'processSkill') || Object.hasOwn(item, 'rationaleSources')) {
+      checkProcessExpectation(item, processMarkdown);
+      for (const source of item.rationaleSources) await readFile(path.join(root, 'plugins/arkiv', source));
     }
     const sources = await json(path.join(base, item.id, 'sources.json'));
     assert.deepEqual(sources.sources, item.sources);

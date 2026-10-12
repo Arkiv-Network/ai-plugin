@@ -10,7 +10,7 @@ test('marketplace points to nested plugin and version exists only on plugin mani
   const marketplace = JSON.parse(output.get('.claude-plugin/marketplace.json'));
   const manifest = JSON.parse(output.get('plugins/arkiv/.claude-plugin/plugin.json'));
   assert.equal(marketplace.plugins[0].source, './plugins/arkiv');
-  assert.equal(marketplace.plugins[0].version, undefined); assert.equal(manifest.version, '0.1.0');
+  assert.equal(marketplace.plugins[0].version, undefined); assert.equal(manifest.version, config.version);
   assert.equal(manifest.license, undefined);
 });
 test('generated MCP is hosted HTTP without secrets', () => {

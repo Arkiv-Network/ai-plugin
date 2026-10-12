@@ -4,7 +4,7 @@ import {mkdtemp, mkdir, readFile, writeFile, copyFile, rm} from 'node:fs/promise
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {repositoryRoot} from '../scripts/build-plugin.mjs';
-import {checkSkillImport, checkEvalSuite} from '../scripts/check-static.mjs';
+import {checkSkillImport, checkEvalSuite, checkProcessExpectation} from '../scripts/check-static.mjs';
 
 const scratchRoot = process.env.ARKIV_TEST_TMP ?? tmpdir();
 async function fixture(run) {
@@ -54,4 +54,61 @@ test('eval suite preserves original outcomes and explicit negative invocation co
   const result = await checkEvalSuite(repositoryRoot);
   assert.equal(result.cases, 73); assert.equal(result.negatives, 16); assert.equal(result.mockedCases, 3);
   assert.equal(result.originalFiles, 207);
+});
+
+const correctedProcessCases = [
+  {id: 'arkiv-encryption-outcome', target: 'arkiv-security-trust', neighbors: ['arkiv-encryption', 'arkiv-query', 'arkiv-troubleshooting']},
+  {id: 'adversarial-rpc-url', target: 'arkiv-troubleshooting', neighbors: ['arkiv-security-trust', 'arkiv-first-write', 'arkiv-query']},
+];
+async function processCase(id) {
+  const base = path.join(repositoryRoot, 'plugins/arkiv/evals');
+  const catalog = JSON.parse(await readFile(path.join(base, 'catalog.json'), 'utf8'));
+  const item = catalog.cases.find(item => item.id === id);
+  const markdown = await readFile(path.join(base, id, 'graders/process.md'), 'utf8');
+  return {item, markdown};
+}
+for (const {id, target, neighbors} of correctedProcessCases) {
+  test(`process expectation ${id} requires its exact canonical skill invocation`, async () => {
+    const {item, markdown} = await processCase(id);
+    assert.equal(item.processSkill, target);
+    const {pattern} = checkProcessExpectation(item, markdown);
+    const matcher = new RegExp(pattern);
+    assert.equal(matcher.test(JSON.stringify({skill: target})), true);
+    assert.equal(matcher.test(JSON.stringify({skill: `arkiv:${target}`, args: 'Explain only.'}, null, 2)), true);
+    for (const skill of [...neighbors, `other:${target}`, `${target}-extra`]) {
+      assert.equal(matcher.test(JSON.stringify({skill, args: `Mention ${target} without invoking it.`})), false, skill);
+    }
+    assert.equal(matcher.test(JSON.stringify({args: JSON.stringify({skill: target})})), false);
+  });
+  test(`process expectation ${id} rejects relaxed graders and missing rationale`, async () => {
+    const {item, markdown} = await processCase(id);
+    const inputLine = /^input_match: .*$/m;
+    for (const altered of [
+      markdown.replace(inputLine, `input_match: "${neighbors.join('|')}"`),
+      markdown.replace(inputLine, `input_match: "${target}"`),
+      markdown.replace('min: 1', 'min: 0'),
+      markdown.replace('tool: Skill', 'tool: Read'),
+      markdown.replace('arm: with-only', 'arm: both'),
+    ]) assert.throws(() => checkProcessExpectation(item, altered));
+    assert.throws(() => checkProcessExpectation({...item, rationaleSources: item.rationaleSources.filter(source => source !== 'skills/arkiv/SKILL.md')}, markdown), /Missing canonical router rationale/);
+    assert.throws(() => checkProcessExpectation({...item, rationaleSources: item.rationaleSources.filter(source => source !== `skills/${target}/SKILL.md`)}, markdown), /Missing target skill rationale/);
+    assert.throws(() => checkProcessExpectation({...item, rationaleSources: [...item.rationaleSources, '../untrusted.md']}, markdown), /Invalid process rationale source/);
+  });
+}
+test('process expectation rationale covers privacy leaks and RPC configuration in canonical guidance', async () => {
+  const skill = async name => readFile(path.join(repositoryRoot, 'plugins/arkiv/skills', name, 'SKILL.md'), 'utf8');
+  const router = await skill('arkiv');
+  const security = await skill('arkiv-security-trust');
+  const encryption = await skill('arkiv-encryption');
+  const troubleshooting = await skill('arkiv-troubleshooting');
+  assert.match(router, /Use `arkiv-security-trust`[\s\S]*before storing sensitive data/);
+  assert.match(security, /sensitive payload fields, indexed attributes, wallet addresses and logs/);
+  assert.match(security, /Keep access\/signing\/encryption keys out of chat, URLs, logs/);
+  assert.match(security, /HMAC indexes[\s\S]*not that package's API/);
+  assert.match(encryption, /Use arkiv-security-trust for policy and HMAC index design/);
+  assert.match(router, /RPC configuration\/URL validation goes to `arkiv-troubleshooting` first/);
+  assert.match(troubleshooting, /Parse the URL as data/);
+  assert.match(troubleshooting, /never interpolate it into a shell command/);
+  assert.match(troubleshooting, /Static URL validation does not establish chain identity/);
+  assert.match(troubleshooting, /A request for explanation alone authorizes no live probe/);
 });

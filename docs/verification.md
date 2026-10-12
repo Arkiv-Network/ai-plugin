@@ -1,5 +1,13 @@
 # Verification scope - October 12, 2026
 
+## Corrected candidate 0.1.1
+
+The candidate imports canonical revision `5042e133e1d4cbf3f5baafb9fc47f6b6027b2f5a`. Corrections require complete ordered batch validation, retain readonly originals without separate deletion authorization, explain transfer provenance, preserve unverifiable index history and explicitly route untrusted payloads. Two plugin-authored invocation expectations now follow the canonical privacy and RPC recipes; original answer rubrics, prompts and results remain unchanged.
+
+Both changed TypeScript examples compile strictly against existing SDK 0.8.1 declarations. Deterministic checks pass the valid batch and malformed-result cases, including missing, extra, swapped or mismatched keys and unexpected operation arrays, without a second send. These checks use simulated confirmation and make no network or signing calls. Native behavioral follow-up and public default-branch installation remain pending; this candidate has no release GO yet.
+
+## Preserved 0.1.0 campaign
+
 Plugin source: [`8a18fe4ed3c3025fc5150a5e0a84f882cc4c9206`](https://github.com/Arkiv-Network/claude-plugin/commit/8a18fe4ed3c3025fc5150a5e0a84f882cc4c9206), tested on Windows with Claude Code **2.1.296**. The plugin's 341 files remain frozen; canonical skill bytes are pinned by [the source receipt](../source/skills.lock.json). This candidate is on a private feature branch, with no default-branch release or release GO.
 
 | Check | Observed result |

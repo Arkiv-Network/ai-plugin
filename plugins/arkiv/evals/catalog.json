@@ -290,6 +290,12 @@
       "id": "arkiv-encryption-outcome",
       "skill": "arkiv-encryption",
       "category": "outcome",
+      "processSkill": "arkiv-security-trust",
+      "rationaleSources": [
+        "skills/arkiv/SKILL.md",
+        "skills/arkiv-security-trust/SKILL.md",
+        "skills/arkiv-encryption/SKILL.md"
+      ],
       "sources": [
         "skills/arkiv/SKILL.md",
         "skills/arkiv-encryption/SKILL.md"
@@ -459,6 +465,11 @@
         "arkiv-first-write"
       ],
       "category": "integration",
+      "processSkill": "arkiv-troubleshooting",
+      "rationaleSources": [
+        "skills/arkiv/SKILL.md",
+        "skills/arkiv-troubleshooting/SKILL.md"
+      ],
       "sources": [
         "skills/arkiv-security-trust/SKILL.md",
         "skills/arkiv-first-write/SKILL.md",

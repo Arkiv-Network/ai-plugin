@@ -82,7 +82,7 @@ For MCP-only use, follow the [Hub MCP guide](https://hub.arkiv.network/ai-tools#
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [ce5ee78 revision](https://github.com/Arkiv-Network/skills/tree/ce5ee78ac0fa5afe33ce64c8ff238de2f26d9049). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. No repository-wide license exists in that source revision; this distribution omits a license claim pending maintainer confirmation.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [5042e13 revision](https://github.com/Arkiv-Network/skills/tree/5042e133e1d4cbf3f5baafb9fc47f6b6027b2f5a). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. No repository-wide license exists in that source revision; this distribution omits a license claim pending maintainer confirmation.
 
 ```bash
 node scripts/build-plugin.mjs --check
