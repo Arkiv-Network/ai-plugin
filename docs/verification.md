@@ -1,5 +1,11 @@
 # Verification scope - October 13, 2026
 
+## First-write evidence candidate 0.1.5
+
+The candidate imports canonical revision `ee22841ab156c852c5ba19300ffc0f7af3d16db1`. First-write guidance requires the observed installed SDK version and its declarations before executable SDK code; an "unverified" label does not bypass that gate. It recommends SDK `0.8.1` exactly or the literal range `>=0.8.1 <0.9`, requires upgrade approval for SDK `0.8.0`, and reports only inspected files. The 0.1.4 large-file clarification is retained.
+
+Source/import/build/static checks, both strict manifests and packaging are verified for this source. The 34 deterministic tests and 31 SDK checks were executed on 0.1.4 and are retained with exact oracle, runtime-code and executable-fence equivalence; they were not repeated on 0.1.5. No new native-model observation, default-branch installation or release GO is claimed for this candidate. No Hub deployment.
+
 ## Precision candidate 0.1.4
 
 The candidate imports canonical revision `c270159d2b31672b907f0e5b887b12622447c26f`. The large-file package gate recommends SDK `0.8.1` exactly or states the published peer range literally as `>=0.8.1 <0.9`; `0.8.x` is not a compatibility guarantee. A project using SDK `0.8.0` must stop integration until the developer approves upgrading, without forcing or bypassing peers. Live npm metadata on October 13 confirms the unchanged package pins: chunking 0.1.1 and images 0.1.2. Executable examples remain unchanged.

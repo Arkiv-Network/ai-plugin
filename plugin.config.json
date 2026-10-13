@@ -1,7 +1,7 @@
 {
   "name": "arkiv",
   "displayName": "Arkiv",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
   "author": {
     "name": "Arkiv Network"
@@ -17,7 +17,7 @@
   "minimumClaudeCode": "2.1.296",
   "skillsSource": {
     "repository": "https://github.com/Arkiv-Network/skills",
-    "commit": "c270159d2b31672b907f0e5b887b12622447c26f",
+    "commit": "ee22841ab156c852c5ba19300ffc0f7af3d16db1",
     "excludedSkills": [
       "arkiv-best-practices"
     ]

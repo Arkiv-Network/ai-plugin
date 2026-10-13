@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/Arkiv-Network/skills",
-  "commit": "c270159d2b31672b907f0e5b887b12622447c26f",
+  "commit": "ee22841ab156c852c5ba19300ffc0f7af3d16db1",
   "excludedSkills": [
     "arkiv-best-practices"
   ],
@@ -135,9 +135,9 @@
     {
       "source": "skills/arkiv-first-write/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-first-write/SKILL.md",
-      "gitBlob": "0d3a8b2c48f8bf7b0b3705f111ce142b0b67b829",
-      "sha256": "868892299aaa32dab2f1e97f51b1406b3326dc4503123bd50f3995c9eb05ee1a",
-      "bytes": 12471
+      "gitBlob": "a9604f3d0975f204cedc6e5120b44de33b307772",
+      "sha256": "fea14f9f35db6d3fd8f0664a233df8132bd8b592e1c09e233935d6bd8ee2b4d8",
+      "bytes": 13054
     },
     {
       "source": "skills/arkiv-indexing/references/checkpoint-mirror.md",
