@@ -57,7 +57,19 @@ export function buildArtifacts(config, source) {
     ['plugins/arkiv/hooks/hooks.json', json({hooks: {SessionStart: [{matcher: 'startup|resume|clear|compact',
       hooks: [{type: 'command', command: 'node', args: ['${CLAUDE_PLUGIN_ROOT}/hooks/arkiv-rules.mjs'], timeout: 2,
         onFailure: 'continue'}]}]}})],
-    ['plugins/arkiv/templates/AGENTS.snippet.md', renderRules(config, source)]
+    ['plugins/arkiv/templates/AGENTS.snippet.md', renderRules(config, source)],
+    ['.agents/plugins/marketplace.json', json({name: config.name, interface: {displayName: config.displayName},
+      plugins: [{name: config.name, source: {source: 'local', path: './plugins/arkiv-codex'},
+        policy: {installation: 'AVAILABLE', authentication: 'ON_INSTALL'}, category: 'Developer Tools'}]})],
+    ['plugins/arkiv-codex/plugin.json', json({$schema: 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
+      name: config.name, version: config.version, description: config.description, author: config.author,
+      homepage: config.homepage.replace('#claude-plugin', '#codex-plugin'), repository: config.repository,
+      keywords: identity.keywords, extensions: {'com.openai': {interface: {displayName: config.displayName,
+        shortDescription: 'Arkiv skills and the Devfolio MCP connection.'}}}})],
+    ['plugins/arkiv-codex/mcp.json', json({$schema: 'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',
+      mcpServers: {arkiv: {type: 'streamable-http', url: config.mcpUrl}}})],
+    ['plugins/arkiv-codex/templates/AGENTS.snippet.md', renderRules(config, source).replace('arkiv:arkiv', '$arkiv')],
+    ['plugins/arkiv-codex/AGENTS.md', `# Arkiv plugin for Codex CLI\n\nThis package contains Arkiv skills and one Devfolio (Arkiv: Global Tour Stop) MCP connection at ${config.mcpUrl}. Start a new Codex session after installing, then invoke the Arkiv router with $arkiv. Load only the task skill it selects. The router carries the essential safety rules even when the SDK is absent.\n\nCodex does not run the Claude SessionStart hook. This AGENTS.md is package documentation; installing the plugin does not inject it into the consumer project's instructions. Only add templates/AGENTS.snippet.md to a project's AGENTS.md when the developer explicitly requests it, preserving their existing instructions.\n\nBefore executable SDK code, inspect the manifest, lockfile and installed declarations for SDK ${config.sdkRange} on ${config.networkLabel}; ask for missing evidence. Ask for the query, filters, sort, expected cardinality, stable IDs, trusted creator, public/private fields, permissions, retention, architecture and signer custody. Installation authorizes no SDK installation, wallet connection, signing, feedback or transaction. Before writes obtain explicit operation, network, authorized signer and spending scope. Never request signing keys in chat.\n\nRead the existing connection's actual server_status and confirm profile devfolio before saying CONNECTED. Otherwise report NOT CONNECTED. Do not add a duplicate connection or switch profiles. Synthetic fixtures do not establish live service health.\n\nSkills are real files imported from one fixed canonical Git revision; never edit imported files. See the distribution README for installation, client evidence and maintenance commands. Desktop, IDE and other clients need their own tests; CLI evidence does not certify them.\n`]
   ]);
 }
 

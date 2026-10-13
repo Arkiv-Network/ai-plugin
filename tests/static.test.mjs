@@ -34,6 +34,16 @@ test('changed imported guidance cannot pass with the old source receipt', () => 
   await writeFile(file, (await readFile(file, 'utf8')) + '\nChanged unreviewed guidance.\n');
   await assert.rejects(checkSkillImport(directory), /Source length changed|Source bytes changed/);
 }));
+test('changed Codex guidance cannot pass the shared source receipt', () => fixture(async directory => {
+  const file = path.join(directory, 'plugins/arkiv-codex/skills/arkiv-query/SKILL.md');
+  await writeFile(file, (await readFile(file, 'utf8')).replace('license: MIT', 'license: unreviewed'));
+  await assert.rejects(checkSkillImport(directory), /Source bytes changed/);
+}));
+test('unexpected Codex skill files cannot enter the release', () => fixture(async directory => {
+  const file = path.join(directory, 'plugins/arkiv-codex/skills/unknown/SKILL.md');
+  await mkdir(path.dirname(file)); await writeFile(file, '# Unreviewed');
+  await assert.rejects(checkSkillImport(directory), /Unexpected or omitted Codex skill files/);
+}));
 test('a newly added skill cannot silently enter the release without source provenance', () => fixture(async directory => {
   const file = path.join(directory, 'plugins/arkiv/skills/unreviewed/SKILL.md');
   await mkdir(path.dirname(file)); await writeFile(file, '# Unreviewed');

@@ -39,9 +39,11 @@ export async function syncSkills(source, check = false, root = repositoryRoot) {
     if (config.skillsSource.excludedSkills.includes(skill)) continue;
     if (relative.split('/').some(part => !part || part === '.' || part === '..')) throw new Error('Invalid source path');
     const bytes = git(source, ['show', `${revision}:${relative}`]);
-    const destination = `plugins/arkiv/${relative}`;
-    files.push({source: relative, destination, gitBlob, sha256: digest(bytes), bytes: bytes.length});
-    bytesByFile.set(destination, bytes);
+    for (const bundle of ['arkiv', 'arkiv-codex']) {
+      const destination = `plugins/${bundle}/${relative}`;
+      files.push({source: relative, destination, gitBlob, sha256: digest(bytes), bytes: bytes.length});
+      bytesByFile.set(destination, bytes);
+    }
   }
   const referenceChecker = 'scripts/check-skill-references.mjs';
   const checkerBytes = git(source, ['show', `${revision}:${referenceChecker}`]);
@@ -49,11 +51,12 @@ export async function syncSkills(source, check = false, root = repositoryRoot) {
     gitBlob: git(source, ['rev-parse', `${revision}:${referenceChecker}`]).toString('utf8').trim(),
     sha256: digest(checkerBytes), bytes: checkerBytes.length});
   bytesByFile.set(referenceChecker, checkerBytes);
-  files.sort((a, b) => a.source.localeCompare(b.source, 'en'));
-  const lock = {schemaVersion: 1, repository: config.skillsSource.repository, commit: revision,
+  files.sort((a, b) => a.source.localeCompare(b.source, 'en') || a.destination.localeCompare(b.destination, 'en'));
+  const lock = {schemaVersion: 2, repository: config.skillsSource.repository, commit: revision,
     excludedSkills: config.skillsSource.excludedSkills, files};
   const expectedPaths = [...bytesByFile.keys()].sort();
-  const extras = (await diskFiles(root, 'plugins/arkiv/skills')).filter(file => !expectedPaths.includes(file));
+  const actualPaths = (await Promise.all(['arkiv', 'arkiv-codex'].map(bundle => diskFiles(root, `plugins/${bundle}/skills`)))).flat();
+  const extras = actualPaths.filter(file => !expectedPaths.includes(file));
   if (extras.length) throw new Error(`Unexpected bundled files; review before retiring: ${extras.join(', ')}`);
   const changed = [];
   for (const [relative, expected] of bytesByFile) {
