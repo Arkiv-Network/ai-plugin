@@ -1,5 +1,13 @@
 # Verification scope - October 13, 2026
 
+## Corrected candidate 0.1.3
+
+The candidate imports canonical revision `8367b95b557ffaf9fcaf5a5eb91eef3f84360f08`. The write-safety recipe separates durable receipt confirmation from field verification: save prepared intent before the wallet call, capture signed bytes/hash before forwarding, save authenticated `receipt_confirmed` before readback, and save `verified` before admitting the next batch. Recovery authenticates the original hash and repairs verification without resending. Journal version 2 refuses older combined-confirmation journals and retains their files.
+
+The exact JavaScript example passes 16 focused SDK 0.8.1 regressions without public RPC or funds; the previous example fails both concrete mechanism regressions. Ten existing reference tests also pass. These checks establish the controlled example's behavior, not a fresh native-model pass.
+
+The preserved 0.1.2 diagnostic follow-up completed 24 cases, with 72 usable WITH observations and 42 fresh usable WITHOUT observations, then stopped on the membership limit during case 25. That partial case contains one additional usable WITH observation and five provider-limit failures. The write-safety trigger exposed a genuine guide failure; all three answers remain failures under Root's unchanged criterion, including one native false positive. Original scores, votes and traces remain intact. The final continuation reuses only complete observations with unchanged guidance, inputs and observed dependencies; it reruns changed guidance and missing coverage. No release GO or fully usable final ablation is claimed.
+
 ## Corrected candidate 0.1.2
 
 The candidate imports canonical revision `6d7c54cc11ca34644cdb95c34efe9a0278ce3ebe`. The MCP recipe now identifies Devfolio as the Global Tour Stop event profile and keeps the bundled General connection distinct. Providing an event URL requires no automatic installation or profile switch. The mapping is checked against the released registry and public canonical event repository, without a live MCP test call.

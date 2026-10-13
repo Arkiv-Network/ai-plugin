@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/Arkiv-Network/skills",
-  "commit": "6d7c54cc11ca34644cdb95c34efe9a0278ce3ebe",
+  "commit": "8367b95b557ffaf9fcaf5a5eb91eef3f84360f08",
   "excludedSkills": [
     "arkiv-best-practices"
   ],
@@ -240,16 +240,16 @@
     {
       "source": "skills/arkiv-write-safety/references/resumable-import.md",
       "destination": "plugins/arkiv/skills/arkiv-write-safety/references/resumable-import.md",
-      "gitBlob": "f4469f8403918e6d9dc6d49afa5ff7fd04c1da94",
-      "sha256": "32f98b97f0d47b101370d49472d456b10437ef3bf06f54a72e1078c582c4a003",
-      "bytes": 24809
+      "gitBlob": "2efba410e903b70a36bd2ebaedf26148c834c8f6",
+      "sha256": "f6d9233554fce11802e0689c9d6e155a4a2cdcb0517ce44202bf1cf424ea5f07",
+      "bytes": 27443
     },
     {
       "source": "skills/arkiv-write-safety/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-write-safety/SKILL.md",
-      "gitBlob": "6deaaeda1b405e5ceeb0e6642bf3d3256486559e",
-      "sha256": "35d326a62798655e6a6090a48fcfd0a0e146bb107cea771d5240bf41bacfe6b9",
-      "bytes": 9927
+      "gitBlob": "a7feda74f1f2b7c6c980f94d7a7643eb86328fbc",
+      "sha256": "95d299666327d92828d06c95235cc2f87306428e615713a0c011a4b74d0be0cc",
+      "bytes": 12003
     },
     {
       "source": "skills/arkiv/references/disambiguation.md",

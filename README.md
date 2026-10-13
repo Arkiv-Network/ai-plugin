@@ -4,10 +4,10 @@ Arkiv skills, MCP source discovery, and project rules for the Web3 database, pac
 
 ## Install
 
-Verified on Windows with Claude Code **2.1.296**. The package requires Node.js **20 or newer**, on `PATH` for the project-rules hook. This candidate is on the private `feat/claude-plugin-20261012` branch; a default-branch release remains pending. GitHub authentication is required.
+Verified on Windows with Claude Code **2.1.296**. The package requires Node.js **20 or newer**, on `PATH` for the project-rules hook. This candidate is on the private `feat/claude-plugin-final-20261013` branch; a default-branch release remains pending. GitHub authentication is required.
 
 ```bash
-claude plugin marketplace add https://github.com/Arkiv-Network/claude-plugin.git#feat/claude-plugin-20261012
+claude plugin marketplace add https://github.com/Arkiv-Network/claude-plugin.git#feat/claude-plugin-final-20261013
 claude plugin install arkiv@arkiv
 ```
 
@@ -16,7 +16,7 @@ The defaults install for your user account. For one project, add `--scope projec
 In an existing Claude Code session, the equivalent commands are:
 
 ```text
-/plugin marketplace add https://github.com/Arkiv-Network/claude-plugin.git#feat/claude-plugin-20261012
+/plugin marketplace add https://github.com/Arkiv-Network/claude-plugin.git#feat/claude-plugin-final-20261013
 /plugin install arkiv@arkiv
 ```
 
@@ -82,7 +82,7 @@ For MCP-only use, follow the [Hub MCP guide](https://hub.arkiv.network/ai-tools#
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [6d7c54c revision](https://github.com/Arkiv-Network/skills/tree/6d7c54cc11ca34644cdb95c34efe9a0278ce3ebe). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. No repository-wide license exists in that source revision; this distribution omits a license claim pending maintainer confirmation.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [8367b95 revision](https://github.com/Arkiv-Network/skills/tree/8367b95b557ffaf9fcaf5a5eb91eef3f84360f08). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. No repository-wide license exists in that source revision; this distribution omits a license claim pending maintainer confirmation.
 
 ```bash
 node scripts/build-plugin.mjs --check
@@ -96,4 +96,4 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for installed-cache onboarding and retained campaign results. The corrected 0.1.2 candidate is undergoing final behavioral verification; publication depends on those results.
+See [verification scope](docs/verification.md) for installed-cache onboarding and retained campaign results. The 0.1.3 candidate adds durable receipt confirmation before import readback. Native verification and public default-branch installation remain pending; this candidate has no release GO.
