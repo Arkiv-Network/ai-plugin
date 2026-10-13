@@ -9,7 +9,7 @@ Version **0.2.0 is a local candidate awaiting visual approval and publication**.
 Claude package: `plugins/arkiv`. Local candidate **0.2.0**. Tested on Windows with Claude Code **2.1.296**; Node.js **20 or newer** must be on `PATH` for the project-rules hook. Install this local candidate:
 
 ```bash
-claude plugin marketplace add .
+claude plugin marketplace add ./
 claude plugin install arkiv@arkiv
 ```
 
@@ -20,7 +20,7 @@ The defaults install for your user account. For one project, add `--scope projec
 In an existing Claude Code session, the equivalent commands are:
 
 ```text
-/plugin marketplace add .
+/plugin marketplace add ./
 /plugin install arkiv@arkiv
 ```
 

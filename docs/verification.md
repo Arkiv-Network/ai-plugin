@@ -15,6 +15,7 @@ Not published; the Hub preview and public release remain gated on Santiago's exp
 | Claude SDK present/absent | SessionStart injects the exact six-line rules only with SDK dependency declaration; absent SDK yields no hook rules |
 | Codex SDK absent | Router inspects the empty manifest, missing lockfile/declarations and asks for evidence before executable code; no hook dependency |
 | Unrelated request | Both answer the arithmetic control without skill/tool activation |
+| Missing connection | Both load the router and report NOT CONNECTED when server_status is unavailable, without adding or switching a connection |
 | Claude MCP override | Actual native init has zero MCPs under strict empty config; reports NO_MCP |
 | Codex plugin browser | Native `/plugins` lists the Arkiv marketplace and installed Arkiv; command-line `plugin add` is tested |
 
@@ -26,7 +27,9 @@ An initial brief Codex menu launch happened before loopback replacement. It fail
 
 Habitual settings and installation registries were hashed before and after. The plugin registries and settings remained unchanged. The user's `.claude.json` changed in cached feature flags and usage metadata during concurrently active native Claude sessions; a matching pre-test backup was compared in memory without copying secrets. Its shared Arkiv usage timestamp differs from the isolated profile's timestamp. These differences were preserved and never restored; not every global metadata byte is claimed unchanged.
 
-Linux ARM64 currently has separately installed official Codex 0.162.1 and Claude 2.1.296 binaries, verified as aarch64 ELF. Existing older launchers were preserved. Installation/version checks do not by themselves establish authenticated native plugin behavior on Linux; see the private execution contract for any later same-candidate checks.
+Linux ARM64 has separately installed official Codex 0.162.1 and Claude 2.1.296 binaries, verified as aarch64 ELF. Existing older launchers were preserved. On Node 24.18.0, the transferred candidate's source/archive hashes, build/import/static checks, 38 serial tests and strict Claude validation passed. First ARM64 hook timing was p95 30.67 ms over 20 samples. Fresh installations of both packages, version 0.2.0, configured endpoint and test-created registration cleanup passed; original remote settings hashes stayed unchanged. No model session or MCP connection was opened on the DGX. Those authenticated native behaviors remain unverified there.
+
+The first Linux Claude marketplace install rejected bare `.`; `./` passes on Linux and Windows and is used in the candidate README. Windows also accepts the bare form, so that historical test is retained rather than relabelled as cross-platform installation evidence.
 
 The existing 73 Claude eval cases, imported prompts, outcome rubrics, original failures and historical qualification remain unchanged. Native smoke tests supplement those records; they are not a new complete ablation or Codex eval certification.
 
