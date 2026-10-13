@@ -1,5 +1,38 @@
 # Verification scope
 
+## 0.2.0: Claude Code and Codex CLI packages
+
+Published from `main` as `arkiv--v0.2.0`; the release notes record the public installation check. Both packages share identity/version and canonical revision `f87c2f5e0eadabcc9fe654205fcd51e88a6a1efe`, merged in [Arkiv-Network/skills#57](https://github.com/Arkiv-Network/skills/pull/57). The canonical change replaces the Claude-specific connection sentence before importing both packages. The source lock binds both real-file destinations and their original blob/digest/size; licenses are preserved. No public directory submission is part of this release. The evidence below was gathered on the pre-publication candidate from local marketplaces.
+
+| Windows evidence | Result |
+| --- | --- |
+| Generated artifacts, fixed-source import, integrity, references and serial Node tests | Pass; both bundles, version parity, portable MCP transport and no Codex hooks |
+| Claude Code 2.1.296 strict marketplace and package validation | Pass |
+| Codex portable plugin and MCP manifests | Pass against the schemas declared by current official documentation; native CLI installer accepts them |
+| Fresh local Claude and Codex CLI 0.162.1 installations | Both install version 0.2.0 in owned isolated profiles; installed MCP fixture URL verified before sessions |
+| Claude 0.1.6 to 0.2.0 update | Actual old install, marketplace refresh, plugin update and version inspection pass; test registrations removed |
+| New sessions, router, query selection, server_status | Claude invokes `arkiv:arkiv`; native Codex invokes `$arkiv`. Both select `arkiv-query` and make an actual read-only loopback MCP call confirming synthetic Devfolio |
+| Claude SDK present/absent | SessionStart injects the exact six-line rules only with SDK dependency declaration; absent SDK yields no hook rules |
+| Codex SDK absent | Router inspects the empty manifest, missing lockfile/declarations and asks for evidence before executable code; no hook dependency |
+| Unrelated request | Both answer the arithmetic control without skill/tool activation |
+| Missing connection | Both load the router and report NOT CONNECTED when server_status is unavailable, without adding or switching a connection |
+| Claude MCP override | Actual native init has zero MCPs under strict empty config; reports NO_MCP |
+| Codex plugin browser | Native `/plugins` lists the Arkiv marketplace and installed Arkiv; command-line `plugin add` is tested |
+
+The hook startup's first full serial run passed p95 **131.12 ms**, 20 samples, below the unchanged 200 ms requirement. Full-page screenshots at native 200% can be cropped by the browser automation capture; the Hub verification uses CDP viewport captures with observed DPR 2 and CSS viewport 707 px rather than treating those crops as page overflow.
+
+Native Codex sessions used the supported `--no-daemon` flag: the long isolated Windows profile path exceeded the background daemon's Unix socket path limit. The original daemon failure is retained. This verifies the native CLI chat and plugin browser without replacing their interface; it does not certify that daemon path. Desktop, IDE, web, macOS and Linux x86-64 are unverified.
+
+An initial brief Codex menu launch happened before loopback replacement. It failed to ready its daemon before any prompt was sent; no tool call was made, but an automatic connection attempt cannot be excluded. That failed isolation attempt is preserved, not claimed as a safe test. All subsequent native sessions used checked loopback source and installed configurations. No direct public MCP health check was performed. Live connectivity is unverified, and fixture CONNECTED is never a production health result.
+
+Habitual settings and installation registries were hashed before and after. The plugin registries and settings remained unchanged. The user's `.claude.json` changed in cached feature flags and usage metadata during concurrently active native Claude sessions; a matching pre-test backup was compared in memory without copying secrets. Its shared Arkiv usage timestamp differs from the isolated profile's timestamp. These differences were preserved and never restored; not every global metadata byte is claimed unchanged.
+
+Linux ARM64 has separately installed official Codex 0.162.1 and Claude 2.1.296 binaries, verified as aarch64 ELF. Existing older launchers were preserved. On Node 24.18.0, the transferred candidate's source/archive hashes, build/import/static checks, 38 serial tests and strict Claude validation passed. First ARM64 hook timing was p95 30.67 ms over 20 samples. Fresh installations of both packages, version 0.2.0, configured endpoint and test-created registration cleanup passed; original remote settings hashes stayed unchanged. No model session or MCP connection was opened on the DGX. Those authenticated native behaviors remain unverified there.
+
+The first Linux Claude marketplace install rejected bare `.`; `./` passes on Linux and Windows and is the README form for local checkouts. Windows also accepts the bare form, so that historical test is retained rather than relabelled as cross-platform installation evidence.
+
+The existing 73 Claude eval cases, imported prompts, outcome rubrics, original failures and historical qualification remain unchanged. Native smoke tests supplement those records; they are not a new complete ablation or Codex eval certification.
+
 ## 0.1.6: Devfolio connection
 
 The bundled endpoint is exactly `https://mcp.arkiv.network/devfolio`, the Devfolio (Arkiv: Global Tour Stop) profile. Configuration rejects credentials, query strings, fragments, alternate paths and URL spelling variants. Canonical skills come from merged revision [`6c27e1d852a313abe1014460362a59c937321b4e`](https://github.com/Arkiv-Network/skills/tree/6c27e1d852a313abe1014460362a59c937321b4e), including the corrected MCP recipe and the reference CLI's nested-plugin layout support. Guidance requires actual status and current sources before trusting event rules; agents may not add or switch connections on their own.

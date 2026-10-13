@@ -2,7 +2,7 @@
 
 ## Purpose and current state
 
-This repository distributes the `arkiv` Claude Code plugin through the `arkiv` marketplace. Read README.md for consumer installation. The marketplace is at `.claude-plugin/marketplace.json`; its plugin is nested at `plugins/arkiv` so this repository's existing `CLAUDE.md` pointer is outside the plugin's strict validation surface.
+This repository distributes separate Claude Code (`plugins/arkiv`) and Codex CLI (`plugins/arkiv-codex`) packages with shared `arkiv` identity and version. Codex uses `.agents/plugins/marketplace.json`, portable root manifests and `streamable-http` transport. Keep its package free of Claude hooks. Version 0.2.0 is published from `main` for both clients; later releases follow the version and tag rules below. Read README.md for consumer installation. The marketplace is at `.claude-plugin/marketplace.json`; its plugin is nested at `plugins/arkiv` so this repository's existing `CLAUDE.md` pointer is outside the plugin's strict validation surface.
 
 ## Configuration and commands
 
@@ -27,7 +27,7 @@ node scripts/sync-skills.mjs /absolute/local/skills-clone --write
 node scripts/sync-skills.mjs /absolute/local/skills-clone --check
 ```
 
-The script reads fixed Git objects rather than the clone's working tree and writes no source checkout. `source/skills.lock.json` binds Git blobs, SHA-256 digests and byte counts. It refuses symlinks and unexpected bundle files instead of deleting them. Current active skill content must stay byte-identical to the selected canonical commit. Change guidance upstream, then explicitly update the full revision and import it here.
+The script reads fixed Git objects rather than the clone's working tree and writes no source checkout. `source/skills.lock.json` schema 2 binds both host destinations, Git blobs, SHA-256 digests and byte counts. Skills remain byte-identical across hosts. It refuses symlinks and unexpected bundle files instead of deleting them. Current active skill content must stay byte-identical to the selected canonical commit. Change guidance upstream, then explicitly update the full revision and import it here.
 
 The historical eval import is pinned separately in `scripts/import-evals.mjs`. Re-import only before freezing evaluation inputs; authored cases remain separate. `source/evals-import.json` preserves original prompt/rubric digests and retirement reasons. See `plugins/arkiv/evals/README.md` for the native ablation command and grader semantics.
 
@@ -43,11 +43,11 @@ The historical eval import is pinned separately in `scripts/import-evals.mjs`. R
 - Keep repository `CLAUDE.md` as its existing `@AGENTS.md` pointer. Never add a `CLAUDE.md` inside `plugins/arkiv`: Claude Code does not load it and strict validation warns.
 - Bump `plugin.config.json` version for any bundled skill, hook, MCP configuration or rule change, then regenerate. Do not repeat the version in the marketplace entry. Tag a verified release with the supported `claude plugin tag` command after checking its current help; never tag an unverified candidate.
 - Preserve imported skill license declarations. No repository-wide upstream LICENSE was present at the current source revision; do not invent one or add plugin license metadata until the maintainer confirms the distribution license.
-- Namespaced skills are `arkiv:<name>`. The deprecated compatibility stub is intentionally absent in both direct and marketplace loading.
+- Claude skills are `arkiv:<name>`; Codex invokes the router with `$arkiv`. Package-root AGENTS.md does not inject consumer rules; explicit project-rule additions preserve existing instructions. CLI evidence does not certify desktop, IDE or web. The deprecated compatibility stub is intentionally absent in both direct and marketplace loading.
 
 ## Isolated tests and telemetry
 
-Before any plugin command, record the SHA-256 of the user's existing Claude settings, known-marketplace and installed-plugin files. Set `CLAUDE_CONFIG_DIR` to a new owned directory for tests; project scope alone does not isolate shared marketplace/plugin caches. Verify the original hashes afterwards. Never restore or overwrite user settings to hide a difference. Install/uninstall only the resources created by the test.
+Before any plugin command, record the SHA-256 of the user's existing Claude settings, known-marketplace and installed-plugin files. Set `CLAUDE_CONFIG_DIR` and `CODEX_HOME` to new owned directories for tests; project scope alone does not isolate shared marketplace/plugin caches. Verify the original hashes afterwards. Never restore or overwrite user settings to hide a difference. Install/uninstall only the resources created by the test.
 
 Native sessions auto-connect plugin MCPs. Use `--strict-mcp-config --mcp-config <safe-local-config>` and first prove the bundled server is suppressed. If that override does not suppress it, use an owned scratch copy with its MCP endpoint replaced by a loopback fixture. Never health-check General in tests. Eval runs use `--mocks record --no-publish` and must never enable real servers. Synthetic feedback and outcome tools may run only against local sinks; this suite exposes read-only mocks only.
 

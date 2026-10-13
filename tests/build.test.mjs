@@ -17,6 +17,28 @@ test('generated MCP is hosted HTTP without secrets', () => {
   const mcp = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/.mcp.json'));
   assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/devfolio'}}});
 });
+test('Codex uses portable transport, shared identity/version and its own package', () => {
+  const output = buildArtifacts(config, source);
+  const marketplace = JSON.parse(output.get('.agents/plugins/marketplace.json'));
+  const manifest = JSON.parse(output.get('plugins/arkiv-codex/plugin.json'));
+  const mcp = JSON.parse(output.get('plugins/arkiv-codex/mcp.json'));
+  assert.equal(marketplace.name, 'arkiv');
+  assert.deepEqual(marketplace.plugins[0].source, {source: 'local', path: './plugins/arkiv-codex'});
+  assert.equal(manifest.name, config.name); assert.equal(manifest.version, config.version);
+  assert.equal(manifest.license, undefined);
+  assert.equal(manifest.extensions['com.openai'].hooks, undefined);
+  assert.deepEqual(mcp.mcpServers, {arkiv: {type: 'streamable-http', url: config.mcpUrl}});
+  assert.ok([...output.keys()].filter(file => file.startsWith('plugins/arkiv-codex/')).every(file => !file.includes('/hooks/')));
+});
+test('Codex onboarding is explicit and rules do not depend on SDK presence', () => {
+  const output = buildArtifacts(config, source);
+  const guide = output.get('plugins/arkiv-codex/AGENTS.md');
+  const rules = output.get('plugins/arkiv-codex/templates/AGENTS.snippet.md');
+  assert.match(guide, /does not inject/); assert.match(guide, /explicitly requests/);
+  assert.match(guide, /even when the SDK is absent/); assert.match(guide, /start a new Codex session/i);
+  assert.match(rules, /inspect installed version\/declarations/); assert.match(rules, /\$arkiv/);
+  assert.ok(!rules.includes('arkiv:arkiv'));
+});
 test('hook uses nonblocking exec form and one argument with the complete path', () => {
   const hooks = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/hooks/hooks.json'));
   assert.deepEqual(hooks.hooks.SessionStart[0].hooks[0], {type: 'command', command: 'node',

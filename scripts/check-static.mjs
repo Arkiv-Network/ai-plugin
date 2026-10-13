@@ -52,6 +52,13 @@ export async function checkSkillImport(root = repositoryRoot) {
   const actual = await diskFiles(root, 'plugins/arkiv/skills');
   const expected = lock.files.filter(file => file.destination.startsWith('plugins/arkiv/skills/')).map(file => file.destination).sort();
   assert.deepEqual(actual, expected, 'Unexpected or omitted bundled skill files');
+  const codexActual = await diskFiles(root, 'plugins/arkiv-codex/skills');
+  const codexExpected = lock.files.filter(file => file.destination.startsWith('plugins/arkiv-codex/skills/')).map(file => file.destination).sort();
+  assert.deepEqual(codexActual, codexExpected, 'Unexpected or omitted Codex skill files');
+  assert.deepEqual(codexActual.map(file => file.replace('arkiv-codex/', 'arkiv/')), actual, 'Host skill inventories differ');
+  for (const file of expected) {
+    assert.deepEqual(await readFile(path.join(root, file)), await readFile(path.join(root, file.replace('plugins/arkiv/', 'plugins/arkiv-codex/'))), `Source bytes changed: host skill parity ${file}`);
+  }
   for (const file of lock.files) {
     assert.ok(/^[0-9a-f]{40}$/.test(file.gitBlob), 'Invalid Git blob identity');
     assert.ok(!file.source.includes('..') && !file.destination.includes('..'), 'Invalid source path');
@@ -64,6 +71,8 @@ export async function checkSkillImport(root = repositoryRoot) {
   assert.ok(!actual.some(file => file.includes('/arkiv-best-practices/')), 'Deprecated entrypoint must be absent');
   const refs = await checkSkillReferences(path.join(root, 'plugins/arkiv'));
   assert.equal(refs.passed, true, JSON.stringify(refs.failures));
+  const codexRefs = await checkSkillReferences(path.join(root, 'plugins/arkiv-codex'));
+  assert.equal(codexRefs.passed, true, JSON.stringify(codexRefs.failures));
   return {skills: skills.length, importedFiles: lock.files.length, references: refs.references};
 }
 
@@ -131,6 +140,10 @@ export async function checkStatic(root = repositoryRoot) {
   const plugin = path.join(root, 'plugins/arkiv');
   await assert.rejects(readFile(path.join(plugin, 'CLAUDE.md')), {code: 'ENOENT'});
   const rootPointer = await readFile(path.join(root, 'CLAUDE.md'), 'utf8');
+  const codex = path.join(root, 'plugins/arkiv-codex');
+  const codexFiles = await diskFiles(root, 'plugins/arkiv-codex');
+  assert.ok(!codexFiles.some(file => /\/(?:hooks|\.claude-plugin)\//.test(file) || file.endsWith('/.mcp.json')), 'Codex must not discover Claude hooks or configuration');
+  await assert.rejects(readFile(path.join(codex, 'CLAUDE.md')), {code: 'ENOENT'});
   assert.equal(rootPointer.trim(), '@AGENTS.md', 'Preserve the repository Claude pointer');
   return {passed: true, skills, evals};
 }
