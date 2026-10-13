@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/Arkiv-Network/skills",
-  "commit": "8367b95b557ffaf9fcaf5a5eb91eef3f84360f08",
+  "commit": "c270159d2b31672b907f0e5b887b12622447c26f",
   "excludedSkills": [
     "arkiv-best-practices"
   ],
@@ -156,9 +156,9 @@
     {
       "source": "skills/arkiv-large-files/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-large-files/SKILL.md",
-      "gitBlob": "004fc6ef76dc2f741c28ddc500f5a1ea6be58c94",
-      "sha256": "4f5d56bdb0d3044841a93cf55053b300d7e56b9dc4b40552cdc085b88d8e65a0",
-      "bytes": 15856
+      "gitBlob": "5d683ae7cc9a3fa9dec0571d8ad3fef0a3673ab4",
+      "sha256": "a5dbf84e90196b35b2ac99b410e46fea12c9c0dd09499846fd920147012699e5",
+      "bytes": 16182
     },
     {
       "source": "skills/arkiv-mcp/references/protocol-preflight.md",

@@ -1,5 +1,11 @@
 # Verification scope - October 13, 2026
 
+## Precision candidate 0.1.4
+
+The candidate imports canonical revision `c270159d2b31672b907f0e5b887b12622447c26f`. The large-file package gate recommends SDK `0.8.1` exactly or states the published peer range literally as `>=0.8.1 <0.9`; `0.8.x` is not a compatibility guarantee. A project using SDK `0.8.0` must stop integration until the developer approves upgrading, without forcing or bypassing peers. Live npm metadata on October 13 confirms the unchanged package pins: chunking 0.1.1 and images 0.1.2. Executable examples remain unchanged.
+
+Local validation passes 34 deterministic tests and both strict manifests with zero warnings. The existing 31 SDK checks execute freshly against this candidate with SDK 0.8.1; the unchanged LargeFiles TypeScript fence also compiles strictly. These controlled checks make no model, network or signing calls. The 0.1.3 collection remains frozen; no new native-model observation, default-branch installation or release GO is claimed for 0.1.4. No Hub deployment.
+
 ## Corrected candidate 0.1.3
 
 The candidate imports canonical revision `8367b95b557ffaf9fcaf5a5eb91eef3f84360f08`. The write-safety recipe separates durable receipt confirmation from field verification: save prepared intent before the wallet call, capture signed bytes/hash before forwarding, save authenticated `receipt_confirmed` before readback, and save `verified` before admitting the next batch. Recovery authenticates the original hash and repairs verification without resending. Journal version 2 refuses older combined-confirmation journals and retains their files.
