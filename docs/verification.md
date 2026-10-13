@@ -1,4 +1,10 @@
-# Verification scope - October 12, 2026
+# Verification scope - October 13, 2026
+
+## Corrected candidate 0.1.2
+
+The candidate imports canonical revision `6d7c54cc11ca34644cdb95c34efe9a0278ce3ebe`. The MCP recipe now identifies Devfolio as the Global Tour Stop event profile and keeps the bundled General connection distinct. Providing an event URL requires no automatic installation or profile switch. The mapping is checked against the released registry and public canonical event repository, without a live MCP test call.
+
+The finite 0.1.1 follow-up completed ten cases with three usable runs per arm before stopping on this real event-guidance failure. Its first seven formerly failing cases passed. One grounded-read native verdict was a false negative against the unchanged rubric; Root's exact-response adjudication is recorded separately, with the original votes intact. One event-profile native verdict was a false positive; all three answers misstated the event mapping and remain failures. The 0.1.2 full-suite follow-up and public default-branch installation remain pending. No release GO is claimed.
 
 ## Corrected candidate 0.1.1
 

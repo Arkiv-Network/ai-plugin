@@ -82,7 +82,7 @@ For MCP-only use, follow the [Hub MCP guide](https://hub.arkiv.network/ai-tools#
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [5042e13 revision](https://github.com/Arkiv-Network/skills/tree/5042e133e1d4cbf3f5baafb9fc47f6b6027b2f5a). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. No repository-wide license exists in that source revision; this distribution omits a license claim pending maintainer confirmation.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [6d7c54c revision](https://github.com/Arkiv-Network/skills/tree/6d7c54cc11ca34644cdb95c34efe9a0278ce3ebe). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. No repository-wide license exists in that source revision; this distribution omits a license claim pending maintainer confirmation.
 
 ```bash
 node scripts/build-plugin.mjs --check
@@ -96,4 +96,4 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for installed-cache onboarding, the membership smoke and the full campaign's retained failures. The full campaign reached the membership session limit; outcome and process findings remain open. No behavioral pass or release GO is claimed.
+See [verification scope](docs/verification.md) for installed-cache onboarding and retained campaign results. The corrected 0.1.2 candidate is undergoing final behavioral verification; publication depends on those results.
