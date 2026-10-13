@@ -2,14 +2,14 @@
 
 Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. The plugin uses the existing Devfolio (Arkiv: Global Tour Stop) MCP profile at [mcp.arkiv.network/devfolio](https://mcp.arkiv.network/devfolio). No connection key is required. It does not install the SDK, fund or connect a wallet, sign transactions, or create another backend.
 
-Version **0.2.0 is a local candidate awaiting visual approval and publication**. Public Claude release 0.1.6 does not establish availability of this Codex candidate. Candidate installation commands run from this repository checkout.
+Version **0.2.0** adds the Codex CLI package beside the Claude Code package. Both install from this repository's public default branch.
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`. Local candidate **0.2.0**. Tested on Windows with Claude Code **2.1.296**; Node.js **20 or newer** must be on `PATH` for the project-rules hook. Install this local candidate:
+Claude package: `plugins/arkiv`, version **0.2.0**. Tested on Windows with Claude Code **2.1.296**; Node.js **20 or newer** must be on `PATH` for the project-rules hook. Install from the public default branch:
 
 ```bash
-claude plugin marketplace add ./
+claude plugin marketplace add Arkiv-Network/claude-plugin
 claude plugin install arkiv@arkiv
 ```
 
@@ -20,7 +20,7 @@ The defaults install for your user account. For one project, add `--scope projec
 In an existing Claude Code session, the equivalent commands are:
 
 ```text
-/plugin marketplace add ./
+/plugin marketplace add Arkiv-Network/claude-plugin
 /plugin install arkiv@arkiv
 ```
 
@@ -43,10 +43,10 @@ The plugin already includes the Devfolio connection, Arkiv building guidance and
 
 Codex package: `plugins/arkiv-codex`, with portable `plugin.json`, `mcp.json` (`streamable-http`) and real skills imported from the same fixed revision as Claude. Its directory has no Claude hooks. The Windows CLI target is **0.162.1**; see [verification scope](docs/verification.md) for evidence and limits. Desktop, web and IDE behavior require their own checks.
 
-Step 1 — run in your terminal, from the candidate repository checkout:
+Step 1 — run in your terminal:
 
 ```bash
-codex plugin marketplace add .
+codex plugin marketplace add Arkiv-Network/claude-plugin
 codex plugin add arkiv@arkiv
 ```
 
@@ -66,7 +66,7 @@ Paste into the new Codex session:
 
 Codex does not rely on Claude's SessionStart hook. The router carries essential rules even without the SDK. Package-root `AGENTS.md` documents the package; installation does **not** inject it into your project's instructions. Only if you explicitly request project rules, append `plugins/arkiv-codex/templates/AGENTS.snippet.md` to your existing project `AGENTS.md`, preserving its instructions. Installation does not authorize that edit, SDK installation, wallet access, feedback or transactions.
 
-For local marketplace updates, refresh your candidate checkout, run `codex plugin add arkiv@arkiv`, inspect the version and start a new session. Git marketplace snapshots use `codex plugin marketplace upgrade arkiv`. Public installation will be documented after this candidate is published and verified. To remove an installation you chose, use `codex plugin remove arkiv@arkiv` and optionally `codex plugin marketplace remove arkiv`. Do not remove a consumer's existing resources automatically.
+To pick up a later release, refresh the Git marketplace snapshot with `codex plugin marketplace upgrade arkiv`, run `codex plugin add arkiv@arkiv`, confirm the version with the list command above and start a new session; no published Codex update has been exercised yet. To remove an installation you chose, use `codex plugin remove arkiv@arkiv` and optionally `codex plugin marketplace remove arkiv`. Do not remove a consumer's existing resources automatically.
 
 Official formats and client limits: [packaging](https://developers.openai.com/plugins/build/plugins), [Claude migration](https://developers.openai.com/plugins/guides/submit-claude-plugin), [plugin browser](https://learn.chatgpt.com/docs/plugins#plugin-directory-in-codex-cli).
 
@@ -85,7 +85,7 @@ claude plugin marketplace update arkiv
 claude plugin update arkiv@arkiv
 ```
 
-To update from **0.1.6**, select this local candidate marketplace, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.2.0** and the check prompt returns profile **devfolio**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
+To update from **0.1.6**, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.2.0** and the check prompt returns profile **devfolio**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
 
 ```bash
 claude plugin uninstall arkiv@arkiv
@@ -105,7 +105,7 @@ From this repository:
 claude --plugin-dir ./plugins/arkiv
 ```
 
-This loads the plugin for that session. It also connects its hosted MCP during normal use. Maintainer tests must instead use the isolated, synthetic setup described in [AGENTS.md](AGENTS.md) to keep builder telemetry clean.
+This loads the plugin for that session. It also connects its hosted MCP during normal use. To test the marketplaces from a checkout, use `claude plugin marketplace add ./` or `codex plugin marketplace add .` in an isolated profile. Maintainer tests must use the isolated, synthetic setup described in [AGENTS.md](AGENTS.md) to keep builder telemetry clean.
 
 For standalone skills, keep using [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills#installation):
 
@@ -117,7 +117,7 @@ For MCP-only use, connect to [the Devfolio profile](https://mcp.arkiv.network/de
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both packages from full revision `f87c2f5e0eadabcc9fe654205fcd51e88a6a1efe`, a local canonical candidate based on public `6c27e1d`. This revision is not advertised as published; both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both packages from merged revision [`f87c2f5e0eadabcc9fe654205fcd51e88a6a1efe`](https://github.com/Arkiv-Network/skills/commit/f87c2f5e0eadabcc9fe654205fcd51e88a6a1efe) ([Arkiv-Network/skills#57](https://github.com/Arkiv-Network/skills/pull/57)). Both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
 
 ```bash
 node scripts/build-plugin.mjs --check
@@ -131,4 +131,4 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for the 0.1.6 source and historical 0.1.5 acceptance, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation and installed-cache onboarding. The Hub remains localhost only.
+See [verification scope](docs/verification.md) for 0.2.0 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.

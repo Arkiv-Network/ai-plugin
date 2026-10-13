@@ -1,8 +1,8 @@
 # Verification scope
 
-## 0.2.0: local dual-client candidate
+## 0.2.0: Claude Code and Codex CLI packages
 
-Not published; the Hub preview and public release remain gated on Santiago's explicit visual approval. Both packages share identity/version and canonical revision `f87c2f5e0eadabcc9fe654205fcd51e88a6a1efe`, a locally checked upstream change based on public `6c27e1d`. The canonical change replaces the Claude-specific connection sentence before importing both packages. The source lock binds both real-file destinations and their original blob/digest/size; licenses are preserved. No deployment or public directory submission is part of this candidate verification.
+Published from `main` as `arkiv--v0.2.0`; the release notes record the public installation check. Both packages share identity/version and canonical revision `f87c2f5e0eadabcc9fe654205fcd51e88a6a1efe`, merged in [Arkiv-Network/skills#57](https://github.com/Arkiv-Network/skills/pull/57). The canonical change replaces the Claude-specific connection sentence before importing both packages. The source lock binds both real-file destinations and their original blob/digest/size; licenses are preserved. No public directory submission is part of this release. The evidence below was gathered on the pre-publication candidate from local marketplaces.
 
 | Windows evidence | Result |
 | --- | --- |
@@ -29,7 +29,7 @@ Habitual settings and installation registries were hashed before and after. The 
 
 Linux ARM64 has separately installed official Codex 0.162.1 and Claude 2.1.296 binaries, verified as aarch64 ELF. Existing older launchers were preserved. On Node 24.18.0, the transferred candidate's source/archive hashes, build/import/static checks, 38 serial tests and strict Claude validation passed. First ARM64 hook timing was p95 30.67 ms over 20 samples. Fresh installations of both packages, version 0.2.0, configured endpoint and test-created registration cleanup passed; original remote settings hashes stayed unchanged. No model session or MCP connection was opened on the DGX. Those authenticated native behaviors remain unverified there.
 
-The first Linux Claude marketplace install rejected bare `.`; `./` passes on Linux and Windows and is used in the candidate README. Windows also accepts the bare form, so that historical test is retained rather than relabelled as cross-platform installation evidence.
+The first Linux Claude marketplace install rejected bare `.`; `./` passes on Linux and Windows and is the README form for local checkouts. Windows also accepts the bare form, so that historical test is retained rather than relabelled as cross-platform installation evidence.
 
 The existing 73 Claude eval cases, imported prompts, outcome rubrics, original failures and historical qualification remain unchanged. Native smoke tests supplement those records; they are not a new complete ablation or Codex eval certification.
 
