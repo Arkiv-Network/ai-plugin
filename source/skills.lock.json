@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/Arkiv-Network/skills",
-  "commit": "ee22841ab156c852c5ba19300ffc0f7af3d16db1",
+  "commit": "6c27e1d852a313abe1014460362a59c937321b4e",
   "excludedSkills": [
     "arkiv-best-practices"
   ],
@@ -9,9 +9,9 @@
     {
       "source": "scripts/check-skill-references.mjs",
       "destination": "scripts/check-skill-references.mjs",
-      "gitBlob": "e347dcc44cb9631ded88d7e4928daa89b313e90a",
-      "sha256": "f25de3458c2c68b7b81e9b62dc487151479ed74e9e908b538b12b1d5ce539875",
-      "bytes": 4743
+      "gitBlob": "d34143d289ecc27a1316bb72ab1c0b8c84c0ec2b",
+      "sha256": "c7d3a04f2148a37a4ef7eede23970b92bca4918e7ab3929ef98b3133c9acd950",
+      "bytes": 4924
     },
     {
       "source": "skills/arkiv-app-integration/references/browser-wallet.md",
@@ -170,9 +170,9 @@
     {
       "source": "skills/arkiv-mcp/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-mcp/SKILL.md",
-      "gitBlob": "f5c69ac8439c859cdb9f18994cfc2ec15ab29ffb",
-      "sha256": "1b472cd290121aced668a1dfcb7676a0ae0b1c8b3a9fdc5bc6ad20dbf001a58f",
-      "bytes": 10622
+      "gitBlob": "8cfc70784f5b3ed4c10adc63a3f4eac5380ab2b0",
+      "sha256": "9bfd091186766a0373ea5010efc179277a5581faf8456815931baee641df8058",
+      "bytes": 10861
     },
     {
       "source": "skills/arkiv-query/references/json-rpc.md",

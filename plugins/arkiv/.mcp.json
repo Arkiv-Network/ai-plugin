@@ -2,7 +2,7 @@
   "mcpServers": {
     "arkiv": {
       "type": "http",
-      "url": "https://mcp.arkiv.network/"
+      "url": "https://mcp.arkiv.network/devfolio"
     }
   }
 }

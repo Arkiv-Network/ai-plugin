@@ -1,10 +1,10 @@
 # Arkiv Claude Code plugin
 
-Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged for Claude Code. The plugin uses the existing General MCP profile at [mcp.arkiv.network](https://mcp.arkiv.network/). No connection key is required. It does not install the SDK, fund or connect a wallet, sign transactions, or create another backend.
+Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged for Claude Code. The plugin uses the existing Devfolio (Arkiv: Global Tour Stop) MCP profile at [mcp.arkiv.network/devfolio](https://mcp.arkiv.network/devfolio). No connection key is required. It does not install the SDK, fund or connect a wallet, sign transactions, or create another backend.
 
 ## Install
 
-Arkiv Claude Code plugin **0.1.5**. Tested on Windows with Claude Code **2.1.296**; Node.js **20 or newer** must be on `PATH` for the project-rules hook. Install from the public default branch:
+Arkiv Claude Code plugin **0.1.6**. Tested on Windows with Claude Code **2.1.296**; Node.js **20 or newer** must be on `PATH` for the project-rules hook. Install from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/claude-plugin
@@ -31,9 +31,9 @@ claude plugin details arkiv
 
 Paste this prompt after restarting:
 
-> Use the Arkiv Claude Code plugin. Load the arkiv:arkiv skill and name the skill it recommends for building a typed query. Then call the Arkiv MCP server_status tool and report the profile it returns. Report CONNECTED only after a successful MCP tool call; otherwise report NOT CONNECTED and what to fix. Do not answer from memory, install anything or sign transactions.
+> Use the Arkiv Claude Code plugin. Load the arkiv:arkiv skill and name the skill it recommends for building a typed query. Then call the Arkiv MCP server_status tool and report the profile it returns; the expected profile is devfolio (Arkiv: Global Tour Stop). Report CONNECTED only after a successful MCP tool call; otherwise report NOT CONNECTED and what to fix. Do not answer from memory, install anything or sign transactions.
 
-Use the bundled MCP connection instead of adding another General connection. If your project already has a manual Arkiv connection, review its configuration before removing anything. Event participants should use the event-specific Devfolio connection from the [Hub MCP section](https://hub.arkiv.network/ai-tools#mcp). General and event profiles have different scopes.
+The plugin already includes the Devfolio connection, Arkiv building guidance and the Global Tour Stop event sources. Remove separately installed Arkiv skills and a separately added Arkiv Devfolio connection from Claude Code before installing to avoid duplicates. Agents must not remove or switch connections on their own. Read the actual `server_status` and current sources before trusting event rules.
 
 ## Begin a project with concrete inputs
 
@@ -50,7 +50,7 @@ claude plugin marketplace update arkiv
 claude plugin update arkiv@arkiv
 ```
 
-Restart after an update. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
+To update from **0.1.5**, run both commands above, then restart Claude Code. Release 0.1.6 changes the bundled MCP URL to `/devfolio`; confirm `claude plugin list` shows **0.1.6** and the check prompt returns profile **devfolio**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
 
 ```bash
 claude plugin uninstall arkiv@arkiv
@@ -78,11 +78,11 @@ For standalone skills, keep using [Arkiv-Network/skills](https://github.com/Arki
 npx skills add Arkiv-Network/skills --skill arkiv
 ```
 
-For MCP-only use, follow the [Hub MCP guide](https://hub.arkiv.network/ai-tools#mcp). That route does not install local skills or project rules.
+For MCP-only use, connect to [the Devfolio profile](https://mcp.arkiv.network/devfolio) using the [Hub MCP guide](https://hub.arkiv.network/ai-tools#mcp). That route does not install local skills or project rules.
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [ee22841 revision](https://github.com/Arkiv-Network/skills/tree/ee22841ab156c852c5ba19300ffc0f7af3d16db1). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files from the fixed [6c27e1d revision](https://github.com/Arkiv-Network/skills/tree/6c27e1d852a313abe1014460362a59c937321b4e). Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
 
 ```bash
 node scripts/build-plugin.mjs --check
@@ -92,8 +92,8 @@ claude plugin validate --strict .
 claude plugin validate --strict plugins/arkiv
 ```
 
-The repository has no package dependencies. [Behavioral evals](plugins/arkiv/evals/README.md) compare the plugin with a no-plugin baseline using synthetic MCP tools. Static checks, installation, behavior and live MCP health are separate evidence. The controlled project-rule cases do not replace native hook tests. General production test traffic remains excluded because it cannot currently be classified with the known operator keys.
+The repository has no package dependencies. [Behavioral evals](plugins/arkiv/evals/README.md) compare the plugin with a no-plugin baseline using synthetic MCP tools. Static checks, installation, behavior and live MCP health are separate evidence. The controlled project-rule cases do not replace native hook tests. Production MCP tests require confirmed verification classification and operator pacing; otherwise use loopback fixtures.
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for the accepted 0.1.5 source, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation and installed-cache onboarding. The Hub remains localhost only.
+See [verification scope](docs/verification.md) for the 0.1.6 source and historical 0.1.5 acceptance, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation and installed-cache onboarding. The Hub remains localhost only.

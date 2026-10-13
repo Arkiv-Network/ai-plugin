@@ -1,5 +1,15 @@
 # Verification scope
 
+## 0.1.6: Devfolio connection
+
+The bundled endpoint is exactly `https://mcp.arkiv.network/devfolio`, the Devfolio (Arkiv: Global Tour Stop) profile. Configuration rejects credentials, query strings, fragments, alternate paths and URL spelling variants. Canonical skills come from merged revision [`6c27e1d852a313abe1014460362a59c937321b4e`](https://github.com/Arkiv-Network/skills/tree/6c27e1d852a313abe1014460362a59c937321b4e), including the corrected MCP recipe and the reference CLI's nested-plugin layout support. Guidance requires actual status and current sources before trusting event rules; agents may not add or switch connections on their own.
+
+Build/import/static/reference checks, both strict validations and all 34 serial package tests pass on this candidate with Claude Code 2.1.296 on Windows. Hook startup p95 measured 127.33 ms in this run. Original intermediate configuration and imported-utility failures were corrected; their outputs remain in operator evidence.
+
+Six affected MCP/profile cases were freshly evaluated with three observations per arm, `--mocks record --no-publish`. All 18 WITH observations made the required skill/tool calls and had no unmocked calls. Raw outcomes are 17/18 WITH and 3/18 WITHOUT. One WITH read-guidance answer received three FAIL votes despite explicitly satisfying every original clause: exact marker, synthetic provenance, matching constructors, pinned block, reassigned `page.next()` and creator/project/type scope. Root accepts that answer after checking its full response and successful mock call; the raw failure, unchanged rubric and judge votes are retained. This qualified acceptance is not a perfect raw score or a fresh whole-suite evaluation. Historical 0.1.5 evidence remains below.
+
+Installation and the actual 0.1.5-to-0.1.6 update are separate publication checks, recorded in the release notes after execution. Native sessions must use isolated profiles and classified operator traffic or loopback fixtures. No production MCP health, signing, live-chain correctness, macOS/Linux behavior or Hub deployment is established by these synthetic evaluations. The Hub guide is verified locally only.
+
 ## 0.1.5: accepted source
 
 Candidate [`516c397d5ba2a14b8a0481fb7787d86dd0c9791f`](https://github.com/Arkiv-Network/claude-plugin/commit/516c397d5ba2a14b8a0481fb7787d86dd0c9791f), plugin tree `5113e8278b57eefaa8df90669445bd954cb4ae1f`; canonical skills [`ee22841ab156c852c5ba19300ffc0f7af3d16db1`](https://github.com/Arkiv-Network/skills/tree/ee22841ab156c852c5ba19300ffc0f7af3d16db1).

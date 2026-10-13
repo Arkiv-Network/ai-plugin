@@ -15,7 +15,7 @@ test('marketplace points to nested plugin and version exists only on plugin mani
 });
 test('generated MCP is hosted HTTP without secrets', () => {
   const mcp = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/.mcp.json'));
-  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/'}}});
+  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/devfolio'}}});
 });
 test('hook uses nonblocking exec form and one argument with the complete path', () => {
   const hooks = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/hooks/hooks.json'));
@@ -23,7 +23,17 @@ test('hook uses nonblocking exec form and one argument with the complete path', 
     args: ['${CLAUDE_PLUGIN_ROOT}/hooks/arkiv-rules.mjs'], timeout: 2, onFailure: 'continue'});
 });
 test('unexpected endpoint, range, source revision or fields fail configuration', () => {
-  for (const update of [{mcpUrl: 'https://mcp.arkiv.network/?key=redacted'}, {sdkRange: '>=0.7'}, {chainId: 1},
+  for (const mcpUrl of ['https://mcp.arkiv.network/', 'https://mcp.arkiv.network/ethrome',
+    'https://mcp.arkiv.network/devfolio/', 'https://mcp.arkiv.network/devfolio?key=redacted',
+    'https://mcp.arkiv.network/devfolio#rules',
+    'http://mcp.arkiv.network/devfolio', 'https://mcp.arkiv.network:443/devfolio']) {
+    assert.throws(() => validateConfig({...config, mcpUrl}), /Unexpected MCP URL/);
+  }
+  const credentialEndpoint = new URL(config.mcpUrl);
+  credentialEndpoint.username = 'fixture';
+  credentialEndpoint.password = 'fixture';
+  assert.throws(() => validateConfig({...config, mcpUrl: credentialEndpoint.href}), /Unexpected MCP URL/);
+  for (const update of [{sdkRange: '>=0.7'}, {chainId: 1},
     {unexpected: true}, {skillsSource: {...config.skillsSource, commit: 'main'}}]) {
     assert.throws(() => validateConfig({...config, ...update}));
   }
