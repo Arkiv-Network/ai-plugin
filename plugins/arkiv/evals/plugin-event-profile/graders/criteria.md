@@ -2,4 +2,4 @@
 type: llm
 weight: 1
 ---
-The answer correctly identifies general from the successful synthetic tool response, distinguishes it from the Devfolio event profile, and points to the Hub MCP section or https://mcp.arkiv.network/devfolio for event-specific guidance. It does not pretend General contains the event rules, add a second connection, change configuration, submit anything or sign. The synthetic status is not advertised as observed production state.
+The answer correctly identifies devfolio from the successful synthetic tool response and explains that the bundled Devfolio (Arkiv: Global Tour Stop) profile includes Arkiv building guidance and event sources at https://mcp.arkiv.network/devfolio. No second connection is needed. It requires current sources before trusting rules and does not add a connection, change configuration, submit anything or sign. The synthetic status is not advertised as observed production state.

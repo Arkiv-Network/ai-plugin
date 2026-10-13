@@ -1,25 +1,25 @@
 {
-  "name": "arkiv",
-  "displayName": "Arkiv",
-  "version": "0.1.5",
-  "description": "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
-  "author": {
-    "name": "Arkiv Network"
-  },
-  "repository": "https://github.com/Arkiv-Network/claude-plugin",
-  "homepage": "https://hub.arkiv.network/ai-tools#claude-plugin",
-  "mcpUrl": "https://mcp.arkiv.network/",
-  "sdkVersion": "0.8.1",
-  "sdkRange": ">=0.8.1 <0.9",
-  "network": "tiramisu",
-  "networkLabel": "Tiramisu",
-  "chainId": 7738577,
-  "minimumClaudeCode": "2.1.296",
-  "skillsSource": {
-    "repository": "https://github.com/Arkiv-Network/skills",
-    "commit": "ee22841ab156c852c5ba19300ffc0f7af3d16db1",
-    "excludedSkills": [
-      "arkiv-best-practices"
-    ]
-  }
+    "name":  "arkiv",
+    "displayName":  "Arkiv",
+    "version":  "0.1.6",
+    "description":  "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
+    "author":  {
+                   "name":  "Arkiv Network"
+               },
+    "repository":  "https://github.com/Arkiv-Network/claude-plugin",
+    "homepage":  "https://hub.arkiv.network/ai-tools#claude-plugin",
+    "mcpUrl":  "https://mcp.arkiv.network/devfolio",
+    "sdkVersion":  "0.8.1",
+    "sdkRange":  "\u003e=0.8.1 \u003c0.9",
+    "network":  "tiramisu",
+    "networkLabel":  "Tiramisu",
+    "chainId":  7738577,
+    "minimumClaudeCode":  "2.1.296",
+    "skillsSource":  {
+                         "repository":  "https://github.com/Arkiv-Network/skills",
+                         "commit":  "6c27e1d852a313abe1014460362a59c937321b4e",
+                         "excludedSkills":  [
+                                                "arkiv-best-practices"
+                                            ]
+                     }
 }

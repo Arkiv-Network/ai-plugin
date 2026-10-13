@@ -23,7 +23,7 @@ export function validateConfig(config) {
   if (config.sdkVersion !== '0.8.1' || config.sdkRange !== '>=0.8.1 <0.9') throw new Error('Unexpected SDK compatibility');
   if (config.repository !== 'https://github.com/Arkiv-Network/claude-plugin') throw new Error('Unexpected repository');
   const endpoint = new URL(config.mcpUrl);
-  if (endpoint.href !== 'https://mcp.arkiv.network/' || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');
+  if (config.mcpUrl !== 'https://mcp.arkiv.network/devfolio' || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');
   const homepage = new URL(config.homepage);
   if (homepage.protocol !== 'https:' || homepage.username || homepage.password || homepage.search) throw new Error('Invalid homepage');
   const source = config.skillsSource;
