@@ -1,3 +1,19 @@
+# Verification scope
+
+## 0.1.5: accepted source
+
+Candidate [`516c397d5ba2a14b8a0481fb7787d86dd0c9791f`](https://github.com/Arkiv-Network/claude-plugin/commit/516c397d5ba2a14b8a0481fb7787d86dd0c9791f), plugin tree `5113e8278b57eefaa8df90669445bd954cb4ae1f`; canonical skills [`ee22841ab156c852c5ba19300ffc0f7af3d16db1`](https://github.com/Arkiv-Network/skills/tree/ee22841ab156c852c5ba19300ffc0f7af3d16db1).
+
+Root accepts 73 cases with 219 usable selected WITH observations and 219 complete WITHOUT observations. 21 cases were tested on this source; 52 cases retain observations whose consumed guidance and inputs are byte-identical. Baselines comprise 0 fresh and 73 exact-input historical cases. This is qualified evidence across revisions, not a fresh whole-bundle causal ablation. Native votes, raw results, original criteria and separate Root adjudications remain intact.
+
+Final-source import, build, static metadata, both strict manifests and package checks pass; the bundle contains 342 matched files. The 34 deterministic tests and 31 SDK checks executed on their recorded earlier source are retained through exact oracle, executable-fence and dependency equivalence. They were not rerun on 0.1.5. No final-version upgrade result is inferred from older upgrades.
+
+Public default-branch installation and the two installed-cache onboarding observations are recorded in the [release notes](https://github.com/Arkiv-Network/claude-plugin/releases). Observed platform: Windows, Claude Code 2.1.296 and claude-opus-5-5. Synthetic loopback MCP checks do not establish General production health or live-chain correctness. No funded signing, public-chain transaction certification, macOS/Linux execution or Hub deployment is claimed. The Hub remains localhost only.
+
+## Preserved candidate-stage evidence
+
+The following source-specific history predates this release decision and is retained verbatim. Earlier failures and provider interruptions remain historical failures.
+
 # Verification scope - October 13, 2026
 
 ## First-write evidence candidate 0.1.5
