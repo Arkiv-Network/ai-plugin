@@ -6,7 +6,7 @@ This repository distributes separate Claude Code (`plugins/arkiv`) and Codex CLI
 
 ## Configuration and commands
 
-The package requires Node.js 20+. Windows checks used Claude Code 2.1.296; this tested version is not a claimed CLI minimum. There are no package dependencies to install. Generated manifests, hosted MCP configuration, hook configuration and the short rules snippet come from `plugin.config.json` and `source/always-on.md`:
+Node.js 20+ runs the rules hook, header helper and maintenance commands. The MCP connection remains usable without Node on the tested Claude Code 2.1.300 host, with no attribution header or automatic rules. Windows checks used Claude Code 2.1.296; this tested version is not a claimed CLI minimum. There are no package dependencies to install. Generated manifests, hosted MCP configuration, hook configuration and the short rules snippet come from `plugin.config.json` and `source/always-on.md`:
 
 ```bash
 node scripts/build-plugin.mjs

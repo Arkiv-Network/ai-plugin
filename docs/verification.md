@@ -1,5 +1,9 @@
 # Verification scope
 
+## 0.2.1: missing-Node connection check, October 14
+
+Native Claude Code 2.1.300 on Windows connects the released 0.2.1 package in an isolated profile with no Node executable on PATH. The loopback fixture receives initialize and tools/list without the attribution header. With Node restored, the same package emits its fixed header. Only the MCP URL is overridden; user configurations are unchanged and no model is called. The conditional 0.2.2 fix is unnecessary. See the [bounded native receipt](0.2.1-no-node.json). Other hosts and failure modes remain unverified.
+
 ## 0.2.1: anonymous connection attribution, October 14
 
 Main/tag `019a690dfb623c03b148a2fb40066e222a7c0ebc` is published. Claude Code 2.1.299 and Codex CLI 0.162.1 public-main installs in fresh profiles match all 343 Claude and 42 Codex package files. The final bounded operation records unchanged required Claude plugin configurations and Codex config. An earlier long window captured an official marketplace cache refresh and global Claude metadata change; original hash failures remain and no user file was restored.
