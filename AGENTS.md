@@ -2,7 +2,7 @@
 
 ## Purpose and current state
 
-This repository distributes separate Claude Code (`plugins/arkiv`) and Codex CLI (`plugins/arkiv-codex`) packages with shared `arkiv` identity and version. Codex uses `.agents/plugins/marketplace.json`, portable root manifests and `streamable-http` transport. Keep its package free of Claude hooks. Version 0.2.0 is published from `main` for both clients; later releases follow the version and tag rules below. Read README.md for consumer installation. The marketplace is at `.claude-plugin/marketplace.json`; its plugin is nested at `plugins/arkiv` so this repository's existing `CLAUDE.md` pointer is outside the plugin's strict validation surface.
+This repository distributes separate Claude Code (`plugins/arkiv`) and Codex CLI (`plugins/arkiv-codex`) packages with shared `arkiv` identity and version. Codex uses `.agents/plugins/marketplace.json`, portable root manifests and `streamable-http` transport. Keep its package free of Claude hooks. Version 0.2.1 is published from `main` for both clients; later releases follow the version and tag rules below. Read README.md for consumer installation. The marketplace is at `.claude-plugin/marketplace.json`; its plugin is nested at `plugins/arkiv` so this repository's existing `CLAUDE.md` pointer is outside the plugin's strict validation surface.
 
 ## Configuration and commands
 
