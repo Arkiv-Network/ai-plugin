@@ -47,6 +47,8 @@ The historical eval import is pinned separately in `scripts/import-evals.mjs`. R
 
 ## Isolated tests and telemetry
 
+Connection attribution is enabled by default. Generate only the fixed `X-Arkiv-Client: arkiv-plugin/<version>; host=claude-code|codex` value. Claude's generated `scripts/client-headers.mjs` omits it when `ARKIV_TELEMETRY=off`; it reads no files, makes no network request and adds no agent context. Never interpolate arbitrary environment values into a telemetry header. Codex uses a static header and has no package environment-variable opt-out. Neither path collects skill usage or SDK state. Preserve the existing no-network hook invariant. Header attribution never authorizes signing, feedback or another connection.
+
 Before any plugin command, record the SHA-256 of the user's existing Claude settings, known-marketplace and installed-plugin files. Set `CLAUDE_CONFIG_DIR` and `CODEX_HOME` to new owned directories for tests; project scope alone does not isolate shared marketplace/plugin caches. Verify the original hashes afterwards. Never restore or overwrite user settings to hide a difference. Install/uninstall only the resources created by the test.
 
 Native sessions auto-connect plugin MCPs. Use `--strict-mcp-config --mcp-config <safe-local-config>` and first prove the bundled server is suppressed. If that override does not suppress it, use an owned scratch copy with its MCP endpoint replaced by a loopback fixture. Never health-check General in tests. Eval runs use `--mocks record --no-publish` and must never enable real servers. Synthetic feedback and outcome tools may run only against local sinks; this suite exposes read-only mocks only.
