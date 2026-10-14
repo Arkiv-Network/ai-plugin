@@ -1,5 +1,17 @@
 # Verification scope
 
+## 0.2.1: anonymous connection attribution, October 14
+
+Main/tag `019a690dfb623c03b148a2fb40066e222a7c0ebc` is published. Claude Code 2.1.299 and Codex CLI 0.162.1 public-main installs in fresh profiles match all 343 Claude and 42 Codex package files. The final bounded operation records unchanged required Claude plugin configurations and Codex config. An earlier long window captured an official marketplace cache refresh and global Claude metadata change; original hash failures remain and no user file was restored.
+
+All 39 serial package tests, generated/static/import/reference checks and both strict Claude validations pass. Native connections to a loopback fixture verify the default Claude header, its absence with `ARKIV_TELEMETRY=off`, and the Codex static header. No prompt was submitted or model evaluation started for those connections. Public installation and native fixture behavior are separate evidence; desktop, IDE, web and other operating systems remain unverified.
+
+The supported tag command created the correct local tag, but its push timed out because the test environment disabled Git credential helpers for anonymous downloads. The verified existing tag was pushed normally without force. The original timeout and premature missing-tag release attempt remain in operator evidence.
+
+The companion Devfolio MCP is published from `237f0bad2af06aa6e39a9dc5d250c7d6e1601cb8`, retaining 1.1.23/2026-10-13.1 responses and canonical content. Worker Preview and Production each pass 21 classified calls and exact 125-file source parity; Gateway Preview and the public domain each pass seven classified calls. Public privacy passes 390/768/1440, both themes and actual native 200%, and 36 anonymous sensitive-file probes return 404. Five alias IDs and four legacy pins are preserved. Owner SQL verifies nullable columns and unchanged dashboard SELECT privileges, closed metadata and verification exclusion. Persistence is best-effort; accepted operations are not guaranteed rows.
+
+The rules, context hook, canonical skills and original eval inputs are unchanged. No fresh complete context-hook ablation, production skill-use collection or private dashboard implementation is claimed. Those changes remain separate pending work. GitHub CI is not configured; these are executed local and deployed checks. See the [release](https://github.com/Arkiv-Network/claude-plugin/releases/tag/arkiv--v0.2.1) and README privacy section.
+
 ## 0.2.0: Claude Code and Codex CLI packages
 
 Published from `main` as `arkiv--v0.2.0`; the release notes record the public installation check. Both packages share identity/version and canonical revision `f87c2f5e0eadabcc9fe654205fcd51e88a6a1efe`, merged in [Arkiv-Network/skills#57](https://github.com/Arkiv-Network/skills/pull/57). The canonical change replaces the Claude-specific connection sentence before importing both packages. The source lock binds both real-file destinations and their original blob/digest/size; licenses are preserved. No public directory submission is part of this release. The evidence below was gathered on the pre-publication candidate from local marketplaces.
