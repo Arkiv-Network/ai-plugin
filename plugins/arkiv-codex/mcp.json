@@ -3,7 +3,10 @@
   "mcpServers": {
     "arkiv": {
       "type": "streamable-http",
-      "url": "https://mcp.arkiv.network/devfolio"
+      "url": "https://mcp.arkiv.network/devfolio",
+      "headers": {
+        "X-Arkiv-Client": "arkiv-plugin/0.2.1; host=codex"
+      }
     }
   }
 }

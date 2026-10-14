@@ -2,11 +2,11 @@
 
 Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. The plugin uses the existing Devfolio (Arkiv: Global Tour Stop) MCP profile at [mcp.arkiv.network/devfolio](https://mcp.arkiv.network/devfolio). No connection key is required. It does not install the SDK, fund or connect a wallet, sign transactions, or create another backend.
 
-Version **0.2.0** adds the Codex CLI package beside the Claude Code package. Both install from this repository's public default branch.
+Version **0.2.1** adds anonymous connection attribution to both packages. Skills and agent context are unchanged. Both install from this repository's public default branch.
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`, version **0.2.0**. Tested on Windows with Claude Code **2.1.296**; Node.js **20 or newer** must be on `PATH` for the project-rules hook. Install from the public default branch:
+Claude package: `plugins/arkiv`, version **0.2.1**. Tested on Windows with Claude Code **2.1.299**; Node.js **20 or newer** must be on `PATH` for the project-rules hook and connection-header helper. Install from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/claude-plugin
@@ -70,6 +70,16 @@ To pick up a later release, refresh the Git marketplace snapshot with `codex plu
 
 Official formats and client limits: [packaging](https://developers.openai.com/plugins/build/plugins), [Claude migration](https://developers.openai.com/plugins/guides/submit-claude-plugin), [plugin browser](https://learn.chatgpt.com/docs/plugins#plugin-directory-in-codex-cli).
 
+## Privacy and connection attribution
+
+The bundled MCP connection sends a shared package version and host label by default: `X-Arkiv-Client: arkiv-plugin/<version>; host=claude-code` or `host=codex`. The server retains only closed distribution, published-version and host categories. Initialization names are reduced to a closed client family; raw headers and names are discarded. These are client claims, not proof of installation.
+
+No installation or session IDs, project names, paths, working directories, prompts, local file content, SDK state or skill usage are sent by this attribution. Counts measure request attempts, not users, installations or linked conversions. Hooks make no network requests. Local skill-usage collection and sharing are not enabled.
+
+In Claude Code, set `ARKIV_TELEMETRY=off` in your environment **before starting a new session** to disable plugin connection attribution. A local Node header helper emits either the fixed package version and Claude host or no attribution header. Other environment values are never transmitted. The helper reads no files, performs no network requests and adds no agent context. Codex sends a static header; this package does not provide an environment-variable opt-out there. The setting does not disable the MCP's existing operation telemetry or hosting logs.
+
+The intended event retention is 90 days, with authorised operator access and verification traffic excluded from live reports. Retention enforcement requires operator review. Read the [MCP privacy notice](https://mcp.arkiv.network/devfolio/privacy) for existing telemetry, voluntary feedback and infrastructure limits. Agent context and canonical skills are unchanged in this release.
+
 ## Begin a project with concrete inputs
 
 Start with the screen or query you need, then decide what can be public. For example:
@@ -85,7 +95,7 @@ claude plugin marketplace update arkiv
 claude plugin update arkiv@arkiv
 ```
 
-To update from **0.1.6**, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.2.0** and the check prompt returns profile **devfolio**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
+To update from **0.1.6** or **0.2.0**, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.2.1** and the check prompt returns profile **devfolio**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
 
 ```bash
 claude plugin uninstall arkiv@arkiv

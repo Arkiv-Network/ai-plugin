@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
+import {execFileSync} from 'node:child_process';
 import {repositoryRoot, buildArtifacts, renderRules, validateConfig, generate} from '../scripts/build-plugin.mjs';
 const config = JSON.parse(await readFile(path.join(repositoryRoot, 'plugin.config.json'), 'utf8'));
 const source = await readFile(path.join(repositoryRoot, 'source/always-on.md'), 'utf8');
@@ -15,7 +16,19 @@ test('marketplace points to nested plugin and version exists only on plugin mani
 });
 test('generated MCP is hosted HTTP without secrets', () => {
   const mcp = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/.mcp.json'));
-  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/devfolio'}}});
+  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/devfolio',
+    headersHelper:'node "${CLAUDE_PLUGIN_ROOT}/scripts/client-headers.mjs"'}}});
+});
+
+test('Claude opt-out omits attribution and never transmits an environment value', () => {
+  for (const value of [undefined, 'off', 'on', 'private-project-canary']) {
+    const env = {...process.env}; delete env.ARKIV_TELEMETRY;
+    if (value !== undefined) env.ARKIV_TELEMETRY = value;
+    const raw = execFileSync(process.execPath, [path.join(repositoryRoot, 'plugins/arkiv/scripts/client-headers.mjs')],
+      {env, encoding:'utf8', timeout:2000, windowsHide:true});
+    assert.deepEqual(JSON.parse(raw), value === 'off' ? {} : {'X-Arkiv-Client':'arkiv-plugin/'+config.version+'; host=claude-code'});
+    assert.ok(!raw.includes('private-project-canary'));
+  }
 });
 test('Codex uses portable transport, shared identity/version and its own package', () => {
   const output = buildArtifacts(config, source);
@@ -27,7 +40,8 @@ test('Codex uses portable transport, shared identity/version and its own package
   assert.equal(manifest.name, config.name); assert.equal(manifest.version, config.version);
   assert.equal(manifest.license, undefined);
   assert.equal(manifest.extensions['com.openai'].hooks, undefined);
-  assert.deepEqual(mcp.mcpServers, {arkiv: {type: 'streamable-http', url: config.mcpUrl}});
+  assert.deepEqual(mcp.mcpServers, {arkiv: {type: 'streamable-http', url: config.mcpUrl,
+    headers:{'X-Arkiv-Client':'arkiv-plugin/'+config.version+'; host=codex'}}});
   assert.ok([...output.keys()].filter(file => file.startsWith('plugins/arkiv-codex/')).every(file => !file.includes('/hooks/')));
 });
 test('Codex onboarding is explicit and rules do not depend on SDK presence', () => {
