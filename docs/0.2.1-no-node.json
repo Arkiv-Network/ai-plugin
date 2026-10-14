@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-14",
+  "pluginVersion": "0.2.1",
+  "claudeVersion": "2.1.300 (Claude Code)",
+  "os": "Windows",
+  "pathLookupExit": 1,
+  "connected": true,
+  "attributionHeaderAbsent": true,
+  "elapsedMilliseconds": 1489,
+  "positiveControlHeader": "arkiv-plugin/0.2.1; host=claude-code",
+  "testedRelease": "019a690dfb623c03b148a2fb40066e222a7c0ebc",
+  "bundledOverride": "Only MCP URL changed to a local read-only fixture.",
+  "originalUserConfigsUnchanged": true,
+  "modelCalled": false,
+  "version022Required": false,
+  "limits": "This proves the absent-node case on the tested native Claude CLI; not other clients, operating systems, helper timeouts or every host version."
+}

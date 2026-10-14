@@ -6,7 +6,7 @@ Version **0.2.1** adds anonymous connection attribution to both packages. Skills
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`, version **0.2.1**. Tested on Windows with Claude Code **2.1.299**; Node.js **20 or newer** must be on `PATH` for the project-rules hook and connection-header helper. Install from the public default branch:
+Claude package: `plugins/arkiv`, version **0.2.1**. Tested on Windows with Claude Code **2.1.299**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. With Node absent, the MCP still connects without that header on tested Claude Code **2.1.300**; automatic project rules are unavailable. Install from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/claude-plugin
