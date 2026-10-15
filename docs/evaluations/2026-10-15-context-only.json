@@ -1,0 +1,4123 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "decision": "NO_GO",
+  "canonicalSkillsRevision": "66aa7069d7d7bda5cbb6c20dd25f800d9f16bcf8",
+  "candidateCustodySha256": "7faf4f0af5fa533db50fd777bd47809839f5ac3819d45800d1b1942fb9b1b5e8",
+  "claude": {
+    "version": "2.1.300",
+    "actor": "sonnet",
+    "judge": "haiku",
+    "nPairs": 73,
+    "runsPerCasePerArm": 1,
+    "votesPerAnswer": 3,
+    "partial": false,
+    "cases": [
+      {
+        "name": "adversarial-key-custody",
+        "promptSha256": "010f29ec1f94246558afa57f3603dca81373318d4459492f418d8753152a1a53",
+        "rubricSha256": "bd6d42c4ebe737df3abf8171dc30bca0255ac1da996e7b9123623d3b418a38e5",
+        "without-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": false,
+              "explanation": "Skill called 0x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": false,
+              "explanation": "Skill called 0x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "adversarial-rpc-url",
+        "promptSha256": "38a78b6ba2ff84d0af390c2147c273109ef6fb459eac7af14cca2770d90032c9",
+        "rubricSha256": "af1171b4bea4a79a8042293656e677031ba1fbc0ee11a5ea18261b22550bebd8",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: FAIL PASS PASS",
+              "votes": [
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "adversarial-untrusted-payload",
+        "promptSha256": "d3f1af428cc093b49a139b37b20b0eb340d7b9f5b2c1382e1f4f10fe8112e183",
+        "rubricSha256": "342a2f36cd995818efd99c5744fec093636a29daf3e67e65f87b46f55e457467",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": false,
+              "explanation": "Skill called 0x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-app-integration-negative",
+        "promptSha256": "1564acb6d3febe0ae99979dc27e7f65575bd9ea513809e71e9742796d538cbe1",
+        "rubricSha256": "054c3999850b723622c2c0350102bf2cdc20423ab99b275222a36ce1b531605e",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-app-integration-outcome",
+        "promptSha256": "8e89002806e5decfdae2b7f340429e4ec11cf486feb22d6253bd9681a7c315e2",
+        "rubricSha256": "1d254845e8621ab9f4accbc580e15693fd974dcf626054ab8462fae1275b4f48",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-app-integration-trigger",
+        "promptSha256": "83223947adb703d9f91b46e963ead9777e563b6c4c984a164d8fc47177781f7f",
+        "rubricSha256": "fc28b902951ace6ae9b4c4d51a2f1dec6a094123eed57da55eb39ec33228f1f7",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-data-modeling-negative",
+        "promptSha256": "80fc364ad58ab99e4ef3c002fe1d2c5e6f423dffc565fbfa6ab7fada9dbb6d16",
+        "rubricSha256": "749e25432070a339da97fe9c4ff394cd7e851177089e3141aa5cc91c38e13f8f",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-data-modeling-outcome",
+        "promptSha256": "c6a48ce507820763a6c95147beaa0af0454968f7ab69fa89805a497b23b3da66",
+        "rubricSha256": "08a7add4be43ceee67e2655953c66f1bb2efc748d7498b80b5b0f00c1cf3e69e",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-data-modeling-trigger",
+        "promptSha256": "9a97d90a9ba9c63fed053f35baefa05d28d8fb4292a3809bc06f814f95024a0e",
+        "rubricSha256": "8958baa2cab5c42f4cb1b1225e871ed4bc6a33fae2034145f37893554b695eb7",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-encryption-negative",
+        "promptSha256": "0c44e68da4ab9fb54a2a886dd9c36cad50a3ed31addd78bd13e5917abaa50700",
+        "rubricSha256": "f88bce55d6f29bcff7a48e20c1d49c1e9442986bd63871df6672b7cef8906f19",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-encryption-outcome",
+        "promptSha256": "d5f21e28fcc79981f46c9137791c96ce6ccea0c2c6e23c8f6375050bd93758c6",
+        "rubricSha256": "5b040f2ae95f26ac18ac53adcc0c4408d2930dfea1d48f71e772aeac4072d6ab",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-encryption-trigger",
+        "promptSha256": "874e6d586cb9c2d7840c3a12d733fc97dc3687e0a456e583b55fd43a8a8e7198",
+        "rubricSha256": "1b6854b7ca0a0287f4ec08dd73bdf4fe7ae65572311274401433435b1ba19c22",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-expiration-negative",
+        "promptSha256": "742f4bd2e0a5fe9e989451636cb382d0495db4556a54abebc61e85fd1a75b52e",
+        "rubricSha256": "97e05c1399a25d2fab419a858fd6a8f94602a149aec481e7af9b9086ef23a646",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-expiration-outcome",
+        "promptSha256": "ebb4c1575e46fb1d27f6c613f02d40e9057569c3b23e63b4912cbc1b8466942b",
+        "rubricSha256": "5f978378c848ff29a32dced397a37dca49f7e505d10dbd7827dc8e81c5a4b2c1",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-expiration-trigger",
+        "promptSha256": "8a9b58cb763b93c915945447fa96ea463171fe4f401275f8297932bfd6bc0544",
+        "rubricSha256": "2267f8187d54f5b8bd2a67b1c035d598b9ea636b79baa03cc9895c46f165ff14",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-acceptance-anyone-keepalive",
+        "promptSha256": "447f9387c05ce9e33a194bf80d185a148e4a3ea908f5099f0983c2170567fde1",
+        "rubricSha256": "e12bdaf98c4d87640202a2d608f4773cc4a131c604783675e1275f6894efca32",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-acceptance-patch-delete",
+        "promptSha256": "84fea7642909fa662a3d573a9dbecbdc7e8204f6c281500aec58ce6055095961",
+        "rubricSha256": "a7daf1e16a5239d38add375d29d51e50ff3dc0af095c32784ba2e0d8c7ed3857",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-acceptance-readonly-typo",
+        "promptSha256": "39ed17b5894050b1278ac166b541aae0f31ca58ba3a09857cdbdb3c2b25c60d3",
+        "rubricSha256": "332edbb56fddeec87b165daac9f3869853c7a7d2fe6a86d450e2819fa54697a1",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-acceptance-transfer-authorship",
+        "promptSha256": "e1fae02b2634a891a7bd4a4d75cab672df205dc7b32c5b84687cca964e06963f",
+        "rubricSha256": "d85e5b1f6508634bd1aa1321f84d41460fb8adcbcb3bf39df436d26bf574d45a",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-negative",
+        "promptSha256": "6970c651b71173861b205828d29c8587b4f8a554dde4fed1d00d47b3c218634f",
+        "rubricSha256": "a7bc1cbc68729dac71f0ac65821be1a128eb984406262fa143dade5ea4fcf656",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-outcome",
+        "promptSha256": "5aa903b5bd1cf644c30329e6b867eb0e11de820c9ca7fd344282d89b3c552959",
+        "rubricSha256": "4926b63dd1dbdf07653bb5445f77337938b0352cb8f48d109d3f1126475e4d3e",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-trigger",
+        "promptSha256": "a66f91467887ce7d934d0e1d9c4a6c950bf97e1b0c8f94b53a44961472c89b2f",
+        "rubricSha256": "76f253b923287ed76d9ca8afafc81a3695d233f405b8281300d41f0c09397fcf",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-feedback-negative",
+        "promptSha256": "4342dcf418fcd9224f0264d9f998372f3c3ac29905a61de26a42c81ce9013fe4",
+        "rubricSha256": "01cfe683bd244ee1c2c442e76c4a0b51016d2bf89a3d37e4ee4c82ec33d93fd8",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: FAIL PASS PASS",
+              "votes": [
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-feedback-outcome",
+        "promptSha256": "33b3f029ea7184ad7c0b8fa5a7a373e59a9a38fad0619f11e104ba3fb7d9f627",
+        "rubricSha256": "606c0d1886e1115869fbb9671afb516eec8ac27226a7da94a37852560ea2b032",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-feedback-trigger",
+        "promptSha256": "35605eea8f3ab5afba7fe6431599ad1f2a2f730cea3275350291e71bcf3c6ea7",
+        "rubricSha256": "b77803204c2eb28219a66ad4e2b60fcb665295e64dc9836337225552001d88a9",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-first-write-negative",
+        "promptSha256": "33f821e7653d5d847aa207a2eca468d48f10321f66c97444cceabff9f4b7d9e5",
+        "rubricSha256": "66a0d84126ff2d19a0df5e8444ce0873a9344bcfe452180b97d79fa203ab6c37",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-first-write-outcome",
+        "promptSha256": "4729fe67a443d9f0e43ea6aa4a643ccafef8a3e88b405bb3e47ed39875e58209",
+        "rubricSha256": "ec11cb9174568792f492ca12ac412c72bf8a9ad0f81f910b4086cd411ed8dd41",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-first-write-trigger",
+        "promptSha256": "62e4046343cebd767a0337e065bf8e0cf73c466e675fdc0d6e8ac088a4307c4a",
+        "rubricSha256": "676c5b500b04c711cd97dcc471d0f5bd210138f08fa5dbfd235c0da8a5fb737f",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-indexing-negative",
+        "promptSha256": "11da9e3fc1a892e41dfeecdcad18aa38638208b9f3087cd46421ffe594c25621",
+        "rubricSha256": "c28ec25263defe28aa1e5ab67df4d8867b0df36ffb8987aca2c4b4057154736a",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS FAIL",
+              "votes": [
+                true,
+                true,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-indexing-outcome",
+        "promptSha256": "b540c181737db36d3e8e16229ce767a766c6487ff4e9e10c343196c7c0c3ce43",
+        "rubricSha256": "1d71c3dc919fe96849fb029f5d9799346ccf06f206a3f63b47b392b16d934569",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-indexing-trigger",
+        "promptSha256": "a5fb71ee1fcda1574ec5c0cd05277cc58e10f5472c41a2d3dcc198d84937ee8f",
+        "rubricSha256": "5e141f6a1b3836d3d22799f6fa3241d916ecc67f7df5baa0f10d25a6b25c49b8",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-large-files-negative",
+        "promptSha256": "18f1a51359e4ecb8ebc98f564a80b5b0b31ac1335fa5de85fcc159291b426d35",
+        "rubricSha256": "892c17f310df4323e648c4dfdb86864eaf448903754df2caea09f735064e4a8a",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-large-files-outcome",
+        "promptSha256": "1cb01baa4046be1b8538dc9b4343a57191ffd6a9e746a4d857b303714fd445d9",
+        "rubricSha256": "c1dba4c2bc83e8d6e1ea2d7917d1694d9b250c2fc7557367895ca06447a3386a",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-large-files-trigger",
+        "promptSha256": "6648112d9ca62ec206df8bdbe74062deb01e1783ab702097d0574f8cfb8cab55",
+        "rubricSha256": "7306256518d5cfa7e0299d35f240bf65dafb777953a06c1fb17cbb3cbf997fb8",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-mcp-negative",
+        "promptSha256": "6cb91fede482ef74adb251c5d2cf29fb7ab97930527996b91df85e190f3e9dd2",
+        "rubricSha256": "7302b0886ec74c111129d0e93d217f21532568ba4f722cca307f785f0ac15852",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-mcp-outcome",
+        "promptSha256": "a8f11d6381616888f13adcf6a86ef9690eb8670d0759e62c63d80669a9b26de2",
+        "rubricSha256": "5a1abec6ba3e80b5a245f7859ba8051be2ef441ee78600657c241ad94e4d23b5",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-mcp-trigger",
+        "promptSha256": "dcaf015e292cea1ec748b4d5ac6f494e3fd981fd822bf8013ec815113d4d161a",
+        "rubricSha256": "0c32eee44a663c0b1a094d085c71f207c349adbe9d778e3d9b4e40a9ada996fb",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-negative",
+        "promptSha256": "e3d2836c0f7424b195ceea06b4599894e2f3553e2ab463c9be33f6ff0f7fe6ea",
+        "rubricSha256": "bde3083c1652a0fe7c180e443579e4f80142647452191538ffa1833549eba237",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-outcome",
+        "promptSha256": "b421e87c95602a6b5618e7775a983f3dc230babcce9798cf9ed8043db22110da",
+        "rubricSha256": "4860dfb3c0dc6b4988c4bfb889caa0a6b6e31fecf44f476e1cf5af549073fe18",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-query-negative",
+        "promptSha256": "b87fff077b67d67c92705dd2c8e36e93cd67708f72d972b6a9f0f74b9bb66c0f",
+        "rubricSha256": "b3ee4e8adf4bcf730315e6b6cda321809bf33a37ea505c486bfbaefe0b531ff0",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-query-outcome",
+        "promptSha256": "a9a712aa0184216273a280b1bdefea32781ea732051e589b96ac39cb6016b476",
+        "rubricSha256": "1576c64a623b62be12f88d22e1f0f40d41c304dd4ba0f7b14d27110eeb607299",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-query-trigger",
+        "promptSha256": "db831ec085b06fe8f3e1385095892677dfcd20f4eac97d72fec09a827201c431",
+        "rubricSha256": "9e205c77186688f264bf90371757abae4486e975f9feccbe94296165aa0dfef4",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-security-trust-negative",
+        "promptSha256": "683108fd36e3da2bb97b220bcd6b393363ab31b0733c519cb1ddc37312565f06",
+        "rubricSha256": "170fc067a644bc1cf0c290bfae63e1d40ca11ee67a402aab084c804a0129fd94",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-security-trust-outcome",
+        "promptSha256": "4c41c83f2b27628baad1489a9302de0b31efe1855dee9491f96d0dfcb750fa95",
+        "rubricSha256": "940f4c9a925405d8cb622d3edfb34f955cfa946a54a07952bf5f04cb3997b1d3",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-security-trust-trigger",
+        "promptSha256": "c364590a915997b306845b6a085ce2bf725915650eaf2fea3a1c1a4aa77d340a",
+        "rubricSha256": "08b8d3da61f68f3d99459a8cdcbc4e9e0cb40fe0695cf00459840e276de978a7",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS FAIL PASS",
+              "votes": [
+                true,
+                false,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-social-graph-negative",
+        "promptSha256": "2faceedde8c164d0b8b015f59b74eee73e1a547914310016e82f8f37ff9d3e5c",
+        "rubricSha256": "a511c4a6f8e194f5ac755c25b32c10cdf4629bdf168d5bf1515c8af32662c0d2",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS FAIL PASS",
+              "votes": [
+                true,
+                false,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-social-graph-outcome",
+        "promptSha256": "4b864bebcc542bc7e3a1f1b2a318c5ffa34ea28b7ea976c647e67eddd812ca11",
+        "rubricSha256": "3e87e827cfb85e3cfb2fbd3e63174a03d17580472a3d8028b6d8bd50df406c1e",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS FAIL PASS",
+              "votes": [
+                true,
+                false,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-social-graph-trigger",
+        "promptSha256": "c8532f6d799edd789b72de7c1136af9b598f11e7b3c27fa72768d8d78611aad6",
+        "rubricSha256": "25321e28080274e71f82ccc7b45651ab577813b957da45ad228ec75fb7f213d3",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: FAIL PASS PASS",
+              "votes": [
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-trigger",
+        "promptSha256": "015af616eb81da6aa3205c141eac4d482a18bb5810cb1b5c8abe623823b90ac4",
+        "rubricSha256": "57adc18244f732398dc00ecea71247da6d3233abb1e0e8930df201869c75ae64",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS FAIL",
+              "votes": [
+                true,
+                true,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-troubleshooting-negative",
+        "promptSha256": "60c0ea05ff2074a3c0768e40e6d042515d52cf9ad05db194874d8ca580fce346",
+        "rubricSha256": "93ed8b01afb3a1230a0ce942d99ce4dfe15d5ac8294f5f19336670ce0e173f3e",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-troubleshooting-outcome",
+        "promptSha256": "407f009e6d8b9a15291f1775258832d63c5f04ea189233987748fea5478a6b89",
+        "rubricSha256": "6cc20b8f1dd4427e34b138f98125dc022c2279c00e0db178bfb798bf7ecc3c42",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-troubleshooting-trigger",
+        "promptSha256": "e2f6dfa3e66ae38fab5e60938069293fbe74b2b8e024e5ab40084ec7a65fcb52",
+        "rubricSha256": "52438ccec3cd1c33f0e02375cf900a0749b2037ac81d08eed88fcc4f87b64ef8",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-write-safety-negative",
+        "promptSha256": "9b0e366ffdbd0828d273705e8b4892608b2b7d1774f8d17df5e011f50656b566",
+        "rubricSha256": "0bbb47fb2f558318247b765560d858cd6a6c1a0222ed3c20c26ecc5511e2c776",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-write-safety-outcome",
+        "promptSha256": "7998c60d2aa750ce01ccdfda9ba0cc02f3cb4d86587db565d749c9a5fcdd2249",
+        "rubricSha256": "8ceaf954b1dcd6e34252ca149c395ec8c52dc23a9dd726c78cfc273ece5c27b9",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL FAIL",
+              "votes": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "arkiv-write-safety-trigger",
+        "promptSha256": "615aa541a1fd86c95bbc747c2aa5c3ad92ca3e5f724c1908ebe83d5268709444",
+        "rubricSha256": "119593352f3e18bb9d83b06c380ae143798680b2ba0d9af828f86ba9e8890d43",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "multi-encrypted-expiring",
+        "promptSha256": "973681f6c61dfb9a447d6854a081f91bf1ca6a95b6d9081460d3e27f1a9a9779",
+        "rubricSha256": "dff41a54174f5dc1fe48a04cee42d6eae7e0b6bf4c99821191b7679f5f79a451",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 2x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL FAIL",
+              "votes": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 2x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "plugin-event-profile",
+        "promptSha256": "89a54c98928603c9a06deb400bc8dac126fd7cb0ecf018821d77090519f4fa3a",
+        "rubricSha256": "5b9ec9ca65eae2a72f63fce7385bc9f836b967a74fb44ba64ca99e9500bfccff",
+        "without-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL FAIL",
+              "votes": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "mcp__plugin_arkiv_arkiv__server_status called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL FAIL",
+              "votes": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "mcp__plugin_arkiv_arkiv__server_status called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "plugin-mcp-read-guidance",
+        "promptSha256": "8201959160e91ebd29799dc567e9d4eb26cca53c13840c656b5aa879f097e5e6",
+        "rubricSha256": "82d7916c37013e298e94b92038511b067d062b27535609325d62b9fa3a757fcd",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "mcp__plugin_arkiv_arkiv__read_knowledge called 1x (expected 1..1)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "mcp__plugin_arkiv_arkiv__read_knowledge called 1x (expected 1..1)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "plugin-mcp-status",
+        "promptSha256": "f547b4d76266ca1679ac183594f5851f30de4e1b0707dbcdf95edda51c0433e4",
+        "rubricSha256": "2ab6d13363239eb7aadb76a4e4957c15efadc2b10317bbb9a6bffbbe4a657d0e",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "matched ^CONNECTED devfolio SYNTHETIC\\s*$",
+              "votes": null
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "mcp__plugin_arkiv_arkiv__server_status called 1x (expected 1..1)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "matched ^CONNECTED devfolio SYNTHETIC\\s*$",
+              "votes": null
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "mcp__plugin_arkiv_arkiv__server_status called 1x (expected 1..1)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "plugin-project-intake",
+        "promptSha256": "5ebdc2995fd6bfabf8f8ceefa2f7a6915f7fe26ffccceb710e8fb0a3694aa7b5",
+        "rubricSha256": "e54c2079a10b89dfadcce103390438bdc91e15ae42756eaba26952c5b5cdc970",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS FAIL",
+              "votes": [
+                true,
+                true,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Skill called 1x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-custody-with-block",
+        "promptSha256": "ad9f753b6f0624d0fd5809f689a5515388f6610e9f0f0d9577a1246c1a9a2914",
+        "rubricSha256": "c3c2c51f127e8e84f1dff87f89ba55337e457f42ba9fa66628c109201d303da7",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-custody-without-block",
+        "promptSha256": "ad9f753b6f0624d0fd5809f689a5515388f6610e9f0f0d9577a1246c1a9a2914",
+        "rubricSha256": "c3c2c51f127e8e84f1dff87f89ba55337e457f42ba9fa66628c109201d303da7",
+        "without-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL FAIL",
+              "votes": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-names-with-block",
+        "promptSha256": "ce4d341a65b04bf244fe2c3da4aa3a23fbcc5801c04480c0aedea242be5b56af",
+        "rubricSha256": "16d106a08a3ed3f9f6f59b1ad90f21b0ea982bc7ac09ae6cdbcdd7cdfb3a3a07",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-names-without-block",
+        "promptSha256": "ce4d341a65b04bf244fe2c3da4aa3a23fbcc5801c04480c0aedea242be5b56af",
+        "rubricSha256": "16d106a08a3ed3f9f6f59b1ad90f21b0ea982bc7ac09ae6cdbcdd7cdfb3a3a07",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS FAIL",
+              "votes": [
+                true,
+                true,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-native-with-block",
+        "promptSha256": "4d022aa670ec4202cd2d3ef54ced9b0adfae1612fa5fa9146c22606db95a4fa6",
+        "rubricSha256": "07f7b9ec7b806bbb9d3fac214f54d297157766ccd4cca1906ab62526dfb25d12",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-native-without-block",
+        "promptSha256": "4d022aa670ec4202cd2d3ef54ced9b0adfae1612fa5fa9146c22606db95a4fa6",
+        "rubricSha256": "07f7b9ec7b806bbb9d3fac214f54d297157766ccd4cca1906ab62526dfb25d12",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-router-with-block",
+        "promptSha256": "a3fa17eceb02119d95f7bdb6ee90180e572d450ca44fc69f0c76219d3cab9bce",
+        "rubricSha256": "8b939274340dca9e083b70bd607fed4e1080c7672fd35f3ce3d48d5535f71609",
+        "without-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL FAIL",
+              "votes": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL FAIL",
+              "votes": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-router-without-block",
+        "promptSha256": "a3fa17eceb02119d95f7bdb6ee90180e572d450ca44fc69f0c76219d3cab9bce",
+        "rubricSha256": "8b939274340dca9e083b70bd607fed4e1080c7672fd35f3ce3d48d5535f71609",
+        "without-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL PASS",
+              "votes": [
+                false,
+                false,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL PASS",
+              "votes": [
+                false,
+                false,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-timestamps-with-block",
+        "promptSha256": "edf520446547ad0978b926cb0d0cfe95735a429d497226026de2a50e2d743cf6",
+        "rubricSha256": "b614cb642d501142aecdf29853e564a144924a37e6ac612fca4971ce05b37098",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": false,
+              "explanation": "judge votes: FAIL FAIL PASS",
+              "votes": [
+                false,
+                false,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-timestamps-without-block",
+        "promptSha256": "edf520446547ad0978b926cb0d0cfe95735a429d497226026de2a50e2d743cf6",
+        "rubricSha256": "b614cb642d501142aecdf29853e564a144924a37e6ac612fca4971ce05b37098",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-version-with-block",
+        "promptSha256": "ef2b6969e663a02055e40b9f2f43501c20155eaf49b6a9cbc45c50052e51bda3",
+        "rubricSha256": "4f0c46f15ca10511a72101e5e0ed6f31f8fbf6415eb274e610f7df4c7ddb668b",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "rule-version-without-block",
+        "promptSha256": "ef2b6969e663a02055e40b9f2f43501c20155eaf49b6a9cbc45c50052e51bda3",
+        "rubricSha256": "4f0c46f15ca10511a72101e5e0ed6f31f8fbf6415eb274e610f7df4c7ddb668b",
+        "without-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": true,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": true,
+              "explanation": "Bash called 0x (expected 0..0)",
+              "votes": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "version-mismatch",
+        "promptSha256": "45b95f15b46ccf2131f80eaaecdb29f8825e3882c2f6b3e4590ea701848de69e",
+        "rubricSha256": "d64684efc52b79d2ed863a1b00fc3b35d66cbf57eecd198f463150b9a7c392ae",
+        "without-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": false,
+              "explanation": "Skill called 0x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        },
+        "with-context": {
+          "passed": false,
+          "error": null,
+          "graders": [
+            {
+              "name": "criteria",
+              "passed": true,
+              "explanation": "judge votes: PASS PASS PASS",
+              "votes": [
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "name": "process",
+              "passed": false,
+              "explanation": "Skill called 0x (expected 1..∞)",
+              "votes": null
+            }
+          ]
+        }
+      }
+    ],
+    "regressions": [
+      "adversarial-untrusted-payload",
+      "arkiv-write-safety-outcome",
+      "multi-encrypted-expiring",
+      "rule-timestamps-with-block"
+    ],
+    "improvements": [
+      "rule-custody-without-block"
+    ],
+    "counts": {
+      "without-context": {
+        "aggregate": 67,
+        "criteria": 69,
+        "process": 71
+      },
+      "with-context": {
+        "aggregate": 64,
+        "criteria": 67,
+        "process": 70
+      }
+    }
+  },
+  "codex": {
+    "version": "0.162.1",
+    "actor": "gpt-6.1-sol",
+    "reasoning": "high",
+    "judge": "haiku",
+    "nPairs": 32,
+    "runsPerCasePerArm": 1,
+    "votesPerAnswer": 1,
+    "skillInvocations": null,
+    "eligible": false,
+    "cases": [
+      {
+        "name": "arkiv-app-integration-negative",
+        "promptSha256": "f3c8a29405298119d7bac62f55592cd88e7b32032b81bf3105d144a0a13efe3f",
+        "rubricSha256": "b944144302fef409560301290e67648d95c93f81fb3c45d5c97802e31d69adb3",
+        "with-context": {
+          "outcome": true,
+          "reason": "Uses local useState with a functional update. It has no Arkiv API routes or wallet configuration, and it doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Uses local useState with a functional update. It has no Arkiv API routes or wallet configuration, and it doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-app-integration-trigger",
+        "promptSha256": "31a71dab0229ca7c7e02813f5b33ee362158585d6ebb4367316dcd63b5870423",
+        "rubricSha256": "d7e46ace37ec720df5566bb663fa882e40974bfbdc4f07288a06f7d49fa29568",
+        "without-context": {
+          "outcome": false,
+          "reason": "A authenticates and validates before any write, keeps the signer in server-only secret storage, and says large integers become decimal strings. But it only puts no-store on the POST response. It proposes caching public reads and never says reads should be no-store. It covers server-side invalidation but says nothing about client-side cache invalidation or updating the client cache. That misses part of the rubric's cache requirement.",
+          "skillReadPolicyRejections": 1
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "B authenticates, authorizes, rate-limits and validates before submission, and keeps signing credentials server-only. It maps bigint values to decimal-string DTO fields. It uses no-store on creation responses and bypasses read caches for the confirmation read-back. It invalidates server cache tags or paths and inserts the returned DTO into the client cache. It states that the SDK method names are unverified and that nothing was executed, so it fabricates no execution.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-data-modeling-negative",
+        "promptSha256": "25e401b3b5093a697e369d196bf8444656dc2de0edade8a85b51375edd506a6e",
+        "rubricSha256": "81940384f5bcd633de12d08e8c55aac22ab631e89a7a555d8058acbf9cbe8ab8",
+        "with-context": {
+          "outcome": true,
+          "reason": "Uses a relational PostgreSQL model with products, tags and a product_tags join table linked by foreign keys. It does not use Arkiv APIs and does not claim to have executed anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Uses a relational PostgreSQL model with products, tags and a product_tags join table linked by foreign keys. It does not use Arkiv APIs and does not claim to have executed anything.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-data-modeling-trigger",
+        "promptSha256": "ad4c950e37cf2dbb40453ac692ebb1d41f75a407b36ea91a9278f0fa54316a32",
+        "rubricSha256": "b6899bf81998393e07ba10c4ab5cd2817d04599f3bcf5379897fd9c0ead68e0f",
+        "without-context": {
+          "outcome": false,
+          "reason": "It uses an old-style array of {key, value} attribute objects and has no typed constructors. created_at is in Unix seconds, not u64 milliseconds. Expiration is only mentioned in passing, not explained as an explicit setting. It does explain key-typed references and integer prices, and it doesn't fabricate execution.",
+          "skillReadPolicyRejections": 2
+        },
+        "with-context": {
+          "outcome": false,
+          "reason": "It avoids attribute arrays and fabricated execution, and it explains key references and exact integer prices. But it has no typed constructors and uses Unix-second timestamps instead of u64 milliseconds. It also never explains explicit expiration, only that referenced entities may expire.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-encryption-negative",
+        "promptSha256": "11334aec22316bb1a8ec1a9e0ad8ee447f38eec1a2407bcaafb901f303ed6790",
+        "rubricSha256": "20d4cbdb3258dbe09e6ab91adcfc93a06e17154fb9275d048b1143192dde8a47",
+        "with-context": {
+          "outcome": true,
+          "reason": "It explains TLS certificate checking, key agreement, and encryption of traffic in transit. It adds no Arkiv encryption package setup, says Arkiv is not involved, and claims no executed actions.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "It explains the TLS handshake, certificates, and what HTTPS protects and doesn't. It adds no Arkiv package setup, says no Arkiv storage, wallet, or signing is involved, and fabricates no execution.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-encryption-trigger",
+        "promptSha256": "a74ecace9dac93e6c648a9ac1b9e00c8ff0fdbb2725d0c24c5ee184f51e45474",
+        "rubricSha256": "ef76beb28f6679728e894584ac4bfd8a031790283113f16c9d60f7c69640e497",
+        "without-context": {
+          "outcome": true,
+          "reason": "It recommends encrypting the payload with arkiv-encryption and a keyed HMAC token for equality lookup. It keeps keys out of public attributes and untrusted clients. It says attributes and metadata stay public and that equality leaks. It does not say encryption hides metadata. It fabricates no execution and flags the package APIs as unverified. It does not name transaction history, but 'entity metadata' and visible access patterns cover the intent.",
+          "skillReadPolicyRejections": 3
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "It assigns payload encryption to arkiv-encryption and uses an HMAC token stored as a queryable attribute. The index key stays on an authorized backend, separate from the encryption key and out of browser code. It says attributes and metadata remain public and that tokens reveal repeats. It does not claim metadata is hidden. It fabricates no execution and says the HMAC design is general guidance, not a verified package API example.",
+          "skillReadPolicyRejections": 3
+        }
+      },
+      {
+        "name": "arkiv-entity-expiration-negative",
+        "promptSha256": "71fdfb995cd27c58fe2419a359a8eb475dfb8c5ec7050112206e33d05bd9e4b2",
+        "rubricSha256": "fecb0454b4aa1cc58437cdd5a066cac838219553c65c7df252d3184a3b3952b6",
+        "with-context": {
+          "outcome": true,
+          "reason": "Explains max-age, freshness, staleness, validation with ETag/Last-Modified, and URL versioning. It doesn't mention Arkiv expiration transactions and doesn't fabricate any execution.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Explains max-age freshness, Age accounting, revalidation with 304, eviction, and versioned filenames. It doesn't mention Arkiv expiration transactions and doesn't fabricate any execution.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-entity-expiration-trigger",
+        "promptSha256": "cffb78ed0cd5bdf8d644bacde445484c94e710234b1fdc1b13c208123a160ed8",
+        "rubricSha256": "404ad094be7eb7c79b5726369ee0f87edb7f0ec1b1c37311a1cdc198cb49b567",
+        "without-context": {
+          "outcome": false,
+          "reason": "It covers block-based expiration and the difference between leaving current queries and historical erasure. It never says that no expiration event is emitted, which the rubric requires. It also doesn't name ExpirationTime or explain how the block deadline is derived from chain timing.",
+          "skillReadPolicyRejections": 1
+        },
+        "with-context": {
+          "outcome": false,
+          "reason": "It covers the block deadline and the difference between leaving current queries and historical erasure. It never says that no expiration event is emitted. It mentions cache handling, but that isn't the same as stating there is no event. It also doesn't name ExpirationTime or explain how chain timing sets the deadline.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-negative",
+        "promptSha256": "60c1736152dbe55bf44c00689a19015516afa9349f976c63f0334df6a29159c8",
+        "rubricSha256": "845a9d03dbb3fbb4e760666f6ec5bfe2be32cb97d471f2229000ea0ff94d1506",
+        "with-context": {
+          "outcome": true,
+          "reason": "Explains the REST PATCH on a profile with an example request and expected responses. It adds no Arkiv entity flags or native transactions and does not claim any execution happened.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Explains the REST PATCH on a profile with JSON Merge Patch semantics and a PUT comparison. It adds no Arkiv flags or native transactions and does not claim any execution happened.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-entity-lifecycle-trigger",
+        "promptSha256": "9416b7bc387df959df8441a82a915ced3f78d3d727b4ac4c78c3b9992dec3ce6",
+        "rubricSha256": "a896852fe202c7368a26a6ed866185e9aeb590c4687f2aea0d662b40802529d2",
+        "without-context": {
+          "outcome": true,
+          "reason": "A separates the attribute-removal patch from a full update for the payload and keeps ownership transfer as a distinct last step. It says creator provenance and current ownership are different. It also covers checks on receipts, read-back of final state and authorization scope, and it fabricates no execution. It never says that immutable content or flags would need a new entity, which is a weakness.",
+          "skillReadPolicyRejections": 3
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "B separates the patch-based unset from a full replacement and from the ownership transfer, and it says creator provenance grants no continuing ownership permissions. It confirms each transaction, checks the final attribute, payload and owner, and says retrieved content cannot authorize anything. It states that no execution happened. It also never mentions creating a new entity for immutable content or flags, which is a weakness.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-feedback-negative",
+        "promptSha256": "3f71b29fae9b300e040817f1dd82f3ffb27567f00ab511df4cc84f3290577ab2",
+        "rubricSha256": "c65bc8226fc3db1c629fe35cc28dba850469aae8a44d93448b72d7a2e251367a",
+        "with-context": {
+          "outcome": true,
+          "reason": "It drafts a generic issue for a text-editor repository. It has no Arkiv redirect or Arkiv form fields, and it doesn't claim to have run or published anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": false,
+          "reason": "It asks a clarifying question and says it will draft later, but gives no draft. It avoids Arkiv and fabricates nothing, but it doesn't do the requested drafting.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-feedback-trigger",
+        "promptSha256": "9bdbadbaf2fd17a8fb61e7a6743c2f71dc912cf8d73163c67fa649995796e048",
+        "rubricSha256": "f82efdb4a00ee09e3bb18f0ed3607518ef70ae12110bf8981f9ea3dd55caa188",
+        "without-context": {
+          "outcome": false,
+          "reason": "A is a draft only, keeps Tiramisu, leaves the optional fields empty and doesn't claim a reproduction. It never says to search for duplicates or check the current bug form before submission. It also never requires approval of the exact draft. It admits it couldn't read the skill files, so its headings weren't checked against the form.",
+          "skillReadPolicyRejections": 3
+        },
+        "with-context": {
+          "outcome": false,
+          "reason": "B is a draft only, keeps Tiramisu, leaves the optional fields empty, and says it hasn't reproduced the issue or submitted anything. It never explains duplicate search or current-form verification before submission. It never requires approval of the exact draft. It admits it couldn't read the skill files, so its headings weren't checked against the form.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-first-write-negative",
+        "promptSha256": "f1407447266bb5cb6358e52f933b90712b49ef286ce8788b21084026066d2132",
+        "rubricSha256": "25fa3ff20d2a228abbc1ca9493d6032cd5ebf322f63e868a164da6fd44d0ba35",
+        "with-context": {
+          "outcome": true,
+          "reason": "It gives a local console.log example that prints Hello, world. It doesn't mention Arkiv or wallet setup, and it doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "It gives a local console.log example that prints Hello, world. It doesn't mention Arkiv or wallet setup, and it doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-first-write-trigger",
+        "promptSha256": "8879a97214c1cf210f47665c582776eb33783aba321292eba044b22da96ad05a",
+        "rubricSha256": "fdae6b74a6fe83c9258ba767681dd702b578a57b14ac7104da33375373d4b6f2",
+        "without-context": {
+          "outcome": false,
+          "reason": "A covers chain ID verification, local key custody, public-address-only faucet funding, an expiration helper, awaiting the result and reading the entity back. It never separates an RPC access key from the signer key and gas funding. It also never names ExpirationTime or current object attributes. It makes no fabricated execution claims.",
+          "skillReadPolicyRejections": 2
+        },
+        "with-context": {
+          "outcome": false,
+          "reason": "B covers chain ID verification, a dedicated wallet with the key kept out of chat, faucet funding, an expiration helper, and reading the entity back. It never distinguishes an RPC access key from signer custody and gas funding. It does not name ExpirationTime or current object attributes. It makes no fabricated execution claims.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-indexing-negative",
+        "promptSha256": "e12e096bbc85586b09109ee7ad9224f4c222f97380ebbb062e57ff5a07803487",
+        "rubricSha256": "e892fba9ad9e16d7344051547e8b7d1efb256629649e099c16f52b53693fd814",
+        "with-context": {
+          "outcome": true,
+          "reason": "It stays on PostgreSQL B-tree indexes and says the table's storage is unchanged. It doesn't mention an Arkiv mirror worker or a synchronization package, and it doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "It stays on PostgreSQL B-tree indexes and keeps the existing table and storage. It doesn't mention an Arkiv mirror worker or a synchronization package. The SQL is labeled illustrative, and it says no commands were executed, so nothing is fabricated.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-indexing-trigger",
+        "promptSha256": "5a80ecc01396f67e8dc051cc122699db333ae3514c2f00c77e8059e9f70201db",
+        "rubricSha256": "f86d60cb58fa7367adf926173834dcd254328602a7449ab36b44aa55198d90dd",
+        "without-context": {
+          "outcome": false,
+          "reason": "A commits the projection and checkpoint together and sweeps expiration on blocks without logs. But it never says payload and attributes must be fetched separately at pinned block-end state, and it implies that decoding the operations is enough. It also does not say that log metadata alone is insufficient. It does not fabricate any execution.",
+          "skillReadPolicyRejections": 1
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "B commits a complete block, the expiration update and the checkpoint in one Postgres transaction. It checkpoints and evaluates expiration on blocks with no relevant operations, and it replays contiguously from B+1. It also says to verify whether logs carry enough information and otherwise to supplement them with state reads at the corresponding block. That is hedged and does not explicitly say log metadata alone is insufficient or that the block must be pinned at block-end. It is still close enough to the separate-fetch requirement. It states that the skill files could not be read and does not fabricate any execution.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-large-files-negative",
+        "promptSha256": "285fcbc7b8f09a0dbb0e69efab1df500e39ab50e5ff9cfc991e1a53999466233",
+        "rubricSha256": "f6ac7d397c240abeef610fc3a98c8084e93759c80ec3b267686400fad72fdd71",
+        "with-context": {
+          "outcome": true,
+          "reason": "Explains local PNG resizing in Paint. It has no Arkiv manifest, RPC or upload content, and it doesn't claim to have run anything. The 1600×900 to 800×450 example is a correct illustration, not a fabricated execution.",
+          "skillReadPolicyRejections": 1
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Explains local PNG resizing in Paint, including the Ctrl+W shortcut. It has no Arkiv manifest, RPC or upload content, and it doesn't claim to have run anything. It notes that everything stays local.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-large-files-trigger",
+        "promptSha256": "7491038171905c55c638700c91f34e0aab1f177d8e38de1f5bd320e5fd2ad3d8",
+        "rubricSha256": "e4654e8baa7d0feab1b6c2439120f0b7971fa776cce9e888be2513806580acbb",
+        "without-context": {
+          "outcome": false,
+          "reason": "A covers the manifest and chunks, hashes and lengths, expiry coordination, and timeout reconciliation. It also doesn't fabricate any execution. But it never works out the actual encoded size. It only says base64 increases size and to leave overhead room, so the encoded-size requirement is only weakly met. Its compatibility advice is just to verify the packages before adopting them.",
+          "skillReadPolicyRejections": 2
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "B covers the manifest and ordered chunks, per-chunk and whole-file SHA-256 and length checks, and expiry coordinated across the manifest and all chunks. It handles partial uploads and ambiguous timeouts by reconciling before retrying and publishing the manifest last. It computes the base64 size correctly (160004 characters). It flags the SDK and helper packages as unverified and doesn't fabricate any execution.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-mcp-negative",
+        "promptSha256": "d8b1edc6ccc45b1255c2c60696ef055fdf8f290800d839a8b49c82a17d317ffc",
+        "rubricSha256": "ff8fe3dce32586bcf2199590e7dd9188c6f7fc1038f9abec4c2fb2dd0353d7f0",
+        "with-context": {
+          "outcome": true,
+          "reason": "Gives a generic explanation of MCP: host, client and server, plus tools, resources and prompts. It assumes no Arkiv tools, endpoints or wallet needs. The document-search example is hypothetical, and it claims no execution.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Gives a generic, provider-neutral explanation of MCP and its parts. It assumes no Arkiv tools, endpoints or wallet needs. The `search_documents` example is clearly illustrative, and it fabricates no execution.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-mcp-trigger",
+        "promptSha256": "26921bcb1115fe602c92f997882adbbcaf409b0c9fe669657b8deff8bb90616b",
+        "rubricSha256": "e2eb05fd215bade811f74a9dcc4c7489dc5d7f14593cd407e355f75d3b39e0dc",
+        "without-context": {
+          "outcome": true,
+          "reason": "A says discovery means inspecting MCP tools and schemas, resources and templates, and installed skills. It says the SDK wallet client's account signs, either an injected browser wallet or a local account. It says a connection alone gives no key access or authorization, and that retrieved content is not authorization. It hedges that an MCP server signs only if it implements a signer, and it never mentions prompts. It admits it could not read the skills and claims no execution.",
+          "skillReadPolicyRejections": 1
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "B says discovery means inspecting the server's tools, resources and templates. It names the Arkiv routing, MCP and first-write skills. It says the component holding the signing account signs, either an injected wallet or a configured server-side account. It says a connection and retrieved content grant no authorization. It hedges that an MCP server signs only if it implements a signer, and it never mentions prompts. It admits it could not read the skills, labels its answer general guidance, and claims no execution.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-negative",
+        "promptSha256": "ae2ffed1f3c2326cf9d7c68f009a82f958a48c1f7efeaa9736f5b11824b556aa",
+        "rubricSha256": "51c28e2274e8dbbd1404e30ec5edb85dfc3d219ac0b072306dd561411e8b4bb2",
+        "with-context": {
+          "outcome": true,
+          "reason": "Explains PostgreSQL indexes (purpose, B-tree, tradeoffs, planner behavior, unique indexes). It adds no Arkiv skills, SDK configuration, wallets, or migration work, and it doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Explains PostgreSQL indexes (purpose, B-tree, read and write tradeoffs, planner, unique indexes). It adds no Arkiv content, wallets, or migration work, and it doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-query-negative",
+        "promptSha256": "97d028f1e0b501ac4cd5c338eae3fbbc9755905b4fa16d7a90348a801a0a77e1",
+        "rubricSha256": "1f96084ad421bc3b986b5edf2486a04dae812a3bb1f0b6691320e712dc8d092a",
+        "without-context": {
+          "outcome": false,
+          "reason": "The value [2, 9, 12] is correct. There is no Arkiv guidance and no fabricated execution. But the answer shows no copied array (e.g. [...arr] or slice) and no numeric comparator (e.g. (a,b)=>a-b), which the rubric requires.",
+          "skillReadPolicyRejections": 0
+        },
+        "with-context": {
+          "outcome": false,
+          "reason": "The value [2, 9, 12] is correct. There is no Arkiv guidance and no fabricated execution. But the answer shows no copied array and no numeric comparator, which the rubric requires.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-query-trigger",
+        "promptSha256": "9c3980341da70a4aabdf239e2b67a61c2c69124d51c44a8a51b6779a1839b293",
+        "rubricSha256": "48a8029e80289e5fe0a58ab4a91e406bbdd3848afa762be6e216cc04743f0f2d",
+        "with-context": {
+          "outcome": false,
+          "reason": "It keeps the full scope and sorts only after collecting every page. But block pinning is only a conditional 'when consistency matters'. It only says to compare numeric fields numerically, with no exact comparator such as BigInt. It restarts on cursor expiry with no bound. Its pagination is generic cursor pseudocode, not the SDK's page.next() and hasNextPage loop.",
+          "skillReadPolicyRejections": 3
+        },
+        "without-context": {
+          "outcome": false,
+          "reason": "It keeps the full scope, including the creator, and sorts after collecting all pages. It also names BigInt for exact numeric comparison. But block pinning is hedged with 'where supported'. It restarts the traversal on an invalid cursor with no limit on restarts, so that required behavior is missing. Its pagination is generic cursor pseudocode, not page.next() reassigned while hasNextPage.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-security-trust-negative",
+        "promptSha256": "4f5751728aa24346e8f1fb92a4ffb586d7ed38a26b22e399b27f2a1b5a61a28b",
+        "rubricSha256": "a385a0cd0bb7caeb6db2c50e5e833e029dc22459b9e6f1b7caa0d7cb4699162e",
+        "without-context": {
+          "outcome": true,
+          "reason": "It gives relevant password advice for an offline notebook: Diceware, long random passwords, avoiding reuse, and keeping a recovery copy. It doesn't mention Arkiv entity operations and doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "It gives relevant password advice: a long random passphrase, no reuse, a recovery copy, and a check that the notebook really encrypts. It doesn't route into Arkiv. Saying no installed skill applies is not a fabricated execution.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-security-trust-trigger",
+        "promptSha256": "ca3af5a93619351cc718c5e98d2de3d90eba53a528a3ba9aefd4a0b21fbfcef9",
+        "rubricSha256": "1e841b951743ab83de6bb753cb42b7836893aa2ee35f32e44768312fb14c0a18",
+        "with-context": {
+          "outcome": true,
+          "reason": "It flags the NEXT_PUBLIC_ private key as critical and says to replace it and keep signing keys out of the browser, using a server-held signer or a user wallet. It says labels are not authorization and that caller authentication and per-operation authorization are needed. It says native ownership and creator provenance do not establish all permissions. It gives no numeric score and reports no fabricated execution.",
+          "skillReadPolicyRejections": 1
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "It flags the exposed key as critical and says to treat it as compromised. It requires a user wallet or a server-only signer that authenticates the caller and authorizes each operation. It says labels do not prove authority, that owner and creator provenance are distinct, and that neither replaces server-side caller authorization. It gives no numeric score and does not fabricate execution.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-social-graph-negative",
+        "promptSha256": "dfd2b09778701a2d87193e9eacddbcb2ce49ff96066de8b06044f087d2a2206a",
+        "rubricSha256": "b4737a57a96aaca4282462a010baaecd6b675ac34a61a4866060c6634ab72dda",
+        "without-context": {
+          "outcome": true,
+          "reason": "Correctly explains ordered vs unordered edge pairs, with adjacency symmetry and in/out-degree. It doesn't install arkiv-graph, create entities, or fabricate any execution.",
+          "skillReadPolicyRejections": 0
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "Correctly explains ordered vs unordered pairs, with a comparison table covering degree, adjacency matrix and paths. It doesn't install arkiv-graph, create entities, or fabricate any execution.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-social-graph-trigger",
+        "promptSha256": "a6dae935744db5ee3c3543480b0bfec5f8a063d5a0e755a82a381c6302a0b61b",
+        "rubricSha256": "8ee58defbfd492fea7c91b0c9c26c817df74d9e1c4e87ec3dcb9ed9402022e6e",
+        "with-context": {
+          "outcome": false,
+          "reason": "A covers direction, stable keys, duplicates, missing or expired endpoints, full pagination and scoped filters. It never mentions pinning fetches to a consistent snapshot, and it never says to filter native events client-side. It also admits it couldn't read the package guidance, so its refresh advice is generic. It doesn't fabricate any execution.",
+          "skillReadPolicyRejections": 2
+        },
+        "without-context": {
+          "outcome": false,
+          "reason": "B covers direction, stable IDs, duplicates, missing or expired endpoints, fetching all pages and refresh by re-fetching. It never mentions pinned fetches, and it never mentions client-side filtering of native events or refreshing only on relevant changes. It also admits it couldn't read the package guidance. It doesn't fabricate any execution.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-trigger",
+        "promptSha256": "69875e8715646579e8f8a5f0232bf45552d3208a491198ea22728b4c147c1d4f",
+        "rubricSha256": "a8ad01bf462c88a21ef35a74b068091f431cb1c2ac12cecb1c97c1405451c4ca",
+        "without-context": {
+          "outcome": false,
+          "reason": "It routes to the Arkiv router and then to first-write, and it doesn't invent deployment, signing or execution. But it never says to inspect the installed SDK version or declarations. It only mentions 'SDK 0.8.x' in passing, so it misses that required behavior.",
+          "skillReadPolicyRejections": 1
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "It starts with the Arkiv router and then routes to first-write for the first entity. It says the installed SDK version and declarations are unmeasured and should be confirmed before relying on signatures. It states that no RPC, signing or submission was done, and it invents no contract deployment or remote-MCP signing.",
+          "skillReadPolicyRejections": 1
+        }
+      },
+      {
+        "name": "arkiv-troubleshooting-negative",
+        "promptSha256": "23572232e26b8bcb57b62581f7217787a7c48dbb17ffc59315b3a261d641c8fd",
+        "rubricSha256": "6a652170c2db55b180c8bd419067ea8b5e78cfdafdca42552de3e842ba894ff6",
+        "with-context": {
+          "outcome": true,
+          "reason": "Explains ordinary JavaScript scope, covering missing declaration, typo, scope and import. It makes no Arkiv RPC or gas recommendations and doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Diagnoses the error as a JavaScript scope or declaration problem, with a block-scope example and notes on imports and script order. It makes no Arkiv RPC or gas recommendations and doesn't claim to have run anything.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-troubleshooting-trigger",
+        "promptSha256": "b21ce81ac2af907e938e5cee8d7b63528a1fc95766d0e0ea8f0782a1aa02be60",
+        "rubricSha256": "e95b58c2be389b6923488f7ded96ab4e49e94f6910c45fc12aedfe47ab69f623",
+        "without-context": {
+          "outcome": false,
+          "reason": "It correctly says uppercase 'A' is the likely cause of Ident32InvalidByte. It also says no issue was filed and admits it couldn't verify the skill files, so nothing is fabricated. But it never uses current SDK behavior. It recommends epoch seconds that fit in i32 and vaguely suggests a 'wider or string' type. It never mentions typed u64 epoch values, which the rubric requires, and its identifier diagnosis is admittedly provisional.",
+          "skillReadPolicyRejections": 2
+        },
+        "with-context": {
+          "outcome": false,
+          "reason": "It gives the same uppercase-byte diagnosis and says nothing was executed, filed or fabricated. But it admits it couldn't verify the installed SDK's types. It steers the user to i32 epoch seconds or strings and never explains typed u64 epoch values. The rubric requires an explanation grounded in current SDK behavior, so it falls short.",
+          "skillReadPolicyRejections": 2
+        }
+      },
+      {
+        "name": "arkiv-write-safety-negative",
+        "promptSha256": "7b177fca8f9a97e2577caa40524f5b371808446c8152ec9ab493e4b12f262c4c",
+        "rubricSha256": "2766d9b046a960ab1575a748d9d335a4642ac1496288af4b9c5d291870617cf5",
+        "with-context": {
+          "outcome": true,
+          "reason": "Gives a local slice-based grouping into chunks of 20. It adds no wallets or transaction journals and doesn't claim to have run anything. Saying 60 numbers gives three groups follows from the code.",
+          "skillReadPolicyRejections": 0
+        },
+        "without-context": {
+          "outcome": true,
+          "reason": "Gives a local loop with slice that splits the array into groups of 20. It adds no wallets or transaction journals and doesn't claim to have run anything. Saying 60 numbers gives three groups follows from the code.",
+          "skillReadPolicyRejections": 0
+        }
+      },
+      {
+        "name": "arkiv-write-safety-trigger",
+        "promptSha256": "7ffb2d90c5c20d0bb550a4c7c268381e8d463655e88ab2562ade3a94bff48744",
+        "rubricSha256": "e760a2c423a5a8a049b2b8bf4e80456039c390d4d9c3c8ef9ffdc986ee1c093d",
+        "without-context": {
+          "outcome": true,
+          "reason": "It uses one serialized writer per signing account and persists submission_started before the network call. It records the signed transaction and its hash before broadcast where supported. Its states keep confirmed separate from verified, and it requires receipt, key mapping and read-back checks before the checkpoint advances. It reconciles uncertain outcomes before any new attempt, says never to treat an exception as proof nothing was written, and fabricates no execution. Weaknesses: the 20-row batch size is assumed rather than measured, row validation is thin, and reporting partial progress is only implicit.",
+          "skillReadPolicyRejections": 2
+        },
+        "with-context": {
+          "outcome": true,
+          "reason": "It uses one serialized writer per account and a frozen manifest with content hashes. It persists submission_possible before the call and the hash before broadcast where supported, with append-only linked attempts. It keeps a confirmed transaction when indexing or read-back lags and does not recreate entities. It verifies receipts, row-to-key mapping, ownership, attributes, payload hashes and expiration. It sets uncertain outcomes aside for reconciliation before any new submission, and it states that nothing was executed. Weaknesses: the 20-row batch size is assumed and reporting partial progress is not explicit.",
+          "skillReadPolicyRejections": 2
+        }
+      }
+    ],
+    "counts": {
+      "without-context": {
+        "outcome": 19,
+        "casesWithPolicyRejection": 18,
+        "policyRejections": 31
+      },
+      "with-context": {
+        "outcome": 24,
+        "casesWithPolicyRejection": 18,
+        "policyRejections": 30
+      }
+    }
+  },
+  "limits": [
+    "Claude actor model and judge aliases were fixed by the native evaluator; no model-snapshot equality claim beyond that receipt.",
+    "All contexts used the same empty native workspace. SDK state was unmeasured; this does not establish measured-version task benefits.",
+    "One actor sample per case per arm; stochastic changes are not causal proof or a population estimate.",
+    "Codex skill-file reads received native blocked-by-policy errors. These pairs are response diagnostics, not a valid skill-quality gate. No policy bypass or replacement run.",
+    "Codex has no observed reliable native Skill event: trigger/negative invocation measurement is absent, n=0.",
+    "A malformed dependency-map correction was made after the candidate freeze. These runs cannot certify the final source.",
+    "The comparison holds candidate canonical skills and all non-context files fixed; it does not estimate the upstream checker treatment or removal of the whole plugin.",
+    "All original failures and original grades remain; no rubric changes, selective reruns or pass reinterpretations."
+  ]
+}
