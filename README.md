@@ -142,3 +142,5 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
 See [verification scope](docs/verification.md) for 0.2.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
+
+[Unreleased context and consent preparation](docs/context-preparation.md) documents the experimental source, native host limits and publication gates. It does not change either public 0.2.1 package.
