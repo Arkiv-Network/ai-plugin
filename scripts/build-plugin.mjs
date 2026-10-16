@@ -44,6 +44,28 @@ export function renderRules(config, source) {
   return rules;
 }
 
+// Local SDK context hooks: read-only package inspection and session-scoped OS-local IPC, no network.
+// The broker starts asynchronously; the synchronous adapter fails open when Node or the broker is absent.
+export function contextHooks(host) {
+  const command = broker => 'if command -v node >/dev/null 2>&1; then node "$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs" ' + host + (broker ? ' --broker' : '') + ' 2>/dev/null; fi; exit 0';
+  const windows = broker => "if (Get-Command node -ErrorAction SilentlyContinue) { & node (Join-Path $env:CLAUDE_PLUGIN_ROOT 'scripts/context/context-hook.mjs') " + host + (broker ? ' --broker' : '') + " 2>$null }; exit 0";
+  const handler = broker => ({type: 'command', command: command(broker), ...(host === 'codex' ? {commandWindows: windows(broker)} : {}), timeout: broker ? 600 : 3, ...(broker ? {async: true} : {})});
+  const events = host === 'codex' ? ['SessionStart', 'UserPromptSubmit', 'PostCompact', 'SessionEnd']
+    : ['SessionStart', 'UserPromptSubmit', 'FileChanged', 'CwdChanged', 'PostCompact', 'SessionEnd'];
+  return Object.fromEntries(events.map(event => [event, [{hooks: ['SessionStart', 'UserPromptSubmit'].includes(event) ? [handler(true), handler(false)] : [handler(false)]}]]));
+}
+export function rulesHooks() {
+  return {SessionStart: [{matcher: 'startup|resume|clear|compact',
+    hooks: [{type: 'command', command: 'node', args: ['${CLAUDE_PLUGIN_ROOT}/hooks/arkiv-rules.mjs'], timeout: 2,
+      onFailure: 'continue'}]}]};
+}
+function claudeHooks() {
+  const context = contextHooks('claude-code');
+  return {...context, SessionStart: [...rulesHooks().SessionStart, ...context.SessionStart]};
+}
+export const contextSources = ['context-hook.mjs', 'sdk-context.mjs'];
+export const contextBundles = ['arkiv', 'arkiv-codex'];
+
 export function buildArtifacts(config, source) {
   validateConfig(config);
   const identity = {name: config.name, displayName: config.displayName, version: config.version,
@@ -56,23 +78,22 @@ export function buildArtifacts(config, source) {
     ['plugins/arkiv/.mcp.json', json({mcpServers: {arkiv: {type: 'http', url: config.mcpUrl,
       headersHelper: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/client-headers.mjs"'}}})],
     ['plugins/arkiv/scripts/client-headers.mjs', `// Generated connection metadata only: no files, network or agent context.\nprocess.stdout.write(JSON.stringify(process.env.ARKIV_TELEMETRY === 'off' ? {} : {'X-Arkiv-Client': 'arkiv-plugin/${config.version}; host=claude-code'}) + '\\n');\n`],
-    ['plugins/arkiv/hooks/hooks.json', json({hooks: {SessionStart: [{matcher: 'startup|resume|clear|compact',
-      hooks: [{type: 'command', command: 'node', args: ['${CLAUDE_PLUGIN_ROOT}/hooks/arkiv-rules.mjs'], timeout: 2,
-        onFailure: 'continue'}]}]}})],
+    ['plugins/arkiv/hooks/hooks.json', json({hooks: claudeHooks()})],
     ['plugins/arkiv/templates/AGENTS.snippet.md', renderRules(config, source)],
     ['.agents/plugins/marketplace.json', json({name: config.name, interface: {displayName: config.displayName},
       plugins: [{name: config.name, source: {source: 'local', path: './plugins/arkiv-codex'},
         policy: {installation: 'AVAILABLE', authentication: 'ON_INSTALL'}, category: 'Developer Tools'}]})],
-    ['plugins/arkiv-codex/plugin.json', json({$schema: 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
-      name: config.name, version: config.version, description: config.description, author: config.author,
-      homepage: config.homepage.replace('#claude-plugin', '#codex-plugin'), repository: config.repository,
-      keywords: identity.keywords, extensions: {'com.openai': {interface: {displayName: config.displayName,
-        shortDescription: 'Arkiv skills and the Devfolio MCP connection.'}}}})],
+    // Codex 0.162.1 skips hooks for portable AgentPlugin manifests (root plugin.json) and gives that
+    // format precedence, so the package uses the native .codex-plugin manifest to run its context hook.
+    ['plugins/arkiv-codex/.codex-plugin/plugin.json', json({name: config.name, version: config.version,
+      description: config.description, skills: './skills', mcpServers: './mcp.json', hooks: './hooks/hooks.json',
+      interface: {displayName: config.displayName, shortDescription: 'Arkiv skills and the Devfolio MCP connection.'}})],
+    ['plugins/arkiv-codex/hooks/hooks.json', json({hooks: contextHooks('codex')})],
     ['plugins/arkiv-codex/mcp.json', json({$schema: 'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',
       mcpServers: {arkiv: {type: 'streamable-http', url: config.mcpUrl,
         headers: {'X-Arkiv-Client': 'arkiv-plugin/'+config.version+'; host=codex'}}}})],
     ['plugins/arkiv-codex/templates/AGENTS.snippet.md', renderRules(config, source).replace('arkiv:arkiv', '$arkiv')],
-    ['plugins/arkiv-codex/AGENTS.md', `# Arkiv plugin for Codex CLI\n\nThis package contains Arkiv skills and one Devfolio (Arkiv: Global Tour Stop) MCP connection at ${config.mcpUrl}. Start a new Codex session after installing, then invoke the Arkiv router with $arkiv. Load only the task skill it selects. The router carries the essential safety rules even when the SDK is absent.\n\nCodex does not run the Claude SessionStart hook. This AGENTS.md is package documentation; installing the plugin does not inject it into the consumer project's instructions. Only add templates/AGENTS.snippet.md to a project's AGENTS.md when the developer explicitly requests it, preserving their existing instructions.\n\nBefore executable SDK code, inspect the manifest, lockfile and installed declarations for SDK ${config.sdkRange} on ${config.networkLabel}; ask for missing evidence. Ask for the query, filters, sort, expected cardinality, stable IDs, trusted creator, public/private fields, permissions, retention, architecture and signer custody. Installation authorizes no SDK installation, wallet connection, signing, feedback or transaction. Before writes obtain explicit operation, network, authorized signer and spending scope. Never request signing keys in chat.\n\nRead the existing connection's actual server_status and confirm profile devfolio before saying CONNECTED. Otherwise report NOT CONNECTED. Do not add a duplicate connection or switch profiles. Synthetic fixtures do not establish live service health.\n\nSkills are real files imported from one fixed canonical Git revision; never edit imported files. See the distribution README for installation, client evidence and maintenance commands. Desktop, IDE and other clients need their own tests; CLI evidence does not certify them.\n`]
+    ['plugins/arkiv-codex/AGENTS.md', `# Arkiv plugin for Codex CLI\n\nThis package contains Arkiv skills and one Devfolio (Arkiv: Global Tour Stop) MCP connection at ${config.mcpUrl}. Start a new Codex session after installing, then invoke the Arkiv router with $arkiv. Load only the task skill it selects. The router carries the essential safety rules even when the SDK is absent.\n\nCodex does not run the Claude rules hook. After you review and trust the package hooks, a read-only local hook reports the installed SDK version category at session start and on prompts when it changes; it makes no network requests, stores nothing on disk and never blocks the session. This AGENTS.md is package documentation; installing the plugin does not inject it into the consumer project's instructions. Only add templates/AGENTS.snippet.md to a project's AGENTS.md when the developer explicitly requests it, preserving their existing instructions.\n\nBefore executable SDK code, inspect the manifest, lockfile and installed declarations for SDK ${config.sdkRange} on ${config.networkLabel}; ask for missing evidence. Ask for the query, filters, sort, expected cardinality, stable IDs, trusted creator, public/private fields, permissions, retention, architecture and signer custody. Installation authorizes no SDK installation, wallet connection, signing, feedback or transaction. Before writes obtain explicit operation, network, authorized signer and spending scope. Never request signing keys in chat.\n\nRead the existing connection's actual server_status and confirm profile devfolio before saying CONNECTED. Otherwise report NOT CONNECTED. Do not add a duplicate connection or switch profiles. Synthetic fixtures do not establish live service health.\n\nSkills are real files imported from one fixed canonical Git revision; never edit imported files. See the distribution README for installation, client evidence and maintenance commands. Desktop, IDE and other clients need their own tests; CLI evidence does not certify them.\n`]
   ]);
 }
 
@@ -80,6 +101,10 @@ export async function generate(root = repositoryRoot, check = false) {
   const config = JSON.parse(await readFile(path.join(root, 'plugin.config.json'), 'utf8'));
   const source = await readFile(path.join(root, 'source/always-on.md'), 'utf8');
   const artifacts = buildArtifacts(config, source), changed = [];
+  for (const name of contextSources) {
+    const bytes = await readFile(path.join(root, 'source/context', name), 'utf8');
+    for (const bundle of contextBundles) artifacts.set(`plugins/${bundle}/scripts/context/${name}`, bytes);
+  }
   for (const [relative, expected] of artifacts) {
     const file = path.join(root, relative);
     let current;

@@ -1,0 +1,2308 @@
+{
+  "date": "2026-10-16",
+  "canonicalSkills": "052092d63a9028d943fbb8a69db9e68e9bad8b43",
+  "cases": [
+    {
+      "name": "adversarial-key-custody",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "56ad6c14c391fdaafe5348a64413130b4f402a8374a394a67c349d82a2ca1557",
+      "rubricSha256": "4a05e62395b92252bd47da2263da000e5be306dd9fd401a61ca1686a30cfab8d"
+    },
+    {
+      "name": "adversarial-rpc-url",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "06511658b37934738133c1c10ec15efc1055d0024362ca6b2de9b1d4e21ff9a5",
+      "rubricSha256": "da7b965ebd73a8bbda3b31c88c693cbdecf24e4e802639b2d9b9430b8454480b"
+    },
+    {
+      "name": "adversarial-untrusted-payload",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "44d6b4f50f0c8285e04539e5f8fde6dc3cb0120bb9952a705710377c351defd3",
+      "rubricSha256": "969995e8a021dfa909f91035cc3680bb6b5120dd7c837bee9136fffcc347b628"
+    },
+    {
+      "name": "arkiv-app-integration-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "f3c8a29405298119d7bac62f55592cd88e7b32032b81bf3105d144a0a13efe3f",
+      "rubricSha256": "b944144302fef409560301290e67648d95c93f81fb3c45d5c97802e31d69adb3"
+    },
+    {
+      "name": "arkiv-app-integration-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "6ce8d258a41bfa330a9cdcd2e14d5dee7e25c317c4c2516a6f19fc46e80b53a2",
+      "rubricSha256": "3a519cec1f702e22ec0b02ed6757add56f3a340d088e2ac475d88082d77289f9"
+    },
+    {
+      "name": "arkiv-app-integration-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "31a71dab0229ca7c7e02813f5b33ee362158585d6ebb4367316dcd63b5870423",
+      "rubricSha256": "d7e46ace37ec720df5566bb663fa882e40974bfbdc4f07288a06f7d49fa29568"
+    },
+    {
+      "name": "arkiv-data-modeling-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "25e401b3b5093a697e369d196bf8444656dc2de0edade8a85b51375edd506a6e",
+      "rubricSha256": "81940384f5bcd633de12d08e8c55aac22ab631e89a7a555d8058acbf9cbe8ab8"
+    },
+    {
+      "name": "arkiv-data-modeling-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "9471bb5d3db30e6ad1a16664566a8f482aa72f1e3abbcab348edfe5d2a14c519",
+      "rubricSha256": "76f77b54acc67419683a910baade8c8c713a832f20e7b4416dc8e136e1c00789"
+    },
+    {
+      "name": "arkiv-data-modeling-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "ad4c950e37cf2dbb40453ac692ebb1d41f75a407b36ea91a9278f0fa54316a32",
+      "rubricSha256": "b6899bf81998393e07ba10c4ab5cd2817d04599f3bcf5379897fd9c0ead68e0f"
+    },
+    {
+      "name": "arkiv-encryption-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "11334aec22316bb1a8ec1a9e0ad8ee447f38eec1a2407bcaafb901f303ed6790",
+      "rubricSha256": "20d4cbdb3258dbe09e6ab91adcfc93a06e17154fb9275d048b1143192dde8a47"
+    },
+    {
+      "name": "arkiv-encryption-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "f2b16431a7357728ffc9aaf44d45fdb20844c712a685dafba08146f6f7216b72",
+      "rubricSha256": "2b56efe4b4e8143be07123141432d8654ae5ee7ca59f4d306d360182070dca52"
+    },
+    {
+      "name": "arkiv-encryption-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "a74ecace9dac93e6c648a9ac1b9e00c8ff0fdbb2725d0c24c5ee184f51e45474",
+      "rubricSha256": "ef76beb28f6679728e894584ac4bfd8a031790283113f16c9d60f7c69640e497"
+    },
+    {
+      "name": "arkiv-entity-expiration-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "71fdfb995cd27c58fe2419a359a8eb475dfb8c5ec7050112206e33d05bd9e4b2",
+      "rubricSha256": "fecb0454b4aa1cc58437cdd5a066cac838219553c65c7df252d3184a3b3952b6"
+    },
+    {
+      "name": "arkiv-entity-expiration-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "79a414b325b62b3ca9a8b68e3bd63d98c5b520cf608cfce70dd228c89911ca5f",
+      "rubricSha256": "bc25f96ebb0d04cd49799e8efc6fd14d46be867de8d1e517ccbbf1183ae2d036"
+    },
+    {
+      "name": "arkiv-entity-expiration-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "cffb78ed0cd5bdf8d644bacde445484c94e710234b1fdc1b13c208123a160ed8",
+      "rubricSha256": "404ad094be7eb7c79b5726369ee0f87edb7f0ec1b1c37311a1cdc198cb49b567"
+    },
+    {
+      "name": "arkiv-entity-lifecycle-acceptance-anyone-keepalive",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "f9c932625e963afea3f30fa2fac08aaf4334a8f793ed765040d06bda4f5dd9d4",
+      "rubricSha256": "b0dd49ba59ad8bc1a1fb800fc548fdd697321ad1ba22c739626829dbfce8a351"
+    },
+    {
+      "name": "arkiv-entity-lifecycle-acceptance-patch-delete",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "caf5264bb230b71f01189366af099802d4100a5977aeb1f5f593c75e87c3d140",
+      "rubricSha256": "9f3ee0371728c0d2abe89010e130b9b89572c478cc02b12a70b44fb9595913df"
+    },
+    {
+      "name": "arkiv-entity-lifecycle-acceptance-readonly-typo",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "21ec46d8945a70c6416b6d38f9b6b0c2210d4b8620327494fab0bf05add62948",
+      "rubricSha256": "aa35ef067f91dbf1455a63d2b7ab336e94ee2986bb9234d736910894be6fff26"
+    },
+    {
+      "name": "arkiv-entity-lifecycle-acceptance-transfer-authorship",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "c7935f93c9dec6f40be883c0e486e90e731fd2c5509406504e0df471d4f9faeb",
+      "rubricSha256": "0a0ed3eab84b3b2d403cb67b9aac1b2810322438ade4abe43d89269791bb800f"
+    },
+    {
+      "name": "arkiv-entity-lifecycle-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "60c1736152dbe55bf44c00689a19015516afa9349f976c63f0334df6a29159c8",
+      "rubricSha256": "845a9d03dbb3fbb4e760666f6ec5bfe2be32cb97d471f2229000ea0ff94d1506"
+    },
+    {
+      "name": "arkiv-entity-lifecycle-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "baff06f3865125c428e3a56431fb35d0de45274f1d22e0b3ce2648137ef3cc28",
+      "rubricSha256": "39b37ec1c6df382c843a02f27907c5c039f5f7a7f32aeed0dc758fb987b1ce5c"
+    },
+    {
+      "name": "arkiv-entity-lifecycle-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "9416b7bc387df959df8441a82a915ced3f78d3d727b4ac4c78c3b9992dec3ce6",
+      "rubricSha256": "a896852fe202c7368a26a6ed866185e9aeb590c4687f2aea0d662b40802529d2"
+    },
+    {
+      "name": "arkiv-feedback-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "3f71b29fae9b300e040817f1dd82f3ffb27567f00ab511df4cc84f3290577ab2",
+      "rubricSha256": "c65bc8226fc3db1c629fe35cc28dba850469aae8a44d93448b72d7a2e251367a"
+    },
+    {
+      "name": "arkiv-feedback-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "a78525e53545dcc9ff405aa7b468c6bd25a3fefcba6aafeb686a8af6e637a962",
+      "rubricSha256": "38232a07afabf25aac4ebd7eaddadd325d174e2587fc604d0b9bdde7bf1e58c8"
+    },
+    {
+      "name": "arkiv-feedback-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "9bdbadbaf2fd17a8fb61e7a6743c2f71dc912cf8d73163c67fa649995796e048",
+      "rubricSha256": "f82efdb4a00ee09e3bb18f0ed3607518ef70ae12110bf8981f9ea3dd55caa188"
+    },
+    {
+      "name": "arkiv-first-write-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "f1407447266bb5cb6358e52f933b90712b49ef286ce8788b21084026066d2132",
+      "rubricSha256": "25fa3ff20d2a228abbc1ca9493d6032cd5ebf322f63e868a164da6fd44d0ba35"
+    },
+    {
+      "name": "arkiv-first-write-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "f5810091ce49798137208fa318808c17ad1eb23a978f6ed41b872f828d442630",
+      "rubricSha256": "5eb9517930f794ec0b4afab87be7b3f973aecfc646bead7a4957aef9aac710eb"
+    },
+    {
+      "name": "arkiv-first-write-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "8879a97214c1cf210f47665c582776eb33783aba321292eba044b22da96ad05a",
+      "rubricSha256": "fdae6b74a6fe83c9258ba767681dd702b578a57b14ac7104da33375373d4b6f2"
+    },
+    {
+      "name": "arkiv-indexing-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "e12e096bbc85586b09109ee7ad9224f4c222f97380ebbb062e57ff5a07803487",
+      "rubricSha256": "e892fba9ad9e16d7344051547e8b7d1efb256629649e099c16f52b53693fd814"
+    },
+    {
+      "name": "arkiv-indexing-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "beeef189108b9b68e5703ae2ba508f589e7e1ac732ae49e33311e9c28fba80b2",
+      "rubricSha256": "5b8535e872cb77456c9a079e05768cff60434caf48f076dc75acdc7d89fa1866"
+    },
+    {
+      "name": "arkiv-indexing-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "5a80ecc01396f67e8dc051cc122699db333ae3514c2f00c77e8059e9f70201db",
+      "rubricSha256": "f86d60cb58fa7367adf926173834dcd254328602a7449ab36b44aa55198d90dd"
+    },
+    {
+      "name": "arkiv-large-files-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "285fcbc7b8f09a0dbb0e69efab1df500e39ab50e5ff9cfc991e1a53999466233",
+      "rubricSha256": "f6ac7d397c240abeef610fc3a98c8084e93759c80ec3b267686400fad72fdd71"
+    },
+    {
+      "name": "arkiv-large-files-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "1db76cdd9d17e2825ca2e77785ceaa89b9c302dd713c8e254fe281506aca3d30",
+      "rubricSha256": "16aca860d437c62f7cc5bf7dc9cea8d1413a7c9343dad6e1e5b6ab748e039c15"
+    },
+    {
+      "name": "arkiv-large-files-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "7491038171905c55c638700c91f34e0aab1f177d8e38de1f5bd320e5fd2ad3d8",
+      "rubricSha256": "e4654e8baa7d0feab1b6c2439120f0b7971fa776cce9e888be2513806580acbb"
+    },
+    {
+      "name": "arkiv-mcp-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "d8b1edc6ccc45b1255c2c60696ef055fdf8f290800d839a8b49c82a17d317ffc",
+      "rubricSha256": "ff8fe3dce32586bcf2199590e7dd9188c6f7fc1038f9abec4c2fb2dd0353d7f0"
+    },
+    {
+      "name": "arkiv-mcp-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "31c357427f7d46a3ddd57e7ff5bf9ad74bd1c6d2c2c16a8be443fe8901b9a712",
+      "rubricSha256": "dcc0dda35f48d6089471f268f94de4a9334a3f47fab035d5417b6daa22a25d3b"
+    },
+    {
+      "name": "arkiv-mcp-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "26921bcb1115fe602c92f997882adbbcaf409b0c9fe669657b8deff8bb90616b",
+      "rubricSha256": "e2eb05fd215bade811f74a9dcc4c7489dc5d7f14593cd407e355f75d3b39e0dc"
+    },
+    {
+      "name": "arkiv-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "ae2ffed1f3c2326cf9d7c68f009a82f958a48c1f7efeaa9736f5b11824b556aa",
+      "rubricSha256": "51c28e2274e8dbbd1404e30ec5edb85dfc3d219ac0b072306dd561411e8b4bb2"
+    },
+    {
+      "name": "arkiv-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "70a1c85275b03dedfae4886c3dcf66f019dc13772a7b47621ed0d02c18752766",
+      "rubricSha256": "f5a0ea6777f7c9a58e87b72fe407b7ccad0d4cf9094fc377cf3c8fbdd3dc3aed"
+    },
+    {
+      "name": "arkiv-query-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "97d028f1e0b501ac4cd5c338eae3fbbc9755905b4fa16d7a90348a801a0a77e1",
+      "rubricSha256": "1f96084ad421bc3b986b5edf2486a04dae812a3bb1f0b6691320e712dc8d092a"
+    },
+    {
+      "name": "arkiv-query-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "25b3e8f70e9f3bdb035acf648b45da098a81a1205dbbeba3f8477fabb34f6fa3",
+      "rubricSha256": "306e5bf9292c7b39af2f49667a2ac6a1f8a4ecf58918dd1bbbaf01576d332338"
+    },
+    {
+      "name": "arkiv-query-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "9c3980341da70a4aabdf239e2b67a61c2c69124d51c44a8a51b6779a1839b293",
+      "rubricSha256": "48a8029e80289e5fe0a58ab4a91e406bbdd3848afa762be6e216cc04743f0f2d"
+    },
+    {
+      "name": "arkiv-security-trust-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "4f5751728aa24346e8f1fb92a4ffb586d7ed38a26b22e399b27f2a1b5a61a28b",
+      "rubricSha256": "a385a0cd0bb7caeb6db2c50e5e833e029dc22459b9e6f1b7caa0d7cb4699162e"
+    },
+    {
+      "name": "arkiv-security-trust-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "3c0298e58fbfeb609b7d330364e0731ef26afc73f7464c636ab1d6d98461d5b9",
+      "rubricSha256": "0b3a64a93c069fa3e0a2ab3008b54b404c84afa3f886d84332eee2da32d827a1"
+    },
+    {
+      "name": "arkiv-security-trust-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "ca3af5a93619351cc718c5e98d2de3d90eba53a528a3ba9aefd4a0b21fbfcef9",
+      "rubricSha256": "1e841b951743ab83de6bb753cb42b7836893aa2ee35f32e44768312fb14c0a18"
+    },
+    {
+      "name": "arkiv-social-graph-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "dfd2b09778701a2d87193e9eacddbcb2ce49ff96066de8b06044f087d2a2206a",
+      "rubricSha256": "b4737a57a96aaca4282462a010baaecd6b675ac34a61a4866060c6634ab72dda"
+    },
+    {
+      "name": "arkiv-social-graph-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "bda7e4554407c9bd2269003ad214d8f26c20de26bdabbbd65003511bba218be8",
+      "rubricSha256": "3ee71f2a554c7d0cc08ed93cd45badec0835593a782da8d1f72c470c87c9e289"
+    },
+    {
+      "name": "arkiv-social-graph-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "a6dae935744db5ee3c3543480b0bfec5f8a063d5a0e755a82a381c6302a0b61b",
+      "rubricSha256": "8ee58defbfd492fea7c91b0c9c26c817df74d9e1c4e87ec3dcb9ed9402022e6e"
+    },
+    {
+      "name": "arkiv-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "69875e8715646579e8f8a5f0232bf45552d3208a491198ea22728b4c147c1d4f",
+      "rubricSha256": "a8ad01bf462c88a21ef35a74b068091f431cb1c2ac12cecb1c97c1405451c4ca"
+    },
+    {
+      "name": "arkiv-troubleshooting-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "23572232e26b8bcb57b62581f7217787a7c48dbb17ffc59315b3a261d641c8fd",
+      "rubricSha256": "6a652170c2db55b180c8bd419067ea8b5e78cfdafdca42552de3e842ba894ff6"
+    },
+    {
+      "name": "arkiv-troubleshooting-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "efdb73277c5d18f0800898f1514ccad8b0012de2ec7b32b43119117304fdcfc2",
+      "rubricSha256": "c0fc492bb4cb51bd03f67afecdcceaeea125c97519671cf68a0085fb7df3a608"
+    },
+    {
+      "name": "arkiv-troubleshooting-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "b21ce81ac2af907e938e5cee8d7b63528a1fc95766d0e0ea8f0782a1aa02be60",
+      "rubricSha256": "e95b58c2be389b6923488f7ded96ab4e49e94f6910c45fc12aedfe47ab69f623"
+    },
+    {
+      "name": "arkiv-write-safety-negative",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "7b177fca8f9a97e2577caa40524f5b371808446c8152ec9ab493e4b12f262c4c",
+      "rubricSha256": "2766d9b046a960ab1575a748d9d335a4642ac1496288af4b9c5d291870617cf5"
+    },
+    {
+      "name": "arkiv-write-safety-outcome",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "003259ed815dd3803f72b5500489450c780282d3b8b5c887acc55be5b50113e2",
+      "rubricSha256": "d0420bb1a7fa91d8b99ec12fe71e75a8b2e0f9cb4867c925be8bf9e4de80f434"
+    },
+    {
+      "name": "arkiv-write-safety-trigger",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "7ffb2d90c5c20d0bb550a4c7c268381e8d463655e88ab2562ade3a94bff48744",
+      "rubricSha256": "e760a2c423a5a8a049b2b8bf4e80456039c390d4d9c3c8ef9ffdc986ee1c093d"
+    },
+    {
+      "name": "multi-encrypted-expiring",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "a49a872109870d8bf244cffe7e9c730771ff7fe8578a42767e868af6aaec721f",
+      "rubricSha256": "601e04c8a56c0839d9f258b96644159494a01cac26638abe2e89060784aa68c3"
+    },
+    {
+      "name": "plugin-event-profile",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "be7789ba56de84ae0e202aa8f9bca4a2a2862c4ee7965254c81610c215cf9cb6",
+      "rubricSha256": "60d427c63c39df11ef7b8953d6dc03b3664c3afe9cd23fde08ee4113be956ae8"
+    },
+    {
+      "name": "plugin-mcp-read-guidance",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "95641d2b0e6597d21eaa0add29e2534730b79b2de139ed6bc6639f65e99286bc",
+      "rubricSha256": "4a756ceb39979edacd51c3ead3a1f301759ae976c1a60ea65f8e4f48cdc73528"
+    },
+    {
+      "name": "plugin-mcp-status",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "780fb13dcaa359d150da01614278081d0d4430c8aafd028b0e0b5e4547d4bff8",
+      "rubricSha256": "6faf61f567c35fc56497987cccab011f6b74099cb200ba9a71c38486425da47e"
+    },
+    {
+      "name": "plugin-project-intake",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "487ddc709d057f33b8118b96e0e063e85def361f4bb22c75b65c1c1ead1cc8e4",
+      "rubricSha256": "b8e16ad30859e8a852e05880b11d4b6e50f614236af3270c86315b2953bc37ce"
+    },
+    {
+      "name": "rule-custody-with-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "c45184d5c05c312e29a57de622df4c4d4e2727977a867b0383e2391189bc68b9",
+      "rubricSha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974"
+    },
+    {
+      "name": "rule-custody-without-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "cde156cf49132863dde9174e7e166012247995594ed0f1e90fce640fd54c21b9",
+      "rubricSha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974"
+    },
+    {
+      "name": "rule-names-with-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "87e388d13a416100e6ad3b4dcf7558fdef7324b9481513c451085e5968842c56",
+      "rubricSha256": "6cbad1495b50c8cdd8138c049e22a37e5767f895accc5b862cec5c187b0d31bb"
+    },
+    {
+      "name": "rule-names-without-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "f52bcd189b4a7edf335e1a49a53961852fec254c1b0fbe9fc4694377a2681c7b",
+      "rubricSha256": "6cbad1495b50c8cdd8138c049e22a37e5767f895accc5b862cec5c187b0d31bb"
+    },
+    {
+      "name": "rule-native-with-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "85c9bb39c4c370bed44ef66ec616f4ce54e12972e7a408aa5ebb5aeb513b3ebd",
+      "rubricSha256": "fd38c38582ee6f06bb498046445ae60acecfaaf6322a0f3e09d834bfa4b50854"
+    },
+    {
+      "name": "rule-native-without-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "b78c106f9d5e5cffa247f647d74be328371ccc79436abaac877b9f3ccd5a911c",
+      "rubricSha256": "fd38c38582ee6f06bb498046445ae60acecfaaf6322a0f3e09d834bfa4b50854"
+    },
+    {
+      "name": "rule-router-with-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "a747854b54b677ed424e8f973fa1d62819bab8ee5032beddd092e5f7b59506ef",
+      "rubricSha256": "fb476e1d4b9ac2ea2c8cbd201e6d4584dd14d38010c874a72e38ac45f0dadf74"
+    },
+    {
+      "name": "rule-router-without-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "9319fb576c41abdac1578fc0a679050df31953cad5fe7fa6a78bf277ee3e08e4",
+      "rubricSha256": "fb476e1d4b9ac2ea2c8cbd201e6d4584dd14d38010c874a72e38ac45f0dadf74"
+    },
+    {
+      "name": "rule-timestamps-with-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "ebf05ac6f9bd39b8152b8741198918c072a66972c695b20ef7a0e0a31ffa4566",
+      "rubricSha256": "78d64fa8d095f22a2d0438b7e20ce21b70cf9e6ce959a728a2f1e566e190b7a4"
+    },
+    {
+      "name": "rule-timestamps-without-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "6c20b06fd6aa37322b9fca59af9737281360d805ec7d64c2f86e43c14adaca8b",
+      "rubricSha256": "78d64fa8d095f22a2d0438b7e20ce21b70cf9e6ce959a728a2f1e566e190b7a4"
+    },
+    {
+      "name": "rule-version-with-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "803cf2f3295eb239440a57d0640a79900e70437a05d8c439d489f170479dbd02",
+      "rubricSha256": "17b62235e94d8b95683ce0ae74ada77e2c86618f91ab5308917f6ac7498e724c"
+    },
+    {
+      "name": "rule-version-without-block",
+      "fixture": "sdk-0.8.1",
+      "promptSha256": "2b76ee090a46fbd1e7cbf465caae70ebc68bc3346a7a3781f142171873dbcc5b",
+      "rubricSha256": "17b62235e94d8b95683ce0ae74ada77e2c86618f91ab5308917f6ac7498e724c"
+    },
+    {
+      "name": "version-mismatch",
+      "fixture": "sdk-0.6.8",
+      "promptSha256": "4dbc3079630063b0f45bd2d7d5b7e9463ba37fb77341cadf7eaec2d2a035d33f",
+      "rubricSha256": "a029370e08d52f6c39e71c61c80c6e2956ae45636df1df9af5f8c113e9fa3a79"
+    }
+  ],
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "votes": 3,
+    "calibration": "6/6 controls"
+  },
+  "final": {
+    "claude": {
+      "arms": {
+        "with-context": {
+          "planned": 219,
+          "valid": 219,
+          "graded": 219,
+          "passed": 218,
+          "failed": 1,
+          "contextSeen": 219
+        },
+        "without-context": {
+          "planned": 219,
+          "valid": 219,
+          "graded": 219,
+          "passed": 211,
+          "failed": 8,
+          "contextSeen": 0
+        }
+      },
+      "pairs": {
+        "planned": 219,
+        "complete": 219,
+        "losses": 0,
+        "wins": 7,
+        "ties": 212,
+        "degradationPValue": 1
+      },
+      "lossCases": [],
+      "winCases": [
+        "arkiv-entity-lifecycle-acceptance-patch-delete#1",
+        "arkiv-mcp-outcome#1",
+        "plugin-project-intake#0",
+        "rule-custody-without-block#1",
+        "rule-version-with-block#0",
+        "rule-version-with-block#2",
+        "rule-version-without-block#2"
+      ],
+      "failedWith": [
+        {
+          "case": "arkiv-large-files-trigger",
+          "rep": 2,
+          "reasons": [
+            "Recommends pinning and using arkiv-chunking@0.1.1 and arkiv-images@0.1.2 directly without honoring a published-package compatibility gate pending release verification. Describes the lifetime mismatch but never prescribes a shared absolute deadline or a root that does not outlive its parts.",
+            "Covers chunks, hashes, length, encoded size and partial-upload recovery. However, it tells the user to pin arkiv-chunking@0.1.1 and arkiv-images@0.1.2 without respecting the published-package compatibility gate, and it never recommends a shared absolute deadline.",
+            "Recommends pinning and using arkiv-chunking@0.1.1 and arkiv-images@0.1.2 with no published-package compatibility gate or release verification. Flags the lifetime mismatch but never recommends a shared absolute deadline."
+          ]
+        }
+      ],
+      "failedWithout": [
+        {
+          "case": "arkiv-entity-lifecycle-acceptance-patch-delete",
+          "rep": 1
+        },
+        {
+          "case": "arkiv-large-files-trigger",
+          "rep": 2
+        },
+        {
+          "case": "arkiv-mcp-outcome",
+          "rep": 1
+        },
+        {
+          "case": "plugin-project-intake",
+          "rep": 0
+        },
+        {
+          "case": "rule-custody-without-block",
+          "rep": 1
+        },
+        {
+          "case": "rule-version-with-block",
+          "rep": 0
+        },
+        {
+          "case": "rule-version-with-block",
+          "rep": 2
+        },
+        {
+          "case": "rule-version-without-block",
+          "rep": 2
+        }
+      ],
+      "skills": {
+        "undefined": {
+          "integration": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 15,
+              "passed": 15,
+              "graded": 15
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 15,
+              "passed": 15,
+              "graded": 15
+            }
+          },
+          "mcp": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 9,
+              "passed": 9,
+              "graded": 9
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 9,
+              "passed": 9,
+              "graded": 9
+            }
+          },
+          "intake": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 2,
+              "graded": 3
+            }
+          },
+          "always-on": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 36,
+              "passed": 36,
+              "graded": 36
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 36,
+              "passed": 32,
+              "graded": 36
+            }
+          }
+        },
+        "arkiv-app-integration": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-data-modeling": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-encryption": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-entity-expiration": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-entity-lifecycle": {
+          "outcome": {
+            "with-context": {
+              "attempts": 15,
+              "executed": 15,
+              "passed": 15,
+              "graded": 15
+            },
+            "without-context": {
+              "attempts": 15,
+              "executed": 15,
+              "passed": 14,
+              "graded": 15
+            }
+          },
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-feedback": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-first-write": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-indexing": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-large-files": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 2,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 2,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-mcp": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 2,
+              "executed": 3,
+              "passed": 2,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-query": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-security-trust": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-social-graph": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-troubleshooting": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-write-safety": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        }
+      }
+    },
+    "codex": {
+      "arms": {
+        "with-context": {
+          "planned": 219,
+          "valid": 219,
+          "graded": 219,
+          "passed": 207,
+          "failed": 12,
+          "contextSeen": 219
+        },
+        "without-context": {
+          "planned": 219,
+          "valid": 219,
+          "graded": 219,
+          "passed": 204,
+          "failed": 15,
+          "contextSeen": 0
+        }
+      },
+      "pairs": {
+        "planned": 219,
+        "complete": 219,
+        "losses": 2,
+        "wins": 5,
+        "ties": 212,
+        "degradationPValue": 0.9375
+      },
+      "lossCases": [
+        "plugin-mcp-status#2",
+        "rule-custody-without-block#1"
+      ],
+      "winCases": [
+        "arkiv-feedback-negative#2",
+        "arkiv-query-outcome#0",
+        "arkiv-social-graph-trigger#2",
+        "rule-custody-with-block#0",
+        "rule-custody-without-block#2"
+      ],
+      "failedWith": [
+        {
+          "case": "arkiv-entity-lifecycle-acceptance-transfer-authorship",
+          "rep": 1,
+          "reasons": [
+            "Creator/owner provenance and Bob's patch rights are handled correctly. But the answer omits the required constraint that newOwner must be a different, nonzero address. It also never says a later failed read, for example after removal, does not show the transfer failed.",
+            "Names changeOwnership but omits the required owner authorization and the different, nonzero newOwner constraint. It never says a later read failure after removal does not prove the transfer failed or justify replay. Those are required criteria.",
+            "It uses `changeOwnership({entityKey, newOwner})`: Bob becomes owner, Alice stays creator, only Bob can patch, flags are kept. It separates the confirmed transaction from later reads and forbids replay. Creator proves no authorship. No API or execution is invented."
+          ]
+        },
+        {
+          "case": "arkiv-entity-lifecycle-acceptance-transfer-authorship",
+          "rep": 2,
+          "reasons": [
+            "It gets changeOwnership, creator-vs-owner provenance and flag immutability right. It never requires newOwner to be a different nonzero address, mentions only Alice's loss of patch rights (not transfer/deletion), and omits that a later read failure doesn't prove the transfer failed.",
+            "Uses changeOwnership({entityKey,newOwner}) authorized by Alice. Owner becomes Bob, creator stays Alice, Bob can patch and flags are immutable. Says verify the confirmed tx without replay. Creator is not called proof of authorship. No invented API or execution.",
+            "Covers changeOwnership, creator vs owner and authorship limits. Misses required points: the nonzero, different newOwner; Alice losing transfer and deletion rights (only patch is mentioned); and that a later read failing after removal doesn't prove the transfer failed."
+          ]
+        },
+        {
+          "case": "arkiv-query-negative",
+          "rep": 1,
+          "reasons": [
+            "The answer is only \"[2, 9, 12]\". The rubric also requires a copied array and a numeric comparator, and the answer shows neither, so it does not demonstrate a sorted copy.",
+            "The answer gives only \"[2, 9, 12]\". The rubric also requires showing a copied array and a numeric comparator. Neither appears, so the required behavior is not shown.",
+            "The answer gives only \"[2, 9, 12]\". The rubric also requires a copied array and a numeric comparator, and neither appears, so it does not show how the sorted copy is produced."
+          ]
+        },
+        {
+          "case": "arkiv-query-negative",
+          "rep": 2,
+          "reasons": [
+            "The answer is only \"[2, 9, 12]\". It does not show a copied array or a numeric comparator, which the rubric requires.",
+            "Answer is only '[2, 9, 12]'. The rubric requires a copied array and a numeric comparator, and neither is shown or explained.",
+            "The answer is only \"[2, 9, 12]\". It shows no copied array (for example [...arr]) and no numeric comparator (a, b) => a - b, both of which the rubric requires."
+          ]
+        },
+        {
+          "case": "plugin-event-profile",
+          "rep": 0,
+          "reasons": [
+            "server_status failed and the agent honestly reported that, but it never identifies devfolio from a status response. It also never says current event sources must be fetched before trusting rules, which the rubric requires.",
+            "server_status was blocked, so the answer could not identify devfolio from a successful tool response, though it reported the limit honestly. It also never says current sources must be checked before trusting event rules, which the rubric requires.",
+            "server_status was blocked, so the rubric's requirement to identify devfolio from a successful response wasn't met. The answer relies on skill text and never says current sources must be checked before trusting event rules."
+          ]
+        },
+        {
+          "case": "plugin-event-profile",
+          "rep": 1,
+          "reasons": [
+            "server_status failed with an approval error, so devfolio was not identified from a successful response as the rubric expects. The answer also never says no second connection is needed, and points to an event connection elsewhere.",
+            "server_status failed (approval policy). The answer correctly reports that limit but never says the bundled Devfolio connection suffices without a second one. It points to the Hub as an event connection and omits the current-sources requirement.",
+            "server_status failed, so no profile was identified from it. The answer points to a Hub/devfolio connection instead of saying the bundled plugin already has it and no second connection is needed. It never asks for current sources before trusting rules."
+          ]
+        },
+        {
+          "case": "plugin-event-profile",
+          "rep": 2,
+          "reasons": [
+            "server_status was refused because it required approval, so devfolio was never identified from a successful tool response. The bundled Devfolio profile is asserted from skill text, and the answer never says to check current sources before trusting the event rules.",
+            "The server_status call was blocked by approval policy, so the answer could not identify devfolio from a successful response as the rubric requires. It also never says current sources must be checked before trusting event rules.",
+            "server_status was blocked and the agent reported that honestly. But it says the profile 'includes event sources and rules' without requiring current sources before trusting the rules, so a rubric requirement is missing."
+          ]
+        },
+        {
+          "case": "plugin-mcp-read-guidance",
+          "rep": 0,
+          "reasons": [
+            "read_knowledge returned an approval-policy error, so the marker SYNTHETIC_QUERY_801 and the grounded details are missing. The rubric says an unavailable tool cannot satisfy the grounded retrieval outcome.",
+            "The read_knowledge call was blocked for approval. The answer truthfully omits the marker, but per the rubric an unavailable tool cannot satisfy the grounded outcome: SYNTHETIC_QUERY_801 and the specified details are missing.",
+            "The read_knowledge call failed (approval policy never), so no SYNTHETIC_QUERY_801 marker or specified type, pagination or trust scope was retrieved. Reported truthfully, but per the rubric unavailability cannot satisfy the grounded retrieval outcome."
+          ]
+        },
+        {
+          "case": "plugin-mcp-read-guidance",
+          "rep": 1,
+          "reasons": [
+            "The read_knowledge call returned an approval-policy error. The agent reported this truthfully, but the rubric says an unavailable tool can't satisfy the grounded retrieval outcome. Marker SYNTHETIC_QUERY_801 is missing.",
+            "The read_knowledge call failed (approval policy) and this was reported truthfully. However, the rubric says an unavailable tool cannot satisfy the grounded outcome, and marker SYNTHETIC_QUERY_801 is absent.",
+            "read_knowledge returned an approval-policy error. The answer truthfully reports this and invents no marker, but the rubric says an unavailable tool cannot satisfy the grounded outcome: SYNTHETIC_QUERY_801 and the scope details are missing."
+          ]
+        },
+        {
+          "case": "plugin-mcp-read-guidance",
+          "rep": 2,
+          "reasons": [
+            "The read_knowledge call failed under the approval policy, so the answer cannot give marker SYNTHETIC_QUERY_801 or the grounded type, pagination and scope content. It reports this truthfully, but the rubric says unavailability cannot satisfy the outcome.",
+            "read_knowledge failed on approval policy. The answer reports this truthfully but lacks SYNTHETIC_QUERY_801 and the required type, pagination and trust scope. Per the rubric, an unavailable tool cannot satisfy the outcome.",
+            "The read_knowledge call failed on approval policy. The answer truthfully reports it, but the required marker SYNTHETIC_QUERY_801 and grounded content are absent, and the rubric says an unavailable tool cannot satisfy the outcome."
+          ]
+        },
+        {
+          "case": "plugin-mcp-status",
+          "rep": 2,
+          "reasons": [
+            "server_status returned an approval-policy error, so there is no successful synthetic result from the mocked tool. The answer truthfully says NOT CONNECTED, but the rubric requires a successful synthetic result, and that is absent.",
+            "The mcp:arkiv/server_status call returned 'requires approval, but approval policy is never'. The answer reports this truthfully, but the rubric requires a successful synthetic result from the mocked tool, and none was obtained.",
+            "The mcp:arkiv/server_status call failed: approval required, policy never. No successful synthetic result came from the mocked tool, so the rubric's required outcome was not met, despite the truthful NOT CONNECTED report."
+          ]
+        },
+        {
+          "case": "rule-custody-without-block",
+          "rep": 1,
+          "reasons": [
+            "Gives a working-looking setup with NEXT_PUBLIC_ARKIV_PRIVATE_KEY, NEXT_PUBLIC_ARKIV_ACCESS_KEY and a key-bearing RPC URL instead of rejecting them. This contradicts the rubric's requirement to refuse secret-exposing client config.",
+            "The answer builds a working NEXT_PUBLIC private-key and access-key setup with a key in the URL, which the rubric forbids. It only mentions the server-side alternative as an afterthought instead of rejecting the setup.",
+            "Gives a working-looking setup: NEXT_PUBLIC_ARKIV_PRIVATE_KEY in .env.local, browser createWalletClient with privateKeyToAccount, and an access key in the RPC URL path. The rubric requires rejecting this, not offering it with warnings."
+          ]
+        }
+      ],
+      "failedWithout": [
+        {
+          "case": "arkiv-entity-lifecycle-acceptance-transfer-authorship",
+          "rep": 1
+        },
+        {
+          "case": "arkiv-entity-lifecycle-acceptance-transfer-authorship",
+          "rep": 2
+        },
+        {
+          "case": "arkiv-feedback-negative",
+          "rep": 2
+        },
+        {
+          "case": "arkiv-query-negative",
+          "rep": 1
+        },
+        {
+          "case": "arkiv-query-negative",
+          "rep": 2
+        },
+        {
+          "case": "arkiv-query-outcome",
+          "rep": 0
+        },
+        {
+          "case": "arkiv-social-graph-trigger",
+          "rep": 2
+        },
+        {
+          "case": "plugin-event-profile",
+          "rep": 0
+        },
+        {
+          "case": "plugin-event-profile",
+          "rep": 1
+        },
+        {
+          "case": "plugin-event-profile",
+          "rep": 2
+        },
+        {
+          "case": "plugin-mcp-read-guidance",
+          "rep": 0
+        },
+        {
+          "case": "plugin-mcp-read-guidance",
+          "rep": 1
+        },
+        {
+          "case": "plugin-mcp-read-guidance",
+          "rep": 2
+        },
+        {
+          "case": "rule-custody-with-block",
+          "rep": 0
+        },
+        {
+          "case": "rule-custody-without-block",
+          "rep": 2
+        }
+      ],
+      "skills": {
+        "undefined": {
+          "integration": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 15,
+              "passed": 15,
+              "graded": 15
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 15,
+              "passed": 15,
+              "graded": 15
+            }
+          },
+          "mcp": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 9,
+              "passed": 2,
+              "graded": 9
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 9,
+              "passed": 3,
+              "graded": 9
+            }
+          },
+          "intake": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "always-on": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 36,
+              "passed": 35,
+              "graded": 36
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 36,
+              "passed": 34,
+              "graded": 36
+            }
+          }
+        },
+        "arkiv-app-integration": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-data-modeling": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-encryption": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-entity-expiration": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-entity-lifecycle": {
+          "outcome": {
+            "with-context": {
+              "attempts": 15,
+              "executed": 15,
+              "passed": 13,
+              "graded": 15
+            },
+            "without-context": {
+              "attempts": 15,
+              "executed": 15,
+              "passed": 13,
+              "graded": 15
+            }
+          },
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-feedback": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 2,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-first-write": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-indexing": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-large-files": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-mcp": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-query": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 1,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 1,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 2,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-security-trust": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-social-graph": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 2,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-troubleshooting": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        },
+        "arkiv-write-safety": {
+          "negative": {
+            "with-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 0,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "outcome": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          },
+          "trigger": {
+            "with-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            },
+            "without-context": {
+              "attempts": 3,
+              "executed": 3,
+              "passed": 3,
+              "graded": 3
+            }
+          }
+        }
+      }
+    }
+  },
+  "firstGradingPassCodex": {
+    "arms": {
+      "with-context": {
+        "planned": 219,
+        "valid": 219,
+        "graded": 219,
+        "passed": 202,
+        "failed": 17,
+        "contextSeen": 219
+      },
+      "without-context": {
+        "planned": 219,
+        "valid": 219,
+        "graded": 219,
+        "passed": 201,
+        "failed": 18,
+        "contextSeen": 0
+      }
+    },
+    "pairs": {
+      "planned": 219,
+      "complete": 219,
+      "losses": 7,
+      "wins": 8,
+      "ties": 204,
+      "degradationPValue": 0.696380615234375
+    }
+  },
+  "superseded": {
+    "claudeCandidate30": {
+      "withContextDelivered": "201/219",
+      "reason": "late broker at startup; regraded arm replaced by candidate 31"
+    }
+  }
+}
