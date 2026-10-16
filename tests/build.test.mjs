@@ -30,19 +30,35 @@ test('Claude opt-out omits attribution and never transmits an environment value'
     assert.ok(!raw.includes('private-project-canary'));
   }
 });
-test('Codex uses portable transport, shared identity/version and its own package', () => {
+test('Codex uses its native manifest, shared identity/version, its own package and only the Codex context hook', () => {
   const output = buildArtifacts(config, source);
   const marketplace = JSON.parse(output.get('.agents/plugins/marketplace.json'));
-  const manifest = JSON.parse(output.get('plugins/arkiv-codex/plugin.json'));
+  const manifest = JSON.parse(output.get('plugins/arkiv-codex/.codex-plugin/plugin.json'));
   const mcp = JSON.parse(output.get('plugins/arkiv-codex/mcp.json'));
+  const hooks = JSON.parse(output.get('plugins/arkiv-codex/hooks/hooks.json')).hooks;
   assert.equal(marketplace.name, 'arkiv');
   assert.deepEqual(marketplace.plugins[0].source, {source: 'local', path: './plugins/arkiv-codex'});
+  assert.equal(output.has('plugins/arkiv-codex/plugin.json'), false, 'a portable root manifest takes precedence and disables hooks');
   assert.equal(manifest.name, config.name); assert.equal(manifest.version, config.version);
-  assert.equal(manifest.license, undefined);
-  assert.equal(manifest.extensions['com.openai'].hooks, undefined);
+  assert.equal(manifest.license, undefined); assert.equal(manifest.hooks, './hooks/hooks.json');
   assert.deepEqual(mcp.mcpServers, {arkiv: {type: 'streamable-http', url: config.mcpUrl,
     headers:{'X-Arkiv-Client':'arkiv-plugin/'+config.version+'; host=codex'}}});
-  assert.ok([...output.keys()].filter(file => file.startsWith('plugins/arkiv-codex/')).every(file => !file.includes('/hooks/')));
+  assert.deepEqual(Object.keys(hooks), ['SessionStart', 'UserPromptSubmit', 'PostCompact', 'SessionEnd']);
+  for (const h of Object.values(hooks).flatMap(groups => groups.flatMap(g => g.hooks))) {
+    assert.match(h.command, /context-hook\.mjs" codex/); assert.match(h.commandWindows, /context-hook\.mjs'\) codex/);
+    assert.match(h.command, /exit 0$/); assert.ok(!/curl|https?:/.test(h.command + h.commandWindows));
+  }
+});
+test('Claude hooks keep the rules hook first and add only the fail-open context adapter', () => {
+  const hooks = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/hooks/hooks.json')).hooks;
+  assert.deepEqual(Object.keys(hooks), ['SessionStart', 'UserPromptSubmit', 'FileChanged', 'CwdChanged', 'PostCompact', 'SessionEnd']);
+  const context = Object.values(hooks).flatMap(groups => groups.flatMap(g => g.hooks)).filter(h => h.command !== 'node');
+  assert.ok(context.length > 0);
+  for (const h of context) {
+    assert.match(h.command, /context-hook\.mjs" claude-code/); assert.match(h.command, /exit 0$/);
+    assert.ok(!/curl|https?:/.test(h.command));
+  }
+  assert.ok(context.filter(h => h.async).every(h => /--broker/.test(h.command)));
 });
 test('Codex onboarding is explicit and rules do not depend on SDK presence', () => {
   const output = buildArtifacts(config, source);

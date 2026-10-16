@@ -14,6 +14,82 @@
             "onFailure": "continue"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code --broker 2>/dev/null; fi; exit 0",
+            "timeout": 600,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code 2>/dev/null; fi; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code --broker 2>/dev/null; fi; exit 0",
+            "timeout": 600,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code 2>/dev/null; fi; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "FileChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code 2>/dev/null; fi; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code 2>/dev/null; fi; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code 2>/dev/null; fi; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" claude-code 2>/dev/null; fi; exit 0",
+            "timeout": 3
+          }
+        ]
       }
     ]
   }

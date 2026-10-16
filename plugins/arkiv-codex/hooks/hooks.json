@@ -1,0 +1,66 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" codex --broker 2>/dev/null; fi; exit 0",
+            "commandWindows": "if (Get-Command node -ErrorAction SilentlyContinue) { & node (Join-Path $env:CLAUDE_PLUGIN_ROOT 'scripts/context/context-hook.mjs') codex --broker 2>$null }; exit 0",
+            "timeout": 600,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" codex 2>/dev/null; fi; exit 0",
+            "commandWindows": "if (Get-Command node -ErrorAction SilentlyContinue) { & node (Join-Path $env:CLAUDE_PLUGIN_ROOT 'scripts/context/context-hook.mjs') codex 2>$null }; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" codex --broker 2>/dev/null; fi; exit 0",
+            "commandWindows": "if (Get-Command node -ErrorAction SilentlyContinue) { & node (Join-Path $env:CLAUDE_PLUGIN_ROOT 'scripts/context/context-hook.mjs') codex --broker 2>$null }; exit 0",
+            "timeout": 600,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" codex 2>/dev/null; fi; exit 0",
+            "commandWindows": "if (Get-Command node -ErrorAction SilentlyContinue) { & node (Join-Path $env:CLAUDE_PLUGIN_ROOT 'scripts/context/context-hook.mjs') codex 2>$null }; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" codex 2>/dev/null; fi; exit 0",
+            "commandWindows": "if (Get-Command node -ErrorAction SilentlyContinue) { & node (Join-Path $env:CLAUDE_PLUGIN_ROOT 'scripts/context/context-hook.mjs') codex 2>$null }; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"$CLAUDE_PLUGIN_ROOT/scripts/context/context-hook.mjs\" codex 2>/dev/null; fi; exit 0",
+            "commandWindows": "if (Get-Command node -ErrorAction SilentlyContinue) { & node (Join-Path $env:CLAUDE_PLUGIN_ROOT 'scripts/context/context-hook.mjs') codex 2>$null }; exit 0",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}

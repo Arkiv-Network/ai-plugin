@@ -27,7 +27,7 @@ async function fixture(run) {
 
 test('exact fixed-source skill imports and cross references pass', () => fixture(async directory => {
   const result = await checkSkillImport(directory);
-  assert.equal(result.skills, 16); assert.equal(result.references, 22);
+  assert.equal(result.skills, 16); assert.equal(result.references, 23);
 }));
 test('changed imported guidance cannot pass with the old source receipt', () => fixture(async directory => {
   const file = path.join(directory, 'plugins/arkiv/skills/arkiv-query/SKILL.md');

@@ -45,3 +45,62 @@ test('compaction refreshes retained facts and declaration changes invalidate pre
  await f.put('node_modules/@arkiv-network/sdk/index.d.ts','export declare function changed(): void;');
  assert.match(updateContext(a.state,await inspectSdk(f.root),'UserPromptSubmit').context,/declaration.*changed/i);
 });
+
+test('unknown startup has no prior hook facts to invalidate; later loss invalidates only hook facts',async t=>{
+ const f=await fixture(t),known=await inspectSdk(f.root);
+ const unknown={...known,facts:{state:null,version:null,declarations:null,reason:'insufficient_evidence'}};
+ const first=updateContext(null,unknown,'SessionStart');
+ assert.doesNotMatch(first.context,/previous.*invalidated/i);
+ assert.equal(first.state.facts.state,null);
+ const measured=updateContext(first.state,known,'UserPromptSubmit');
+ assert.match(measured.context,/compatible/);
+ const lost=updateContext(measured.state,unknown,'UserPromptSubmit');
+ assert.match(lost.context,/previous facts emitted by this hook.*invalidated/i);
+ assert.doesNotMatch(lost.context,/Previous Arkiv SDK observations/);
+ assert.equal(updateContext(lost.state,unknown,'UserPromptSubmit').context,'');
+ const resumed=updateContext(lost.state,known,'SessionStart');
+ assert.match(resumed.context,/previous facts emitted by this hook.*invalidated/i);
+});
+
+test('unmeasured startup and unchanged prompts do not inject an SDK topic into unrelated work',()=>{
+ const unknown={workspace:'/fixture',fingerprint:'empty',declarationFingerprint:null,facts:{state:null,version:null,declarations:null,reason:'insufficient_evidence'}};
+ const start=updateContext(null,unknown,'SessionStart');
+ assert.equal(start.context,'');
+ assert.equal(updateContext(start.state,unknown,'UserPromptSubmit').context,'');
+ assert.equal(updateContext(start.state,unknown,'SessionStart').context,'');
+ const measured={...unknown,facts:{state:'compatible',version:'0.8.1',declarations:2,reason:null}};
+ const known=updateContext(start.state,measured,'UserPromptSubmit');
+ assert.match(known.context,/compatible/);
+ const lost=updateContext(known.state,unknown,'UserPromptSubmit');
+ assert.match(lost.context,/invalidated/);
+ assert.match(lost.context,/unmeasured/);
+});
+
+test('whole-fact invalidation republishes independently measured version after declaration loss',async t=>{
+ const f=await fixture(t),before=await inspectSdk(f.root),started=updateContext(null,before,'SessionStart');
+ await f.put('node_modules/@arkiv-network/sdk/index.d.ts',"export * from './missing.js';");
+ const after=await inspectSdk(f.root);
+ assert.equal(after.facts.state,null);assert.equal(after.facts.version,'0.8.1');
+ const changed=updateContext(started.state,after,'UserPromptSubmit');
+ assert.match(changed.context,/Previous facts emitted by this hook.*invalidated/);
+ assert.match(changed.context,/SDK version category: unmeasured/);
+ assert.ok(changed.context.includes(`Installed SDK version: ${after.facts.version}.`));
+ assert.equal(updateContext(changed.state,after,'UserPromptSubmit').context,'');
+});
+
+test('lost broker context invalidates earlier hook facts on resume or prompt recovery',()=>{
+ const unknown={workspace:'/fixture',fingerprint:'empty',declarationFingerprint:null,facts:{state:null,version:null,declarations:null,reason:'insufficient_evidence'}};
+ for(const [event,source] of [['SessionStart','resume'],['SessionStart','compact'],['UserPromptSubmit',undefined]]){
+  const recovered=updateContext(null,unknown,event,source);
+  assert.match(recovered.context,/Previous facts emitted by this hook.*invalidated/);
+  assert.match(recovered.context,/SDK version category: unmeasured/);
+  assert.equal(updateContext(recovered.state,unknown,'UserPromptSubmit').context,'');
+ }
+ assert.equal(updateContext(null,unknown,'SessionStart','startup').context,'');
+});
+test('range-relative categories name the supported range; other categories do not',async t=>{
+ for(const [options,expected]of [[{},true],[{version:'0.6.8',spec:'^0.6.8'},true],[{installed:false},false],[{declared:false},false]]){
+  const f=await fixture(t,options),o=await inspectSdk(f.root),c=updateContext(null,o,'SessionStart','startup').context;
+  assert.equal(/Plugin-supported SDK range: >=0\.8\.1 <0\.9\./.test(c),expected,JSON.stringify(o.facts));
+ }
+});

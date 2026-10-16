@@ -103,22 +103,34 @@ export async function inspectSdk(cwd) {
 }
 
 // State is caller-owned memory. No filesystem, installation ID or global suppression cache.
-export function updateContext(previous, observation, event) {
+export function updateContext(previous, observation, event, source) {
   const invalidation=['FileChanged','CwdChanged','PostCompact'].includes(event);
   if(invalidation)return {state:{...previous,dirty:true,refresh:previous?.refresh||event==='PostCompact'},context:''};
   if(!['SessionStart','UserPromptSubmit'].includes(event))return {state:previous,context:''};
   const fresh=event==='SessionStart'||!previous?.facts||previous.refresh;
+  const recovered=!previous?.facts&&(event==='UserPromptSubmit'||event==='SessionStart'&&['resume','compact'].includes(source));
   const moved=!!previous?.workspace&&previous.workspace!==observation.workspace;
   const declarationsChanged=!!previous?.declarationFingerprint&&previous.declarationFingerprint!==observation.declarationFingerprint;
   const changed=fresh||moved||declarationsChanged||JSON.stringify(previous.facts)!==JSON.stringify(observation.facts);
   const state={facts:observation.facts,workspace:observation.workspace,fingerprint:observation.fingerprint,declarationFingerprint:observation.declarationFingerprint,dirty:false};
   if(!changed)return {state,context:''};
-  const f=observation.facts, lines=[];
-  if(fresh||moved||f.state===null||['absent','not_installed'].includes(f.state))lines.push('Previous Arkiv SDK observations are invalidated.');
-  if(declarationsChanged&&!fresh)lines.push('Installed declaration contents changed; previous Arkiv API observations are invalidated.');
+  const measured=f=>f&&['state','version','declarations'].some(key=>f[key]!==null&&f[key]!==undefined);
+  // No observation is not a new SDK fact. Stay silent unless earlier measured
+  // facts must be invalidated; unrelated work must not acquire an SDK topic.
+  // A resumed session or a prompt reaching a replacement broker can still
+  // contain earlier hook facts. RAM loss cannot establish that none existed.
+  if(!measured(observation.facts)&&!measured(previous?.facts)&&!recovered)return {state,context:''};
+  const f=observation.facts, lines=['Arkiv SDK evidence for the local workspace:'];
+  const invalidateAll=recovered||!!previous?.facts&&(fresh||moved||f.state===null||['absent','not_installed'].includes(f.state));
+  if(invalidateAll)lines.push('Previous facts emitted by this hook for the local workspace are invalidated.');
+  if(declarationsChanged&&!fresh)lines.push('Installed declaration contents changed; previous declaration facts emitted by this hook are invalidated.');
   for(const [k,label]of [['state','SDK version category'],['version','Installed SDK version'],['declarations','Installed declaration files inspected']]){
-    if(fresh||moved||f[k]!==previous.facts[k])lines.push(`${label}: ${f[k]??'unmeasured'}.`);
+    // Whole-fact invalidation also retires unchanged fields. Re-establish each
+    // current field independently, including any surviving measured version.
+    if(fresh||moved||invalidateAll||f[k]!==previous.facts[k])lines.push(`${label}: ${f[k]??'unmeasured'}.`);
   }
-  lines.push('This is local version evidence, not application compatibility or permission to install, sign, or send data.');
+  // Name the range that compatible/out_of_range refer to; the category alone is ambiguous.
+  if(['compatible','out_of_range'].includes(f.state))lines.push('Plugin-supported SDK range: >=0.8.1 <0.9.');
+  lines.push('Scope: local package inspection only. Each field is independent; unmeasured means insufficient local evidence for that field only. Other supplied evidence and skill guidance retain their own scope.');
   return {state,context:lines.join('\n')};
 }

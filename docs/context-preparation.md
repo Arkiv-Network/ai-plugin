@@ -1,50 +1,50 @@
-# Unreleased context and consent preparation
+# Local SDK context, installed-import check and skill-usage preparation
 
-This source is not part of the 0.2.1 packages. No new context or skill-usage hook is enabled in the public release. A complete comparable context-only ablation, with no regressions, is required before importing these changes into a release.
-
-The [October 15 context-only evaluation](evaluations/2026-10-15-context-only.md) is **NO GO**: four Claude pair regressions and a Codex skill-read policy blocker. A subsequent malformed-manifest correction also remains outside that frozen evaluation. Deterministic tests passing does not remove this release gate.
+Version 0.3.0 ships the local SDK context hooks in both packages and the canonical installed-import check. Skill-usage collection stays disabled. The release gate is the [October 16 context-only ablation](evaluations/2026-10-16-context-ablation.md): no degradation on Claude Code (218/219 with context versus 211/219 without) or Codex CLI (207/219 versus 204/219), all pairs complete.
 
 ## Local SDK context
 
-`source/context/sdk-context.mjs` reads package metadata, detected lockfiles and installed declaration files without importing executable project code. Categories mean:
+`source/context/sdk-context.mjs` reads package metadata, detected lockfiles and installed declaration files without importing executable project code. The build copies it and `source/context/context-hook.mjs` byte for byte into `plugins/*/scripts/context/`. Categories mean:
 
 | Category | Required evidence |
 | --- | --- |
 | `absent` | A valid current manifest does not declare the SDK. |
 | `not_installed` | A declared SDK is absent throughout the supported filesystem resolution search. |
 | `mismatch` | Readable supported manifest, lock and installed identities disagree. |
-| `out_of_range` | Identities agree outside the supported stable version range. |
-| `compatible` | Identities agree inside the supported stable version range. This does not certify application compatibility. |
+| `out_of_range` | Identities agree outside the plugin-supported range `>=0.8.1 <0.9`. |
+| `compatible` | Identities agree inside that range. This does not certify application compatibility. |
 
-Unsupported version specifications, missing/corrupt evidence, PnP resolution and unsupported lock formats stay unmeasured. npm lock versions 2 and 3 are supported. Other lock formats are detected but not interpreted. Declaration reads, traversal depth and total bytes are bounded. Symlink targets for declarations must stay inside the resolved SDK package.
+The context names the supported range whenever it reports `compatible` or `out_of_range`. Unsupported version specifications, missing or corrupt evidence, PnP resolution and unsupported lock formats stay unmeasured and add nothing. npm lock versions 2 and 3 are supported; other lock formats are detected but not interpreted. Declaration reads, traversal depth and total bytes are bounded. Symlink targets for declarations must stay inside the resolved SDK package.
 
-`source/context/context-hook.mjs` keeps suppression state in a short-lived process for each native session, reached through OS-local IPC. It makes no HTTP, TCP or DNS requests and writes no context cache or identifiers. The host starts the process with an asynchronous hook; spawning a detached descendant from a synchronous PowerShell hook caused a reproduced timeout. The synchronous adapter fails open and emits only changed categorical facts, with explicit invalidation after workspace changes, SDK disappearance or declaration changes. Session start and compaction refresh observations. Idle expiry and SessionEnd discard state. This has Windows native and Linux ARM64 deterministic evidence; macOS is unverified.
+Suppression state lives in a short-lived process per native session, reached through OS-local IPC: Windows named pipes, or Linux abstract sockets with Node 20.8+, which leave no session-derived pathname after a crash. A per-session proof prevents knowledge of an enumerable IPC name from authorizing context injection or session termination. The hooks make no HTTP, TCP or DNS requests and write no cache or identifiers. Other platforms, including macOS, and older Linux Node versions leave automatic context unmeasured; the MCP connection is independent.
 
-Claude Code uses SessionStart, UserPromptSubmit, FileChanged, CwdChanged, PostCompact and SessionEnd. Codex uses SessionStart, UserPromptSubmit, PostCompact and SessionEnd, comparing evidence on prompts because equivalent file/directory events are unavailable. Shell command text is never used to infer an event.
+The host starts the broker with an asynchronous hook; the synchronous adapter fails open and emits only changed categorical facts. It waits up to about 1.8 seconds for the broker. If the broker is still unavailable at a fresh startup or `/clear`, the adapter reports the measured facts without it, because nothing earlier exists to invalidate; resume and compaction stay silent without session state. When a later prompt reaches a replacement broker, earlier hook facts are explicitly invalidated and re-established. Workspace changes, SDK disappearance and declaration changes also invalidate earlier hook facts; separately supplied evidence keeps its own scope.
 
-Native Claude evidence includes startup, resume, compaction, directory changes and an actual interactive FileChanged notification. Codex evidence includes packaged SessionStart/UserPromptSubmit execution; a fresh native compaction lifecycle remains unverified. Both native hosts continued to a loopback MCP tool call with Node absent and with a deliberately throwing context hook. These are isolated fixture results, not a new production release.
+Claude Code uses SessionStart, UserPromptSubmit, FileChanged, CwdChanged, PostCompact and SessionEnd. Claude can report the launch `cwd` on later prompt and compaction events after CwdChanged supplies `new_cwd`, so the adapter keeps the explicit native selection in authenticated session RAM and rejects inspections whose workspace changed concurrently. Codex uses SessionStart, UserPromptSubmit, PostCompact and SessionEnd, comparing evidence on prompts because equivalent file and directory events are unavailable. Shell command text is never used to infer an event.
 
-The installed Codex 0.162.1 runtime skips portable AgentPlugin hook sources in its [loader](https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/core-plugins/src/loader.rs). Native tests therefore use its supported `.codex-plugin/plugin.json` compatibility format. The published portable package is unchanged. Current [Codex hook documentation](https://learn.chatgpt.com/docs/hooks) and [plugin documentation](https://developers.openai.com/plugins/build/plugins) describe broader support; documentation alone does not certify this installed version. Review and trust hooks before they run. Native CLI evidence does not certify desktop or IDE behavior.
+Codex 0.162.1 gives a portable root `plugin.json` precedence and skips hooks for that format in its [loader](https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/core-plugins/src/loader.rs), so the Codex package uses the native `.codex-plugin/plugin.json` manifest. Codex skips plugin hooks until the user reviews and trusts them with `/hooks` ([hooks documentation](https://learn.chatgpt.com/docs/hooks)). Native CLI evidence does not certify desktop or IDE behavior.
 
-## Canonical skill check
+## Installed-import check
 
-The candidate imports the canonical skills revision recorded in each preparation receipt. It reproduces the sanitized historical SDK chain-export failure and checks readable installed export/declaration evidence. Unsupported syntax stays unmeasured. No key or general chain/RPC check was added without the required retained failure evidence.
+The canonical router's `PostToolUse` frontmatter hook runs `skills/arkiv/scripts/check-imports.mjs` in Claude Code after Write/Edit. Claude keeps skill-frontmatter hooks for the rest of the session ([skills reference](https://code.claude.com/docs/en/skills)), so each execution rechecks that the changed file is inside the current workspace and directly imports the SDK. It reproduces the sanitized SDK 0.7.0 chain-export friction and reads installed exports and declarations only; unsupported syntax and conditional, namespace or ambient shapes stay unmeasured. Codex does not run skill frontmatter hooks; explicitly running the packaged script is the tested advisory alternative. No private-key or general chain/RPC detector was added without retained failure evidence.
 
-Claude skill-frontmatter hooks last for the rest of the session, according to the [official skills reference](https://code.claude.com/docs/en/skills). Each Write/Edit execution therefore rechecks that the changed file is inside the current workspace and actually imports Arkiv. Native tests observed a warning for the deliberate incompatible import and no warning for an unrelated neighboring file. Codex edits did not execute this frontmatter hook. Explicitly running the packaged `skills/arkiv/scripts/check-imports.mjs` is the tested manual alternative; it is not automatic enforcement or skill-use measurement.
+## Ablations
 
-Prepare two new, unpublished packages from a fixed canonical Git revision:
+Prepare two packages from a fixed canonical Git revision; the control removes only the context hook registrations from the release packages:
 
 ```bash
 node scripts/prepare-context-candidates.mjs /absolute/skills-checkout FULL_COMMIT /absolute/new-output
 ```
 
-Only the two host hook documents differ between the context arms. Skills are imported from Git objects, byte for byte, using the existing source lock. Do not edit the generated copies. The native no-plugin comparison remains separate from this context-only comparison. Original prompts, rubrics, failures and incomplete runs must remain visible. A later source correction cannot inherit an earlier candidate's evaluation result.
+Run the cases in workspaces where the hook has something to report (an installed SDK fixture). An empty workspace makes both arms identical. Give the judge the host-injected context of every run, in both arms; otherwise statements grounded in the hook's facts look fabricated. Keep the context-only comparison separate from the whole-plugin baseline.
+
+Earlier candidates (October 15–16) were measured in empty workspaces, and one judging pass hid injected context; their per-pair differences are not evidence about the hook. Their records remain in [the earlier report](evaluations/2026-10-15-context-only.md) and the repository history.
 
 ## Skill usage remains disabled
 
-`source/skill-usage.mjs` is inactive preparation. Activation still requires sufficiently qualified C1 traffic and a separate owner decision; internal verification traffic does not establish external adoption. No numerical threshold has been invented.
+`source/skill-usage.mjs` is inactive preparation and is not part of either package. Activation requires sufficiently qualified plugin traffic and a separate owner decision; internal test traffic does not establish external adoption, and no numerical threshold is defined.
 
-The closed aggregate admits only included skill categories, package version, Claude host, separate `agent_invocation` and `user_expansion` channels, and bounded integers. Native Claude tests observed PreToolUse/Skill and UserPromptExpansion separately. These count attempts, including denied invocation attempts, not completion. Codex skill measurement stays absent.
+The closed aggregate admits only included skill categories, package version, Claude host, separate `agent_invocation` and `user_expansion` channels, and bounded integers. Native Claude tests observed PreToolUse/Skill and UserPromptExpansion separately. These count attempts, including denied ones, not completion. Codex skill measurement stays absent.
 
 An activated implementation would also require explicit local opt-in under `CLAUDE_PLUGIN_DATA`. Review a validated local aggregate with:
 
@@ -52,4 +52,4 @@ An activated implementation would also require explicit local opt-in under `CLAU
 node source/skill-usage.mjs --preview
 ```
 
-The preview grants no approval and sends nothing. Each future MCP `share_skill_usage` call must follow approval of that exact displayed aggregate and include `sharingApproved:true`. No automatic retry, hook HTTP request, headers-helper submission, SDK state, path, prompt, arguments, free text or persistent identifier is allowed. The receiving service remains inactive and its public catalog is unchanged. Repeated approved submissions may overlap; there is no unique-user or exactly-once claim.
+The preview grants no approval and sends nothing. Each future MCP `share_skill_usage` call must follow approval of that exact displayed aggregate and include `sharingApproved:true`. No automatic retry, hook HTTP request, headers-helper submission, SDK state, path, prompt, arguments, free text or persistent identifier is allowed. The receiving service remains inactive and its public catalog is unchanged.

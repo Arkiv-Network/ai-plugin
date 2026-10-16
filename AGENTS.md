@@ -2,7 +2,7 @@
 
 ## Purpose and current state
 
-This repository distributes separate Claude Code (`plugins/arkiv`) and Codex CLI (`plugins/arkiv-codex`) packages with shared `arkiv` identity and version. Codex uses `.agents/plugins/marketplace.json`, portable root manifests and `streamable-http` transport. Keep its package free of Claude hooks. Version 0.2.1 is published from `main` for both clients; later releases follow the version and tag rules below. Read README.md for consumer installation. The marketplace is at `.claude-plugin/marketplace.json`; its plugin is nested at `plugins/arkiv` so this repository's existing `CLAUDE.md` pointer is outside the plugin's strict validation surface.
+This repository distributes separate Claude Code (`plugins/arkiv`) and Codex CLI (`plugins/arkiv-codex`) packages with shared `arkiv` identity and version. Codex uses `.agents/plugins/marketplace.json`, the native `.codex-plugin/plugin.json` manifest and `streamable-http` transport. Codex 0.162.1 gives a portable root `plugin.json` precedence and skips its hooks, so do not add one. The Codex package carries only its own context hook, never Claude's rules hook. Version 0.3.0 adds the local SDK context hooks to both clients; later releases follow the version and tag rules below. Read README.md for consumer installation. The marketplace is at `.claude-plugin/marketplace.json`; its plugin is nested at `plugins/arkiv` so this repository's existing `CLAUDE.md` pointer is outside the plugin's strict validation surface.
 
 ## Configuration and commands
 
@@ -18,7 +18,7 @@ claude plugin validate --strict plugins/arkiv
 git diff --check
 ```
 
-Set `ARKIV_TEST_TMP` to an owned temporary directory if the host requires test artifacts in a specific location. Run test files serially so source-import checks do not compete with hook startup measurements. The timing test measures actual Node startup and requires p95 below 200 ms; measurements depend on machine load. Preserve a first failure and diagnose load before repeating it. The hook itself performs no network or mutations.
+Set `ARKIV_TEST_TMP` to an owned temporary directory if the host requires test artifacts in a specific location. Run test files serially so source-import checks do not compete with hook startup measurements. The timing test measures actual Node startup and requires p95 below 200 ms; measurements depend on machine load. Preserve a first failure and diagnose load before repeating it. The hooks perform no network requests or project mutations. Source for the context hooks lives in `source/context/` and is copied byte for byte into both packages by the build; `scripts/prepare-context-candidates.mjs` derives the no-context control from the release packages for ablations.
 
 To import or verify canonical guidance, use a local clone containing the exact full Git revision in `plugin.config.json`:
 
@@ -47,7 +47,7 @@ The historical eval import is pinned separately in `scripts/import-evals.mjs`. R
 
 ## Isolated tests and telemetry
 
-Connection attribution is enabled by default. Generate only the fixed `X-Arkiv-Client: arkiv-plugin/<version>; host=claude-code|codex` value. Claude's generated `scripts/client-headers.mjs` omits it when `ARKIV_TELEMETRY=off`; it reads no files, makes no network request and adds no agent context. Never interpolate arbitrary environment values into a telemetry header. Codex uses a static header and has no package environment-variable opt-out. Neither path collects skill usage or SDK state. Preserve the existing no-network hook invariant. Header attribution never authorizes signing, feedback or another connection.
+Connection attribution is enabled by default. Generate only the fixed `X-Arkiv-Client: arkiv-plugin/<version>; host=claude-code|codex` value. Claude's generated `scripts/client-headers.mjs` omits it when `ARKIV_TELEMETRY=off`; it reads no files, makes no network request and adds no agent context. Never interpolate arbitrary environment values into a telemetry header. Codex uses a static header and has no package environment-variable opt-out. Neither path collects skill usage or sends SDK state; the SDK context hook only adds local categorical facts to the agent's context. Preserve the no-network hook invariant. Header attribution never authorizes signing, feedback or another connection.
 
 Before any plugin command, record the SHA-256 of the user's existing Claude settings, known-marketplace and installed-plugin files. Set `CLAUDE_CONFIG_DIR` and `CODEX_HOME` to new owned directories for tests; project scope alone does not isolate shared marketplace/plugin caches. Verify the original hashes afterwards. Never restore or overwrite user settings to hide a difference. Install/uninstall only the resources created by the test.
 

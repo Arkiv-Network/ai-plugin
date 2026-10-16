@@ -142,7 +142,12 @@ export async function checkStatic(root = repositoryRoot) {
   const rootPointer = await readFile(path.join(root, 'CLAUDE.md'), 'utf8');
   const codex = path.join(root, 'plugins/arkiv-codex');
   const codexFiles = await diskFiles(root, 'plugins/arkiv-codex');
-  assert.ok(!codexFiles.some(file => /\/(?:hooks|\.claude-plugin)\//.test(file) || file.endsWith('/.mcp.json')), 'Codex must not discover Claude hooks or configuration');
+  assert.ok(!codexFiles.some(file => /\/\.claude-plugin\//.test(file) || file.endsWith('/.mcp.json')
+    || file.endsWith('/plugin.json') && !file.endsWith('/.codex-plugin/plugin.json')), 'Codex must not discover Claude configuration or a portable manifest that disables hooks');
+  assert.deepEqual(codexFiles.filter(file => /\/hooks\//.test(file)), ['plugins/arkiv-codex/hooks/hooks.json'], 'Codex carries only its own context hook document');
+  const codexHooks = JSON.stringify(JSON.parse(await readFile(path.join(codex, 'hooks/hooks.json'), 'utf8')));
+  assert.ok(codexHooks.includes('context-hook.mjs') && codexHooks.includes(' codex') && !codexHooks.includes('arkiv-rules')
+    && !codexHooks.includes('claude-code'), 'Codex hooks are the Codex context adapter only');
   await assert.rejects(readFile(path.join(codex, 'CLAUDE.md')), {code: 'ENOENT'});
   assert.equal(rootPointer.trim(), '@AGENTS.md', 'Preserve the repository Claude pointer');
   return {passed: true, skills, evals};
