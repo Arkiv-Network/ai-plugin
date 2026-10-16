@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-16",
+  "release": "arkiv--v0.3.0",
+  "commit": "89c1945ddd4d8682e73581cc9cf37aa408e28177",
+  "hosts": {
+    "claude": "Claude Code 2.1.302, Windows",
+    "codex": "Codex CLI 0.162.1, Windows"
+  },
+  "install": {
+    "freshPublicInstall": {
+      "claudeFiles": 49,
+      "claudeDiffs": "only the host .in_use marker",
+      "codexFiles": 47,
+      "codexDiffs": 0
+    },
+    "updateFrom021": {
+      "claude": "pass",
+      "codex": "pass, including the switch to .codex-plugin/plugin.json"
+    }
+  },
+  "nativeSessions": {
+    "method": "isolated profiles; Claude with --strict-mcp-config and an empty MCP config, Codex with the installed mcp.json temporarily pointed at a local stdio mock and restored afterwards; --dangerously-bypass-hook-trust stands in for the one-time /hooks review; the agent was asked to quote the injected SDK evidence without tools",
+    "productionTraffic": "none",
+    "results": [
+      {
+        "host": "claude",
+        "fixtureSdk": "0.8.1",
+        "expectedCategory": "compatible",
+        "categoryQuoted": true,
+        "versionQuoted": true,
+        "rangeQuoted": true
+      },
+      {
+        "host": "claude",
+        "fixtureSdk": "0.6.8",
+        "expectedCategory": "out_of_range",
+        "categoryQuoted": true,
+        "versionQuoted": true,
+        "rangeQuoted": true
+      },
+      {
+        "host": "codex",
+        "fixtureSdk": "0.8.1",
+        "expectedCategory": "compatible",
+        "categoryQuoted": true,
+        "versionQuoted": true,
+        "rangeQuoted": true
+      },
+      {
+        "host": "codex",
+        "fixtureSdk": "0.6.8",
+        "expectedCategory": "out_of_range",
+        "categoryQuoted": true,
+        "versionQuoted": true,
+        "rangeQuoted": true
+      }
+    ]
+  },
+  "notVerified": [
+    "desktop, IDE and web hosts",
+    "macOS and Linux native sessions (Linux covered by the ARM64 test suite only)",
+    "the interactive Codex /hooks trust dialog"
+  ]
+}

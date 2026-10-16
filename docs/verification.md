@@ -1,5 +1,30 @@
 # Verification scope
 
+## 0.3.0: local SDK context hooks, October 16
+
+Tag `arkiv--v0.3.0` points to main `89c1945ddd4d8682e73581cc9cf37aa408e28177`. Its canonical skills are [`Arkiv-Network/skills@49c0e06`](https://github.com/Arkiv-Network/skills/commit/49c0e0695d0abc66325aab7e9f3d469ce0b694c5).
+
+The release gate is the [context-only ablation](evaluations/2026-10-16-context-ablation.md). It ran 73 cases with 3 repetitions per arm, in workspaces with the SDK installed:
+
+- Claude Code: 218/219 with context and 211/219 without. No pair got worse.
+- Codex CLI: 207/219 with context and 204/219 without. Two pairs got worse; neither is attributable to the context text.
+
+Tests: 78/78 on Linux ARM64 and 77/77 on Windows. Both strict Claude validations, the static and reference checks, the staged-secret scan and the change guard pass.
+
+Public installation was checked in isolated Windows profiles:
+
+- A fresh install from main matches the repository packages: 49 Claude files and 47 Codex files. The only difference is Claude's `.in_use` host marker.
+- Updating from 0.2.1 works on both hosts, including Codex's switch to `.codex-plugin/plugin.json`.
+
+Native sessions from those installed packages were checked with Claude Code 2.1.302 and Codex CLI 0.162.1:
+
+- With an SDK 0.8.1 fixture, the agent quoted `compatible` and the supported range on both hosts.
+- With an SDK 0.6.8 fixture, it quoted `out_of_range` on both hosts.
+
+These sessions sent no production traffic: Claude ran with no MCP servers, and Codex used a local stdio mock that was restored afterwards. Codex ran with `--dangerously-bypass-hook-trust` in place of the one-time `/hooks` review. The interactive trust dialog, desktop, IDE, web hosts and macOS remain unverified. See the [native receipt](0.3.0-native.json).
+
+The Devfolio MCP is unchanged. It still counts plugin attribution only for published versions up to 0.2.1, so until the service allowlist is updated, 0.3.0 connections show as an unlisted version. Skill-usage collection remains disabled.
+
 ## 0.2.1: missing-Node connection check, October 14
 
 Native Claude Code 2.1.300 on Windows connects the released 0.2.1 package in an isolated profile with no Node executable on PATH. The loopback fixture receives initialize and tools/list without the attribution header. With Node restored, the same package emits its fixed header. Only the MCP URL is overridden; user configurations are unchanged and no model is called. The conditional 0.2.2 fix is unnecessary. See the [bounded native receipt](0.2.1-no-node.json). Other hosts and failure modes remain unverified.
