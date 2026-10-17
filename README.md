@@ -2,11 +2,11 @@
 
 Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. The plugin uses the existing Devfolio (Arkiv: Global Tour Stop) MCP profile at [mcp.arkiv.network/devfolio](https://mcp.arkiv.network/devfolio). No connection key is required. It does not install the SDK, fund or connect a wallet, sign transactions, or create another backend.
 
-Version **0.3.0** adds a local SDK context hook to both packages and imports updated canonical skills. The hook tells the agent which `@arkiv-network/sdk` version your project has installed and whether it is in the supported range, without running project code or making network requests. Both packages install from this repository's public default branch.
+Version **0.3.1** hardens the local SDK context hook added in 0.3.0: the hook injects only its own fixed fact lines, the installed-import check never quotes unusual import text back to the agent, and four edge cases are classified correctly (a retried hook request, a declaration-only change, a workspaces root and an SDK installed above the lockfile's folder). 0.3.0 added the hook to both packages and imported updated canonical skills. The hook tells the agent which `@arkiv-network/sdk` version your project has installed and whether it is in the supported range, without running project code or making network requests. Both packages install from this repository's public default branch.
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`, version **0.3.0**. Tested on Windows with Claude Code **2.1.299**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. With Node absent, the MCP still connects without that header on tested Claude Code **2.1.300**; automatic project rules are unavailable. Install from the public default branch:
+Claude package: `plugins/arkiv`, version **0.3.1**. Tested on Windows with Claude Code **2.1.299**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. With Node absent, the MCP still connects without that header on tested Claude Code **2.1.300**; automatic project rules are unavailable. Install from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/claude-plugin
@@ -72,7 +72,7 @@ Paste into the new Codex session:
 
 Codex does not run Claude's rules hook. Codex skips plugin hooks until you review and trust them: run `/hooks` inside Codex CLI and trust the Arkiv context hook. After that, the local SDK context hook described above runs at session start, on prompts when the evidence changed and after compaction (Codex has no file or directory events). Untrusted or failing hooks never block the session. The router carries essential rules even without the SDK. Package-root `AGENTS.md` documents the package; installation does **not** inject it into your project's instructions. Only if you explicitly request project rules, append `plugins/arkiv-codex/templates/AGENTS.snippet.md` to your existing project `AGENTS.md`, preserving its instructions. Installation does not authorize that edit, SDK installation, wallet access, feedback or transactions.
 
-To pick up a later release, refresh the Git marketplace snapshot with `codex plugin marketplace upgrade arkiv`, run `codex plugin add arkiv@arkiv`, confirm the version with the list command above and start a new session. To remove an installation you chose, use `codex plugin remove arkiv@arkiv` and optionally `codex plugin marketplace remove arkiv`. Do not remove a consumer's existing resources automatically.
+To pick up a later release, refresh the Git marketplace snapshot with `codex plugin marketplace upgrade arkiv`, run `codex plugin add arkiv@arkiv`, confirm the version with the list command above and start a new session. If you have not trusted the Arkiv hooks yet (for example when updating from 0.2.x), run `/hooks` and trust them. To remove an installation you chose, use `codex plugin remove arkiv@arkiv` and optionally `codex plugin marketplace remove arkiv`. Do not remove a consumer's existing resources automatically.
 
 Official formats and client limits: [packaging](https://developers.openai.com/plugins/build/plugins), [Claude migration](https://developers.openai.com/plugins/guides/submit-claude-plugin), [plugin browser](https://learn.chatgpt.com/docs/plugins#plugin-directory-in-codex-cli).
 
@@ -101,7 +101,7 @@ claude plugin marketplace update arkiv
 claude plugin update arkiv@arkiv
 ```
 
-To update from **0.2.1** or earlier, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.3.0** and the check prompt returns profile **devfolio**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
+To update from **0.2.1** or earlier, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.3.1** and the check prompt returns profile **devfolio**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
 
 ```bash
 claude plugin uninstall arkiv@arkiv
@@ -147,6 +147,6 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for 0.3.0 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
+See [verification scope](docs/verification.md) for 0.3.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
 
 [SDK context and skill-usage preparation](docs/context-preparation.md) documents the context hooks, the installed-import check, host limits and the disabled skill-usage source. The [October 16 context-only ablation](docs/evaluations/2026-10-16-context-ablation.md) is the 0.3.0 release gate, with per-skill trigger, negative and outcome results.

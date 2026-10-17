@@ -1,7 +1,7 @@
 import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
-import {createHash,timingSafeEqual} from 'node:crypto';
+import {createHash,randomUUID,timingSafeEqual} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {inspectSdk,updateContext} from './sdk-context.mjs';
 
@@ -16,6 +16,19 @@ function validObservation(o){
   (f.declarations===null||Number.isSafeInteger(f.declarations)&&f.declarations>=0&&f.declarations<=512)&&
   Object.keys(f).every(k=>['state','version','declarations','reason'].includes(k))&&
   (f.reason===undefined||f.reason===null||f.reason==='insufficient_evidence');
+}
+// The adapter cannot authenticate the process answering on the session's IPC name, so it
+// injects only text composed entirely of this hook's own fact templates.
+const factLines=[/^Previous facts emitted by this hook for the local workspace are invalidated\.$/,
+ /^Installed declaration contents changed; previous declaration facts emitted by this hook are invalidated\.$/,
+ /^SDK version category: (?:compatible|out_of_range|not_installed|mismatch|absent|unmeasured)\.$/,
+ /^Installed SDK version: (?:\d{1,6}\.\d{1,6}\.\d{1,6}|unmeasured)\.$/,/^Installed declaration files inspected: (?:\d{1,3}|unmeasured)\.$/,
+ /^Plugin-supported SDK range: >=0\.8\.1 <0\.9\.$/,
+ /^Scope: local package inspection only\. Each field is independent; unmeasured means insufficient local evidence for that field only\. Other supplied evidence and skill guidance retain their own scope\.$/];
+export function knownContext(text){
+ if(typeof text!=='string'||text.length>2048)return '';
+ const [first,...rest]=text.split('\n');
+ return first==='Arkiv SDK evidence for the local workspace:'&&rest.every(l=>factLines.some(r=>r.test(l)))?text:'';
 }
 // OS-local IPC only: no TCP address, HTTP, DNS, remote server, or disk state.
 // One short-lived process per native session; no shared suppression across sessions.
@@ -48,7 +61,14 @@ export async function exchange(address,message,timeout=300){
 }
 export function serve(address,{idle=idleMs,proof}={}){
  if(typeof address!=='string'||typeof proof!=='string'||!/^[a-f0-9]{64}$/.test(proof))throw Error('Invalid IPC channel');
- let state=null,workspace=null,workspaceRevision=0,timer;const sockets=new Set();
+ let state=null,workspace=null,workspaceRevision=0,timer;const sockets=new Set(),replies=new Map();
+ // An adapter that timed out before reading a reply resends the same request, possibly after
+ // other hooks' requests. Replay that reply instead of applying the request twice, which
+ // would suppress the change it carried. Recent replies only, bounded.
+ const reply=(socket,m,text)=>{
+  if(typeof m.requestId==='string'&&/^[A-Za-z0-9-]{1,64}$/.test(m.requestId)){replies.set(m.requestId,text);if(replies.size>32)replies.delete(replies.keys().next().value);}
+  socket.end(text);
+ };
  const server=net.createServer(socket=>{
   sockets.add(socket);socket.on('close',()=>sockets.delete(socket));socket.on('error',()=>{});socket.setTimeout(1000,()=>socket.destroy());let input='';
   socket.on('data',chunk=>{
@@ -59,6 +79,7 @@ export function serve(address,{idle=idleMs,proof}={}){
    if(typeof m?.proof!=='string'||!/^[a-f0-9]{64}$/.test(m.proof)||!timingSafeEqual(Buffer.from(m.proof,'hex'),Buffer.from(proof,'hex')))return socket.end('{}\n');
    if(!events.has(m.event))return socket.end('{}\n');
    clearTimeout(timer);timer=setTimeout(close,idle);
+   if(typeof m.requestId==='string'&&replies.has(m.requestId))return socket.end(replies.get(m.requestId));
    if(m.event==='SessionEnd'){socket.end('{}\n');setImmediate(close);return;}
    if(m.operation==='resolveWorkspace'){
     // Claude can report the launch cwd after a real CwdChanged event. Keep the
@@ -71,13 +92,13 @@ export function serve(address,{idle=idleMs,proof}={}){
     if(m.event==='CwdChanged'){
      workspace.selected=valid(m.newCwd)?m.newCwd:null;workspaceRevision++;
     }
-    socket.end(JSON.stringify({cwd:workspace.selected,workspaceRevision})+'\n');return;
+    reply(socket,m,JSON.stringify({cwd:workspace.selected,workspaceRevision})+'\n');return;
    }
    if(m.workspaceRevision!==undefined&&m.workspaceRevision!==workspaceRevision)return socket.end('{"stale":true}\n');
    const o=m.observation;
    if(!['FileChanged','CwdChanged','PostCompact'].includes(m.event)&&!validObservation(o))return socket.end('{}\n');
    const result=updateContext(state,o,m.event,m.source);state=result.state;
-   socket.end(JSON.stringify({context:result.context})+'\n');
+   reply(socket,m,JSON.stringify({context:result.context})+'\n');
   });
  });
  function close(){clearTimeout(timer);state=null;workspace=null;for(const s of sockets)s.destroy();server.close();}
@@ -107,7 +128,7 @@ export async function hook(input,host){
   if(!fresh)return {};
   const o=await inspectSdk(input.cwd);
   const context=updateContext(null,{facts:o.facts,workspace:hash(o.workspace??'unknown'),fingerprint:o.fingerprint,declarationFingerprint:o.declarationFingerprint},event,source).context;
-  const output=context?{hookSpecificOutput:{hookEventName:event,additionalContext:context}}:{};
+  const output=knownContext(context)?{hookSpecificOutput:{hookEventName:event,additionalContext:context}}:{};
   if(host==='claude-code')output.hookSpecificOutput={...output.hookSpecificOutput,hookEventName:event,watchPaths:o.watchPaths};
   return output;
  };
@@ -115,16 +136,17 @@ export async function hook(input,host){
  if(['SessionStart','UserPromptSubmit','CwdChanged','FileChanged'].includes(event)){
   let cwd=event==='CwdChanged'?input.new_cwd:input.cwd;
   if(host==='claude-code'){
-   const selected=await request({event,source,proof,operation:'resolveWorkspace',cwd:input.cwd,newCwd:input.new_cwd});
+   const selected=await request({event,source,proof,operation:'resolveWorkspace',requestId:randomUUID(),cwd:input.cwd,newCwd:input.new_cwd});
    if(!selected||!Number.isSafeInteger(selected.workspaceRevision))return selected===null?stateless():{};
+   if(selected.cwd!==null&&!(typeof selected.cwd==='string'&&selected.cwd.length<=4096&&path.isAbsolute(selected.cwd)))return {};
    cwd=selected.cwd;workspaceRevision=selected.workspaceRevision;
   }
   observation=await inspectSdk(cwd);
  }
- const message={event,source,proof,workspaceRevision,...(observation?{observation:{facts:observation.facts,workspace:hash(observation.workspace??'unknown'),fingerprint:observation.fingerprint,declarationFingerprint:observation.declarationFingerprint}}:{})};
+ const message={event,source,proof,requestId:randomUUID(),workspaceRevision,...(observation?{observation:{facts:observation.facts,workspace:hash(observation.workspace??'unknown'),fingerprint:observation.fingerprint,declarationFingerprint:observation.declarationFingerprint}}:{})};
  const result=await request(message);if(result?.stale)return {};
  if(result===null)return stateless();
- const context=typeof result?.context==='string'?result.context:'';
+ const context=knownContext(result?.context);
  const output={};
  if(context)output.hookSpecificOutput={hookEventName:event,additionalContext:context};
  if(host==='claude-code'&&observation){

@@ -1,6 +1,6 @@
 # Local SDK context, installed-import check and skill-usage preparation
 
-Version 0.3.0 ships the local SDK context hooks in both packages and the canonical installed-import check. Skill-usage collection stays disabled. The release gate is the [October 16 context-only ablation](evaluations/2026-10-16-context-ablation.md): no degradation on Claude Code (218/219 with context versus 211/219 without) or Codex CLI (207/219 versus 204/219), all pairs complete.
+Version 0.3.0 ships the local SDK context hooks in both packages and the canonical installed-import check. Skill-usage collection stays disabled. The release gate is the [October 16 context-only ablation](evaluations/2026-10-16-context-ablation.md): no degradation on Claude Code (218/219 with context versus 211/219 without) or Codex CLI (207/219 versus 204/219), all pairs complete. Version 0.3.1 changes how hostile input and four edge cases are handled (listed below). Across 320 ordinary-input comparisons in its [verification record](verification.md), the injected text is byte-identical to 0.3.0, so that ablation still applies to those inputs. The only output difference there: projects whose manifest does not declare the SDK now also watch `pnpm-workspace.yaml` and `lerna.json`.
 
 ## Local SDK context
 
@@ -8,7 +8,7 @@ Version 0.3.0 ships the local SDK context hooks in both packages and the canonic
 
 | Category | Required evidence |
 | --- | --- |
-| `absent` | A valid current manifest does not declare the SDK. |
+| `absent` | A valid current manifest does not declare the SDK, and its folder is not a workspaces root. |
 | `not_installed` | A declared SDK is absent throughout the supported filesystem resolution search. |
 | `mismatch` | Readable supported manifest, lock and installed identities disagree. |
 | `out_of_range` | Identities agree outside the plugin-supported range `>=0.8.1 <0.9`. |
@@ -16,7 +16,13 @@ Version 0.3.0 ships the local SDK context hooks in both packages and the canonic
 
 The context names the supported range whenever it reports `compatible` or `out_of_range`. Unsupported version specifications, missing or corrupt evidence, PnP resolution and unsupported lock formats stay unmeasured and add nothing. npm lock versions 2 and 3 are supported; other lock formats are detected but not interpreted. Declaration reads, traversal depth and total bytes are bounded. Symlink targets for declarations must stay inside the resolved SDK package.
 
-Suppression state lives in a short-lived process per native session, reached through OS-local IPC: Windows named pipes, or Linux abstract sockets with Node 20.8+, which leave no session-derived pathname after a crash. A per-session proof prevents knowledge of an enumerable IPC name from authorizing context injection or session termination. The hooks make no HTTP, TCP or DNS requests and write no cache or identifiers. Other platforms, including macOS, and older Linux Node versions leave automatic context unmeasured; the MCP connection is independent.
+Suppression state lives in a short-lived process per native session, reached through OS-local IPC: Windows named pipes, or Linux abstract sockets with Node 20.8+, which leave no session-derived pathname after a crash. A per-session proof prevents knowledge of an enumerable IPC name from authorizing context injection or session termination. The adapter cannot authenticate whatever answers on that name, so since 0.3.1 it injects only text built entirely from its own fixed fact lines and ignores a relative or oversized workspace in the reply. Installed versions are measured only up to six digits per part. Each request carries a random ID; when the adapter resends a request after its reply was lost, the process replays that reply (it keeps the 32 most recent) instead of treating the change as already delivered. The hooks make no HTTP, TCP or DNS requests and write no cache or identifiers. Other platforms, including macOS, and older Linux Node versions leave automatic context unmeasured; the MCP connection is independent.
+
+Also since 0.3.1:
+
+- A declaration-only change re-states the current declaration count after invalidating earlier declaration facts.
+- A workspaces root (a `workspaces` field, `pnpm-workspace.yaml` or `lerna.json`) with no SDK dependency of its own is unmeasured, not `absent`: its packages may depend on the SDK.
+- An SDK resolved from a `node_modules` folder above the lockfile's folder keeps its version and declaration count, but its category is unmeasured, because that lock does not describe it. Packages inside a monorepo whose lock sits at the monorepo root stay unmeasured, as in 0.3.0.
 
 The host starts the broker with an asynchronous hook; the synchronous adapter fails open and emits only changed categorical facts. It waits up to about 1.8 seconds for the broker. If the broker is still unavailable at a fresh startup or `/clear`, the adapter reports the measured facts without it, because nothing earlier exists to invalidate; resume and compaction stay silent without session state. When a later prompt reaches a replacement broker, earlier hook facts are explicitly invalidated and re-established. Workspace changes, SDK disappearance and declaration changes also invalidate earlier hook facts; separately supplied evidence keeps its own scope.
 
@@ -27,6 +33,8 @@ Codex 0.162.1 gives a portable root `plugin.json` precedence and skips hooks for
 ## Installed-import check
 
 The canonical router's `PostToolUse` frontmatter hook runs `skills/arkiv/scripts/check-imports.mjs` in Claude Code after Write/Edit. Claude keeps skill-frontmatter hooks for the rest of the session ([skills reference](https://code.claude.com/docs/en/skills)), so each execution rechecks that the changed file is inside the current workspace and directly imports the SDK. It reproduces the sanitized SDK 0.7.0 chain-export friction and reads installed exports and declarations only; unsupported syntax and conditional, namespace or ambient shapes stay unmeasured. Codex does not run skill frontmatter hooks; explicitly running the packaged script is the tested advisory alternative. No private-key or general chain/RPC detector was added without retained failure evidence.
+
+In 0.3.1 the check quotes only plain package subpaths and names of at most 64 characters; any other SDK import leaves the file unmeasured. It reads each declaration file once per check and stops after 128 files.
 
 ## Ablations
 

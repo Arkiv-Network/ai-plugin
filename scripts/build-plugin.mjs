@@ -86,7 +86,7 @@ export function buildArtifacts(config, source) {
     // Codex 0.162.1 skips hooks for portable AgentPlugin manifests (root plugin.json) and gives that
     // format precedence, so the package uses the native .codex-plugin manifest to run its context hook.
     ['plugins/arkiv-codex/.codex-plugin/plugin.json', json({name: config.name, version: config.version,
-      description: config.description, skills: './skills', mcpServers: './mcp.json', hooks: './hooks/hooks.json',
+      description: config.description, keywords: identity.keywords, skills: './skills', mcpServers: './mcp.json', hooks: './hooks/hooks.json',
       interface: {displayName: config.displayName, shortDescription: 'Arkiv skills and the Devfolio MCP connection.'}})],
     ['plugins/arkiv-codex/hooks/hooks.json', json({hooks: contextHooks('codex')})],
     ['plugins/arkiv-codex/mcp.json', json({$schema: 'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',
