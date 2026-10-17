@@ -6,7 +6,8 @@ import {createHash} from 'node:crypto';
 const SDK = '@arkiv-network/sdk';
 const fields = ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies'];
 const digest = value => createHash('sha256').update(value).digest('hex');
-const stable = value => typeof value === 'string' && /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(value);
+// At most six digits per part: versions are quoted into the agent's context.
+const stable = value => typeof value === 'string' && /^(0|[1-9]\d{0,5})\.(0|[1-9]\d{0,5})\.(0|[1-9]\d{0,5})$/.test(value);
 const cmp = (a,b) => { const x=a.split('.').map(Number),y=b.split('.').map(Number); for(let i=0;i<3;i++)if(x[i]!==y[i])return Math.sign(x[i]-y[i]);return 0; };
 export function satisfies(version, spec) {
   if (!stable(version) || typeof spec !== 'string') return null;
@@ -44,6 +45,11 @@ export async function inspectSdk(cwd) {
     if(!manifest||typeof manifest!=='object'||Array.isArray(manifest))throw Error('manifest');
     for(const field of fields)if(Object.hasOwn(manifest,field)&&(!manifest[field]||typeof manifest[field]!=='object'||Array.isArray(manifest[field])))throw Error('dependency_map');
     const specs=fields.filter(f=>Object.hasOwn(manifest[f]??{},SDK)).map(f=>manifest[f][SDK]);
+    // A workspaces root can delegate the SDK to its packages; its own manifest cannot show absence.
+    if(!specs.length&&Object.hasOwn(manifest,'workspaces'))throw Error('workspaces_root');
+    for(const name of ['pnpm-workspace.yaml','lerna.json'])if(!specs.length){
+      try{await read(path.join(root,name));throw Error('workspaces_root');}catch(e){if(e.code!=='ENOENT')throw e;}
+    }
     if(!specs.length){result.state='absent';result.reason=null;}
     else {
       if(specs.some(s=>typeof s!=='string'||satisfies('0.8.1',s)===null))throw Error('spec');
@@ -86,6 +92,9 @@ export async function inspectSdk(cwd) {
         };
         for(const entry of declarationTargets)await visit(entry);
         result.declarations=inspected.size;
+        // A lock in this folder describes only node_modules under it. An SDK resolved above it,
+        // such as one hoisted into a monorepo root, stays unmeasured: that layout is not interpreted.
+        if(search!==root)throw Error('installed_outside_lock_root');
         if(locks.length!==1||!['package-lock.json','npm-shrinkwrap.json'].includes(locks[0].name))throw Error('unsupported_or_missing_lock');
         const lock=JSON.parse(locks[0].text);
         if(![2,3].includes(lock.lockfileVersion))throw Error('lock_version');
@@ -127,7 +136,7 @@ export function updateContext(previous, observation, event, source) {
   for(const [k,label]of [['state','SDK version category'],['version','Installed SDK version'],['declarations','Installed declaration files inspected']]){
     // Whole-fact invalidation also retires unchanged fields. Re-establish each
     // current field independently, including any surviving measured version.
-    if(fresh||moved||invalidateAll||f[k]!==previous.facts[k])lines.push(`${label}: ${f[k]??'unmeasured'}.`);
+    if(fresh||moved||invalidateAll||f[k]!==previous.facts[k]||k==='declarations'&&declarationsChanged)lines.push(`${label}: ${f[k]??'unmeasured'}.`);
   }
   // Name the range that compatible/out_of_range refer to; the category alone is ambiguous.
   if(['compatible','out_of_range'].includes(f.state))lines.push('Plugin-supported SDK range: >=0.8.1 <0.9.');

@@ -41,6 +41,7 @@ test('Codex uses its native manifest, shared identity/version, its own package a
   assert.equal(output.has('plugins/arkiv-codex/plugin.json'), false, 'a portable root manifest takes precedence and disables hooks');
   assert.equal(manifest.name, config.name); assert.equal(manifest.version, config.version);
   assert.equal(manifest.license, undefined); assert.equal(manifest.hooks, './hooks/hooks.json');
+  assert.deepEqual(manifest.keywords, JSON.parse(output.get('plugins/arkiv/.claude-plugin/plugin.json')).keywords, 'Codex reads keywords for plugin search');
   assert.deepEqual(mcp.mcpServers, {arkiv: {type: 'streamable-http', url: config.mcpUrl,
     headers:{'X-Arkiv-Client':'arkiv-plugin/'+config.version+'; host=codex'}}});
   assert.deepEqual(Object.keys(hooks), ['SessionStart', 'UserPromptSubmit', 'PostCompact', 'SessionEnd']);

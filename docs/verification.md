@@ -1,5 +1,30 @@
 # Verification scope
 
+## 0.3.1: hardened context hook and import check, October 17
+
+Canonical skills: [`Arkiv-Network/skills@cd8bb37`](https://github.com/Arkiv-Network/skills/commit/cd8bb375a5eec9977c55f47461eef0542080f3bb) ([PR #63](https://github.com/Arkiv-Network/skills/pull/63)). Every fix below began as a failing test.
+
+Findings from reviews of 0.3.0, all reproduced and fixed:
+
+- A process answering on the session's IPC name could inject arbitrary text. The adapter now injects only text made entirely of its own fact lines, and ignores a relative or oversized workspace in the reply.
+- An installed version with very long numbers was quoted into the context. Versions are now measured only up to six digits per part.
+- The import check quoted unusual SDK import text back to the agent, and nested `export *` chains could take exponential time. It now reports such imports as unmeasured, and reads each declaration file once, at most 128 per check.
+- A request whose reply was lost was applied twice on retry, so the change it carried was never delivered. The process now replays recent replies by request ID.
+- A declaration-only change did not re-state the declaration count.
+- A workspaces root without its own SDK dependency was reported as `absent`.
+- An SDK found above the lockfile's folder could be confirmed by a lock that does not describe it.
+- The Codex manifest lacked the shared `keywords`.
+
+Tests: 88/88 on Linux ARM64 (Node 24) and 87/88 on Windows, where one Linux-only crash test is skipped. Static and reference checks pass. A no-network test fails when a hook opens a TCP connection or calls `fetch`.
+
+Across 320 comparisons of 0.3.0 and 0.3.1 on ordinary inputs, the injected text is identical:
+
+- Both hosts, with and without the broker.
+- Six SDK fixtures, each through a 16-step event sequence (installs, removals, compaction, `/clear`, cwd change, session end).
+- Eight ordinary import-check files.
+
+The only differences in that set are two watch lists: projects whose manifest does not declare the SDK now also watch `pnpm-workspace.yaml` and `lerna.json`. The October 16 ablation therefore still applies to these inputs.
+
 ## 0.3.0: local SDK context hooks, October 16
 
 Tag `arkiv--v0.3.0` points to main `89c1945ddd4d8682e73581cc9cf37aa408e28177`. Its canonical skills are [`Arkiv-Network/skills@49c0e06`](https://github.com/Arkiv-Network/skills/commit/49c0e0695d0abc66325aab7e9f3d469ce0b694c5).

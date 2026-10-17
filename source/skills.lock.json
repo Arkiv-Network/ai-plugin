@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "repository": "https://github.com/Arkiv-Network/skills",
-  "commit": "49c0e0695d0abc66325aab7e9f3d469ce0b694c5",
+  "commit": "cd8bb375a5eec9977c55f47461eef0542080f3bb",
   "excludedSkills": [
     "arkiv-best-practices"
   ],
@@ -506,16 +506,16 @@
     {
       "source": "skills/arkiv/references/import-check.md",
       "destination": "plugins/arkiv-codex/skills/arkiv/references/import-check.md",
-      "gitBlob": "d8f5db5677e3be4a0f86f2087f5951e038114c25",
-      "sha256": "1ba35e227a1f888132e4f95a121e182f0ecd283afbeef5a56cdf85aa00659db2",
-      "bytes": 4468
+      "gitBlob": "0e8870d079e1862f6fc3c328f0dc7cbfd5bf8de1",
+      "sha256": "6567929f90f60751f9377a0cb9be221498e0cff62db9cfc1b8b7511bc2891b36",
+      "bytes": 4889
     },
     {
       "source": "skills/arkiv/references/import-check.md",
       "destination": "plugins/arkiv/skills/arkiv/references/import-check.md",
-      "gitBlob": "d8f5db5677e3be4a0f86f2087f5951e038114c25",
-      "sha256": "1ba35e227a1f888132e4f95a121e182f0ecd283afbeef5a56cdf85aa00659db2",
-      "bytes": 4468
+      "gitBlob": "0e8870d079e1862f6fc3c328f0dc7cbfd5bf8de1",
+      "sha256": "6567929f90f60751f9377a0cb9be221498e0cff62db9cfc1b8b7511bc2891b36",
+      "bytes": 4889
     },
     {
       "source": "skills/arkiv/references/known-issues.md",
@@ -548,16 +548,16 @@
     {
       "source": "skills/arkiv/scripts/check-imports.mjs",
       "destination": "plugins/arkiv-codex/skills/arkiv/scripts/check-imports.mjs",
-      "gitBlob": "44716075f5be592c86f0a7412ab22bdce80146d6",
-      "sha256": "cd19172f233b5ef992c62d7a921f238c448bbf2bab4ef7f78fa6ed1218ee36d6",
-      "bytes": 8649
+      "gitBlob": "6d9195da58dea53153043346acb20a4ef6196d21",
+      "sha256": "470473a65c6e3a434699fff638dd3597e3530e7a997d775ccb14e03bcc7aa351",
+      "bytes": 9356
     },
     {
       "source": "skills/arkiv/scripts/check-imports.mjs",
       "destination": "plugins/arkiv/skills/arkiv/scripts/check-imports.mjs",
-      "gitBlob": "44716075f5be592c86f0a7412ab22bdce80146d6",
-      "sha256": "cd19172f233b5ef992c62d7a921f238c448bbf2bab4ef7f78fa6ed1218ee36d6",
-      "bytes": 8649
+      "gitBlob": "6d9195da58dea53153043346acb20a4ef6196d21",
+      "sha256": "470473a65c6e3a434699fff638dd3597e3530e7a997d775ccb14e03bcc7aa351",
+      "bytes": 9356
     },
     {
       "source": "skills/arkiv/SKILL.md",

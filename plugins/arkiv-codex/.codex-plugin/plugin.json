@@ -1,7 +1,14 @@
 {
   "name": "arkiv",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
+  "keywords": [
+    "arkiv",
+    "web3 database",
+    "ethereum-aligned",
+    "skills",
+    "mcp"
+  ],
   "skills": "./skills",
   "mcpServers": "./mcp.json",
   "hooks": "./hooks/hooks.json",
