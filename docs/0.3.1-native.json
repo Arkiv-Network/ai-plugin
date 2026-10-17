@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-17",
+  "release": "arkiv--v0.3.1",
+  "commit": "2a23695bfa4656a99fd176383542f82699d36837",
+  "hosts": {
+    "claude": "Claude Code 2.1.302, Windows",
+    "codex": "Codex CLI 0.163.0, Windows"
+  },
+  "install": {
+    "updateFrom030": {
+      "claude": "pass; claude plugin list shows 0.3.1",
+      "codex": "pass; codex plugin list shows 0.3.1"
+    },
+    "installedMatchesRepository": {
+      "claudeFiles": 347,
+      "claudeDiffs": 0,
+      "codexFiles": 47,
+      "codexDiffs": 0
+    }
+  },
+  "nativeSessions": {
+    "method": "isolated profiles driven turn by turn; Claude with --strict-mcp-config and an empty MCP config, plus a logging hook in the isolated profile to prove which host events fired; Codex with the installed mcp.json temporarily pointed at a local stdio mock and restored afterwards; --dangerously-bypass-hook-trust stands in for the one-time /hooks review except in the trust-gate check",
+    "productionTraffic": "none",
+    "claude": {
+      "passed": 54,
+      "total": 54,
+      "scenarios": {
+        "categories": "26/26: compatible, out_of_range, mismatch, not_installed, absent and no manifest; rules hook only when the SDK is declared; no duplicate on an unchanged prompt",
+        "lifecycle": "14/14: FileChanged for package.json and the lockfile, downgrade, removal, reinstall, declaration edit, PostCompact, /clear, broker running before close, SessionEnd fired and closed the broker",
+        "resume": "2/2: resumed session re-establishes facts with an invalidation line; broker gone afterwards",
+        "cwd": "4/4: CwdChanged into a nested package reports that package",
+        "importcheck": "3/3: warning for a name the installed declarations do not export; the check runs and stays silent for an exported name",
+        "concurrent": "1/1: 8 concurrent startups all receive the context",
+        "nonode": "2/2: without Node on PATH the session works and nothing is injected",
+        "telemetry": "2/2: header names 0.3.1 and claude-code; ARKIV_TELEMETRY=off sends none"
+      }
+    },
+    "codex": {
+      "passed": 20,
+      "total": 20,
+      "scenarios": {
+        "static": "1/1: installed MCP header names 0.3.1 and codex",
+        "categories": "12/12: the five categories and no manifest, run concurrently",
+        "lifecycle": "5/5: resumed turn after a downgrade reports out_of_range with an invalidation; a second resume re-establishes facts exactly once; brokers gone",
+        "trust": "1/1: untrusted hooks inject nothing while the session is recorded and the trusted control injected",
+        "cleanup": "1/1: installed mcp.json and config restored"
+      }
+    },
+    "longSession": {
+      "result": "pass",
+      "steps": "startup compatible at 7 s; silent prompt at 545 s; SDK downgraded at 634 s; prompt at 665 s reported out_of_range 0.6.8 with an invalidation; broker closed after the session",
+      "note": "the same broker process ran past the 600-second timeout of the asynchronous hook that starts it"
+    }
+  },
+  "notVerified": [
+    "the interactive /hooks trust dialog",
+    "desktop, IDE and web hosts",
+    "macOS"
+  ]
+}

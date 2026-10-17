@@ -25,6 +25,26 @@ Across 320 comparisons of 0.3.0 and 0.3.1 on ordinary inputs, the injected text 
 
 The only differences in that set are two watch lists: projects whose manifest does not declare the SDK now also watch `pnpm-workspace.yaml` and `lerna.json`. The October 16 ablation therefore still applies to these inputs.
 
+Tag `arkiv--v0.3.1` points to main `2a23695bfa4656a99fd176383542f82699d36837`. Public installation was checked in isolated Windows profiles. Both hosts updated from 0.3.0, and the installed packages match the repository exactly: 347 Claude files and 47 Codex files.
+
+Native sessions from those installs, on Claude Code 2.1.302 and Codex CLI 0.163.0, used stricter checks than 0.3.0. For example, cleanup now requires a running broker before close and a recorded SessionEnd.
+
+- Claude: 54/54 checks:
+  - every category;
+  - file, lockfile and declaration changes, compaction, `/clear`, resume and cwd changes;
+  - the import check;
+  - 8 concurrent sessions;
+  - no Node on PATH;
+  - the connection header.
+- Codex: 20/20 checks:
+  - every category;
+  - resume, with facts re-established exactly once;
+  - the untrusted-hook gate, against a recorded session and a trusted control;
+  - cleanup.
+- Long session: one Claude session ran for 11 minutes. The broker stayed up past the 600-second timeout of the asynchronous hook that starts it, and a downgrade at 634 seconds was reported correctly at 665 seconds.
+
+No production traffic was sent. The interactive `/hooks` dialog, desktop, IDE and web hosts, and macOS remain unverified. See the [native receipt](0.3.1-native.json).
+
 ## 0.3.0: local SDK context hooks, October 16
 
 Tag `arkiv--v0.3.0` points to main `89c1945ddd4d8682e73581cc9cf37aa408e28177`. Its canonical skills are [`Arkiv-Network/skills@49c0e06`](https://github.com/Arkiv-Network/skills/commit/49c0e0695d0abc66325aab7e9f3d469ce0b694c5).
