@@ -4,6 +4,42 @@ Arkiv skills, MCP source discovery, and project rules for the Web3 database, pac
 
 Version **0.4.0** is a release candidate targeting General. The previous Devfolio event has ended. General provides Arkiv building guidance and points to active event profiles; the human adds an event URL when needed. The local SDK context hooks remain unchanged. Canonical skills stay pinned to `cd8bb375a5eec9977c55f47461eef0542080f3bb`; its MCP skill still describes the previous event target, so use the package manifest and actual `server_status` for the connected profile. This candidate is not yet published; the public installation commands below install the latest published default-branch package until the release gate passes.
 
+## Breaking changes in 0.4.0
+
+- The bundled MCP connection moves from `https://mcp.arkiv.network/devfolio` (0.3.x) to General at `https://mcp.arkiv.network/`. The connection is still named `arkiv`.
+- These Devfolio-only tools and prompts are not on General:
+
+  | Item | Kind | Replacement |
+  | --- | --- | --- |
+  | `check_schema` | tool | None on General. Add the Devfolio MCP as a separate server (below). |
+  | `check_submission` | tool | None on General. Add the Devfolio MCP as a separate server (below). |
+  | `design_entity_model` | tool | The `model_entities` workflow (`prompts/get` or `get_workflow`). For a PostgreSQL schema, `generate_entity_model`. |
+  | `prepare_devfolio` | prompt | None on General. Add the Devfolio MCP as a separate server (below). |
+  | `pillar_fit` | prompt | None on General. Add the Devfolio MCP as a separate server (below). |
+
+- The Devfolio event documents, such as `devfolio/rules`, `devfolio/scoring-rubric` and `devfolio/submission-checklist`, are served only on `/devfolio`.
+- `verify_entity` and `verify_tx` remain available: General now serves them.
+- General rejects unknown tool and prompt arguments. Send only the names listed in `tools/list` and `prompts/list`.
+- `tools/call` with name `prepare_feedback` returns error `-32602`. It is a prompt: use `prompts/get` or `get_workflow` with name `prepare_feedback`.
+
+### Keep working on a Devfolio project
+
+The human adds the Devfolio profile as a second, separately named MCP server. Agents must not add or switch connections on their own.
+
+Claude Code:
+
+```bash
+claude mcp add --transport http arkiv-devfolio https://mcp.arkiv.network/devfolio
+```
+
+Codex CLI:
+
+```bash
+codex mcp add arkiv-devfolio --url https://mcp.arkiv.network/devfolio
+```
+
+Start a new session. `server_status` on `arkiv-devfolio` should report profile `devfolio`; the bundled `arkiv` connection still reports `general`. This extra connection does not send the plugin attribution header. Remove it when the project no longer needs it, with `claude mcp remove arkiv-devfolio` or `codex mcp remove arkiv-devfolio`.
+
 ## Claude Code: install
 
 Claude package: `plugins/arkiv`, version **0.4.0** (candidate). Candidate installation and strict validation are checked on Windows with Claude Code **2.1.310**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. Install from the public default branch:
