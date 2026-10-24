@@ -2,7 +2,7 @@
 
 Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. The plugin targets the General MCP profile at [mcp.arkiv.network](https://mcp.arkiv.network/). No connection key is required. It does not install the SDK, fund or connect a wallet, sign transactions, or create another backend.
 
-Version **0.4.0** is a release candidate targeting General. The previous Devfolio event has ended. General provides Arkiv building guidance and points to active event profiles; the human adds an event URL when needed. The local SDK context hooks remain unchanged. Canonical skills stay pinned to `cd8bb375a5eec9977c55f47461eef0542080f3bb`; its MCP skill still describes the previous event target, so use the package manifest and actual `server_status` for the connected profile. This candidate is not yet published; the public installation commands below install the latest published default-branch package until the release gate passes.
+Version **0.4.0** targets General (General 2.0.0, live since October 24, 2026). The previous Devfolio event has ended. General provides Arkiv building guidance and points to active event profiles; the human adds an event URL when needed. The local SDK context hooks remain unchanged. Canonical skills stay pinned to `cd8bb375a5eec9977c55f47461eef0542080f3bb`; its MCP skill still describes the previous event target, so use the package manifest and actual `server_status` for the connected profile.
 
 ## Breaking changes in 0.4.0
 
@@ -17,7 +17,7 @@ Version **0.4.0** is a release candidate targeting General. The previous Devfoli
   | `prepare_devfolio` | prompt | None on General. Add the Devfolio MCP as a separate server (below). |
   | `pillar_fit` | prompt | None on General. Add the Devfolio MCP as a separate server (below). |
 
-- The Devfolio event documents, such as `devfolio/rules`, `devfolio/scoring-rubric` and `devfolio/submission-checklist`, are served only on `/devfolio`.
+- Every Devfolio resource (`devfolio/*`, `sdk-devfolio/*`, `packages/sdk-devfolio`, `guides/devfolio-current` and `guides/devfolio-hub-current`) is served only on `/devfolio`.
 - `verify_entity` and `verify_tx` remain available: General now serves them.
 - General rejects unknown tool and prompt arguments. Send only the names listed in `tools/list` and `prompts/list`.
 - `tools/call` with name `prepare_feedback` returns error `-32602`. It is a prompt: use `prompts/get` or `get_workflow` with name `prepare_feedback`.
@@ -42,7 +42,7 @@ Start a new session. `server_status` on `arkiv-devfolio` should report profile `
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`, version **0.4.0** (candidate). Candidate installation and strict validation are checked on Windows with Claude Code **2.1.310**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. Install from the public default branch:
+Claude package: `plugins/arkiv`, version **0.4.0**. Installation and strict validation are checked on Windows with Claude Code **2.1.310**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. Install from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/claude-plugin
@@ -185,6 +185,6 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for candidate coverage and 0.3.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
+See [verification scope](docs/verification.md) for 0.4.0 coverage and 0.3.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
 
 [SDK context and skill-usage preparation](docs/context-preparation.md) documents the context hooks, the installed-import check, host limits and the disabled skill-usage source. The [October 16 context-only ablation](docs/evaluations/2026-10-16-context-ablation.md) is the 0.3.0 release gate, with per-skill trigger, negative and outcome results.

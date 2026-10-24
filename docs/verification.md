@@ -1,8 +1,8 @@
 # Verification scope
 
-## 0.4.0 candidate: General target
+## 0.4.0: General target, October 24
 
-This branch prepares 0.4.0; it does not establish release availability or live service health. The orchestrator owns DGX checks, the release gate, public installation, tags and publication. No production or Preview MCP request is needed for these local checks. Earlier sections are historical records for the previous target, whose event has ended; their scores do not certify the General migration.
+General 2.0.0 went live at `https://mcp.arkiv.network/` on October 24, 2026 (21:17 UTC), after its own release gate; post-deploy checks of the live service passed. The release commit passed `npm run build`, `npm run check` and `npm test` on Linux ARM64 (97 tests, 95 pass, 0 fail, the two opt-in native installation tests skipped). Real-host journeys used a test-only build of this package against the General Preview that became production: Claude Code plugin 28/28 and Codex CLI plugin 25/25 checks. Earlier sections are historical records for the previous target, whose event has ended; their scores do not certify the General migration.
 
 Windows checks on Node 22.22.3, Claude Code 2.1.310 and Codex CLI 0.163.0: build/check and both strict validations pass. With native installation checks enabled, 96 tests pass, zero fail and one Linux-only crash test is skipped; hook startup p95 is 158.17 ms against the unchanged 200 ms bound. Both native installations have exact source-byte parity in loopback-only profiles, and user Claude settings/registry hashes are unchanged. The first full suite exposed a missing-install fixture discovering a real SDK above the scratch directory; the fixture now models ancestor candidates as absent while retaining its expected category and real reads inside its root. Product context-hook code is unchanged. Strict validation reports separate directory-submission license/icon diagnostics; directory publication is not certified.
 
