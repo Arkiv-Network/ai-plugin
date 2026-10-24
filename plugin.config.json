@@ -1,14 +1,14 @@
 {
   "name": "arkiv",
   "displayName": "Arkiv",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
   "author": {
     "name": "Arkiv Network"
   },
   "repository": "https://github.com/Arkiv-Network/claude-plugin",
   "homepage": "https://hub.arkiv.network/ai-tools#claude-plugin",
-  "mcpUrl": "https://mcp.arkiv.network/devfolio",
+  "mcpUrl": "https://mcp.arkiv.network/",
   "sdkVersion": "0.8.1",
   "sdkRange": ">=0.8.1 <0.9",
   "network": "tiramisu",

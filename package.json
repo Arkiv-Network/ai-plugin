@@ -10,6 +10,10 @@
     "build": "node scripts/build-plugin.mjs",
     "check": "node scripts/build-plugin.mjs --check && node scripts/check-static.mjs",
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
-    "validate": "claude plugin validate --strict . && claude plugin validate --strict plugins/arkiv"
+    "validate": "node scripts/release-gate.mjs validate",
+    "release:check": "node scripts/release-gate.mjs check",
+    "tag": "node scripts/release-gate.mjs tag",
+    "prepack": "node scripts/release-gate.mjs check",
+    "prepublishOnly": "node scripts/release-gate.mjs check"
   }
 }

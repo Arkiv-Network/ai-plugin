@@ -16,13 +16,13 @@ test('marketplace points to nested plugin and version exists only on plugin mani
 });
 test('generated MCP is hosted HTTP without secrets', () => {
   const mcp = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/.mcp.json'));
-  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/devfolio',
+  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/',
     headersHelper:'node "${CLAUDE_PLUGIN_ROOT}/scripts/client-headers.mjs"'}}});
 });
 
 test('Claude opt-out omits attribution and never transmits an environment value', () => {
   for (const value of [undefined, 'off', 'on', 'private-project-canary']) {
-    const env = {...process.env}; delete env.ARKIV_TELEMETRY;
+    const env = {...process.env}; delete env.ARKIV_TELEMETRY; delete env.ARKIV_AUDIENCE;
     if (value !== undefined) env.ARKIV_TELEMETRY = value;
     const raw = execFileSync(process.execPath, [path.join(repositoryRoot, 'plugins/arkiv/scripts/client-headers.mjs')],
       {env, encoding:'utf8', timeout:2000, windowsHide:true});
@@ -76,7 +76,7 @@ test('hook uses nonblocking exec form and one argument with the complete path', 
     args: ['${CLAUDE_PLUGIN_ROOT}/hooks/arkiv-rules.mjs'], timeout: 2, onFailure: 'continue'});
 });
 test('unexpected endpoint, range, source revision or fields fail configuration', () => {
-  for (const mcpUrl of ['https://mcp.arkiv.network/', 'https://mcp.arkiv.network/ethrome',
+  for (const mcpUrl of ['https://mcp.arkiv.network/devfolio', 'https://mcp.arkiv.network/other',
     'https://mcp.arkiv.network/devfolio/', 'https://mcp.arkiv.network/devfolio?key=redacted',
     'https://mcp.arkiv.network/devfolio#rules',
     'http://mcp.arkiv.network/devfolio', 'https://mcp.arkiv.network:443/devfolio']) {

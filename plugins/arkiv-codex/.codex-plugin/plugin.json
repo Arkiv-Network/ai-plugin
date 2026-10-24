@@ -1,6 +1,6 @@
 {
   "name": "arkiv",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Arkiv skills, MCP source discovery, and project rules for the Web3 database.",
   "keywords": [
     "arkiv",
@@ -14,6 +14,6 @@
   "hooks": "./hooks/hooks.json",
   "interface": {
     "displayName": "Arkiv",
-    "shortDescription": "Arkiv skills and the Devfolio MCP connection."
+    "shortDescription": "Arkiv skills and the General MCP connection."
   }
 }
