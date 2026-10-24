@@ -1,2 +1,4 @@
 // Generated connection metadata only: no files, network or agent context.
-process.stdout.write(JSON.stringify(process.env.ARKIV_TELEMETRY === 'off' ? {} : {'X-Arkiv-Client': 'arkiv-plugin/0.3.1; host=claude-code'}) + '\n');
+const headers = process.env.ARKIV_TELEMETRY === 'off' ? {} : {'X-Arkiv-Client': 'arkiv-plugin/0.4.0; host=claude-code'};
+if (process.env.ARKIV_AUDIENCE === 'internal') headers['X-Arkiv-Audience'] = 'internal';
+process.stdout.write(JSON.stringify(headers) + '\n');

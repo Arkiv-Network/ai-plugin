@@ -1,9 +1,30 @@
-import {readFile, writeFile, mkdir} from 'node:fs/promises';
+import {readFile, writeFile, mkdir, cp, access} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
 export const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const json = value => JSON.stringify(value, null, 2) + '\n';
+
+export function validatePreviewUrl(url) {
+  if (typeof url !== 'string' || !/^https:\/\/arkiv-mcp-general-[a-z0-9]{9}-golem\.vercel\.app\/$/.test(url)
+    || url.trim() !== url) throw new Error('Expected an immutable General Preview URL');
+  return url;
+}
+
+export async function assertReleaseRoot(root) {
+  let directory = path.resolve(root);
+  while (true) {
+    try { await access(path.join(directory, 'TEST_ONLY.json')); }
+    catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+      const parent = path.dirname(directory);
+      if (parent === directory) return;
+      directory = parent;
+      continue;
+    }
+    throw new Error('Test-only packages cannot enter release, check, validate or tag paths');
+  }
+}
 export function validateConfig(config) {
   if (!config || typeof config !== 'object' || Array.isArray(config)) throw new Error('Invalid plugin configuration');
   const required = ['name', 'displayName', 'version', 'description', 'author', 'repository', 'homepage', 'mcpUrl',
@@ -23,7 +44,7 @@ export function validateConfig(config) {
   if (config.sdkVersion !== '0.8.1' || config.sdkRange !== '>=0.8.1 <0.9') throw new Error('Unexpected SDK compatibility');
   if (config.repository !== 'https://github.com/Arkiv-Network/claude-plugin') throw new Error('Unexpected repository');
   const endpoint = new URL(config.mcpUrl);
-  if (config.mcpUrl !== 'https://mcp.arkiv.network/devfolio' || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');
+  if (config.mcpUrl !== 'https://mcp.arkiv.network/' || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');
   const homepage = new URL(config.homepage);
   if (homepage.protocol !== 'https:' || homepage.username || homepage.password || homepage.search) throw new Error('Invalid homepage');
   const source = config.skillsSource;
@@ -77,7 +98,7 @@ export function buildArtifacts(config, source) {
       description: config.description, plugins: [{name: config.name, source: './plugins/arkiv', description: config.description}]})],
     ['plugins/arkiv/.mcp.json', json({mcpServers: {arkiv: {type: 'http', url: config.mcpUrl,
       headersHelper: 'node "${CLAUDE_PLUGIN_ROOT}/scripts/client-headers.mjs"'}}})],
-    ['plugins/arkiv/scripts/client-headers.mjs', `// Generated connection metadata only: no files, network or agent context.\nprocess.stdout.write(JSON.stringify(process.env.ARKIV_TELEMETRY === 'off' ? {} : {'X-Arkiv-Client': 'arkiv-plugin/${config.version}; host=claude-code'}) + '\\n');\n`],
+    ['plugins/arkiv/scripts/client-headers.mjs', `// Generated connection metadata only: no files, network or agent context.\nconst headers = process.env.ARKIV_TELEMETRY === 'off' ? {} : {'X-Arkiv-Client': 'arkiv-plugin/${config.version}; host=claude-code'};\nif (process.env.ARKIV_AUDIENCE === 'internal') headers['X-Arkiv-Audience'] = 'internal';\nprocess.stdout.write(JSON.stringify(headers) + '\\n');\n`],
     ['plugins/arkiv/hooks/hooks.json', json({hooks: claudeHooks()})],
     ['plugins/arkiv/templates/AGENTS.snippet.md', renderRules(config, source)],
     ['.agents/plugins/marketplace.json', json({name: config.name, interface: {displayName: config.displayName},
@@ -87,17 +108,18 @@ export function buildArtifacts(config, source) {
     // format precedence, so the package uses the native .codex-plugin manifest to run its context hook.
     ['plugins/arkiv-codex/.codex-plugin/plugin.json', json({name: config.name, version: config.version,
       description: config.description, keywords: identity.keywords, skills: './skills', mcpServers: './mcp.json', hooks: './hooks/hooks.json',
-      interface: {displayName: config.displayName, shortDescription: 'Arkiv skills and the Devfolio MCP connection.'}})],
+      interface: {displayName: config.displayName, shortDescription: 'Arkiv skills and the General MCP connection.'}})],
     ['plugins/arkiv-codex/hooks/hooks.json', json({hooks: contextHooks('codex')})],
     ['plugins/arkiv-codex/mcp.json', json({$schema: 'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',
       mcpServers: {arkiv: {type: 'streamable-http', url: config.mcpUrl,
         headers: {'X-Arkiv-Client': 'arkiv-plugin/'+config.version+'; host=codex'}}}})],
     ['plugins/arkiv-codex/templates/AGENTS.snippet.md', renderRules(config, source).replace('arkiv:arkiv', '$arkiv')],
-    ['plugins/arkiv-codex/AGENTS.md', `# Arkiv plugin for Codex CLI\n\nThis package contains Arkiv skills and one Devfolio (Arkiv: Global Tour Stop) MCP connection at ${config.mcpUrl}. Start a new Codex session after installing, then invoke the Arkiv router with $arkiv. Load only the task skill it selects. The router carries the essential safety rules even when the SDK is absent.\n\nCodex does not run the Claude rules hook. After you review and trust the package hooks, a read-only local hook reports the installed SDK version category at session start and on prompts when it changes; it makes no network requests, stores nothing on disk and never blocks the session. This AGENTS.md is package documentation; installing the plugin does not inject it into the consumer project's instructions. Only add templates/AGENTS.snippet.md to a project's AGENTS.md when the developer explicitly requests it, preserving their existing instructions.\n\nBefore executable SDK code, inspect the manifest, lockfile and installed declarations for SDK ${config.sdkRange} on ${config.networkLabel}; ask for missing evidence. Ask for the query, filters, sort, expected cardinality, stable IDs, trusted creator, public/private fields, permissions, retention, architecture and signer custody. Installation authorizes no SDK installation, wallet connection, signing, feedback or transaction. Before writes obtain explicit operation, network, authorized signer and spending scope. Never request signing keys in chat.\n\nRead the existing connection's actual server_status and confirm profile devfolio before saying CONNECTED. Otherwise report NOT CONNECTED. Do not add a duplicate connection or switch profiles. Synthetic fixtures do not establish live service health.\n\nSkills are real files imported from one fixed canonical Git revision; never edit imported files. See the distribution README for installation, client evidence and maintenance commands. Desktop, IDE and other clients need their own tests; CLI evidence does not certify them.\n`]
+    ['plugins/arkiv-codex/AGENTS.md', `# Arkiv plugin for Codex CLI\n\nThis package contains Arkiv skills and one General MCP connection at ${config.mcpUrl}. Start a new Codex session after installing, then invoke the Arkiv router with $arkiv. Load only the task skill it selects. The router carries the essential safety rules even when the SDK is absent.\n\nCodex does not run the Claude rules hook. After you review and trust the package hooks, a read-only local hook reports the installed SDK version category at session start and on prompts when it changes; it makes no network requests, stores nothing on disk and never blocks the session. This AGENTS.md is package documentation; installing the plugin does not inject it into the consumer project's instructions. Only add templates/AGENTS.snippet.md to a project's AGENTS.md when the developer explicitly requests it, preserving their existing instructions.\n\nBefore executable SDK code, inspect the manifest, lockfile and installed declarations for SDK ${config.sdkRange} on ${config.networkLabel}; ask for missing evidence. Ask for the query, filters, sort, expected cardinality, stable IDs, trusted creator, public/private fields, permissions, retention, architecture and signer custody. Installation authorizes no SDK installation, wallet connection, signing, feedback or transaction. Before writes obtain explicit operation, network, authorized signer and spending scope. Never request signing keys in chat.\n\nRequire a successful server_status reporting profile general before saying CONNECTED. General points to active event profiles; the human adds an event URL when needed. The pinned arkiv-mcp skill describes the previous, ended event target; use this package configuration for the bundled target. Otherwise report NOT CONNECTED. Do not add a duplicate connection or switch profiles. Synthetic fixtures do not establish live service health.\n\nSkills are real files imported from one fixed canonical Git revision; never edit imported files. See the distribution README for installation, client evidence and maintenance commands. Desktop, IDE and other clients need their own tests; CLI evidence does not certify them.\n`]
   ]);
 }
 
 export async function generate(root = repositoryRoot, check = false) {
+  await assertReleaseRoot(root);
   const config = JSON.parse(await readFile(path.join(root, 'plugin.config.json'), 'utf8'));
   const source = await readFile(path.join(root, 'source/always-on.md'), 'utf8');
   const artifacts = buildArtifacts(config, source), changed = [];
@@ -117,9 +139,52 @@ export async function generate(root = repositoryRoot, check = false) {
   return {files: [...artifacts.keys()], changed, checked: check};
 }
 
+// A new directory only: never retarget or overwrite either release package.
+// The marker and non-release configuration independently prevent release admission.
+export async function generatePreview(root, url, destination) {
+  validatePreviewUrl(url);
+  if (!path.isAbsolute(destination)) throw new Error('Preview output must be an absolute new directory');
+  const relative = path.relative(path.resolve(root), path.resolve(destination));
+  if (!relative || !relative.startsWith('..' + path.sep) && !path.isAbsolute(relative)) {
+    throw new Error('Preview output must be separate from the release repository');
+  }
+  await generate(root, true);
+  await mkdir(destination);
+  await writeFile(path.join(destination, 'TEST_ONLY.json'), json({testOnly: true, publishable: false, target: url}));
+  for (const name of ['plugin.config.json', 'package.json', 'AGENTS.md', 'CLAUDE.md', 'README.md',
+    'plugins', 'source', 'scripts', '.claude-plugin', '.agents']) {
+    await cp(path.join(root, name), path.join(destination, name), {recursive: true, errorOnExist: true, force: false});
+  }
+  const configFile = path.join(destination, 'plugin.config.json');
+  const config = JSON.parse(await readFile(configFile, 'utf8'));
+  config.mcpUrl = url;
+  await writeFile(configFile, json(config));
+  for (const [bundle, file, manifest] of [
+    ['arkiv', '.mcp.json', '.claude-plugin/plugin.json'], ['arkiv-codex', 'mcp.json', '.codex-plugin/plugin.json']]) {
+    const packageRoot = path.join(destination, 'plugins', bundle);
+    const mcpFile = path.join(packageRoot, file);
+    const mcp = JSON.parse(await readFile(mcpFile, 'utf8'));
+    mcp.mcpServers.arkiv.url = url;
+    await writeFile(mcpFile, json(mcp));
+    const manifestFile = path.join(packageRoot, manifest);
+    const identity = JSON.parse(await readFile(manifestFile, 'utf8'));
+    identity.version += '-test-only.0';
+    await writeFile(manifestFile, json(identity));
+    await writeFile(path.join(packageRoot, 'TEST_ONLY.json'), json({testOnly: true, publishable: false, target: url}));
+  }
+  return {destination, target: url, testOnly: true, publishable: false};
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   try {
-    if (process.argv.slice(2).some(arg => arg !== '--check')) throw new Error('Usage: node scripts/build-plugin.mjs [--check]');
-    console.log(JSON.stringify(await generate(repositoryRoot, process.argv.includes('--check'))));
+    const args = process.argv.slice(2);
+    if (args.length === 4 && args[0] === '--test-preview' && args[2] === '--output') {
+      console.log(JSON.stringify(await generatePreview(repositoryRoot, args[1], args[3])));
+    } else {
+      if (args.length > 1 || args.some(arg => arg !== '--check')) {
+        throw new Error('Usage: node scripts/build-plugin.mjs [--check | --test-preview <immutable-url> --output <absolute-new-directory>]');
+      }
+      console.log(JSON.stringify(await generate(repositoryRoot, args.includes('--check'))));
+    }
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }

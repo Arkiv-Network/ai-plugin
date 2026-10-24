@@ -10,6 +10,16 @@ async function fixture(t,{version='0.8.1',spec='^0.8.1',lock=version,installed=t
  await put('package.json',{dependencies:deps,scripts:{postinstall:'throw new Error("must never execute")'}});
  await put('package-lock.json',{lockfileVersion:3,packages:{'':{dependencies:deps},'node_modules/@arkiv-network/sdk':{version:lock}}});
  if(installed){await put('node_modules/@arkiv-network/sdk/package.json',{name:'@arkiv-network/sdk',version,types:'./index.d.ts',main:'trap.js'});await put('node_modules/@arkiv-network/sdk/trap.js','throw Error("executed project code")');if(types)await put('node_modules/@arkiv-network/sdk/index.d.ts','export declare function createPublicClient(): void;');}
+ // A missing-install fixture must not discover a real SDK or PnP loader above its owned root.
+ // Keep the real filesystem inside the fixture and the inspector's full resolution search;
+ // model absent ancestor candidates instead of changing the expected category.
+ if(!installed){const open=fs.open.bind(fs);t.mock.method(fs,'open',async(file,...args)=>{
+  const relative=path.relative(root,path.resolve(file));
+  if(relative==='..'||relative.startsWith('..'+path.sep)||path.isAbsolute(relative)){
+   throw Object.assign(new Error('Outside the isolated missing-install fixture'),{code:'ENOENT'});
+  }
+  return open(file,...args);
+ });}
  return {root,put};
 }
 for(const [name,options,state]of [
