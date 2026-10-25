@@ -2,7 +2,7 @@
 
 Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. The plugin targets the General MCP profile at [mcp.arkiv.network](https://mcp.arkiv.network/). No connection key is required. It does not install the SDK, fund or connect a wallet, sign transactions, or create another backend.
 
-Version **0.4.0** targets General (General 2.0.0, live since October 24, 2026). The previous Devfolio event has ended. General provides Arkiv building guidance and points to active event profiles; the human adds an event URL when needed. The local SDK context hooks remain unchanged. Canonical skills stay pinned to `cd8bb375a5eec9977c55f47461eef0542080f3bb`; its MCP skill still describes the previous event target, so use the package manifest and actual `server_status` for the connected profile.
+Version **0.4.1** targets General (General 2.0.0, live since October 24, 2026) and refreshes the bundled skills. The previous Devfolio event has ended. General provides Arkiv building guidance and points to active event profiles; the human adds an event URL when needed. The local SDK context hooks remain unchanged. Its `arkiv-mcp` skill describes the General connection, separate event profiles and the frozen Devfolio profile; actual `server_status` still identifies the connected profile.
 
 ## Breaking changes in 0.4.0
 
@@ -42,7 +42,7 @@ Start a new session. `server_status` on `arkiv-devfolio` should report profile `
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`, version **0.4.0**. Installation and strict validation are checked on Windows with Claude Code **2.1.310**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. Install from the public default branch:
+Claude package: `plugins/arkiv`, version **0.4.1**. Installation and strict validation are checked on Windows with Claude Code **2.1.310**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. Install from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/claude-plugin
@@ -139,7 +139,7 @@ claude plugin marketplace update arkiv
 claude plugin update arkiv@arkiv
 ```
 
-To update from **0.3.x** or earlier after 0.4.0 is published, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.4.0** and the check prompt returns profile **general**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
+To update from **0.4.0**, **0.3.x** or earlier, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.4.1** and the check prompt returns profile **general**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
 
 ```bash
 claude plugin uninstall arkiv@arkiv
@@ -171,7 +171,7 @@ For MCP-only use, connect to [General](https://mcp.arkiv.network/) using the [Hu
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both packages from merged revision [`cd8bb375a5eec9977c55f47461eef0542080f3bb`](https://github.com/Arkiv-Network/skills/commit/cd8bb375a5eec9977c55f47461eef0542080f3bb) ([Arkiv-Network/skills#63](https://github.com/Arkiv-Network/skills/pull/63)). Both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both packages from merged revision [`f4875a91ff5cfd968e2c979b2ac350fe84d1ecc0`](https://github.com/Arkiv-Network/skills/commit/f4875a91ff5cfd968e2c979b2ac350fe84d1ecc0) ([Arkiv-Network/skills#65](https://github.com/Arkiv-Network/skills/pull/65)). Both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
 
 ```bash
 node scripts/build-plugin.mjs --check
@@ -185,6 +185,6 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for 0.4.0 coverage and 0.3.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
+See [verification scope](docs/verification.md) for 0.4.1 and 0.4.0 coverage and 0.3.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
 
 [SDK context and skill-usage preparation](docs/context-preparation.md) documents the context hooks, the installed-import check, host limits and the disabled skill-usage source. The [October 16 context-only ablation](docs/evaluations/2026-10-16-context-ablation.md) is the 0.3.0 release gate, with per-skill trigger, negative and outcome results.

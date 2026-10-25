@@ -10,8 +10,8 @@ const config = JSON.parse(await readFile(path.join(builder.repositoryRoot, 'plug
 const source = await readFile(path.join(builder.repositoryRoot, 'source/always-on.md'), 'utf8');
 const preview = 'https://arkiv-mcp-general-a1b2c3d4e-golem.vercel.app/';
 
-test('R9 release is 0.4.0 and both hosts target exactly General', () => {
-  assert.equal(config.version, '0.4.0');
+test('R9 release is 0.4.1 and both hosts target exactly General', () => {
+  assert.equal(config.version, '0.4.1');
   assert.equal(config.mcpUrl, 'https://mcp.arkiv.network/');
   const artifacts = builder.buildArtifacts(config, source);
   for (const file of ['plugins/arkiv/.mcp.json', 'plugins/arkiv-codex/mcp.json']) {
@@ -98,7 +98,16 @@ test('R9 Preview output is isolated, retains fixed skills and cannot pass releas
 });
 
 test('R9 canonical skills remain at the required full revision', () => {
-  assert.equal(config.skillsSource.commit, 'cd8bb375a5eec9977c55f47461eef0542080f3bb');
+  assert.equal(config.skillsSource.commit, 'f4875a91ff5cfd968e2c979b2ac350fe84d1ecc0');
+});
+
+test('0.4.1 bundled arkiv-mcp skill describes General, not the ended Devfolio target', async () => {
+  for (const bundle of ['arkiv', 'arkiv-codex']) {
+    const skill = await readFile(path.join(builder.repositoryRoot, 'plugins', bundle, 'skills/arkiv-mcp/SKILL.md'), 'utf8');
+    assert.ok(skill.includes('The Arkiv plugin bundles the **General** profile at `https://mcp.arkiv.network/`'), bundle);
+    assert.ok(skill.includes('The Devfolio profile (Arkiv: Global Tour Stop) has ended and is frozen'), bundle);
+    assert.ok(!skill.includes('plugin bundles the **Devfolio'), bundle);
+  }
 });
 
 test('R9 current synthetic MCP status and graders expect General without claiming event rules', async () => {
