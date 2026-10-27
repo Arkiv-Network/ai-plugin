@@ -6,7 +6,7 @@
   "author": {
     "name": "Arkiv Network"
   },
-  "repository": "https://github.com/Arkiv-Network/claude-plugin",
+  "repository": "https://github.com/Arkiv-Network/ai-plugin",
   "homepage": "https://hub.arkiv.network/ai-tools#claude-plugin",
   "mcpUrl": "https://mcp.arkiv.network/",
   "sdkVersion": "0.8.1",

@@ -42,7 +42,7 @@ export function validateConfig(config) {
   if (!config.author || config.author.name !== 'Arkiv Network' || Object.keys(config.author).length !== 1) throw new Error('Invalid author');
   if (config.network !== 'tiramisu' || config.chainId !== 7738577) throw new Error('Unexpected network');
   if (config.sdkVersion !== '0.8.1' || config.sdkRange !== '>=0.8.1 <0.9') throw new Error('Unexpected SDK compatibility');
-  if (config.repository !== 'https://github.com/Arkiv-Network/claude-plugin') throw new Error('Unexpected repository');
+  if (config.repository !== 'https://github.com/Arkiv-Network/ai-plugin') throw new Error('Unexpected repository');
   const endpoint = new URL(config.mcpUrl);
   if (config.mcpUrl !== 'https://mcp.arkiv.network/' || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');
   const homepage = new URL(config.homepage);

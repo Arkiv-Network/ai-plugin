@@ -4,6 +4,8 @@ Arkiv skills, MCP source discovery, and project rules for the Web3 database, pac
 
 Version **0.4.1** targets General (General 2.0.0, live since October 24, 2026) and refreshes the bundled skills. The previous Devfolio event has ended. General provides Arkiv building guidance and points to active event profiles; the human adds an event URL when needed. The local SDK context hooks remain unchanged. Its `arkiv-mcp` skill describes the General connection, separate event profiles and the frozen Devfolio profile; actual `server_status` still identifies the connected profile.
 
+This repository was named `Arkiv-Network/claude-plugin` until October 27, 2026. GitHub redirects the old name, so a marketplace added with it keeps updating; new installations use `Arkiv-Network/ai-plugin`.
+
 ## Breaking changes in 0.4.0
 
 - The bundled MCP connection moves from `https://mcp.arkiv.network/devfolio` (0.3.x) to General at `https://mcp.arkiv.network/`. The connection is still named `arkiv`.
@@ -45,7 +47,7 @@ Start a new session. `server_status` on `arkiv-devfolio` should report profile `
 Claude package: `plugins/arkiv`, version **0.4.1**. Installation and strict validation are checked on Windows with Claude Code **2.1.310**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. Install from the public default branch:
 
 ```bash
-claude plugin marketplace add Arkiv-Network/claude-plugin
+claude plugin marketplace add Arkiv-Network/ai-plugin
 claude plugin install arkiv@arkiv
 ```
 
@@ -56,7 +58,7 @@ The defaults install for your user account. For one project, add `--scope projec
 In an existing Claude Code session, the equivalent commands are:
 
 ```text
-/plugin marketplace add Arkiv-Network/claude-plugin
+/plugin marketplace add Arkiv-Network/ai-plugin
 /plugin install arkiv@arkiv
 ```
 
@@ -88,7 +90,7 @@ Codex package: `plugins/arkiv-codex`, with the native `.codex-plugin/plugin.json
 Step 1 — run in your terminal:
 
 ```bash
-codex plugin marketplace add Arkiv-Network/claude-plugin
+codex plugin marketplace add Arkiv-Network/ai-plugin
 codex plugin add arkiv@arkiv
 ```
 
@@ -185,6 +187,6 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for 0.4.1 and 0.4.0 coverage and 0.3.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/claude-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
+See [verification scope](docs/verification.md) for 0.4.1 and 0.4.0 coverage and 0.3.1 and earlier acceptance records, qualified native coverage and retained failures. The [release notes](https://github.com/Arkiv-Network/ai-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
 
 [SDK context and skill-usage preparation](docs/context-preparation.md) documents the context hooks, the installed-import check, host limits and the disabled skill-usage source. The [October 16 context-only ablation](docs/evaluations/2026-10-16-context-ablation.md) is the 0.3.0 release gate, with per-skill trigger, negative and outcome results.
