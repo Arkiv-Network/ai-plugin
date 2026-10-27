@@ -109,7 +109,7 @@ The supported tag command created the correct local tag, but its push timed out 
 
 The companion Devfolio MCP is published from `237f0bad2af06aa6e39a9dc5d250c7d6e1601cb8`, retaining 1.1.23/2026-10-13.1 responses and canonical content. Worker Preview and Production each pass 21 classified calls and exact 125-file source parity; Gateway Preview and the public domain each pass seven classified calls. Public privacy passes 390/768/1440, both themes and actual native 200%, and 36 anonymous sensitive-file probes return 404. Five alias IDs and four legacy pins are preserved. Owner SQL verifies nullable columns and unchanged dashboard SELECT privileges, closed metadata and verification exclusion. Persistence is best-effort; accepted operations are not guaranteed rows.
 
-The rules, context hook, canonical skills and original eval inputs are unchanged. No fresh complete context-hook ablation, production skill-use collection or private dashboard implementation is claimed. Those changes remain separate pending work. GitHub CI is not configured; these are executed local and deployed checks. See the [release](https://github.com/Arkiv-Network/claude-plugin/releases/tag/arkiv--v0.2.1) and README privacy section.
+The rules, context hook, canonical skills and original eval inputs are unchanged. No fresh complete context-hook ablation, production skill-use collection or private dashboard implementation is claimed. Those changes remain separate pending work. GitHub CI is not configured; these are executed local and deployed checks. See the [release](https://github.com/Arkiv-Network/ai-plugin/releases/tag/arkiv--v0.2.1) and README privacy section.
 
 ## 0.2.0: Claude Code and Codex CLI packages
 
@@ -156,13 +156,13 @@ Installation and the actual 0.1.5-to-0.1.6 update are separate publication check
 
 ## 0.1.5: accepted source
 
-Candidate [`516c397d5ba2a14b8a0481fb7787d86dd0c9791f`](https://github.com/Arkiv-Network/claude-plugin/commit/516c397d5ba2a14b8a0481fb7787d86dd0c9791f), plugin tree `5113e8278b57eefaa8df90669445bd954cb4ae1f`; canonical skills [`ee22841ab156c852c5ba19300ffc0f7af3d16db1`](https://github.com/Arkiv-Network/skills/tree/ee22841ab156c852c5ba19300ffc0f7af3d16db1).
+Candidate [`516c397d5ba2a14b8a0481fb7787d86dd0c9791f`](https://github.com/Arkiv-Network/ai-plugin/commit/516c397d5ba2a14b8a0481fb7787d86dd0c9791f), plugin tree `5113e8278b57eefaa8df90669445bd954cb4ae1f`; canonical skills [`ee22841ab156c852c5ba19300ffc0f7af3d16db1`](https://github.com/Arkiv-Network/skills/tree/ee22841ab156c852c5ba19300ffc0f7af3d16db1).
 
 Root accepts 73 cases with 219 usable selected WITH observations and 219 complete WITHOUT observations. 21 cases were tested on this source; 52 cases retain observations whose consumed guidance and inputs are byte-identical. Baselines comprise 0 fresh and 73 exact-input historical cases. This is qualified evidence across revisions, not a fresh whole-bundle causal ablation. Native votes, raw results, original criteria and separate Root adjudications remain intact.
 
 Final-source import, build, static metadata, both strict manifests and package checks pass; the bundle contains 342 matched files. The 34 deterministic tests and 31 SDK checks executed on their recorded earlier source are retained through exact oracle, executable-fence and dependency equivalence. They were not rerun on 0.1.5. No final-version upgrade result is inferred from older upgrades.
 
-Public default-branch installation and the two installed-cache onboarding observations are recorded in the [release notes](https://github.com/Arkiv-Network/claude-plugin/releases). Observed platform: Windows, Claude Code 2.1.296 and claude-opus-5-5. Synthetic loopback MCP checks do not establish General production health or live-chain correctness. No funded signing, public-chain transaction certification, macOS/Linux execution or Hub deployment is claimed. The Hub remains localhost only.
+Public default-branch installation and the two installed-cache onboarding observations are recorded in the [release notes](https://github.com/Arkiv-Network/ai-plugin/releases). Observed platform: Windows, Claude Code 2.1.296 and claude-opus-5-5. Synthetic loopback MCP checks do not establish General production health or live-chain correctness. No funded signing, public-chain transaction certification, macOS/Linux execution or Hub deployment is claimed. The Hub remains localhost only.
 
 ## Preserved candidate-stage evidence
 
@@ -204,7 +204,7 @@ Both changed TypeScript examples compile strictly against existing SDK 0.8.1 dec
 
 ## Preserved 0.1.0 campaign
 
-Plugin source: [`8a18fe4ed3c3025fc5150a5e0a84f882cc4c9206`](https://github.com/Arkiv-Network/claude-plugin/commit/8a18fe4ed3c3025fc5150a5e0a84f882cc4c9206), tested on Windows with Claude Code **2.1.296**. The plugin's 341 files remain frozen; canonical skill bytes are pinned by [the source receipt](../source/skills.lock.json). This candidate is on a private feature branch, with no default-branch release or release GO.
+Plugin source: [`8a18fe4ed3c3025fc5150a5e0a84f882cc4c9206`](https://github.com/Arkiv-Network/ai-plugin/commit/8a18fe4ed3c3025fc5150a5e0a84f882cc4c9206), tested on Windows with Claude Code **2.1.296**. The plugin's 341 files remain frozen; canonical skill bytes are pinned by [the source receipt](../source/skills.lock.json). This candidate is on a private feature branch, with no default-branch release or release GO.
 
 | Check | Observed result |
 | --- | --- |
