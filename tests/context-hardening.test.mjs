@@ -1,7 +1,7 @@
 import {test}from'node:test';import assert from'node:assert/strict';import {randomUUID}from'node:crypto';import fs from'node:fs/promises';import os from'node:os';import path from'node:path';import net from'node:net';import dns from'node:dns';
 import {endpoint,hook,serve,exchange,sessionProof}from'../source/context/context-hook.mjs';
 import {inspectSdk,updateContext}from'../source/context/sdk-context.mjs';
-async function workspace(t,version='0.8.1'){
+async function workspace(t,version='1.0.0'){
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'arkiv-hardening-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));
  const put=async(p,v)=>{await fs.mkdir(path.dirname(path.join(root,p)),{recursive:true});await fs.writeFile(path.join(root,p),typeof v==='string'?v:JSON.stringify(v));};
  const deps={'@arkiv-network/sdk':version};await put('package.json',{dependencies:deps});
@@ -22,7 +22,7 @@ for(const host of ['codex','claude-code'])test(`${host}: text from the IPC endpo
   const out=await hook({session_id:session,hook_event_name:'UserPromptSubmit',cwd},host);
   assert.equal(out.hookSpecificOutput?.additionalContext,undefined,JSON.stringify(out));
  }
- const good='Arkiv SDK evidence for the local workspace:\nSDK version category: compatible.\nInstalled SDK version: 0.8.1.\nInstalled declaration files inspected: 1.\nPlugin-supported SDK range: >=0.8.1 <0.9.\nScope: local package inspection only. Each field is independent; unmeasured means insufficient local evidence for that field only. Other supplied evidence and skill guidance retain their own scope.';
+ const good='Arkiv SDK evidence for the local workspace:\nSDK version category: compatible.\nInstalled SDK version: 1.0.0.\nInstalled declaration files inspected: 1.\nPlugin-supported SDK range: >=1.0.0 <2.\nScope: local package inspection only. Each field is independent; unmeasured means insufficient local evidence for that field only. Other supplied evidence and skill guidance retain their own scope.';
  const session=await impostor(t,host,m=>m.operation==='resolveWorkspace'?{cwd,workspaceRevision:1}:{context:good});
  assert.equal((await hook({session_id:session,hook_event_name:'UserPromptSubmit',cwd},host)).hookSpecificOutput?.additionalContext,good);
 });
@@ -56,8 +56,8 @@ test('a retried request whose reply was lost still delivers the change',async t=
  const session=randomUUID(),proof=sessionProof(session,'codex'),address=endpoint(session,'codex'),broker=serve(address,{proof});t.after(()=>broker.close());
  await new Promise(r=>broker.server.once('listening',r));
  const facts=(state,version)=>({workspace:'w',fingerprint:state,declarationFingerprint:'d',facts:{state,version,declarations:1}});
- assert.match((await exchange(address,{event:'SessionStart',source:'startup',proof,requestId:'a',observation:facts('compatible','0.8.1')})).context,/compatible/);
- const retry={event:'UserPromptSubmit',proof,requestId:'b',observation:facts('out_of_range','0.9.0')};
+ assert.match((await exchange(address,{event:'SessionStart',source:'startup',proof,requestId:'a',observation:facts('compatible','1.0.0')})).context,/compatible/);
+ const retry={event:'UserPromptSubmit',proof,requestId:'b',observation:facts('out_of_range','2.0.0')};
  const first=await exchange(address,retry);assert.match(first.context,/out_of_range/);
  // The adapter timed out before reading that reply and resends the same request.
  assert.deepEqual(await exchange(address,retry),first);
@@ -67,16 +67,16 @@ test('a retried request still delivers the change after other hooks reached the 
  const session=randomUUID(),proof=sessionProof(session,'codex'),address=endpoint(session,'codex'),broker=serve(address,{proof});t.after(()=>broker.close());
  await new Promise(r=>broker.server.once('listening',r));
  const facts=(state,version)=>({workspace:'w',fingerprint:state,declarationFingerprint:'d',facts:{state,version,declarations:1}});
- await exchange(address,{event:'SessionStart',source:'startup',proof,requestId:'a',observation:facts('compatible','0.8.1')});
- const retry={event:'UserPromptSubmit',proof,requestId:'b',observation:facts('out_of_range','0.9.0')};
+ await exchange(address,{event:'SessionStart',source:'startup',proof,requestId:'a',observation:facts('compatible','1.0.0')});
+ const retry={event:'UserPromptSubmit',proof,requestId:'b',observation:facts('out_of_range','2.0.0')};
  const first=await exchange(address,retry);assert.match(first.context,/out_of_range/);
  await exchange(address,{event:'FileChanged',proof,requestId:'c'});
- await exchange(address,{event:'UserPromptSubmit',proof,requestId:'d',observation:facts('out_of_range','0.9.0')});
+ await exchange(address,{event:'UserPromptSubmit',proof,requestId:'d',observation:facts('out_of_range','2.0.0')});
  assert.deepEqual(await exchange(address,retry),first);
 });
 test('a declaration-only change re-states the current declaration count',()=>{
- const previous={facts:{state:'compatible',version:'0.8.1',declarations:7},workspace:'w',fingerprint:'f',declarationFingerprint:'old',dirty:false};
- const r=updateContext(previous,{facts:{state:'compatible',version:'0.8.1',declarations:7},workspace:'w',fingerprint:'f2',declarationFingerprint:'new'},'UserPromptSubmit');
+ const previous={facts:{state:'compatible',version:'1.0.0',declarations:7},workspace:'w',fingerprint:'f',declarationFingerprint:'old',dirty:false};
+ const r=updateContext(previous,{facts:{state:'compatible',version:'1.0.0',declarations:7},workspace:'w',fingerprint:'f2',declarationFingerprint:'new'},'UserPromptSubmit');
  assert.match(r.context,/Installed declaration contents changed/);assert.match(r.context,/Installed declaration files inspected: 7\./);
 });
 test('a workspaces root without its own SDK dependency is unmeasured, not absent',async t=>{

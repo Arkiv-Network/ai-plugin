@@ -4,6 +4,8 @@ Version 0.3.0 ships the local SDK context hooks in both packages and the canonic
 
 ## Local SDK context
 
+Version 0.5.0 targets SDK `>=1.0.0 <2` on Rabdi. Coherent 0.8.x installations are out of range; stable 1.x installations are compatible. The bounded comparator parser accepts the major-only upper bound `<2`. Earlier ablations above describe their original releases; they are not fresh SDK 1.0 behavioral results.
+
 `source/context/sdk-context.mjs` reads package metadata, detected lockfiles and installed declaration files without importing executable project code. The build copies it and `source/context/context-hook.mjs` byte for byte into `plugins/*/scripts/context/`. Categories mean:
 
 | Category | Required evidence |
@@ -11,7 +13,7 @@ Version 0.3.0 ships the local SDK context hooks in both packages and the canonic
 | `absent` | A valid current manifest does not declare the SDK, and its folder is not a workspaces root. |
 | `not_installed` | A declared SDK is absent throughout the supported filesystem resolution search. |
 | `mismatch` | Readable supported manifest, lock and installed identities disagree. |
-| `out_of_range` | Identities agree outside the plugin-supported range `>=0.8.1 <0.9`. |
+| `out_of_range` | Identities agree outside the plugin-supported range `>=1.0.0 <2`. |
 | `compatible` | Identities agree inside that range. This does not certify application compatibility. |
 
 The context names the supported range whenever it reports `compatible` or `out_of_range`. Unsupported version specifications, missing or corrupt evidence, PnP resolution and unsupported lock formats stay unmeasured and add nothing. npm lock versions 2 and 3 are supported; other lock formats are detected but not interpreted. Declaration reads, traversal depth and total bytes are bounded. Symlink targets for declarations must stay inside the resolved SDK package.

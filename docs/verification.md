@@ -1,5 +1,15 @@
 # Verification scope
 
+## 0.5.0 candidate: SDK 1.0 and Mumbai, October 31
+
+This candidate configures `https://mcp.arkiv.network/mumbai` in both packages and supports SDK `>=1.0.0 <2` on Rabdi. Skills come from [`c88b7a9bfc84c134909226f111a4beaffa8bdafc`](https://github.com/Arkiv-Network/skills/commit/c88b7a9bfc84c134909226f111a4beaffa8bdafc), with raw Git tree, SHA-256 and byte parity checked across both hosts. The deprecated compatibility stub remains excluded. The canonical MCP skill's General-default statement is retained byte for byte; README and package guidance explicitly select Mumbai.
+
+Offline checks run on Linux ARM64. Separate registry reproduction reads actual, integrity-verified SDK declarations as data: 0.8.1 is `out_of_range` and 1.0.0 is `compatible`, without importing either SDK. The first suite failure was a static source-rationale assertion matching old skill wording. Its replacement checks the same privacy, key custody, URL parsing and probe-authorization requirements in the current canonical text; frozen eval prompts and graders remain unchanged.
+
+Windows installation checks use Claude Code 2.1.314 and Codex CLI 0.163.0 in new isolated profiles, with the exact release Mumbai URL and installed-file byte parity. They open no model session and make no production MCP requests; original settings and plugin registry hashes remain unchanged. Both Claude marketplace/package strict validations pass. Named-pipe context inspection is checked separately on Windows. No dependencies or new CLIs are installed.
+
+Deferred until Mumbai is live and release is authorized: merge, supported plugin tag, GitHub release, fresh public-main installations in both clients, native connection to Mumbai, actual `server_status` reporting `mumbai`, current tool discovery and event-source verification. Local installs and synthetic General fixtures establish none of those remote outcomes. Historical behavioral evals are not new SDK 1.0/Mumbai results. No wallet or chain write is part of this packaging lane.
+
 ## 0.4.1: refreshed bundled skills, October 25
 
 0.4.1 keeps the connection target, hooks and header shape; the attribution header now carries version 0.4.1. It imports canonical skills [`Arkiv-Network/skills@f4875a9`](https://github.com/Arkiv-Network/skills/commit/f4875a91ff5cfd968e2c979b2ac350fe84d1ecc0) ([PR #65](https://github.com/Arkiv-Network/skills/pull/65)), whose `arkiv-mcp` skill describes the bundled General connection, event profiles as separate URLs the human adds, and the ended, frozen Devfolio profile. Its tool table matches General's `tools/list` and `prompts/list`, read from the service source and confirmed against production with one classified verification check. `scripts/sync-skills.mjs` regenerated `source/skills.lock.json`; only the two bundled `arkiv-mcp/SKILL.md` copies changed. Package guides no longer carry the outdated-skill notice.

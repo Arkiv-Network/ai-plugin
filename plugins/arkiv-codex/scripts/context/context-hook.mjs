@@ -23,7 +23,7 @@ const factLines=[/^Previous facts emitted by this hook for the local workspace a
  /^Installed declaration contents changed; previous declaration facts emitted by this hook are invalidated\.$/,
  /^SDK version category: (?:compatible|out_of_range|not_installed|mismatch|absent|unmeasured)\.$/,
  /^Installed SDK version: (?:\d{1,6}\.\d{1,6}\.\d{1,6}|unmeasured)\.$/,/^Installed declaration files inspected: (?:\d{1,3}|unmeasured)\.$/,
- /^Plugin-supported SDK range: >=0\.8\.1 <0\.9\.$/,
+ /^Plugin-supported SDK range: >=1\.0\.0 <2\.$/,
  /^Scope: local package inspection only\. Each field is independent; unmeasured means insufficient local evidence for that field only\. Other supplied evidence and skill guidance retain their own scope\.$/];
 export function knownContext(text){
  if(typeof text!=='string'||text.length>2048)return '';

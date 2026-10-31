@@ -67,10 +67,10 @@ test('Claude keeps the explicit native directory after later events report the l
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'arkiv-cwd-events-'));t.after(()=>fs.rm(root,{recursive:true}));
  const a=path.join(root,'a'),b=path.join(root,'b'),sdk=path.join(a,'node_modules/@arkiv-network/sdk');
  await fs.mkdir(sdk,{recursive:true});await fs.mkdir(b);
- const dependencies={'@arkiv-network/sdk':'0.8.1'};
+ const dependencies={'@arkiv-network/sdk':'1.0.0'};
  await fs.writeFile(path.join(a,'package.json'),JSON.stringify({dependencies}));
- await fs.writeFile(path.join(a,'package-lock.json'),JSON.stringify({lockfileVersion:3,packages:{'':{dependencies},'node_modules/@arkiv-network/sdk':{version:'0.8.1'}}}));
- await fs.writeFile(path.join(sdk,'package.json'),JSON.stringify({name:'@arkiv-network/sdk',version:'0.8.1',types:'index.d.ts'}));
+ await fs.writeFile(path.join(a,'package-lock.json'),JSON.stringify({lockfileVersion:3,packages:{'':{dependencies},'node_modules/@arkiv-network/sdk':{version:'1.0.0'}}}));
+ await fs.writeFile(path.join(sdk,'package.json'),JSON.stringify({name:'@arkiv-network/sdk',version:'1.0.0',types:'index.d.ts'}));
  await fs.writeFile(path.join(sdk,'index.d.ts'),'export declare const fixture: string;');
  await fs.writeFile(path.join(b,'package.json'),'{}');
  const session_id=randomUUID(),broker=serve(endpoint(session_id,'claude-code'),{proof:sessionProof(session_id,'claude-code')});t.after(()=>broker.close());
@@ -126,10 +126,10 @@ test('workspace resolution requires the session proof and rejects stale inspecti
 test('a fresh startup still delivers measured facts when the asynchronous broker starts too late',async t=>{
  // Observed in a native campaign: under concurrent sessions the broker missed the adapter's wait, so 18/219 startups got no context.
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'arkiv-late-broker-'));t.after(()=>fs.rm(root,{recursive:true}));
- const sdk=path.join(root,'node_modules/@arkiv-network/sdk'),dependencies={'@arkiv-network/sdk':'0.8.1'};await fs.mkdir(sdk,{recursive:true});
+ const sdk=path.join(root,'node_modules/@arkiv-network/sdk'),dependencies={'@arkiv-network/sdk':'1.0.0'};await fs.mkdir(sdk,{recursive:true});
  await fs.writeFile(path.join(root,'package.json'),JSON.stringify({dependencies}));
- await fs.writeFile(path.join(root,'package-lock.json'),JSON.stringify({lockfileVersion:3,packages:{'':{dependencies},'node_modules/@arkiv-network/sdk':{version:'0.8.1'}}}));
- await fs.writeFile(path.join(sdk,'package.json'),JSON.stringify({name:'@arkiv-network/sdk',version:'0.8.1',types:'index.d.ts'}));
+ await fs.writeFile(path.join(root,'package-lock.json'),JSON.stringify({lockfileVersion:3,packages:{'':{dependencies},'node_modules/@arkiv-network/sdk':{version:'1.0.0'}}}));
+ await fs.writeFile(path.join(sdk,'package.json'),JSON.stringify({name:'@arkiv-network/sdk',version:'1.0.0',types:'index.d.ts'}));
  await fs.writeFile(path.join(sdk,'index.d.ts'),'export declare const fixture: string;');
  for(const host of ['claude-code','codex']){
   const session_id=randomUUID();

@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {inspectSdk,updateContext,satisfies} from '../source/context/sdk-context.mjs';
-async function fixture(t,{version='0.8.1',spec='^0.8.1',lock=version,installed=true,types=true,declared=true}={}){
+async function fixture(t,{version='1.0.0',spec='^1.0.0',lock=version,installed=true,types=true,declared=true}={}){
  const root=await fs.mkdtemp(path.join(process.env.ARKIV_TEST_TMP||os.tmpdir(),'sdk-context-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));
  const deps=declared?{'@arkiv-network/sdk':spec}:{};const put=async(p,v)=>{await fs.mkdir(path.dirname(path.join(root,p)),{recursive:true});await fs.writeFile(path.join(root,p),typeof v==='string'?v:JSON.stringify(v));};
  await put('package.json',{dependencies:deps,scripts:{postinstall:'throw new Error("must never execute")'}});
@@ -23,9 +23,9 @@ async function fixture(t,{version='0.8.1',spec='^0.8.1',lock=version,installed=t
  return {root,put};
 }
 for(const [name,options,state]of [
- ['compatible',{},'compatible'],['old coherent SDK',{version:'0.6.8',spec:'^0.6.8'},'out_of_range'],['new coherent SDK',{version:'0.9.0',spec:'^0.9.0'},'out_of_range'],
- ['missing install',{installed:false},'not_installed'],['undeclared',{declared:false},'absent'],['lock disagrees',{lock:'0.8.2'},'mismatch'],['manifest disagrees',{spec:'0.8.2'},'mismatch'],
- ['unknown spec',{spec:'workspace:*'},null],['missing declarations',{types:false},null],['prerelease',{version:'0.8.2-beta.1'},null]])test(name,async t=>{const f=await fixture(t,options);assert.equal((await inspectSdk(f.root)).facts.state,state);});
+ ['compatible',{},'compatible'],['SDK 0.8.1 is out of range',{version:'0.8.1',spec:'^0.8.1'},'out_of_range'],['SDK 0.8.9 is out of range',{version:'0.8.9',spec:'^0.8.9'},'out_of_range'],['SDK 1.0.7 is compatible',{version:'1.0.7',spec:'^1.0.0'},'compatible'],['SDK 1.9.0 is compatible',{version:'1.9.0',spec:'>=1.0.0 <2'},'compatible'],['old coherent SDK',{version:'0.6.8',spec:'^0.6.8'},'out_of_range'],['new coherent SDK',{version:'2.0.0',spec:'^2.0.0'},'out_of_range'],
+ ['missing install',{installed:false},'not_installed'],['undeclared',{declared:false},'absent'],['lock disagrees',{lock:'1.0.1'},'mismatch'],['manifest disagrees',{spec:'1.0.1'},'mismatch'],
+ ['unknown spec',{spec:'workspace:*'},null],['missing declarations',{types:false},null],['prerelease',{version:'1.0.1-beta.1'},null]])test(name,async t=>{const f=await fixture(t,options);assert.equal((await inspectSdk(f.root)).facts.state,state);});
 test('corrupt manifest is unmeasured, never absent',async t=>{const f=await fixture(t);await f.put('package.json','{');assert.equal((await inspectSdk(f.root)).facts.state,null);});
 test('invalid dependency maps cannot establish absence',async t=>{
  const f=await fixture(t);for(const dependencies of [null,[],42,'@arkiv-network/sdk']){
@@ -43,10 +43,15 @@ test('session isolation, changed-only, resume, compaction and invalidation',asyn
  const gone={...o,facts:{state:'absent',version:null,declarations:null,reason:null}};assert.match(updateContext(a.state,gone,'UserPromptSubmit').context,/invalidated/);
  assert.equal(updateContext(b.state,o,'UserPromptSubmit').context,'');
 });
-test('bounded spec subset rejects unsupported syntax',()=>{assert.equal(satisfies('0.8.1','^0.8.1'),true);assert.equal(satisfies('0.9.0','^0.8.1'),false);assert.equal(satisfies('0.8.1','>=0.8.1 <0.9.0'),true);assert.equal(satisfies('0.8.1','*'),null);});
+test('bounded spec subset rejects unsupported syntax',()=>{assert.equal(satisfies('1.0.0','^1.0.0'),true);assert.equal(satisfies('2.0.0','^1.0.0'),false);assert.equal(satisfies('1.0.0','>=1.0.0 <2.0.0'),true);assert.equal(satisfies('1.0.0','*'),null);assert.equal(satisfies('1.0.0','>=1.0.0 <2'),true);assert.equal(satisfies('2.0.0','>=1.0.0 <2'),false);});
+test('unsupported partial comparator semantics stay unmeasured',()=>{
+ for(const spec of ['<=1','>1','=1','>=1','<1.2','>=1.0.0 <=1'])assert.equal(satisfies('1.0.0',spec),null,spec);
+ assert.equal(satisfies('0.8.1','>=1.0.0 <2'),false);
+ assert.equal(satisfies('1.999.999','>=1.0.0 <2'),true);
+});
 test('hoisted install and PnP cannot be misreported as not installed',async t=>{
- const f=await fixture(t);await f.put('packages/app/package.json',{dependencies:{'@arkiv-network/sdk':'^0.8.1'}});
- const r=await inspectSdk(path.join(f.root,'packages/app'));assert.notEqual(r.facts.state,'not_installed');assert.equal(r.facts.version,'0.8.1');
+ const f=await fixture(t);await f.put('packages/app/package.json',{dependencies:{'@arkiv-network/sdk':'^1.0.0'}});
+ const r=await inspectSdk(path.join(f.root,'packages/app'));assert.notEqual(r.facts.state,'not_installed');assert.equal(r.facts.version,'1.0.0');
  const p=await fixture(t,{installed:false});await p.put('.pnp.cjs','throw Error("never execute")');assert.equal((await inspectSdk(p.root)).facts.state,null);
 });
 test('compaction refreshes retained facts and declaration changes invalidate previous observations',async t=>{
@@ -78,7 +83,7 @@ test('unmeasured startup and unchanged prompts do not inject an SDK topic into u
  assert.equal(start.context,'');
  assert.equal(updateContext(start.state,unknown,'UserPromptSubmit').context,'');
  assert.equal(updateContext(start.state,unknown,'SessionStart').context,'');
- const measured={...unknown,facts:{state:'compatible',version:'0.8.1',declarations:2,reason:null}};
+ const measured={...unknown,facts:{state:'compatible',version:'1.0.0',declarations:2,reason:null}};
  const known=updateContext(start.state,measured,'UserPromptSubmit');
  assert.match(known.context,/compatible/);
  const lost=updateContext(known.state,unknown,'UserPromptSubmit');
@@ -90,7 +95,7 @@ test('whole-fact invalidation republishes independently measured version after d
  const f=await fixture(t),before=await inspectSdk(f.root),started=updateContext(null,before,'SessionStart');
  await f.put('node_modules/@arkiv-network/sdk/index.d.ts',"export * from './missing.js';");
  const after=await inspectSdk(f.root);
- assert.equal(after.facts.state,null);assert.equal(after.facts.version,'0.8.1');
+ assert.equal(after.facts.state,null);assert.equal(after.facts.version,'1.0.0');
  const changed=updateContext(started.state,after,'UserPromptSubmit');
  assert.match(changed.context,/Previous facts emitted by this hook.*invalidated/);
  assert.match(changed.context,/SDK version category: unmeasured/);
@@ -111,6 +116,6 @@ test('lost broker context invalidates earlier hook facts on resume or prompt rec
 test('range-relative categories name the supported range; other categories do not',async t=>{
  for(const [options,expected]of [[{},true],[{version:'0.6.8',spec:'^0.6.8'},true],[{installed:false},false],[{declared:false},false]]){
   const f=await fixture(t,options),o=await inspectSdk(f.root),c=updateContext(null,o,'SessionStart','startup').context;
-  assert.equal(/Plugin-supported SDK range: >=0\.8\.1 <0\.9\./.test(c),expected,JSON.stringify(o.facts));
+  assert.equal(/Plugin-supported SDK range: >=1\.0\.0 <2\./.test(c),expected,JSON.stringify(o.facts));
  }
 });

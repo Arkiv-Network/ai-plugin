@@ -10,20 +10,20 @@ const config = JSON.parse(await readFile(path.join(builder.repositoryRoot, 'plug
 const source = await readFile(path.join(builder.repositoryRoot, 'source/always-on.md'), 'utf8');
 const preview = 'https://arkiv-mcp-general-a1b2c3d4e-golem.vercel.app/';
 
-test('R9 release is 0.4.1 and both hosts target exactly General', () => {
-  assert.equal(config.version, '0.4.1');
-  assert.equal(config.mcpUrl, 'https://mcp.arkiv.network/');
+test('0.5.0 selects Mumbai on both hosts', () => {
+  assert.equal(config.version, '0.5.0');
+  assert.equal(config.mcpUrl, 'https://mcp.arkiv.network/mumbai');
   const artifacts = builder.buildArtifacts(config, source);
   for (const file of ['plugins/arkiv/.mcp.json', 'plugins/arkiv-codex/mcp.json']) {
     assert.equal(JSON.parse(artifacts.get(file)).mcpServers.arkiv.url, config.mcpUrl);
   }
-  assert.match(artifacts.get('plugins/arkiv-codex/AGENTS.md'), /successful server_status.*profile general/);
+  assert.match(artifacts.get('plugins/arkiv-codex/AGENTS.md'), /successful server_status.*profile mumbai/);
   assert.doesNotMatch(artifacts.get('plugins/arkiv-codex/AGENTS.md'), /confirm profile devfolio/);
 });
 
 test('R9 release rejects every alternative URL spelling, including immutable Preview', () => {
-  assert.doesNotThrow(() => builder.validateConfig({...config, mcpUrl: 'https://mcp.arkiv.network/'}));
-  for (const mcpUrl of [preview, 'https://mcp.arkiv.network', 'https://mcp.arkiv.network/devfolio',
+  assert.doesNotThrow(() => builder.validateConfig({...config, mcpUrl: 'https://mcp.arkiv.network/mumbai'}));
+  for (const mcpUrl of ['https://mcp.arkiv.network/', 'https://mcp.arkiv.network/mumbai/', 'https://mcp.arkiv.network/mumbai?q=1', 'https://mcp.arkiv.network/mumbai#x', preview, 'https://mcp.arkiv.network', 'https://mcp.arkiv.network/devfolio',
     'https://mcp.arkiv.network//', 'https://mcp.arkiv.network/?q=1', 'https://mcp.arkiv.network/#x',
     'http://mcp.arkiv.network/', 'https://mcp.arkiv.network:443/', 'https://u:p@mcp.arkiv.network/',
     'https://MCP.arkiv.network/', 'https://mcp.arkiv.network./', 'https://mcp.arkiv.network/\n']) {
@@ -98,10 +98,10 @@ test('R9 Preview output is isolated, retains fixed skills and cannot pass releas
 });
 
 test('R9 canonical skills remain at the required full revision', () => {
-  assert.equal(config.skillsSource.commit, 'f4875a91ff5cfd968e2c979b2ac350fe84d1ecc0');
+  assert.equal(config.skillsSource.commit, 'c88b7a9bfc84c134909226f111a4beaffa8bdafc');
 });
 
-test('0.4.1 bundled arkiv-mcp skill describes General, not the ended Devfolio target', async () => {
+test('canonical skill bytes retain General guidance; package explicitly overrides to Mumbai', async () => {
   for (const bundle of ['arkiv', 'arkiv-codex']) {
     const skill = await readFile(path.join(builder.repositoryRoot, 'plugins', bundle, 'skills/arkiv-mcp/SKILL.md'), 'utf8');
     assert.ok(skill.includes('The Arkiv plugin bundles the **General** profile at `https://mcp.arkiv.network/`'), bundle);
