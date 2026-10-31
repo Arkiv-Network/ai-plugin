@@ -111,7 +111,7 @@ test('process expectation rationale covers privacy leaks and RPC configuration i
   const security = await skill('arkiv-security-trust');
   const encryption = await skill('arkiv-encryption');
   const troubleshooting = await skill('arkiv-troubleshooting');
-  assert.match(router, /Public data, publisher provenance and signer custody \| `arkiv-security-trust`/);
+  assert.match(router, /Use `arkiv-security-trust`[\s\S]*before storing sensitive data/);
   assert.match(security, /Identify private fields, indexed labels, wallet metadata and diagnostic logs/);
   assert.match(security, /Keep signing\/encryption keys in local custody, never in chat, URLs, browser bundles or public environment variables/);
   assert.match(security, /Operator RPC keys stay server-side[\s\S]*redact the entire transport diagnostic/);

@@ -1,10 +1,12 @@
 # Arkiv plugin for Claude Code and Codex CLI
 
-Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. Version **0.5.0** targets SDK **>=1.0.0 <2** on **Rabdi** and bundles the [Mumbai MCP profile](https://mcp.arkiv.network/mumbai) through November 10, 2026. No MCP connection key or wallet is required. The plugin does not install the SDK, sign transactions or create another backend.
+Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. Version **0.5.1** targets SDK **>=1.0.0 <2** on **Rabdi** and bundles the [Mumbai MCP profile](https://mcp.arkiv.network/mumbai) through November 10, 2026. No MCP connection key or wallet is required. The plugin does not install the SDK, sign transactions or create another backend.
 
-**Release candidate:** 0.5.0 is pending production Mumbai verification and release approval. Public default-branch commands below continue to install 0.4.1 until this candidate is merged. Local installation checks do not establish remote service health.
+**Release candidate:** 0.5.1 is pending production Mumbai verification and release approval. Public default-branch commands below continue to install 0.4.1 until this candidate is merged. Local installation checks do not establish remote service health.
 
-## Breaking changes in 0.5.0
+**Known limitation through November 10:** the unchanged canonical `arkiv-mcp` skill describes General as the plugin default. This candidate explicitly selects the **ETHGlobal Mumbai event profile** instead. Follow the skill's [Discover the actual profile](plugins/arkiv/skills/arkiv-mcp/SKILL.md#discover-the-actual-profile) sequence: read actual `server_status`, confirm `id: mumbai` and the event identity, then check its current sources. Candidate server instructions and status identify that event; production connection and availability remain unverified.
+
+## Breaking changes in 0.5.1
 
 - The supported SDK range changes to `>=1.0.0 <2`. Older coherent installations report `out_of_range`; coherent 1.x installations report `compatible`. Missing, mismatched and unmeasured evidence keep their separate categories.
 - Both bundled connections move from General to `https://mcp.arkiv.network/mumbai`, retaining the name `arkiv`. Read a successful `server_status` reporting `mumbai` and current event sources before trusting event guidance. Tool availability requires actual discovery; no fixed tool count is promised.
@@ -15,7 +17,7 @@ This repository was named `Arkiv-Network/claude-plugin` until October 27, 2026. 
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`, version **0.5.0**. Local installation and strict validation are checked on Windows with Claude Code **2.1.314**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. After release, install from the public default branch:
+Claude package: `plugins/arkiv`, version **0.5.1**. Local installation and strict validation are checked on Windows with Claude Code **2.1.314**; Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; automatic project rules are unavailable. After release, install from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/ai-plugin
@@ -112,7 +114,7 @@ claude plugin marketplace update arkiv
 claude plugin update arkiv@arkiv
 ```
 
-After 0.5.0 is released, to update from **0.4.x** or earlier, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.5.0** and the check prompt returns profile **mumbai**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
+After 0.5.1 is released, to update from **0.4.x** or earlier, run both commands above, then restart Claude Code. Confirm `claude plugin list` shows **0.5.1** and the check prompt returns profile **mumbai**. The plugin manifest's version identifies the installed release; the [skill source receipt](source/skills.lock.json) identifies its canonical skill revision.
 
 ```bash
 claude plugin uninstall arkiv@arkiv
@@ -144,7 +146,22 @@ For MCP-only use, connect to [General](https://mcp.arkiv.network/) using the [Hu
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both packages from merged revision [`c88b7a9bfc84c134909226f111a4beaffa8bdafc`](https://github.com/Arkiv-Network/skills/commit/c88b7a9bfc84c134909226f111a4beaffa8bdafc) ([Arkiv-Network/skills#67](https://github.com/Arkiv-Network/skills/pull/67)). Both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both packages from merged revision [`4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc`](https://github.com/Arkiv-Network/skills/commit/4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc) ([Arkiv-Network/skills#68](https://github.com/Arkiv-Network/skills/pull/68)). Both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
+
+### Return to General on November 10
+
+Make a separately reviewed release; the date does not switch installed connections automatically. Set `plugin.config.json` to the next breaking minor version (for example, **0.6.0** after 0.5.1), update the release expectations in `tests/general.test.mjs` and `tests/build.test.mjs`, and update this README and CHANGELOG for that release. Preserve the canonical skill bytes and SDK fact-line hook text. Then run:
+
+```bash
+node scripts/build-plugin.mjs --mcp-profile general
+node scripts/build-plugin.mjs --check --mcp-profile general
+node scripts/check-static.mjs
+node --test --test-concurrency=1 tests/*.test.mjs
+```
+
+The explicit selection persists `mcpUrl: https://mcp.arkiv.network/` in `plugin.config.json`. Expect that exact URL in `plugins/arkiv/.mcp.json` (`http`) and `plugins/arkiv-codex/mcp.json` (`streamable-http`), the new version in both host manifests, and `general` in the Codex package's status instructions and General in its manifest description. Header attribution must carry the new version. No other URL or profile spelling is accepted. `--check` verifies the selection without changing files; omitting `--mcp-profile` preserves the saved selection. To explicitly prepare a Mumbai candidate instead, use `--mcp-profile mumbai`.
+
+Run the checks on the approved build host, strict Claude validations and isolated native installations on both clients, preserving original-user settings hashes. Before publishing, use the existing classified verification workflow to confirm actual General status and tool discovery. After release, verify fresh public-main installs and installed skill-byte parity. Selecting a profile does not bump the version, contact a server, merge, tag or publish anything.
 
 ```bash
 node scripts/build-plugin.mjs --check
@@ -158,6 +175,6 @@ The repository has no package dependencies. [Behavioral evals](plugins/arkiv/eva
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 
-See [verification scope](docs/verification.md) for the 0.5.0 candidate, historical coverage, native limits and retained failures. The [release notes](https://github.com/Arkiv-Network/ai-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
+See [verification scope](docs/verification.md) for the 0.5.1 candidate, historical coverage, native limits and retained failures. The [release notes](https://github.com/Arkiv-Network/ai-plugin/releases) record public installation. The [Hub guide](https://hub.arkiv.network/ai-tools#arkiv-ai-plugin) covers both clients.
 
 [SDK context and skill-usage preparation](docs/context-preparation.md) documents the context hooks, the installed-import check, host limits and the disabled skill-usage source. The [October 16 context-only ablation](docs/evaluations/2026-10-16-context-ablation.md) is the 0.3.0 release gate, with per-skill trigger, negative and outcome results.
