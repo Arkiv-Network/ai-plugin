@@ -60,7 +60,7 @@ test('source ref drift fails even when imported files were not changed', () => f
   await writeFile(file, JSON.stringify(lock));
   await assert.rejects(checkSkillImport(directory), /Skills source commit drift/);
 }));
-test('eval suite preserves original outcomes and explicit negative invocation controls', async () => {
+test('eval suite preserves original receipts and explicit controls across SDK 1.0 amendments', async () => {
   const result = await checkEvalSuite(repositoryRoot);
   assert.equal(result.cases, 73); assert.equal(result.negatives, 16); assert.equal(result.mockedCases, 3);
   assert.equal(result.originalFiles, 207);

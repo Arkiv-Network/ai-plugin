@@ -171,7 +171,7 @@ claude plugin validate --strict .
 claude plugin validate --strict plugins/arkiv
 ```
 
-The repository has no package dependencies. [Behavioral evals](plugins/arkiv/evals/README.md) compare the plugin with a no-plugin baseline using synthetic MCP tools. Their frozen historical SDK cases and General fixtures are preserved; they do not establish SDK 1.0 or Mumbai behavior. Static checks, installation, behavior and live MCP health are separate evidence. The controlled project-rule cases do not replace native hook tests. Production MCP tests require confirmed verification classification and operator pacing; otherwise use loopback fixtures.
+The repository has no package dependencies. [Behavioral evals](plugins/arkiv/evals/README.md) compare the plugin with a no-plugin baseline using synthetic MCP tools. Current evals use SDK 1.0/Rabdi terminology and source-checked API expectations; historical import digests are preserved with an explicit amendment lock. The synthetic General fixture remains separate from the real Mumbai connection. Changed inputs need fresh behavioral measurements; old scores do not establish this revision's SDK 1.0 or Mumbai behavior. Static checks, installation, behavior and live MCP health are separate evidence. The controlled project-rule cases do not replace native hook tests. Production MCP tests require confirmed verification classification and operator pacing; otherwise use loopback fixtures.
 
 See [AGENTS.md](AGENTS.md) for exact maintenance commands, version rules, required developer inputs and test isolation.
 

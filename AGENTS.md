@@ -31,7 +31,7 @@ node scripts/sync-skills.mjs /absolute/local/skills-clone --check
 
 The script reads fixed Git objects rather than the clone's working tree and writes no source checkout. `source/skills.lock.json` schema 2 binds both host destinations, Git blobs, SHA-256 digests and byte counts. Skills remain byte-identical across hosts. It refuses symlinks and unexpected bundle files instead of deleting them. Current active skill content must stay byte-identical to the selected canonical commit. Change guidance upstream, then explicitly update the full revision and import it here.
 
-The historical eval import is pinned separately in `scripts/import-evals.mjs`. Re-import only before freezing evaluation inputs; authored cases remain separate. `source/evals-import.json` preserves original prompt/rubric digests and retirement reasons. See `plugins/arkiv/evals/README.md` for the native ablation command and grader semantics.
+The historical eval import is pinned separately in `scripts/import-evals.mjs`. `source/evals-import.json` preserves original prompt/rubric digests and retirement reasons; `source/evals-sdk1.lock.json` records explicitly reviewed SDK 1.0 revisions, current hashes and preserved control headers. Historical re-import refuses to overwrite those amendments. `scripts/check-sdk-vocabulary.mjs` guards current evals, skills and release manifests, with only the two exact published encryption symbols in `source/sdk-vocabulary-exceptions.json`; canonical Markdown destinations remain structural paths. See `plugins/arkiv/evals/README.md` for the native ablation command and grader semantics. Changed evaluation inputs require fresh behavioral measurements before comparing scores.
 
 ## Invariants
 
