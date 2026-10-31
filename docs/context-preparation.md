@@ -4,6 +4,8 @@ Version 0.3.0 ships the local SDK context hooks in both packages and the canonic
 
 ## Local SDK context
 
+Version 0.5.1 targets SDK `>=1.0.0 <2` on Rabdi. Coherent pre-1.0 installations are out of range; stable 1.x installations are compatible. The bounded comparator parser accepts the major-only upper bound `<2`. Earlier ablations above describe their original releases; they are not fresh SDK 1.0 behavioral results.
+
 `source/context/sdk-context.mjs` reads package metadata, detected lockfiles and installed declaration files without importing executable project code. The build copies it and `source/context/context-hook.mjs` byte for byte into `plugins/*/scripts/context/`. Categories mean:
 
 | Category | Required evidence |
@@ -11,12 +13,12 @@ Version 0.3.0 ships the local SDK context hooks in both packages and the canonic
 | `absent` | A valid current manifest does not declare the SDK, and its folder is not a workspaces root. |
 | `not_installed` | A declared SDK is absent throughout the supported filesystem resolution search. |
 | `mismatch` | Readable supported manifest, lock and installed identities disagree. |
-| `out_of_range` | Identities agree outside the plugin-supported range `>=0.8.1 <0.9`. |
+| `out_of_range` | Identities agree outside the plugin-supported range `>=1.0.0 <2`. |
 | `compatible` | Identities agree inside that range. This does not certify application compatibility. |
 
 The context names the supported range whenever it reports `compatible` or `out_of_range`. Unsupported version specifications, missing or corrupt evidence, PnP resolution and unsupported lock formats stay unmeasured and add nothing. npm lock versions 2 and 3 are supported; other lock formats are detected but not interpreted. Declaration reads, traversal depth and total bytes are bounded. Symlink targets for declarations must stay inside the resolved SDK package.
 
-Suppression state lives in a short-lived process per native session, reached through OS-local IPC: Windows named pipes, or Linux abstract sockets with Node 20.8+, which leave no session-derived pathname after a crash. A per-session proof prevents knowledge of an enumerable IPC name from authorizing context injection or session termination. The adapter cannot authenticate whatever answers on that name, so since 0.3.1 it injects only text built entirely from its own fixed fact lines and ignores a relative or oversized workspace in the reply. Installed versions are measured only up to six digits per part. Each request carries a random ID; when the adapter resends a request after its reply was lost, the process replays that reply (it keeps the 32 most recent) instead of treating the change as already delivered. The hooks make no HTTP, TCP or DNS requests and write no cache or identifiers. Other platforms, including macOS, and older Linux Node versions leave automatic context unmeasured; the MCP connection is independent.
+Suppression state lives in a short-lived process per native session, reached through OS-local IPC: Windows named pipes, or Linux abstract sockets with Node 20, minor 8 or later, which leave no session-derived pathname after a crash. A per-session proof prevents knowledge of an enumerable IPC name from authorizing context injection or session termination. The adapter cannot authenticate whatever answers on that name, so since 0.3.1 it injects only text built entirely from its own fixed fact lines and ignores a relative or oversized workspace in the reply. Installed versions are measured only up to six digits per part. Each request carries a random ID; when the adapter resends a request after its reply was lost, the process replays that reply (it keeps the 32 most recent) instead of treating the change as already delivered. The hooks make no HTTP, TCP or DNS requests and write no cache or identifiers. Other platforms, including macOS, and older Linux Node versions leave automatic context unmeasured; the MCP connection is independent.
 
 Also since 0.3.1:
 

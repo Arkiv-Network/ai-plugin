@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "repository": "https://github.com/Arkiv-Network/skills",
-  "commit": "f4875a91ff5cfd968e2c979b2ac350fe84d1ecc0",
+  "commit": "4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc",
   "excludedSkills": [
     "arkiv-best-practices"
   ],
@@ -16,184 +16,184 @@
     {
       "source": "skills/arkiv-app-integration/references/browser-wallet.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-app-integration/references/browser-wallet.md",
-      "gitBlob": "0d1a3d4dc368e594418e255cf307a3a7da307aee",
-      "sha256": "68464f480c4f980a459015f38906044c76493d40f69830cb4053f0930731cfa6",
-      "bytes": 3769
+      "gitBlob": "18afe30035e449d30e072548e9575ee065c82254",
+      "sha256": "6bea13b6f1ce8503a76fa26a5633c005d46d27835015efdb71e3804dafc3067c",
+      "bytes": 3535
     },
     {
       "source": "skills/arkiv-app-integration/references/browser-wallet.md",
       "destination": "plugins/arkiv/skills/arkiv-app-integration/references/browser-wallet.md",
-      "gitBlob": "0d1a3d4dc368e594418e255cf307a3a7da307aee",
-      "sha256": "68464f480c4f980a459015f38906044c76493d40f69830cb4053f0930731cfa6",
-      "bytes": 3769
+      "gitBlob": "18afe30035e449d30e072548e9575ee065c82254",
+      "sha256": "6bea13b6f1ce8503a76fa26a5633c005d46d27835015efdb71e3804dafc3067c",
+      "bytes": 3535
     },
     {
       "source": "skills/arkiv-app-integration/references/realtime.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-app-integration/references/realtime.md",
-      "gitBlob": "fd1ef9d9e2e4c517c3a34313ed40d4d61c62ecf2",
-      "sha256": "b79d06aba1aa798fe70f7272eb4f652242fd608c579374f9859751b00153c18b",
-      "bytes": 15706
+      "gitBlob": "0dc1c6dcde52aab85634fc5cb65d8f4b0f858911",
+      "sha256": "541d926c0a806895793157ad56fcf88a63e299be3c8956462f26882fab810d8e",
+      "bytes": 3255
     },
     {
       "source": "skills/arkiv-app-integration/references/realtime.md",
       "destination": "plugins/arkiv/skills/arkiv-app-integration/references/realtime.md",
-      "gitBlob": "fd1ef9d9e2e4c517c3a34313ed40d4d61c62ecf2",
-      "sha256": "b79d06aba1aa798fe70f7272eb4f652242fd608c579374f9859751b00153c18b",
-      "bytes": 15706
+      "gitBlob": "0dc1c6dcde52aab85634fc5cb65d8f4b0f858911",
+      "sha256": "541d926c0a806895793157ad56fcf88a63e299be3c8956462f26882fab810d8e",
+      "bytes": 3255
     },
     {
       "source": "skills/arkiv-app-integration/references/server-boundary.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-app-integration/references/server-boundary.md",
-      "gitBlob": "7857a43eda93174c6d6623384b98d0a05080632b",
-      "sha256": "228cb5d9778d35854deef2fb065ddf16c4a5072d84e0cf8732d8265f6581763a",
-      "bytes": 9618
+      "gitBlob": "33d112d8802322ab2c5201a99c4e1e10a3802762",
+      "sha256": "c69da58184b53817d1213ba55c8a44c150211f126dcd02f10019f24b3b5f1135",
+      "bytes": 9295
     },
     {
       "source": "skills/arkiv-app-integration/references/server-boundary.md",
       "destination": "plugins/arkiv/skills/arkiv-app-integration/references/server-boundary.md",
-      "gitBlob": "7857a43eda93174c6d6623384b98d0a05080632b",
-      "sha256": "228cb5d9778d35854deef2fb065ddf16c4a5072d84e0cf8732d8265f6581763a",
-      "bytes": 9618
+      "gitBlob": "33d112d8802322ab2c5201a99c4e1e10a3802762",
+      "sha256": "c69da58184b53817d1213ba55c8a44c150211f126dcd02f10019f24b3b5f1135",
+      "bytes": 9295
     },
     {
       "source": "skills/arkiv-app-integration/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-app-integration/SKILL.md",
-      "gitBlob": "43e7512545ea5714c536db406e40c644b6144b8c",
-      "sha256": "d0456fbd4bfaa45a745b120306087c3a1b5b6bddb19e5f5c042c4ee6ee431f7a",
-      "bytes": 8434
+      "gitBlob": "20d8b9e6a8bc1ea8d0e3fe7ee66004fb0af5e6b0",
+      "sha256": "02372ddd32e2463790b3677a154f4cbde97403ef329e9cadeb84db7bcffc5198",
+      "bytes": 5208
     },
     {
       "source": "skills/arkiv-app-integration/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-app-integration/SKILL.md",
-      "gitBlob": "43e7512545ea5714c536db406e40c644b6144b8c",
-      "sha256": "d0456fbd4bfaa45a745b120306087c3a1b5b6bddb19e5f5c042c4ee6ee431f7a",
-      "bytes": 8434
+      "gitBlob": "20d8b9e6a8bc1ea8d0e3fe7ee66004fb0af5e6b0",
+      "sha256": "02372ddd32e2463790b3677a154f4cbde97403ef329e9cadeb84db7bcffc5198",
+      "bytes": 5208
     },
     {
       "source": "skills/arkiv-data-modeling/references/postgres-to-entity.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-data-modeling/references/postgres-to-entity.md",
-      "gitBlob": "c746ba9f166a4252f1fbb5924663dc2ef83f0b1f",
-      "sha256": "17381b0493b0e7bcf00a09c80064cc0037a0dc92319a385873cad4a577e73aad",
-      "bytes": 5480
+      "gitBlob": "a542d63bb55900cf8653b885fe1633b078c2e129",
+      "sha256": "ef20f5595151c57ec708fb275c3637529dac52b49367810529cf8d42399eb68a",
+      "bytes": 2786
     },
     {
       "source": "skills/arkiv-data-modeling/references/postgres-to-entity.md",
       "destination": "plugins/arkiv/skills/arkiv-data-modeling/references/postgres-to-entity.md",
-      "gitBlob": "c746ba9f166a4252f1fbb5924663dc2ef83f0b1f",
-      "sha256": "17381b0493b0e7bcf00a09c80064cc0037a0dc92319a385873cad4a577e73aad",
-      "bytes": 5480
+      "gitBlob": "a542d63bb55900cf8653b885fe1633b078c2e129",
+      "sha256": "ef20f5595151c57ec708fb275c3637529dac52b49367810529cf8d42399eb68a",
+      "bytes": 2786
     },
     {
       "source": "skills/arkiv-data-modeling/references/relationships.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-data-modeling/references/relationships.md",
-      "gitBlob": "947d0526a8aded0605c435e525a579edbb6d1273",
-      "sha256": "ca561159eb7d54666ff98e5d0a7bcccdad62d8e75465603c3259da9c2a8c2887",
-      "bytes": 5375
+      "gitBlob": "ce46ec333931abac8d2a5e248d3734f608d4c36b",
+      "sha256": "7bbfb96a503cd4db8a0e9bca08f09eb293e38869d671d7a1b67c53660f2fa5be",
+      "bytes": 4957
     },
     {
       "source": "skills/arkiv-data-modeling/references/relationships.md",
       "destination": "plugins/arkiv/skills/arkiv-data-modeling/references/relationships.md",
-      "gitBlob": "947d0526a8aded0605c435e525a579edbb6d1273",
-      "sha256": "ca561159eb7d54666ff98e5d0a7bcccdad62d8e75465603c3259da9c2a8c2887",
-      "bytes": 5375
+      "gitBlob": "ce46ec333931abac8d2a5e248d3734f608d4c36b",
+      "sha256": "7bbfb96a503cd4db8a0e9bca08f09eb293e38869d671d7a1b67c53660f2fa5be",
+      "bytes": 4957
     },
     {
       "source": "skills/arkiv-data-modeling/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-data-modeling/SKILL.md",
-      "gitBlob": "164e27cc931c956b213b858deb6bef051e3853f0",
-      "sha256": "dbf67a67bfb683f0cb830f1962a08b6b0bc4666605b56b9704e0a2a7717082b8",
-      "bytes": 15877
+      "gitBlob": "42d9a7f11901900ee9a5cc5f6516703ab4583df6",
+      "sha256": "8ef68a70da790cb1803e535ba8ee6b6cd5c21c8aab5c0589cf086f41d3081b76",
+      "bytes": 5818
     },
     {
       "source": "skills/arkiv-data-modeling/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-data-modeling/SKILL.md",
-      "gitBlob": "164e27cc931c956b213b858deb6bef051e3853f0",
-      "sha256": "dbf67a67bfb683f0cb830f1962a08b6b0bc4666605b56b9704e0a2a7717082b8",
-      "bytes": 15877
+      "gitBlob": "42d9a7f11901900ee9a5cc5f6516703ab4583df6",
+      "sha256": "8ef68a70da790cb1803e535ba8ee6b6cd5c21c8aab5c0589cf086f41d3081b76",
+      "bytes": 5818
     },
     {
       "source": "skills/arkiv-encryption/references/sdk-payload.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-encryption/references/sdk-payload.md",
-      "gitBlob": "c5699463d453d07d160bbde048262f9700fc8c17",
-      "sha256": "63619b56211bde833aabbfa57cf7a07f7496bf4a5f848eddfa3dd549d010094f",
-      "bytes": 4707
+      "gitBlob": "9bb88c5cb2cd85d5630fc78db10a450905cac458",
+      "sha256": "97edd850426ae6fe1ee03f58026266d874f746701ea6c04f7e50ac30d2c438c2",
+      "bytes": 4679
     },
     {
       "source": "skills/arkiv-encryption/references/sdk-payload.md",
       "destination": "plugins/arkiv/skills/arkiv-encryption/references/sdk-payload.md",
-      "gitBlob": "c5699463d453d07d160bbde048262f9700fc8c17",
-      "sha256": "63619b56211bde833aabbfa57cf7a07f7496bf4a5f848eddfa3dd549d010094f",
-      "bytes": 4707
+      "gitBlob": "9bb88c5cb2cd85d5630fc78db10a450905cac458",
+      "sha256": "97edd850426ae6fe1ee03f58026266d874f746701ea6c04f7e50ac30d2c438c2",
+      "bytes": 4679
     },
     {
       "source": "skills/arkiv-encryption/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-encryption/SKILL.md",
-      "gitBlob": "8db59bfab1e0e39c5d6682562477113f682e984e",
-      "sha256": "4f4672081663e4bb7657c35d69e6314065b81dd412f0743f0fad8f0128190b90",
-      "bytes": 7445
+      "gitBlob": "8b9b887ed268cce5ae47589178da1bfb8e8d9c41",
+      "sha256": "b0b0a6ba94c0a76ea366eefcd694d8a7952f92e408ab343c0bbed170ab7a3eeb",
+      "bytes": 3499
     },
     {
       "source": "skills/arkiv-encryption/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-encryption/SKILL.md",
-      "gitBlob": "8db59bfab1e0e39c5d6682562477113f682e984e",
-      "sha256": "4f4672081663e4bb7657c35d69e6314065b81dd412f0743f0fad8f0128190b90",
-      "bytes": 7445
+      "gitBlob": "8b9b887ed268cce5ae47589178da1bfb8e8d9c41",
+      "sha256": "b0b0a6ba94c0a76ea366eefcd694d8a7952f92e408ab343c0bbed170ab7a3eeb",
+      "bytes": 3499
     },
     {
       "source": "skills/arkiv-entity-expiration/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-entity-expiration/SKILL.md",
-      "gitBlob": "9e3bd644b2d8818f9e505d3076937eeda9328d2e",
-      "sha256": "71492566051930ae0a7f4e1ab58a415dbb8345d7fa462ccea620043c07995cc7",
-      "bytes": 14944
+      "gitBlob": "cb90a96e9614792e0bf7daab0a6f8ffaa3fb7a3f",
+      "sha256": "856f4c84068ebae331a80406c895ad236d957153c196a0efcde4c3fe6e66fb13",
+      "bytes": 8688
     },
     {
       "source": "skills/arkiv-entity-expiration/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-entity-expiration/SKILL.md",
-      "gitBlob": "9e3bd644b2d8818f9e505d3076937eeda9328d2e",
-      "sha256": "71492566051930ae0a7f4e1ab58a415dbb8345d7fa462ccea620043c07995cc7",
-      "bytes": 14944
+      "gitBlob": "cb90a96e9614792e0bf7daab0a6f8ffaa3fb7a3f",
+      "sha256": "856f4c84068ebae331a80406c895ad236d957153c196a0efcde4c3fe6e66fb13",
+      "bytes": 8688
     },
     {
       "source": "skills/arkiv-entity-lifecycle/references/backup-restore.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-entity-lifecycle/references/backup-restore.md",
-      "gitBlob": "cc91529a7ff8c51c108fd013616d94ef75fc8c02",
-      "sha256": "072c3b193c6e260d1bc0495790bd05a7a474c9fa9c2ce6a7862733590d8e4d5b",
-      "bytes": 10605
+      "gitBlob": "3f24ad84f3de53abd629786d4cc5265b09a90379",
+      "sha256": "859b3cb40b7d2d8ba2de2f49c97f8e7e8b128aefc56d99f9d09bd924ac50ca79",
+      "bytes": 5505
     },
     {
       "source": "skills/arkiv-entity-lifecycle/references/backup-restore.md",
       "destination": "plugins/arkiv/skills/arkiv-entity-lifecycle/references/backup-restore.md",
-      "gitBlob": "cc91529a7ff8c51c108fd013616d94ef75fc8c02",
-      "sha256": "072c3b193c6e260d1bc0495790bd05a7a474c9fa9c2ce6a7862733590d8e4d5b",
-      "bytes": 10605
+      "gitBlob": "3f24ad84f3de53abd629786d4cc5265b09a90379",
+      "sha256": "859b3cb40b7d2d8ba2de2f49c97f8e7e8b128aefc56d99f9d09bd924ac50ca79",
+      "bytes": 5505
     },
     {
       "source": "skills/arkiv-entity-lifecycle/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-entity-lifecycle/SKILL.md",
-      "gitBlob": "35be35532570126a59d9de0f98c2bb4ba73dce1c",
-      "sha256": "23578f4fed754694bd02260ba0bd7e0968bc12659df9ffc967f5b86ee6cc2a45",
-      "bytes": 16603
+      "gitBlob": "8074777ff5ff5cdae9b683fc0833122514556244",
+      "sha256": "5fcc8380256cd2aba3776fd389bbb1e4740bebf05ae2725c5cc63312f0063c93",
+      "bytes": 9626
     },
     {
       "source": "skills/arkiv-entity-lifecycle/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-entity-lifecycle/SKILL.md",
-      "gitBlob": "35be35532570126a59d9de0f98c2bb4ba73dce1c",
-      "sha256": "23578f4fed754694bd02260ba0bd7e0968bc12659df9ffc967f5b86ee6cc2a45",
-      "bytes": 16603
+      "gitBlob": "8074777ff5ff5cdae9b683fc0833122514556244",
+      "sha256": "5fcc8380256cd2aba3776fd389bbb1e4740bebf05ae2725c5cc63312f0063c93",
+      "bytes": 9626
     },
     {
       "source": "skills/arkiv-feedback/references/bug-form.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-feedback/references/bug-form.md",
-      "gitBlob": "9daf59dec221ac37ddb2669ebb1daf15ff47567d",
-      "sha256": "e7f2ae0377e52dd9db0738a941d3f74e51b7f4aeda91b06777112b9a30ee3081",
-      "bytes": 2761
+      "gitBlob": "d0ab88de14425d7b4bb73d68c3c9647a1c6e9464",
+      "sha256": "00c93a49117e81d46158afae4761ba28dc1b6f955d7b51317d78c874580a23b8",
+      "bytes": 2749
     },
     {
       "source": "skills/arkiv-feedback/references/bug-form.md",
       "destination": "plugins/arkiv/skills/arkiv-feedback/references/bug-form.md",
-      "gitBlob": "9daf59dec221ac37ddb2669ebb1daf15ff47567d",
-      "sha256": "e7f2ae0377e52dd9db0738a941d3f74e51b7f4aeda91b06777112b9a30ee3081",
-      "bytes": 2761
+      "gitBlob": "d0ab88de14425d7b4bb73d68c3c9647a1c6e9464",
+      "sha256": "00c93a49117e81d46158afae4761ba28dc1b6f955d7b51317d78c874580a23b8",
+      "bytes": 2749
     },
     {
       "source": "skills/arkiv-feedback/references/feature-form.md",
@@ -212,100 +212,100 @@
     {
       "source": "skills/arkiv-feedback/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-feedback/SKILL.md",
-      "gitBlob": "0340bd444f5b6f137a6bd63236982d5477fe4fba",
-      "sha256": "312c3205d083e0ead8ad0c09631f87d385e3d41d48061c2535dd0cd19e7cd3ed",
-      "bytes": 9404
+      "gitBlob": "2d6f18156743b6db05d9ea04da1fe1f447c3d8eb",
+      "sha256": "6690aa0771ac9c865a37dedd72f101a16adc4b14534c3aec7ed5c0adf244ddfd",
+      "bytes": 9606
     },
     {
       "source": "skills/arkiv-feedback/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-feedback/SKILL.md",
-      "gitBlob": "0340bd444f5b6f137a6bd63236982d5477fe4fba",
-      "sha256": "312c3205d083e0ead8ad0c09631f87d385e3d41d48061c2535dd0cd19e7cd3ed",
-      "bytes": 9404
+      "gitBlob": "2d6f18156743b6db05d9ea04da1fe1f447c3d8eb",
+      "sha256": "6690aa0771ac9c865a37dedd72f101a16adc4b14534c3aec7ed5c0adf244ddfd",
+      "bytes": 9606
     },
     {
       "source": "skills/arkiv-first-write/references/estimate.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-first-write/references/estimate.md",
-      "gitBlob": "e3115adcebbf76a67cb56afa29f797ad745435ef",
-      "sha256": "f50b788d0f504a90429f6c2c6c796ae9eddcac562154a37199e672f00bd28c53",
-      "bytes": 5497
+      "gitBlob": "df99eaa45ce11905859acab6773ac2a14a40898d",
+      "sha256": "9d14b83ae7c724c1e6c8cb45c6159b78350b2088fcf94a390c0286811160fab5",
+      "bytes": 3833
     },
     {
       "source": "skills/arkiv-first-write/references/estimate.md",
       "destination": "plugins/arkiv/skills/arkiv-first-write/references/estimate.md",
-      "gitBlob": "e3115adcebbf76a67cb56afa29f797ad745435ef",
-      "sha256": "f50b788d0f504a90429f6c2c6c796ae9eddcac562154a37199e672f00bd28c53",
-      "bytes": 5497
+      "gitBlob": "df99eaa45ce11905859acab6773ac2a14a40898d",
+      "sha256": "9d14b83ae7c724c1e6c8cb45c6159b78350b2088fcf94a390c0286811160fab5",
+      "bytes": 3833
     },
     {
       "source": "skills/arkiv-first-write/references/testing.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-first-write/references/testing.md",
-      "gitBlob": "e9e86cc7e6d6fa9aa27c042428a94518ee04bd47",
-      "sha256": "c2f063d7a4354db74ecffa69cfc2446ee5bf68f0dc50ee0ca531a707ebb2eb95",
-      "bytes": 2834
+      "gitBlob": "9294a1d5aff26f100e65f0d275e4df549668944d",
+      "sha256": "438949964dbaf287d26b22c58212985b94e78242a94a8bbb55ed88d83b1af5a8",
+      "bytes": 1541
     },
     {
       "source": "skills/arkiv-first-write/references/testing.md",
       "destination": "plugins/arkiv/skills/arkiv-first-write/references/testing.md",
-      "gitBlob": "e9e86cc7e6d6fa9aa27c042428a94518ee04bd47",
-      "sha256": "c2f063d7a4354db74ecffa69cfc2446ee5bf68f0dc50ee0ca531a707ebb2eb95",
-      "bytes": 2834
+      "gitBlob": "9294a1d5aff26f100e65f0d275e4df549668944d",
+      "sha256": "438949964dbaf287d26b22c58212985b94e78242a94a8bbb55ed88d83b1af5a8",
+      "bytes": 1541
     },
     {
       "source": "skills/arkiv-first-write/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-first-write/SKILL.md",
-      "gitBlob": "6510d55a2007d33d7bc397a3c5c2603ad7160e68",
-      "sha256": "8a5bc70e940ed960d8b4eddd0ce61bf4b4d1e43363aa4799986cefb960c91335",
-      "bytes": 13505
+      "gitBlob": "f2aed0286fce3e49752531bbffa21b613b59edc8",
+      "sha256": "31ff24842ec0698cd05e63909ff033963825ea21efa295c854b7d467652082e6",
+      "bytes": 11212
     },
     {
       "source": "skills/arkiv-first-write/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-first-write/SKILL.md",
-      "gitBlob": "6510d55a2007d33d7bc397a3c5c2603ad7160e68",
-      "sha256": "8a5bc70e940ed960d8b4eddd0ce61bf4b4d1e43363aa4799986cefb960c91335",
-      "bytes": 13505
+      "gitBlob": "f2aed0286fce3e49752531bbffa21b613b59edc8",
+      "sha256": "31ff24842ec0698cd05e63909ff033963825ea21efa295c854b7d467652082e6",
+      "bytes": 11212
     },
     {
       "source": "skills/arkiv-indexing/references/checkpoint-mirror.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-indexing/references/checkpoint-mirror.md",
-      "gitBlob": "a0e5187f98e66e7b623dc5339fd2e0f0ec519b74",
-      "sha256": "cb45b03a96f63d8c170a1a9df47144058f1b5a7c6b9c5d4b0d55342260c4e71b",
-      "bytes": 20979
+      "gitBlob": "d7b3e8dd15cec9a6ed4fab569031bf857ec4cd4c",
+      "sha256": "1d980d98ef2ef4ffcb370e00709e7a6858eb72bd4673fba527a67f8c24109155",
+      "bytes": 2704
     },
     {
       "source": "skills/arkiv-indexing/references/checkpoint-mirror.md",
       "destination": "plugins/arkiv/skills/arkiv-indexing/references/checkpoint-mirror.md",
-      "gitBlob": "a0e5187f98e66e7b623dc5339fd2e0f0ec519b74",
-      "sha256": "cb45b03a96f63d8c170a1a9df47144058f1b5a7c6b9c5d4b0d55342260c4e71b",
-      "bytes": 20979
+      "gitBlob": "d7b3e8dd15cec9a6ed4fab569031bf857ec4cd4c",
+      "sha256": "1d980d98ef2ef4ffcb370e00709e7a6858eb72bd4673fba527a67f8c24109155",
+      "bytes": 2704
     },
     {
       "source": "skills/arkiv-indexing/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-indexing/SKILL.md",
-      "gitBlob": "4ad71a05febb2cd4a99c543987dc5b062cfffca1",
-      "sha256": "a82a3bb4232d3d429c6d7a607fbc7d8ddb2e9556cd9e81c81a70b00b26516a77",
-      "bytes": 16571
+      "gitBlob": "c1ece5158de84aeb62d1a665eb1aa9733fa92702",
+      "sha256": "774c25180b991f117fa25318c2c4f0b85a9dd4991eb5cf60604c320371b5510f",
+      "bytes": 4631
     },
     {
       "source": "skills/arkiv-indexing/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-indexing/SKILL.md",
-      "gitBlob": "4ad71a05febb2cd4a99c543987dc5b062cfffca1",
-      "sha256": "a82a3bb4232d3d429c6d7a607fbc7d8ddb2e9556cd9e81c81a70b00b26516a77",
-      "bytes": 16571
+      "gitBlob": "c1ece5158de84aeb62d1a665eb1aa9733fa92702",
+      "sha256": "774c25180b991f117fa25318c2c4f0b85a9dd4991eb5cf60604c320371b5510f",
+      "bytes": 4631
     },
     {
       "source": "skills/arkiv-large-files/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-large-files/SKILL.md",
-      "gitBlob": "5d683ae7cc9a3fa9dec0571d8ad3fef0a3673ab4",
-      "sha256": "a5dbf84e90196b35b2ac99b410e46fea12c9c0dd09499846fd920147012699e5",
-      "bytes": 16182
+      "gitBlob": "cd428d716807e192e27cbc139afbeef1d7decb4a",
+      "sha256": "36867b2c9c74dff2a0ef313ee863df6ee5d4f922e3ed81065e5766d675730e3a",
+      "bytes": 6049
     },
     {
       "source": "skills/arkiv-large-files/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-large-files/SKILL.md",
-      "gitBlob": "5d683ae7cc9a3fa9dec0571d8ad3fef0a3673ab4",
-      "sha256": "a5dbf84e90196b35b2ac99b410e46fea12c9c0dd09499846fd920147012699e5",
-      "bytes": 16182
+      "gitBlob": "cd428d716807e192e27cbc139afbeef1d7decb4a",
+      "sha256": "36867b2c9c74dff2a0ef313ee863df6ee5d4f922e3ed81065e5766d675730e3a",
+      "bytes": 6049
     },
     {
       "source": "skills/arkiv-mcp/references/protocol-preflight.md",
@@ -324,226 +324,226 @@
     {
       "source": "skills/arkiv-mcp/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-mcp/SKILL.md",
-      "gitBlob": "8bc3426a30dee0c1d38961ab0e7822071ebf61b7",
-      "sha256": "97ea067a617f435ca21f7c992cf9e06f823f4eff6286635fc73a5b55edbaafcb",
-      "bytes": 13213
+      "gitBlob": "e334547320f58264d2a1e5e9b0aa775dfb28fe6a",
+      "sha256": "26d6fc2e7c4a434e15ebc62294f65339421717d0e3028bf02aeefc453443753d",
+      "bytes": 14202
     },
     {
       "source": "skills/arkiv-mcp/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-mcp/SKILL.md",
-      "gitBlob": "8bc3426a30dee0c1d38961ab0e7822071ebf61b7",
-      "sha256": "97ea067a617f435ca21f7c992cf9e06f823f4eff6286635fc73a5b55edbaafcb",
-      "bytes": 13213
+      "gitBlob": "e334547320f58264d2a1e5e9b0aa775dfb28fe6a",
+      "sha256": "26d6fc2e7c4a434e15ebc62294f65339421717d0e3028bf02aeefc453443753d",
+      "bytes": 14202
     },
     {
       "source": "skills/arkiv-query/references/json-rpc.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-query/references/json-rpc.md",
-      "gitBlob": "11ff4481ca34f074649d85fb36b6ce413ce25f60",
-      "sha256": "f41039320c63aac7e43183ed56912da90ba9949626dc45644be95f09c097ea05",
-      "bytes": 13180
+      "gitBlob": "6cbf14e89013b66d7cac894cff572becd83445b1",
+      "sha256": "51d4fd083f43e959a3547743cc78e1c175519d4b3d18704f872263d6840e1b5b",
+      "bytes": 3937
     },
     {
       "source": "skills/arkiv-query/references/json-rpc.md",
       "destination": "plugins/arkiv/skills/arkiv-query/references/json-rpc.md",
-      "gitBlob": "11ff4481ca34f074649d85fb36b6ce413ce25f60",
-      "sha256": "f41039320c63aac7e43183ed56912da90ba9949626dc45644be95f09c097ea05",
-      "bytes": 13180
+      "gitBlob": "6cbf14e89013b66d7cac894cff572becd83445b1",
+      "sha256": "51d4fd083f43e959a3547743cc78e1c175519d4b3d18704f872263d6840e1b5b",
+      "bytes": 3937
     },
     {
       "source": "skills/arkiv-query/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-query/SKILL.md",
-      "gitBlob": "695170b317a3fafc7b25823a5655a13cabec501d",
-      "sha256": "2a12f04f1649dd3dc4ab8d9e729623a8b4c2758b6bb7c844ee0932c8733eb899",
-      "bytes": 15649
+      "gitBlob": "9fd3a1ea408a54d58a8c930c3d9fdae59c62d1e9",
+      "sha256": "74789e156247d04dfd12c1494d87f7ec3e7e38eb07b2bb46fd2d06362d8e7b10",
+      "bytes": 7091
     },
     {
       "source": "skills/arkiv-query/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-query/SKILL.md",
-      "gitBlob": "695170b317a3fafc7b25823a5655a13cabec501d",
-      "sha256": "2a12f04f1649dd3dc4ab8d9e729623a8b4c2758b6bb7c844ee0932c8733eb899",
-      "bytes": 15649
+      "gitBlob": "9fd3a1ea408a54d58a8c930c3d9fdae59c62d1e9",
+      "sha256": "74789e156247d04dfd12c1494d87f7ec3e7e38eb07b2bb46fd2d06362d8e7b10",
+      "bytes": 7091
     },
     {
       "source": "skills/arkiv-security-trust/references/privacy.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-security-trust/references/privacy.md",
-      "gitBlob": "f747395417e2180754c066b886e3d483883deef8",
-      "sha256": "0ab82a09a07ec8ee19b2bb8680eab9577220ee2b8c2d2c66a1098d17ac127024",
-      "bytes": 5199
+      "gitBlob": "5bfab0b8f2652c3a737a8ce8a218c14cc71638b9",
+      "sha256": "6047e39838fdec310b87e6d073c49ffab5ec825879da7f20433209f935c527d1",
+      "bytes": 5636
     },
     {
       "source": "skills/arkiv-security-trust/references/privacy.md",
       "destination": "plugins/arkiv/skills/arkiv-security-trust/references/privacy.md",
-      "gitBlob": "f747395417e2180754c066b886e3d483883deef8",
-      "sha256": "0ab82a09a07ec8ee19b2bb8680eab9577220ee2b8c2d2c66a1098d17ac127024",
-      "bytes": 5199
+      "gitBlob": "5bfab0b8f2652c3a737a8ce8a218c14cc71638b9",
+      "sha256": "6047e39838fdec310b87e6d073c49ffab5ec825879da7f20433209f935c527d1",
+      "bytes": 5636
     },
     {
       "source": "skills/arkiv-security-trust/references/trust-boundary.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-security-trust/references/trust-boundary.md",
-      "gitBlob": "839ed618465c12d8661b9c2671ecbdaf07d79753",
-      "sha256": "f0a906b35ba2b61cdd975e2d9e5dc0a8bc5afdb06f2f99237aa455a822217974",
-      "bytes": 5806
+      "gitBlob": "9e43020e50f9227ed26b1ed2a6fc82c1e16151b2",
+      "sha256": "da466852862872bbc829de722b9faa6554aeb6bf7b3a5ff4a80496b06382a9cf",
+      "bytes": 3065
     },
     {
       "source": "skills/arkiv-security-trust/references/trust-boundary.md",
       "destination": "plugins/arkiv/skills/arkiv-security-trust/references/trust-boundary.md",
-      "gitBlob": "839ed618465c12d8661b9c2671ecbdaf07d79753",
-      "sha256": "f0a906b35ba2b61cdd975e2d9e5dc0a8bc5afdb06f2f99237aa455a822217974",
-      "bytes": 5806
+      "gitBlob": "9e43020e50f9227ed26b1ed2a6fc82c1e16151b2",
+      "sha256": "da466852862872bbc829de722b9faa6554aeb6bf7b3a5ff4a80496b06382a9cf",
+      "bytes": 3065
     },
     {
       "source": "skills/arkiv-security-trust/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-security-trust/SKILL.md",
-      "gitBlob": "d346015973dab09aea82e81ca4d282e884127ff5",
-      "sha256": "2db63888dd78134678a763099181408fd0fa61162bd1b11d8fe59988083ef2a7",
-      "bytes": 6254
+      "gitBlob": "0299aaaaba2d33e230d36ed358a4689dfb443175",
+      "sha256": "d7a63a434d39ff3d8e1b3243323f2a9f7af2dda30ad84961775c832c3bb42dbb",
+      "bytes": 4875
     },
     {
       "source": "skills/arkiv-security-trust/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-security-trust/SKILL.md",
-      "gitBlob": "d346015973dab09aea82e81ca4d282e884127ff5",
-      "sha256": "2db63888dd78134678a763099181408fd0fa61162bd1b11d8fe59988083ef2a7",
-      "bytes": 6254
+      "gitBlob": "0299aaaaba2d33e230d36ed358a4689dfb443175",
+      "sha256": "d7a63a434d39ff3d8e1b3243323f2a9f7af2dda30ad84961775c832c3bb42dbb",
+      "bytes": 4875
     },
     {
       "source": "skills/arkiv-social-graph/references/fetch-and-refresh.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-social-graph/references/fetch-and-refresh.md",
-      "gitBlob": "76369f69c85de158afc30cc2c2ccbc465e713e6d",
-      "sha256": "9084d474d6486cf5d737dfc0c92808ee5755652fcdbb964ca05aebf2b74c1ed6",
-      "bytes": 5905
+      "gitBlob": "6891588bf5012a119980131c91c7df45dee82afa",
+      "sha256": "838bd6e9d8e2e156d3b6568f43dcf3b6a0c021dd974cb08146efe82fef32ceb9",
+      "bytes": 2435
     },
     {
       "source": "skills/arkiv-social-graph/references/fetch-and-refresh.md",
       "destination": "plugins/arkiv/skills/arkiv-social-graph/references/fetch-and-refresh.md",
-      "gitBlob": "76369f69c85de158afc30cc2c2ccbc465e713e6d",
-      "sha256": "9084d474d6486cf5d737dfc0c92808ee5755652fcdbb964ca05aebf2b74c1ed6",
-      "bytes": 5905
+      "gitBlob": "6891588bf5012a119980131c91c7df45dee82afa",
+      "sha256": "838bd6e9d8e2e156d3b6568f43dcf3b6a0c021dd974cb08146efe82fef32ceb9",
+      "bytes": 2435
     },
     {
       "source": "skills/arkiv-social-graph/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-social-graph/SKILL.md",
-      "gitBlob": "f4dee2cf6c33fcde4212840d30136ffc82da5878",
-      "sha256": "462abaed275811d3d542535c0c3e137a9f62bc97276e5f2cf7c91066f0802629",
-      "bytes": 7712
+      "gitBlob": "0aa3e470a29b98ad843dd6b44a85d7318c38bd62",
+      "sha256": "181f469e4a7d199b751f84ca28139e3f5b3ec9102d3c69b1868433c06ddf8b3c",
+      "bytes": 3685
     },
     {
       "source": "skills/arkiv-social-graph/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-social-graph/SKILL.md",
-      "gitBlob": "f4dee2cf6c33fcde4212840d30136ffc82da5878",
-      "sha256": "462abaed275811d3d542535c0c3e137a9f62bc97276e5f2cf7c91066f0802629",
-      "bytes": 7712
+      "gitBlob": "0aa3e470a29b98ad843dd6b44a85d7318c38bd62",
+      "sha256": "181f469e4a7d199b751f84ca28139e3f5b3ec9102d3c69b1868433c06ddf8b3c",
+      "bytes": 3685
     },
     {
       "source": "skills/arkiv-troubleshooting/references/error-catalog.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-troubleshooting/references/error-catalog.md",
-      "gitBlob": "8d0e0f7a5bdd69dfef17e06787073b94efa36bae",
-      "sha256": "ec332a1f9d6582fe430d80122704408dd99f8905292e8c6756d1fb2165b542b3",
-      "bytes": 11955
+      "gitBlob": "5b4f78edad5c3ed03332ff046786b13349c738d0",
+      "sha256": "f223e4ab84c9816b5c8e1681224111dae3048d0aba1297b9c25842a0b884ea47",
+      "bytes": 5200
     },
     {
       "source": "skills/arkiv-troubleshooting/references/error-catalog.md",
       "destination": "plugins/arkiv/skills/arkiv-troubleshooting/references/error-catalog.md",
-      "gitBlob": "8d0e0f7a5bdd69dfef17e06787073b94efa36bae",
-      "sha256": "ec332a1f9d6582fe430d80122704408dd99f8905292e8c6756d1fb2165b542b3",
-      "bytes": 11955
+      "gitBlob": "5b4f78edad5c3ed03332ff046786b13349c738d0",
+      "sha256": "f223e4ab84c9816b5c8e1681224111dae3048d0aba1297b9c25842a0b884ea47",
+      "bytes": 5200
     },
     {
       "source": "skills/arkiv-troubleshooting/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-troubleshooting/SKILL.md",
-      "gitBlob": "4a8fc3df9b74d59e5677f4ce0944fa17f190f2d5",
-      "sha256": "64e852104e1fa235ee07513658d89e364d8e41dc779181e4cf7a3f4fef45407a",
-      "bytes": 10323
+      "gitBlob": "0d2e3ffae6d97acc540e9d1618606fb37e3aa7e9",
+      "sha256": "0ed4060bfde95b5d0630ebcd120140d72923e033a4862ff3d980c97b621c5362",
+      "bytes": 8554
     },
     {
       "source": "skills/arkiv-troubleshooting/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-troubleshooting/SKILL.md",
-      "gitBlob": "4a8fc3df9b74d59e5677f4ce0944fa17f190f2d5",
-      "sha256": "64e852104e1fa235ee07513658d89e364d8e41dc779181e4cf7a3f4fef45407a",
-      "bytes": 10323
+      "gitBlob": "0d2e3ffae6d97acc540e9d1618606fb37e3aa7e9",
+      "sha256": "0ed4060bfde95b5d0630ebcd120140d72923e033a4862ff3d980c97b621c5362",
+      "bytes": 8554
     },
     {
       "source": "skills/arkiv-write-safety/references/resumable-import.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-write-safety/references/resumable-import.md",
-      "gitBlob": "2efba410e903b70a36bd2ebaedf26148c834c8f6",
-      "sha256": "f6d9233554fce11802e0689c9d6e155a4a2cdcb0517ce44202bf1cf424ea5f07",
-      "bytes": 27443
+      "gitBlob": "4066bf9c0c09fd306ac550af2e2b75b5f9d3491a",
+      "sha256": "19cc0c41331c97b63b983a8e2b4c9532c0046eaca71996155f05c747df6ea31d",
+      "bytes": 30900
     },
     {
       "source": "skills/arkiv-write-safety/references/resumable-import.md",
       "destination": "plugins/arkiv/skills/arkiv-write-safety/references/resumable-import.md",
-      "gitBlob": "2efba410e903b70a36bd2ebaedf26148c834c8f6",
-      "sha256": "f6d9233554fce11802e0689c9d6e155a4a2cdcb0517ce44202bf1cf424ea5f07",
-      "bytes": 27443
+      "gitBlob": "4066bf9c0c09fd306ac550af2e2b75b5f9d3491a",
+      "sha256": "19cc0c41331c97b63b983a8e2b4c9532c0046eaca71996155f05c747df6ea31d",
+      "bytes": 30900
     },
     {
       "source": "skills/arkiv-write-safety/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-write-safety/SKILL.md",
-      "gitBlob": "a7feda74f1f2b7c6c980f94d7a7643eb86328fbc",
-      "sha256": "95d299666327d92828d06c95235cc2f87306428e615713a0c011a4b74d0be0cc",
-      "bytes": 12003
+      "gitBlob": "67af1058d724cd714f37d359dce6322cc4f931a3",
+      "sha256": "7bbda5b1b1e5c903b47e7a3476406de422f34dd71fa7924476555d5b3875772f",
+      "bytes": 13740
     },
     {
       "source": "skills/arkiv-write-safety/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-write-safety/SKILL.md",
-      "gitBlob": "a7feda74f1f2b7c6c980f94d7a7643eb86328fbc",
-      "sha256": "95d299666327d92828d06c95235cc2f87306428e615713a0c011a4b74d0be0cc",
-      "bytes": 12003
+      "gitBlob": "67af1058d724cd714f37d359dce6322cc4f931a3",
+      "sha256": "7bbda5b1b1e5c903b47e7a3476406de422f34dd71fa7924476555d5b3875772f",
+      "bytes": 13740
     },
     {
       "source": "skills/arkiv/references/disambiguation.md",
       "destination": "plugins/arkiv-codex/skills/arkiv/references/disambiguation.md",
-      "gitBlob": "f4e746fc9786811fe5a9b11bd8a174ff55e5eee8",
-      "sha256": "0188b749cb05de7d7bbcc4875ff753a61c1804cfa73282ca4ce10eeb324c3097",
-      "bytes": 2569
+      "gitBlob": "aec9399e78758084a8f318b6b9aa0538160b4a94",
+      "sha256": "6a027262ceb4ef4b413fe60c37b57a23a77e77899416a2909cac1231d7c497e7",
+      "bytes": 1630
     },
     {
       "source": "skills/arkiv/references/disambiguation.md",
       "destination": "plugins/arkiv/skills/arkiv/references/disambiguation.md",
-      "gitBlob": "f4e746fc9786811fe5a9b11bd8a174ff55e5eee8",
-      "sha256": "0188b749cb05de7d7bbcc4875ff753a61c1804cfa73282ca4ce10eeb324c3097",
-      "bytes": 2569
+      "gitBlob": "aec9399e78758084a8f318b6b9aa0538160b4a94",
+      "sha256": "6a027262ceb4ef4b413fe60c37b57a23a77e77899416a2909cac1231d7c497e7",
+      "bytes": 1630
     },
     {
       "source": "skills/arkiv/references/import-check.md",
       "destination": "plugins/arkiv-codex/skills/arkiv/references/import-check.md",
-      "gitBlob": "0e8870d079e1862f6fc3c328f0dc7cbfd5bf8de1",
-      "sha256": "6567929f90f60751f9377a0cb9be221498e0cff62db9cfc1b8b7511bc2891b36",
-      "bytes": 4889
+      "gitBlob": "8b0f0587adb11cb6badad665e90bc221c14b3748",
+      "sha256": "c0bdac17d626c9a73fff5c2a0182c5c5af41d95a9d8802ac8d2562d410176ace",
+      "bytes": 1908
     },
     {
       "source": "skills/arkiv/references/import-check.md",
       "destination": "plugins/arkiv/skills/arkiv/references/import-check.md",
-      "gitBlob": "0e8870d079e1862f6fc3c328f0dc7cbfd5bf8de1",
-      "sha256": "6567929f90f60751f9377a0cb9be221498e0cff62db9cfc1b8b7511bc2891b36",
-      "bytes": 4889
+      "gitBlob": "8b0f0587adb11cb6badad665e90bc221c14b3748",
+      "sha256": "c0bdac17d626c9a73fff5c2a0182c5c5af41d95a9d8802ac8d2562d410176ace",
+      "bytes": 1908
     },
     {
       "source": "skills/arkiv/references/known-issues.md",
       "destination": "plugins/arkiv-codex/skills/arkiv/references/known-issues.md",
-      "gitBlob": "5e428a210056b5e9f0abb4a6efef2159fcd7c6cc",
-      "sha256": "608d29292a6b4faab291fddb8cbe33e63fccd8de31cfe514a70b954524540a0d",
-      "bytes": 3305
+      "gitBlob": "88bb434d8d33bbe5a98e995c5fb57708fb783602",
+      "sha256": "6acc0861ca2fb934715c1efedc6d951dc1ca0feb342ece9322d242daba1faffe",
+      "bytes": 1993
     },
     {
       "source": "skills/arkiv/references/known-issues.md",
       "destination": "plugins/arkiv/skills/arkiv/references/known-issues.md",
-      "gitBlob": "5e428a210056b5e9f0abb4a6efef2159fcd7c6cc",
-      "sha256": "608d29292a6b4faab291fddb8cbe33e63fccd8de31cfe514a70b954524540a0d",
-      "bytes": 3305
+      "gitBlob": "88bb434d8d33bbe5a98e995c5fb57708fb783602",
+      "sha256": "6acc0861ca2fb934715c1efedc6d951dc1ca0feb342ece9322d242daba1faffe",
+      "bytes": 1993
     },
     {
       "source": "skills/arkiv/references/limits.md",
       "destination": "plugins/arkiv-codex/skills/arkiv/references/limits.md",
-      "gitBlob": "7017275283b62e72534240d5c5d52ed5438338de",
-      "sha256": "11fe29aa520149c0b8072ac31477e52d6ac01872a8658437cc85b82e87215ade",
-      "bytes": 4077
+      "gitBlob": "2e97b3da3b70fc4facbf0fb533a70279fd0ed55e",
+      "sha256": "8b1cdd45e8916eda9fd1a684a966cd05e312d6416e839c113356571fe604bc2d",
+      "bytes": 2771
     },
     {
       "source": "skills/arkiv/references/limits.md",
       "destination": "plugins/arkiv/skills/arkiv/references/limits.md",
-      "gitBlob": "7017275283b62e72534240d5c5d52ed5438338de",
-      "sha256": "11fe29aa520149c0b8072ac31477e52d6ac01872a8658437cc85b82e87215ade",
-      "bytes": 4077
+      "gitBlob": "2e97b3da3b70fc4facbf0fb533a70279fd0ed55e",
+      "sha256": "8b1cdd45e8916eda9fd1a684a966cd05e312d6416e839c113356571fe604bc2d",
+      "bytes": 2771
     },
     {
       "source": "skills/arkiv/scripts/check-imports.mjs",
@@ -562,16 +562,16 @@
     {
       "source": "skills/arkiv/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv/SKILL.md",
-      "gitBlob": "aac3c4bd89931b54486a3eba8d6bb60e35d06c43",
-      "sha256": "179c4d3dfba8a5840f5852ab4609752bcdd62e8097b9d17eb58a7c2a01a5250b",
-      "bytes": 10419
+      "gitBlob": "98b5de26ce9dbdc511dcfd4768980b61e452ed1a",
+      "sha256": "e35f30dcfe07676c91aeee3dfa99a87c3d88b3b3fa8c2feb9f1119541e2dc68d",
+      "bytes": 6751
     },
     {
       "source": "skills/arkiv/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv/SKILL.md",
-      "gitBlob": "aac3c4bd89931b54486a3eba8d6bb60e35d06c43",
-      "sha256": "179c4d3dfba8a5840f5852ab4609752bcdd62e8097b9d17eb58a7c2a01a5250b",
-      "bytes": 10419
+      "gitBlob": "98b5de26ce9dbdc511dcfd4768980b61e452ed1a",
+      "sha256": "e35f30dcfe07676c91aeee3dfa99a87c3d88b3b3fa8c2feb9f1119541e2dc68d",
+      "bytes": 6751
     }
   ]
 }

@@ -60,7 +60,7 @@ test('source ref drift fails even when imported files were not changed', () => f
   await writeFile(file, JSON.stringify(lock));
   await assert.rejects(checkSkillImport(directory), /Skills source commit drift/);
 }));
-test('eval suite preserves original outcomes and explicit negative invocation controls', async () => {
+test('eval suite preserves original receipts and explicit controls across SDK 1.0 amendments', async () => {
   const result = await checkEvalSuite(repositoryRoot);
   assert.equal(result.cases, 73); assert.equal(result.negatives, 16); assert.equal(result.mockedCases, 3);
   assert.equal(result.originalFiles, 207);
@@ -112,13 +112,14 @@ test('process expectation rationale covers privacy leaks and RPC configuration i
   const encryption = await skill('arkiv-encryption');
   const troubleshooting = await skill('arkiv-troubleshooting');
   assert.match(router, /Use `arkiv-security-trust`[\s\S]*before storing sensitive data/);
-  assert.match(security, /sensitive payload fields, indexed attributes, wallet addresses and logs/);
-  assert.match(security, /Keep access\/signing\/encryption keys out of chat, URLs, logs/);
-  assert.match(security, /HMAC indexes[\s\S]*not that package's API/);
-  assert.match(encryption, /Use arkiv-security-trust for policy and HMAC index design/);
-  assert.match(router, /RPC configuration\/URL validation goes to `arkiv-troubleshooting` first/);
-  assert.match(troubleshooting, /Parse the URL as data/);
-  assert.match(troubleshooting, /never interpolate it into a shell command/);
-  assert.match(troubleshooting, /Static URL validation does not establish chain identity/);
-  assert.match(troubleshooting, /A request for explanation alone authorizes no live probe/);
+  assert.match(security, /Identify private fields, indexed labels, wallet metadata and diagnostic logs/);
+  assert.match(security, /Keep signing\/encryption keys in local custody, never in chat, URLs, browser bundles or public environment variables/);
+  assert.match(security, /Operator RPC keys stay server-side[\s\S]*redact the entire transport diagnostic/);
+  assert.match(security, /neither an HMAC index nor a gating service is automatically supplied by that package/);
+  assert.match(encryption, /HMAC equality indexes[\s\S]*app-owned design, not a library query feature; see security\/privacy guidance/);
+  assert.match(router, /For an existing error load troubleshooting first/);
+  assert.match(troubleshooting, /Treat pasted URLs as data/);
+  assert.match(troubleshooting, /through a parser, not interpolated shell commands/);
+  assert.match(troubleshooting, /verify actual eth_chainId before operations/);
+  assert.match(troubleshooting, /An explanation-only request does not authorize live probing/);
 });

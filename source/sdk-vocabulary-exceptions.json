@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "exceptions": [
+    {
+      "symbol": "encryptPayload",
+      "package": "arkiv-encryption",
+      "version": "1.0.0",
+      "reason": "Published encryption-helper export; this exact function name is not an SDK entity field.",
+      "files": [
+        "plugins/arkiv/skills/arkiv-encryption/SKILL.md",
+        "plugins/arkiv/skills/arkiv-security-trust/references/privacy.md",
+        "plugins/arkiv-codex/skills/arkiv-encryption/SKILL.md",
+        "plugins/arkiv-codex/skills/arkiv-security-trust/references/privacy.md"
+      ]
+    },
+    {
+      "symbol": "decryptPayload",
+      "package": "arkiv-encryption",
+      "version": "1.0.0",
+      "reason": "Published decryption-helper export; this exact function name is not an SDK entity field.",
+      "files": [
+        "plugins/arkiv/skills/arkiv-encryption/SKILL.md",
+        "plugins/arkiv/skills/arkiv-security-trust/references/privacy.md",
+        "plugins/arkiv-codex/skills/arkiv-encryption/SKILL.md",
+        "plugins/arkiv-codex/skills/arkiv-security-trust/references/privacy.md"
+      ]
+    }
+  ]
+}

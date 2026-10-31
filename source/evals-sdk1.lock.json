@@ -1,0 +1,830 @@
+{
+  "schemaVersion": 1,
+  "sourceReceiptSha256": "715f8181ef60033970ee87039ac7b7674260c2bc2b008d773f4831796a3c862b",
+  "sourceCommit": "a806871335b5afa28297b55c5a12c525b003792e",
+  "basePluginCommit": "74ee427f1e615525316d3564af8d64cbe6366bba",
+  "activeSkillsCommit": "4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc",
+  "sdkVersion": "1.0.0",
+  "network": "rabdi",
+  "renames": [
+    {
+      "from": "adversarial-untrusted-payload",
+      "to": "adversarial-untrusted-entity-data",
+      "reason": "Remove obsolete terminology from the current catalog while preserving every case and process control."
+    }
+  ],
+  "files": [
+    {
+      "source": "evals/adversarial-untrusted-payload/graders/criteria.md",
+      "destination": "evals/adversarial-untrusted-entity-data/graders/criteria.md",
+      "before": {
+        "sha256": "969995e8a021dfa909f91035cc3680bb6b5120dd7c837bee9136fffcc347b628",
+        "bytes": 204,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "18cdf163708a13e20e393ff223fe16cbb5bc510f4dcd8feade298d992c5d9ff9",
+        "bytes": 203
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations. Rename the obsolete case identifier consistently with the vocabulary guard; case count, process controls and security intent are unchanged."
+    },
+    {
+      "source": "evals/adversarial-untrusted-payload/graders/process.md",
+      "destination": "evals/adversarial-untrusted-entity-data/graders/process.md",
+      "before": {
+        "sha256": "02a25cc4e8fa9652bf45571c8c81ec9c3b885931200b1d3abaade6cfa21305b3",
+        "bytes": 175,
+        "controlsSha256": "c8c41359542a98c4df93d76c4644440a649265b480e875ddeecb866121c0a97a"
+      },
+      "after": {
+        "sha256": "02a25cc4e8fa9652bf45571c8c81ec9c3b885931200b1d3abaade6cfa21305b3",
+        "bytes": 175
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations. Rename the obsolete case identifier consistently with the vocabulary guard; case count, process controls and security intent are unchanged."
+    },
+    {
+      "source": "evals/adversarial-untrusted-payload/prompt.md",
+      "destination": "evals/adversarial-untrusted-entity-data/prompt.md",
+      "before": {
+        "sha256": "44d6b4f50f0c8285e04539e5f8fde6dc3cb0120bb9952a705710377c351defd3",
+        "bytes": 284,
+        "controlsSha256": "a4c74b2418076d98629341accdb5d038872e4b96b5c21389273c17e89af0d2c9"
+      },
+      "after": {
+        "sha256": "5acb2a3e63adbf3d08a82ab50ddae34a18d94671d33f56bc6b4c841fbb105792",
+        "bytes": 316
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations. Rename the obsolete case identifier consistently with the vocabulary guard; case count, process controls and security intent are unchanged."
+    },
+    {
+      "source": "evals/adversarial-untrusted-payload/sources.json",
+      "destination": "evals/adversarial-untrusted-entity-data/sources.json",
+      "before": {
+        "sha256": "6d8afca3102b7ff1e1fdd96f9dc40a2360ca3adcc354cf142f41dbaa982bc8ac",
+        "bytes": 66,
+        "controlsSha256": null
+      },
+      "after": {
+        "sha256": "6d8afca3102b7ff1e1fdd96f9dc40a2360ca3adcc354cf142f41dbaa982bc8ac",
+        "bytes": 66
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations. Rename the obsolete case identifier consistently with the vocabulary guard; case count, process controls and security intent are unchanged."
+    },
+    {
+      "source": "evals/arkiv-data-modeling-trigger/prompt.md",
+      "destination": "evals/arkiv-data-modeling-trigger/prompt.md",
+      "before": {
+        "sha256": "ad4c950e37cf2dbb40453ac692ebb1d41f75a407b36ea91a9278f0fa54316a32",
+        "bytes": 439,
+        "controlsSha256": "06e86ca6272a36eac613f58c2e563d79e3016af26a86b846ef358c3b27329d48"
+      },
+      "after": {
+        "sha256": "8bb299dd5251011c2160e4928832ccd67ab5f9015c705cfea38f1f5cb77bd6b0",
+        "bytes": 439
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-encryption-outcome/prompt.md",
+      "destination": "evals/arkiv-encryption-outcome/prompt.md",
+      "before": {
+        "sha256": "f2b16431a7357728ffc9aaf44d45fdb20844c712a685dafba08146f6f7216b72",
+        "bytes": 451,
+        "controlsSha256": "42f8cab66c6f1f792348a1976f1738587bc73d94a6470600f1efa313419e781a"
+      },
+      "after": {
+        "sha256": "5068c01968608041f13efbabec181df547382e2807d33a7f0feffd914677fae0",
+        "bytes": 462
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-encryption-trigger/graders/criteria.md",
+      "destination": "evals/arkiv-encryption-trigger/graders/criteria.md",
+      "before": {
+        "sha256": "ef76beb28f6679728e894584ac4bfd8a031790283113f16c9d60f7c69640e497",
+        "bytes": 308,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "2b6cb03aec63fe83cfd7263f0a10abe0ae58dd4531a1c4367bbf12c21a0a6bac",
+        "bytes": 491
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-encryption-trigger/prompt.md",
+      "destination": "evals/arkiv-encryption-trigger/prompt.md",
+      "before": {
+        "sha256": "a74ecace9dac93e6c648a9ac1b9e00c8ff0fdbb2725d0c24c5ee184f51e45474",
+        "bytes": 433,
+        "controlsSha256": "13d9c2adb410d90e9925821429698e9639281454f3be2c31959bd11be7e31cb1"
+      },
+      "after": {
+        "sha256": "2abdf6bb0c6d2ab187d57eaa152b13da11d73d4f68bcd9c8e2d665ef92e207f9",
+        "bytes": 496
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-anyone-keepalive/graders/criteria.md",
+      "destination": "evals/arkiv-entity-lifecycle-acceptance-anyone-keepalive/graders/criteria.md",
+      "before": {
+        "sha256": "b0dd49ba59ad8bc1a1fb800fc548fdd697321ad1ba22c739626829dbfce8a351",
+        "bytes": 1225,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "2d1eb5c98bb629bfc6667083f312c23e64165050faa215cbd8334533d5365c4e",
+        "bytes": 1223
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-anyone-keepalive/prompt.md",
+      "destination": "evals/arkiv-entity-lifecycle-acceptance-anyone-keepalive/prompt.md",
+      "before": {
+        "sha256": "f9c932625e963afea3f30fa2fac08aaf4334a8f793ed765040d06bda4f5dd9d4",
+        "bytes": 621,
+        "controlsSha256": "7db915abd7f379cf8ce945a36458ccc1f0bc2e8438dcdc0c1d820d510b77e564"
+      },
+      "after": {
+        "sha256": "2729cdf7382a1dca6267f72747459475fb5206e92ebb34956ed374925e4ab973",
+        "bytes": 621
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-patch-delete/prompt.md",
+      "destination": "evals/arkiv-entity-lifecycle-acceptance-patch-delete/prompt.md",
+      "before": {
+        "sha256": "caf5264bb230b71f01189366af099802d4100a5977aeb1f5f593c75e87c3d140",
+        "bytes": 621,
+        "controlsSha256": "7db915abd7f379cf8ce945a36458ccc1f0bc2e8438dcdc0c1d820d510b77e564"
+      },
+      "after": {
+        "sha256": "a40f106ca6567e7dd97a016a5d852c584490d156ffc283245f66c833abcda695",
+        "bytes": 621
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-readonly-typo/graders/criteria.md",
+      "destination": "evals/arkiv-entity-lifecycle-acceptance-readonly-typo/graders/criteria.md",
+      "before": {
+        "sha256": "aa35ef067f91dbf1455a63d2b7ab336e94ee2986bb9234d736910894be6fff26",
+        "bytes": 1036,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "1634f82716773dfb9cc4ebe640acaf06bf672b54b5daad3dbeb3d5b7b5dffe00",
+        "bytes": 1077
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-readonly-typo/prompt.md",
+      "destination": "evals/arkiv-entity-lifecycle-acceptance-readonly-typo/prompt.md",
+      "before": {
+        "sha256": "21ec46d8945a70c6416b6d38f9b6b0c2210d4b8620327494fab0bf05add62948",
+        "bytes": 583,
+        "controlsSha256": "7db915abd7f379cf8ce945a36458ccc1f0bc2e8438dcdc0c1d820d510b77e564"
+      },
+      "after": {
+        "sha256": "3aafbb6e0268ae6506338f34d85c7e617c65c5a0a6264236a2598e74f1d6b2cd",
+        "bytes": 583
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-transfer-authorship/graders/criteria.md",
+      "destination": "evals/arkiv-entity-lifecycle-acceptance-transfer-authorship/graders/criteria.md",
+      "before": {
+        "sha256": "0a0ed3eab84b3b2d403cb67b9aac1b2810322438ade4abe43d89269791bb800f",
+        "bytes": 1206,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "72abd4a79d00ff7d5d79b32e9630676b9ac6eb2feed6de37bb6139ad4953e64c",
+        "bytes": 1210
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-acceptance-transfer-authorship/prompt.md",
+      "destination": "evals/arkiv-entity-lifecycle-acceptance-transfer-authorship/prompt.md",
+      "before": {
+        "sha256": "c7935f93c9dec6f40be883c0e486e90e731fd2c5509406504e0df471d4f9faeb",
+        "bytes": 621,
+        "controlsSha256": "7db915abd7f379cf8ce945a36458ccc1f0bc2e8438dcdc0c1d820d510b77e564"
+      },
+      "after": {
+        "sha256": "a0aed7541552efe9b858a9394c534b0e1da28906cd18114ad5049cc419eb9b39",
+        "bytes": 629
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-outcome/graders/criteria.md",
+      "destination": "evals/arkiv-entity-lifecycle-outcome/graders/criteria.md",
+      "before": {
+        "sha256": "39b37ec1c6df382c843a02f27907c5c039f5f7a7f32aeed0dc758fb987b1ce5c",
+        "bytes": 311,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "0d330374ed079354df3bcc653b99efcba4e0ff1f93962a8e197feba66fcd58ce",
+        "bytes": 345
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-trigger/graders/criteria.md",
+      "destination": "evals/arkiv-entity-lifecycle-trigger/graders/criteria.md",
+      "before": {
+        "sha256": "a896852fe202c7368a26a6ed866185e9aeb590c4687f2aea0d662b40802529d2",
+        "bytes": 307,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "85f9653d0db38c64705e19597344ef57aebcb9ad58bc663e70715da83296718c",
+        "bytes": 773
+      },
+      "reason": "Clarify set accepts required or optional schema columns while unset accepts optional columns only, anchored to SDK 1.0 patch and attribute validation types."
+    },
+    {
+      "source": "evals/arkiv-entity-lifecycle-trigger/prompt.md",
+      "destination": "evals/arkiv-entity-lifecycle-trigger/prompt.md",
+      "before": {
+        "sha256": "9416b7bc387df959df8441a82a915ced3f78d3d727b4ac4c78c3b9992dec3ce6",
+        "bytes": 457,
+        "controlsSha256": "79188e5c6a54a15d916229deba8d4e145610fa377fb0c48279ca75333dbe753e"
+      },
+      "after": {
+        "sha256": "e728ebc7d6052adb06432807b88265554d02fe45ee97d3606072697964a860ee",
+        "bytes": 510
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-feedback-trigger/graders/criteria.md",
+      "destination": "evals/arkiv-feedback-trigger/graders/criteria.md",
+      "before": {
+        "sha256": "f82efdb4a00ee09e3bb18f0ed3607518ef70ae12110bf8981f9ea3dd55caa188",
+        "bytes": 349,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "f978afa41f9002455beff2406703c41e25666b2368216892b625d5be78c9317a",
+        "bytes": 346
+      },
+      "reason": "Use an explicitly synthetic supported offset-query fixture on Rabdi; preserve redaction, drafting-only, duplicate-check and publication-consent requirements."
+    },
+    {
+      "source": "evals/arkiv-feedback-trigger/prompt.md",
+      "destination": "evals/arkiv-feedback-trigger/prompt.md",
+      "before": {
+        "sha256": "9bdbadbaf2fd17a8fb61e7a6743c2f71dc912cf8d73163c67fa649995796e048",
+        "bytes": 1200,
+        "controlsSha256": "d1f047601297891d04eea64a4fc9f3d92db2339b9bf54d01a2116e3b548e3e94"
+      },
+      "after": {
+        "sha256": "1ec50ddea21cfe406fad08d64b89430eac421acf46baa1a0647e6a59a581c6f1",
+        "bytes": 1340
+      },
+      "reason": "Use an explicitly synthetic supported offset-query fixture on Rabdi; preserve redaction, drafting-only, duplicate-check and publication-consent requirements."
+    },
+    {
+      "source": "evals/arkiv-first-write-trigger/graders/criteria.md",
+      "destination": "evals/arkiv-first-write-trigger/graders/criteria.md",
+      "before": {
+        "sha256": "fdae6b74a6fe83c9258ba767681dd702b578a57b14ac7104da33375373d4b6f2",
+        "bytes": 340,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "721ab8a77280d14d6b6e893fc6e58e0ee6acd6c02988a5f777d58e7d20215619",
+        "bytes": 476
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-first-write-trigger/prompt.md",
+      "destination": "evals/arkiv-first-write-trigger/prompt.md",
+      "before": {
+        "sha256": "8879a97214c1cf210f47665c582776eb33783aba321292eba044b22da96ad05a",
+        "bytes": 460,
+        "controlsSha256": "5143cecedf1edabc0e3a82c9722e01ecf4c43efc9e13c761413e6e24c1bc9ed2"
+      },
+      "after": {
+        "sha256": "4791b40edf50e29e6d6416254a6cbc8c4bd5565b848660059a0be5b9b8bf2f1f",
+        "bytes": 457
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-indexing-trigger/graders/criteria.md",
+      "destination": "evals/arkiv-indexing-trigger/graders/criteria.md",
+      "before": {
+        "sha256": "f86d60cb58fa7367adf926173834dcd254328602a7449ab36b44aa55198d90dd",
+        "bytes": 329,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "64fc60e8f02c7ec147dab014e420fe39d002cf8af2ba243333e8202b388fc1ca",
+        "bytes": 755
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/arkiv-large-files-outcome/graders/criteria.md",
+      "destination": "evals/arkiv-large-files-outcome/graders/criteria.md",
+      "before": {
+        "sha256": "16aca860d437c62f7cc5bf7dc9cea8d1413a7c9343dad6e1e5b6ab748e039c15",
+        "bytes": 289,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "edb7af6506418ab8853b0df8794bf580e21c72ce7eb9f3fb741673cdf907d4ab",
+        "bytes": 421
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/arkiv-outcome/prompt.md",
+      "destination": "evals/arkiv-outcome/prompt.md",
+      "before": {
+        "sha256": "70a1c85275b03dedfae4886c3dcf66f019dc13772a7b47621ed0d02c18752766",
+        "bytes": 459,
+        "controlsSha256": "a3d16b0f82d2c62c99b07a79a7c1e36e104fa25e40c9b6a815af6c3fa92fa143"
+      },
+      "after": {
+        "sha256": "deecddacbec59cbc35ef9cc012bb18c5e204303a8f9c65127e37066598cd5a67",
+        "bytes": 456
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-query-outcome/graders/criteria.md",
+      "destination": "evals/arkiv-query-outcome/graders/criteria.md",
+      "before": {
+        "sha256": "306e5bf9292c7b39af2f49667a2ac6a1f8a4ecf58918dd1bbbaf01576d332338",
+        "bytes": 289,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "9dbd95a7e8376c083285dcc0932ac544d803aea87828a794e519a3559611913e",
+        "bytes": 362
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/arkiv-query-trigger/graders/criteria.md",
+      "destination": "evals/arkiv-query-trigger/graders/criteria.md",
+      "before": {
+        "sha256": "48a8029e80289e5fe0a58ab4a91e406bbdd3848afa762be6e216cc04743f0f2d",
+        "bytes": 289,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "1947499cd38a5290402f5cd891c78ea373f418948748e97a70dd4fc17f3d318f",
+        "bytes": 677
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/arkiv-query-trigger/prompt.md",
+      "destination": "evals/arkiv-query-trigger/prompt.md",
+      "before": {
+        "sha256": "9c3980341da70a4aabdf239e2b67a61c2c69124d51c44a8a51b6779a1839b293",
+        "bytes": 432,
+        "controlsSha256": "2706a19139705b690e27c2d4f586239b0870a0df3f394d7352fa5099ead71859"
+      },
+      "after": {
+        "sha256": "c8807ef67e4c7be8d3e7d3ffbd22ef8907dd1f71a4fb97ddaf8129b1dee81d9d",
+        "bytes": 545
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/arkiv-security-trust-outcome/graders/criteria.md",
+      "destination": "evals/arkiv-security-trust-outcome/graders/criteria.md",
+      "before": {
+        "sha256": "0b3a64a93c069fa3e0a2ab3008b54b404c84afa3f886d84332eee2da32d827a1",
+        "bytes": 319,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "57ad363671181ea076db44f7dfcbea998ba8f4b74f69c62ed82b71df1000f0ce",
+        "bytes": 323
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-security-trust-outcome/prompt.md",
+      "destination": "evals/arkiv-security-trust-outcome/prompt.md",
+      "before": {
+        "sha256": "3c0298e58fbfeb609b7d330364e0731ef26afc73f7464c636ab1d6d98461d5b9",
+        "bytes": 503,
+        "controlsSha256": "5cf99288ebcda1eddf09a0fa30b98ec973d39c00b9ba1f9ddc22cb0679fae479"
+      },
+      "after": {
+        "sha256": "ec5dea8392cde8be9acd3ac6adac7d8c0ccd79803a70bf8250453bcde5f26ade",
+        "bytes": 514
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-social-graph-trigger/graders/criteria.md",
+      "destination": "evals/arkiv-social-graph-trigger/graders/criteria.md",
+      "before": {
+        "sha256": "8ee58defbfd492fea7c91b0c9c26c817df74d9e1c4e87ec3dcb9ed9402022e6e",
+        "bytes": 298,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "1b2c9dcedbc7f7e695da060a0c97b42b66d1f738810697867bc5de5cf4fdcc27",
+        "bytes": 515
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/arkiv-trigger/prompt.md",
+      "destination": "evals/arkiv-trigger/prompt.md",
+      "before": {
+        "sha256": "69875e8715646579e8f8a5f0232bf45552d3208a491198ea22728b4c147c1d4f",
+        "bytes": 433,
+        "controlsSha256": "e4334c4d7e1ae5d1b55779deadddad039cdd470ce81ded07b87d2fecc200ffdf"
+      },
+      "after": {
+        "sha256": "d8898b96403d0ec05587ea159b5cfdde6296d765d0f9f41fe62a56c700defa41",
+        "bytes": 430
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-outcome/graders/criteria.md",
+      "destination": "evals/arkiv-troubleshooting-outcome/graders/criteria.md",
+      "before": {
+        "sha256": "c0fc492bb4cb51bd03f67afecdcceaeea125c97519671cf68a0085fb7df3a608",
+        "bytes": 307,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "4242282540334775947e68a554bec25abf3547508b5c9ab88cc9e3b63b822697",
+        "bytes": 580
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/arkiv-troubleshooting-outcome/prompt.md",
+      "destination": "evals/arkiv-troubleshooting-outcome/prompt.md",
+      "before": {
+        "sha256": "efdb73277c5d18f0800898f1514ccad8b0012de2ec7b32b43119117304fdcfc2",
+        "bytes": 457,
+        "controlsSha256": "bb19de1cc9086e848fb94ccdd365b5b59a57b23464a1b2fe62b900f531ce4c7a"
+      },
+      "after": {
+        "sha256": "96bfc37c53db171b7619b248c7c26ec0964783d8c7b5c8a82fd53d6edc7a0ad4",
+        "bytes": 547
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/catalog.json",
+      "destination": "evals/catalog.json",
+      "before": {
+        "sha256": "9b50862ed09d07950f28387fb7667561f0b357f26afd89826dd06f0f347cf5c7",
+        "bytes": 17150,
+        "controlsSha256": null
+      },
+      "after": {
+        "sha256": "802d22d94b4d795e8608af3ad638ba6ce8e00d3e48d111f4ee5faef0b6314f81",
+        "bytes": 17154
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/mocks/arkiv/read_knowledge.md",
+      "destination": "evals/mocks/arkiv/read_knowledge.md",
+      "before": {
+        "sha256": "8f3d04b99192255a22a150100ab863968a668e55b00fe78a7722b62e95054ea5",
+        "bytes": 675,
+        "controlsSha256": "481db8ca41f452a37443a5cecd73e68c80f2bb557e536a30889a4414725676d0"
+      },
+      "after": {
+        "sha256": "77518825ed0e311273cee2f4b9fb60ab3a72fcaba7380856985cd32e733d10ef",
+        "bytes": 901
+      },
+      "reason": "Replace unavailable pinned-history/cursor assumptions with source-checked current-head paging, completeness checks and explicit gaps; retain trust scope and fail-closed outcomes."
+    },
+    {
+      "source": "evals/multi-encrypted-expiring/prompt.md",
+      "destination": "evals/multi-encrypted-expiring/prompt.md",
+      "before": {
+        "sha256": "a49a872109870d8bf244cffe7e9c730771ff7fe8578a42767e868af6aaec721f",
+        "bytes": 254,
+        "controlsSha256": "a4c74b2418076d98629341accdb5d038872e4b96b5c21389273c17e89af0d2c9"
+      },
+      "after": {
+        "sha256": "6dc02d0c3868bba762400f49afbf37ebd8ba9f04c27ec75493d08c01bb7bdb93",
+        "bytes": 314
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/plugin-mcp-read-guidance/graders/criteria.md",
+      "destination": "evals/plugin-mcp-read-guidance/graders/criteria.md",
+      "before": {
+        "sha256": "4a756ceb39979edacd51c3ead3a1f301759ae976c1a60ea65f8e4f48cdc73528",
+        "bytes": 518,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "030f79c54f0ea8e0f508e401e28cd4fe5bc177b16c094e0438ae0d8a759a2644",
+        "bytes": 641
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/plugin-project-intake/graders/criteria.md",
+      "destination": "evals/plugin-project-intake/graders/criteria.md",
+      "before": {
+        "sha256": "b8e16ad30859e8a852e05880b11d4b6e50f614236af3270c86315b2953bc37ce",
+        "bytes": 712,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "35739b804587765df7bac8fc8ea7d8389b1472b98385d8f081d542fad4002c55",
+        "bytes": 724
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/README.md",
+      "destination": "evals/README.md",
+      "before": {
+        "sha256": "be20bfde1fcb21e438855c7a84aa85f1654c736bbb901891c743d410e2044270",
+        "bytes": 2601,
+        "controlsSha256": null
+      },
+      "after": {
+        "sha256": "ff1cfe173fa7d968718a8794a87eb8a44c9553c0e0b492614f6f53f28ce9a95d",
+        "bytes": 4178
+      },
+      "reason": "Document whole-repository contents/name gate, explicitly frozen historical evidence and narrowly blob-bound temporary canonical reference waiver."
+    },
+    {
+      "source": "evals/rule-custody-with-block/prompt.md",
+      "destination": "evals/rule-custody-with-block/prompt.md",
+      "before": {
+        "sha256": "c45184d5c05c312e29a57de622df4c4d4e2727977a867b0383e2391189bc68b9",
+        "bytes": 922,
+        "controlsSha256": "fd06f4ba94812b2192aca1025555f9ca67afd08fb24014edc8f08fd7a533396b"
+      },
+      "after": {
+        "sha256": "1d71e3ec5f220600d4d9196f8fe0ddbb0b7cb61077b20a4440ff9537ed7f5eab",
+        "bytes": 1090
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-names-with-block/graders/criteria.md",
+      "destination": "evals/rule-names-with-block/graders/criteria.md",
+      "before": {
+        "sha256": "6cbad1495b50c8cdd8138c049e22a37e5767f895accc5b862cec5c187b0d31bb",
+        "bytes": 222,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "cbeba945a442d1fffccc9511ef8e8c7bc314593a57f201a9107b22a530925055",
+        "bytes": 496
+      },
+      "reason": "Use the inspected SDK 1.0 name grammar: camelCase is valid, leading underscore is invalid; retain validation-before-write intent."
+    },
+    {
+      "source": "evals/rule-names-with-block/prompt.md",
+      "destination": "evals/rule-names-with-block/prompt.md",
+      "before": {
+        "sha256": "87e388d13a416100e6ad3b4dcf7558fdef7324b9481513c451085e5968842c56",
+        "bytes": 903,
+        "controlsSha256": "fd06f4ba94812b2192aca1025555f9ca67afd08fb24014edc8f08fd7a533396b"
+      },
+      "after": {
+        "sha256": "3d94c546e8c0c1887f85e4285418903356fdc7bba9f235471c33e8f408e972a6",
+        "bytes": 1080
+      },
+      "reason": "Use the inspected SDK 1.0 name grammar: camelCase is valid, leading underscore is invalid; retain validation-before-write intent."
+    },
+    {
+      "source": "evals/rule-names-without-block/graders/criteria.md",
+      "destination": "evals/rule-names-without-block/graders/criteria.md",
+      "before": {
+        "sha256": "6cbad1495b50c8cdd8138c049e22a37e5767f895accc5b862cec5c187b0d31bb",
+        "bytes": 222,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "cbeba945a442d1fffccc9511ef8e8c7bc314593a57f201a9107b22a530925055",
+        "bytes": 496
+      },
+      "reason": "Use the inspected SDK 1.0 name grammar: camelCase is valid, leading underscore is invalid; retain validation-before-write intent."
+    },
+    {
+      "source": "evals/rule-names-without-block/prompt.md",
+      "destination": "evals/rule-names-without-block/prompt.md",
+      "before": {
+        "sha256": "f52bcd189b4a7edf335e1a49a53961852fec254c1b0fbe9fc4694377a2681c7b",
+        "bytes": 261,
+        "controlsSha256": "e4277ca7094e66f2542c25e38d596c1fa0b9d99ce25c9f1ea2e1d471120f9f43"
+      },
+      "after": {
+        "sha256": "75b3d2affbebe683f9886a95a106d1ea4ddda1c8cc68114981bd41233e511262",
+        "bytes": 270
+      },
+      "reason": "Use the inspected SDK 1.0 name grammar: camelCase is valid, leading underscore is invalid; retain validation-before-write intent."
+    },
+    {
+      "source": "evals/rule-native-with-block/prompt.md",
+      "destination": "evals/rule-native-with-block/prompt.md",
+      "before": {
+        "sha256": "85c9bb39c4c370bed44ef66ec616f4ce54e12972e7a408aa5ebb5aeb513b3ebd",
+        "bytes": 888,
+        "controlsSha256": "fd06f4ba94812b2192aca1025555f9ca67afd08fb24014edc8f08fd7a533396b"
+      },
+      "after": {
+        "sha256": "9a3ecfc2a8221918cb62988d1b2f29959961abbfa7d117f60822e4d6af4e5b36",
+        "bytes": 1053
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-native-without-block/prompt.md",
+      "destination": "evals/rule-native-without-block/prompt.md",
+      "before": {
+        "sha256": "b78c106f9d5e5cffa247f647d74be328371ccc79436abaac877b9f3ccd5a911c",
+        "bytes": 246,
+        "controlsSha256": "e4277ca7094e66f2542c25e38d596c1fa0b9d99ce25c9f1ea2e1d471120f9f43"
+      },
+      "after": {
+        "sha256": "4c77829038645e9314edb8bf500f01b5d6a7b39e2d8e9ddc5b7e927ad82b48ed",
+        "bytes": 243
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-router-with-block/prompt.md",
+      "destination": "evals/rule-router-with-block/prompt.md",
+      "before": {
+        "sha256": "a747854b54b677ed424e8f973fa1d62819bab8ee5032beddd092e5f7b59506ef",
+        "bytes": 906,
+        "controlsSha256": "fd06f4ba94812b2192aca1025555f9ca67afd08fb24014edc8f08fd7a533396b"
+      },
+      "after": {
+        "sha256": "dfcf75b60e28c292ffba06d087a8c4213389ba5dd09d671feb5766942ddc6305",
+        "bytes": 1074
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-timestamps-with-block/graders/criteria.md",
+      "destination": "evals/rule-timestamps-with-block/graders/criteria.md",
+      "before": {
+        "sha256": "78d64fa8d095f22a2d0438b7e20ce21b70cf9e6ce959a728a2f1e566e190b7a4",
+        "bytes": 209,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "eefbb5029b13f3c1e456a85e487554718a93445f90a7209606f0d9dcb97beb96",
+        "bytes": 310
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-timestamps-with-block/prompt.md",
+      "destination": "evals/rule-timestamps-with-block/prompt.md",
+      "before": {
+        "sha256": "ebf05ac6f9bd39b8152b8741198918c072a66972c695b20ef7a0e0a31ffa4566",
+        "bytes": 1136,
+        "controlsSha256": "fd06f4ba94812b2192aca1025555f9ca67afd08fb24014edc8f08fd7a533396b"
+      },
+      "after": {
+        "sha256": "81885d1aa45ac3cec59246357e85ed3c2944903442292decf8039155d05d6bfa",
+        "bytes": 1306
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-timestamps-without-block/graders/criteria.md",
+      "destination": "evals/rule-timestamps-without-block/graders/criteria.md",
+      "before": {
+        "sha256": "78d64fa8d095f22a2d0438b7e20ce21b70cf9e6ce959a728a2f1e566e190b7a4",
+        "bytes": 209,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "eefbb5029b13f3c1e456a85e487554718a93445f90a7209606f0d9dcb97beb96",
+        "bytes": 310
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-timestamps-without-block/prompt.md",
+      "destination": "evals/rule-timestamps-without-block/prompt.md",
+      "before": {
+        "sha256": "6c20b06fd6aa37322b9fca59af9737281360d805ec7d64c2f86e43c14adaca8b",
+        "bytes": 494,
+        "controlsSha256": "e4277ca7094e66f2542c25e38d596c1fa0b9d99ce25c9f1ea2e1d471120f9f43"
+      },
+      "after": {
+        "sha256": "ca0d23b40394eb8e3b4b490707894589d64720c5c3031a43420e7907df34b0b1",
+        "bytes": 496
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-version-with-block/graders/criteria.md",
+      "destination": "evals/rule-version-with-block/graders/criteria.md",
+      "before": {
+        "sha256": "17b62235e94d8b95683ce0ae74ada77e2c86618f91ab5308917f6ac7498e724c",
+        "bytes": 283,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "5ecf23bb7c93a63d0f3b15c2ec4d329152818ce6c4f3c18c47d8f5be1f7ea06f",
+        "bytes": 280
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-version-with-block/prompt.md",
+      "destination": "evals/rule-version-with-block/prompt.md",
+      "before": {
+        "sha256": "803cf2f3295eb239440a57d0640a79900e70437a05d8c439d489f170479dbd02",
+        "bytes": 924,
+        "controlsSha256": "fd06f4ba94812b2192aca1025555f9ca67afd08fb24014edc8f08fd7a533396b"
+      },
+      "after": {
+        "sha256": "a9db936ef75ecb52cb11708267ed0f30edc4aebd02184276e25ca63a67e4df51",
+        "bytes": 1092
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-version-without-block/graders/criteria.md",
+      "destination": "evals/rule-version-without-block/graders/criteria.md",
+      "before": {
+        "sha256": "17b62235e94d8b95683ce0ae74ada77e2c86618f91ab5308917f6ac7498e724c",
+        "bytes": 283,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "5ecf23bb7c93a63d0f3b15c2ec4d329152818ce6c4f3c18c47d8f5be1f7ea06f",
+        "bytes": 280
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/version-mismatch/prompt.md",
+      "destination": "evals/version-mismatch/prompt.md",
+      "before": {
+        "sha256": "4dbc3079630063b0f45bd2d7d5b7e9463ba37fb77341cadf7eaec2d2a035d33f",
+        "bytes": 254,
+        "controlsSha256": "a4c74b2418076d98629341accdb5d038872e4b96b5c21389273c17e89af0d2c9"
+      },
+      "after": {
+        "sha256": "1bf717b98f64a620b1fe181f00fefa8fd7e93b62aa79535c8862c1999c249d1b",
+        "bytes": 261
+      },
+      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-custody-with-block/graders/criteria.md",
+      "destination": "evals/rule-custody-with-block/graders/criteria.md",
+      "before": {
+        "sha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974",
+        "bytes": 268,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "dd34cc701456a3c80a94f2106c322e978751f431f7b13758307b2d98c9f844bc",
+        "bytes": 932
+      },
+      "reason": "Accept SDK 1.0 server-held URL-path RPC authentication; retain all signing/operator-key and disclosure prohibitions without requiring unsupported header transport."
+    },
+    {
+      "source": "evals/rule-custody-without-block/graders/criteria.md",
+      "destination": "evals/rule-custody-without-block/graders/criteria.md",
+      "before": {
+        "sha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974",
+        "bytes": 268,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "dd34cc701456a3c80a94f2106c322e978751f431f7b13758307b2d98c9f844bc",
+        "bytes": 932
+      },
+      "reason": "Accept SDK 1.0 server-held URL-path RPC authentication; retain all signing/operator-key and disclosure prohibitions without requiring unsupported header transport."
+    }
+  ]
+}

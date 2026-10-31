@@ -5,8 +5,8 @@ weight: 1
 
 Judge only the requested lifecycle behavior. A correct response must satisfy these criteria:
 
-- Readonly freezes payload and attributes even for the owner; patchEntity, unset, and changing the flags cannot fix this entity in place.
-- Create a corrected replacement using createEntity with flags in the create input. It has a new entity key; verify the replacement and repoint application references using the old-to-new mapping. Do not imply the old key is preserved or that its flags can be toggled.
+- Readonly freezes every column value, including bytes() values, even for the owner; patchEntity, unset, and changing the flags cannot fix this entity in place.
+- Create a corrected replacement using createEntity(schema, values, { expiration, flags }, txParams). It has a new entity key; verify the replacement and repoint application references using the old-to-new mapping. Do not imply the old key is preserved or that its flags can be toggled.
 - Readonly still allows authorized extension, ownership transfer and deletion. Creating a correction does not authorize deleting the old entity; retain it unless its removal is explicitly authorized.
 - Recreation has its own creator/creation provenance. No tool execution, mined receipt, RPC result or completed migration may be fabricated.
 

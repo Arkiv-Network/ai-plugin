@@ -3,4 +3,4 @@ type: llm
 weight: 1
 ---
 
-Reject the supplied invalid names and show valid lowercase-leading snake_case alternatives, with reserved words excluded. Do not emit camelCase or leading underscore names as valid SDK writes.
+Validate the actual SDK 1.0 name grammar: createdAt and entityType are valid case-sensitive names; _price is invalid because it starts with an underscore. Show a valid alternative such as price or price_minor. Require an ASCII letter first, then letters/digits/dot/hyphen/underscore, at most 32 bytes, no dollar prefix, double hyphen or reserved words. Do not impose a nonexistent lowercase-only rule or emit the invalid leading-underscore name as a valid SDK write.

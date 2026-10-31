@@ -16,7 +16,7 @@ test('marketplace points to nested plugin and version exists only on plugin mani
 });
 test('generated MCP is hosted HTTP without secrets', () => {
   const mcp = JSON.parse(buildArtifacts(config, source).get('plugins/arkiv/.mcp.json'));
-  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/',
+  assert.deepEqual(mcp, {mcpServers: {arkiv: {type: 'http', url: 'https://mcp.arkiv.network/mumbai',
     headersHelper:'node "${CLAUDE_PLUGIN_ROOT}/scripts/client-headers.mjs"'}}});
 });
 

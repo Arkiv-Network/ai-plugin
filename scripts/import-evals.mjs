@@ -1,4 +1,4 @@
-import {readFile, writeFile, mkdir} from 'node:fs/promises';
+import {readFile, writeFile, mkdir, access} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -17,6 +17,10 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
 
 export async function importEvals(source, root = repositoryRoot) {
+  try {
+    await access(path.join(root, 'source/evals-sdk1.lock.json'));
+    throw new Error('SDK 1.0 eval amendments exist; historical re-import would overwrite reviewed current inputs');
+  } catch (error) { if (error.code !== 'ENOENT') throw error; }
   if (git(source, ['rev-parse', `${revision}^{commit}`]).toString('utf8').trim() !== revision) throw new Error('Unexpected evaluation source');
   const original = JSON.parse(git(source, ['show', `${revision}:evals/catalog.json`]).toString('utf8'));
   const importedCases = original.cases.filter(item => !retired.includes(item.id));

@@ -1,13 +1,13 @@
 # Short project-rule sources
 
-The short block in `always-on.md` is generated for SDK-declaring projects only. It is intentionally below one KiB and points to the namespaced router. Full task guidance stays in skills pulled on demand.
+The generated block in always-on.md applies to SDK-declaring projects only. Full task guidance stays in the canonical skills; source/skills.lock.json binds the imported bytes.
 
-| Rule | Canonical evidence in the imported source |
+| Rule | Canonical evidence |
 | --- | --- |
-| SDK range, Tiramisu and declaration inspection | `skills/arkiv/SKILL.md`, “Start with the source and the task”; `skills/arkiv-first-write/SKILL.md`, project-rules block |
-| Lowercase attribute names and reserved words | `skills/arkiv/SKILL.md`, “Rules that prevent real failures”; `skills/arkiv/references/limits.md`; `skills/arkiv-data-modeling/SKILL.md`, “Storage rules” |
-| `u64(Date.now())` and matching predicate types | `skills/arkiv/SKILL.md`, timestamp rule; `skills/arkiv-data-modeling/SKILL.md`, explicit constructors; published SDK 0.8.1 attribute/query declarations linked by those skills |
-| Access and local signing-key custody | `skills/arkiv/SKILL.md`, credential rule; `skills/arkiv-security-trust/SKILL.md`; `skills/arkiv-first-write/SKILL.md`, project-rules block |
-| Router for Arkiv work | `skills/arkiv/SKILL.md`; namespace follows the Claude Code plugin format |
+| SDK >=1.0.0 <2, Rabdi and installed declaration inspection | skills/arkiv/SKILL.md; skills/arkiv-first-write/SKILL.md |
+| Typed schema columns, indexed filtering and named bytes columns | skills/arkiv-data-modeling/SKILL.md; skills/arkiv-query/SKILL.md |
+| Schema-compatible values and query types | skills/arkiv-data-modeling/SKILL.md; skills/arkiv-query/SKILL.md |
+| Access and signing-key custody | skills/arkiv-security-trust/SKILL.md; skills/arkiv-write-safety/SKILL.md |
+| Namespaced router | skills/arkiv/SKILL.md; host plugin format |
 
-All paths resolve below `plugins/arkiv`. The [skill receipt](skills.lock.json) binds the original source bytes. SDK `latest` was separately observed as 0.8.1 before packaging; that registry observation does not establish future compatibility or a live transaction. Native hook execution and controlled rule-pair evals are separate checks.
+Paths resolve below plugins/arkiv. SDK compatibility describes package metadata only; it does not certify live transactions or every future release in the range.

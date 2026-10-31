@@ -2,7 +2,7 @@
   "mcpServers": {
     "arkiv": {
       "type": "http",
-      "url": "https://mcp.arkiv.network/",
+      "url": "https://mcp.arkiv.network/mumbai",
       "headersHelper": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/client-headers.mjs\""
     }
   }

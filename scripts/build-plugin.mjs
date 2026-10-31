@@ -4,6 +4,10 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 
 export const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const json = value => JSON.stringify(value, null, 2) + '\n';
+export const MCP_PROFILES = Object.freeze({
+  general: 'https://mcp.arkiv.network/',
+  mumbai: 'https://mcp.arkiv.network/mumbai'
+});
 
 export function validatePreviewUrl(url) {
   if (typeof url !== 'string' || !/^https:\/\/arkiv-mcp-general-[a-z0-9]{9}-golem\.vercel\.app\/$/.test(url)
@@ -40,11 +44,11 @@ export function validateConfig(config) {
     if (typeof config[field] !== 'string' || !config[field].trim() || /[\r\n]/.test(config[field])) throw new Error(`Invalid ${field}`);
   }
   if (!config.author || config.author.name !== 'Arkiv Network' || Object.keys(config.author).length !== 1) throw new Error('Invalid author');
-  if (config.network !== 'tiramisu' || config.chainId !== 7738577) throw new Error('Unexpected network');
-  if (config.sdkVersion !== '0.8.1' || config.sdkRange !== '>=0.8.1 <0.9') throw new Error('Unexpected SDK compatibility');
+  if (config.network !== 'rabdi' || config.chainId !== 7794095) throw new Error('Unexpected network');
+  if (config.sdkVersion !== '1.0.0' || config.sdkRange !== '>=1.0.0 <2') throw new Error('Unexpected SDK compatibility');
   if (config.repository !== 'https://github.com/Arkiv-Network/ai-plugin') throw new Error('Unexpected repository');
   const endpoint = new URL(config.mcpUrl);
-  if (config.mcpUrl !== 'https://mcp.arkiv.network/' || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');
+  if (!Object.values(MCP_PROFILES).includes(config.mcpUrl) || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');
   const homepage = new URL(config.homepage);
   if (homepage.protocol !== 'https:' || homepage.username || homepage.password || homepage.search) throw new Error('Invalid homepage');
   const source = config.skillsSource;
@@ -89,6 +93,11 @@ export const contextBundles = ['arkiv', 'arkiv-codex'];
 
 export function buildArtifacts(config, source) {
   validateConfig(config);
+  const profileName = Object.keys(MCP_PROFILES).find(name => MCP_PROFILES[name] === config.mcpUrl);
+  const profileLabel = profileName === 'general' ? 'General' : 'Mumbai';
+  const connectionGuidance = profileName === 'mumbai'
+    ? 'Require a successful server_status reporting profile mumbai before saying CONNECTED. The Mumbai default is intended through November 10, 2026; a later release must explicitly change it. Read current profile status and event sources before trusting event guidance. The canonical arkiv-mcp skill describes the General default; this package explicitly selects Mumbai instead. Its profile safety rules still apply.'
+    : 'Require a successful server_status reporting profile general before saying CONNECTED. General provides Arkiv building guidance and points to separate event profiles. Read actual status before trusting guidance; the human chooses any additional event connection.';
   const identity = {name: config.name, displayName: config.displayName, version: config.version,
     description: config.description, author: config.author, homepage: config.homepage, repository: config.repository,
     keywords: ['arkiv', 'web3 database', 'ethereum-aligned', 'skills', 'mcp']};
@@ -108,21 +117,27 @@ export function buildArtifacts(config, source) {
     // format precedence, so the package uses the native .codex-plugin manifest to run its context hook.
     ['plugins/arkiv-codex/.codex-plugin/plugin.json', json({name: config.name, version: config.version,
       description: config.description, keywords: identity.keywords, skills: './skills', mcpServers: './mcp.json', hooks: './hooks/hooks.json',
-      interface: {displayName: config.displayName, shortDescription: 'Arkiv skills and the General MCP connection.'}})],
+      interface: {displayName: config.displayName, shortDescription: `Arkiv skills and the ${profileLabel} MCP connection.`}})],
     ['plugins/arkiv-codex/hooks/hooks.json', json({hooks: contextHooks('codex')})],
     ['plugins/arkiv-codex/mcp.json', json({$schema: 'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',
       mcpServers: {arkiv: {type: 'streamable-http', url: config.mcpUrl,
         headers: {'X-Arkiv-Client': 'arkiv-plugin/'+config.version+'; host=codex'}}}})],
     ['plugins/arkiv-codex/templates/AGENTS.snippet.md', renderRules(config, source).replace('arkiv:arkiv', '$arkiv')],
-    ['plugins/arkiv-codex/AGENTS.md', `# Arkiv plugin for Codex CLI\n\nThis package contains Arkiv skills and one General MCP connection at ${config.mcpUrl}. Start a new Codex session after installing, then invoke the Arkiv router with $arkiv. Load only the task skill it selects. The router carries the essential safety rules even when the SDK is absent.\n\nCodex does not run the Claude rules hook. After you review and trust the package hooks, a read-only local hook reports the installed SDK version category at session start and on prompts when it changes; it makes no network requests, stores nothing on disk and never blocks the session. This AGENTS.md is package documentation; installing the plugin does not inject it into the consumer project's instructions. Only add templates/AGENTS.snippet.md to a project's AGENTS.md when the developer explicitly requests it, preserving their existing instructions.\n\nBefore executable SDK code, inspect the manifest, lockfile and installed declarations for SDK ${config.sdkRange} on ${config.networkLabel}; ask for missing evidence. Ask for the query, filters, sort, expected cardinality, stable IDs, trusted creator, public/private fields, permissions, retention, architecture and signer custody. Installation authorizes no SDK installation, wallet connection, signing, feedback or transaction. Before writes obtain explicit operation, network, authorized signer and spending scope. Never request signing keys in chat.\n\nRequire a successful server_status reporting profile general before saying CONNECTED. General points to active event profiles; the human adds an event URL when needed. The bundled arkiv-mcp skill describes this General connection and the separate event profiles. Otherwise report NOT CONNECTED. Do not add a duplicate connection or switch profiles. Synthetic fixtures do not establish live service health.\n\nSkills are real files imported from one fixed canonical Git revision; never edit imported files. See the distribution README for installation, client evidence and maintenance commands. Desktop, IDE and other clients need their own tests; CLI evidence does not certify them.\n`]
+    ['plugins/arkiv-codex/AGENTS.md', `# Arkiv plugin for Codex CLI\n\nThis package contains Arkiv skills and one ${profileLabel} MCP connection at ${config.mcpUrl}. Start a new Codex session after installing, then invoke the Arkiv router with $arkiv. Load only the task skill it selects. The router carries the essential safety rules even when the SDK is absent.\n\nCodex does not run the Claude rules hook. After you review and trust the package hooks, a read-only local hook reports the installed SDK version category at session start and on prompts when it changes; it makes no network requests, stores nothing on disk and never blocks the session. This AGENTS.md is package documentation; installing the plugin does not inject it into the consumer project's instructions. Only add templates/AGENTS.snippet.md to a project's AGENTS.md when the developer explicitly requests it, preserving their existing instructions.\n\nBefore executable SDK code, inspect the manifest, lockfile and installed declarations for SDK ${config.sdkRange} on ${config.networkLabel}; ask for missing evidence. Ask for the query, filters, sort, expected cardinality, stable IDs, trusted creator, public/private fields, permissions, retention, architecture and signer custody. Installation authorizes no SDK installation, wallet connection, signing, feedback or transaction. Before writes obtain explicit operation, network, authorized signer and spending scope. Never request signing keys in chat.\n\n${connectionGuidance} Otherwise report NOT CONNECTED. Do not add a duplicate connection or switch profiles. Synthetic fixtures do not establish live service health.\n\nSkills are real files imported from one fixed canonical Git revision; never edit imported files. See the distribution README for installation, client evidence and maintenance commands. Desktop, IDE and other clients need their own tests; CLI evidence does not certify them.\n`]
   ]);
 }
 
-export async function generate(root = repositoryRoot, check = false) {
+export async function generate(root = repositoryRoot, check = false, profile) {
   await assertReleaseRoot(root);
-  const config = JSON.parse(await readFile(path.join(root, 'plugin.config.json'), 'utf8'));
+  const config = validateConfig(JSON.parse(await readFile(path.join(root, 'plugin.config.json'), 'utf8')));
+  if (profile !== undefined) {
+    if (!Object.hasOwn(MCP_PROFILES, profile)) throw new Error('Expected MCP profile general or mumbai');
+    if (check && config.mcpUrl !== MCP_PROFILES[profile]) throw new Error('Configured MCP profile differs from explicit selection');
+    config.mcpUrl = MCP_PROFILES[profile];
+  }
   const source = await readFile(path.join(root, 'source/always-on.md'), 'utf8');
   const artifacts = buildArtifacts(config, source), changed = [];
+  if (profile !== undefined) artifacts.set('plugin.config.json', json(config));
   for (const name of contextSources) {
     const bytes = await readFile(path.join(root, 'source/context', name), 'utf8');
     for (const bundle of contextBundles) artifacts.set(`plugins/${bundle}/scripts/context/${name}`, bytes);
@@ -181,10 +196,13 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     if (args.length === 4 && args[0] === '--test-preview' && args[2] === '--output') {
       console.log(JSON.stringify(await generatePreview(repositoryRoot, args[1], args[3])));
     } else {
-      if (args.length > 1 || args.some(arg => arg !== '--check')) {
-        throw new Error('Usage: node scripts/build-plugin.mjs [--check | --test-preview <immutable-url> --output <absolute-new-directory>]');
+      let check = false, profile;
+      for (let index = 0; index < args.length; index++) {
+        if (args[index] === '--check' && !check) check = true;
+        else if (args[index] === '--mcp-profile' && profile === undefined && args[index + 1] && !args[index + 1].startsWith('--')) profile = args[++index];
+        else throw new Error('Usage: node scripts/build-plugin.mjs [--check] [--mcp-profile general|mumbai] | --test-preview <immutable-url> --output <absolute-new-directory>');
       }
-      console.log(JSON.stringify(await generate(repositoryRoot, args.includes('--check'))));
+      console.log(JSON.stringify(await generate(repositoryRoot, check, profile)));
     }
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }

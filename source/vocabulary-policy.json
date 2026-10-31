@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "historicalFiles": [
+    {
+      "file": "docs/0.2.1-no-node.json",
+      "sha256": "659d999c701a5915f431efb4bf2433d61d0349353598961850306404ccde85f7",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/0.3.0-native.json",
+      "sha256": "dc8e415e0c6a3539abebb6c49ee1000cb9805100d3109b6f285401f75020039c",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/0.3.1-native.json",
+      "sha256": "341606d2696d3b64cf0a1e83c4c367d72b60466294e4a4036b8afb1b7af6bb3e",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/evaluations/2026-10-15-context-only-06.json",
+      "sha256": "8b9ff2439b3f0d2b1538f4ce3d4bd926470fac6d2f3aab64b55fc70b18d322a1",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/evaluations/2026-10-15-context-only-07.json",
+      "sha256": "e433aac1c0ce1829fbf757e407b13a209641f92618620f79e559f4ff4512ae9d",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/evaluations/2026-10-15-context-only.json",
+      "sha256": "941da00785619051683f6745c96aaed5a464aaeb483dfaec814686e7d71319cd",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/evaluations/2026-10-15-context-only.md",
+      "sha256": "59e7e1343cd88da7813e557570f0ba5b980e44bb62c503f96c21ec7c545ecd6b",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/evaluations/2026-10-16-context-ablation.json",
+      "sha256": "77919a7b41dbb532692e6c20b1b35d6cf8c4c5899b92d8d22a816aeebb5d4b1e",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/evaluations/2026-10-16-context-ablation.md",
+      "sha256": "4d51136cb10c8e953f8a063b06357d74b15b7583225762aac171aa0c3f0a6a99",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "docs/evaluations/2026-10-16-context-only-07-diagnostic.json",
+      "sha256": "3b59df0b52f532a997006603c26a2a954bdc3eef5488cc7568df280c911402bf",
+      "reason": "Dated native installation or behavioral measurement; not current guidance."
+    },
+    {
+      "file": "source/evals-import.json",
+      "sha256": "715f8181ef60033970ee87039ac7b7674260c2bc2b008d773f4831796a3c862b",
+      "reason": "Original imported evaluation receipt; historical source identities must remain unchanged."
+    }
+  ],
+  "historicalSections": [
+    {
+      "file": "docs/verification.md",
+      "heading": "## 0.4.1: refreshed bundled skills, October 25",
+      "sha256": "0313ebcf4c8bcf56b85f1471b7ce37243e59da0b701ac91c835727e26b4a7d4d",
+      "reason": "Released-version verification and preserved candidate measurements through October 25, 2026."
+    }
+  ],
+  "historicalLines": [
+    {
+      "file": "source/evals-sdk1.lock.json",
+      "line": 11,
+      "sha256": "047ecb0b384da0fee3cb62f1b0b7361da9d9c578eed900b1737be84350f13506",
+      "reason": "Original case identity in rename/from or original-source provenance; current destination remains checked."
+    },
+    {
+      "file": "source/evals-sdk1.lock.json",
+      "line": 18,
+      "sha256": "63f0307d7793c8129b9fe855d92a83a3a22fcd995395a4b1c104c648d5dab054",
+      "reason": "Original case identity in rename/from or original-source provenance; current destination remains checked."
+    },
+    {
+      "file": "source/evals-sdk1.lock.json",
+      "line": 32,
+      "sha256": "bc05c3f2a5f01de57509727ed2c5c3e1660020ba92cfdbd776a8d59d8c6c769d",
+      "reason": "Original case identity in rename/from or original-source provenance; current destination remains checked."
+    },
+    {
+      "file": "source/evals-sdk1.lock.json",
+      "line": 46,
+      "sha256": "b346323d6c6fe8142e2e0f4fd2c3bc28a2089d129651bba181e397d62aa43717",
+      "reason": "Original case identity in rename/from or original-source provenance; current destination remains checked."
+    },
+    {
+      "file": "source/evals-sdk1.lock.json",
+      "line": 60,
+      "sha256": "ba7a6b74a5b3792e1347002a93ec34fe9ff77e5fa4b497d219a4b91e07ca9b49",
+      "reason": "Original case identity in rename/from or original-source provenance; current destination remains checked."
+    }
+  ],
+  "temporaryCanonical": {
+    "revision": "4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc",
+    "reason": "Remove when the upstream canonical reference rename is merged and imported. No general link or code exemption.",
+    "legacyNameParts": [
+      "sdk-",
+      "pay",
+      "load",
+      ".md"
+    ],
+    "links": [
+      {
+        "file": "plugins/arkiv/skills/arkiv-encryption/SKILL.md",
+        "line": 25,
+        "sha256": "b0b0a6ba94c0a76ea366eefcd694d8a7952f92e408ab343c0bbed170ab7a3eeb",
+        "gitBlob": "8b9b887ed268cce5ae47589178da1bfb8e8d9c41"
+      },
+      {
+        "file": "plugins/arkiv-codex/skills/arkiv-encryption/SKILL.md",
+        "line": 25,
+        "sha256": "b0b0a6ba94c0a76ea366eefcd694d8a7952f92e408ab343c0bbed170ab7a3eeb",
+        "gitBlob": "8b9b887ed268cce5ae47589178da1bfb8e8d9c41"
+      }
+    ],
+    "references": [
+      {
+        "host": "arkiv-codex",
+        "sha256": "97edd850426ae6fe1ee03f58026266d874f746701ea6c04f7e50ac30d2c438c2",
+        "gitBlob": "9bb88c5cb2cd85d5630fc78db10a450905cac458"
+      },
+      {
+        "host": "arkiv",
+        "sha256": "97edd850426ae6fe1ee03f58026266d874f746701ea6c04f7e50ac30d2c438c2",
+        "gitBlob": "9bb88c5cb2cd85d5630fc78db10a450905cac458"
+      }
+    ],
+    "lock": {
+      "file": "source/skills.lock.json",
+      "sha256": "cdc8b25cf0b643c4a942005458ce98927c95f8de15b724ba52a4235383bb4b0f",
+      "lines": [
+        115,
+        116,
+        122,
+        123
+      ]
+    }
+  }
+}

@@ -6,6 +6,7 @@ import {pathToFileURL} from 'node:url';
 import {repositoryRoot, generate, validateConfig} from './build-plugin.mjs';
 import {diskFiles} from './sync-skills.mjs';
 import {checkSkillReferences} from './check-skill-references.mjs';
+import {checkSdkVocabulary} from './check-sdk-vocabulary.mjs';
 
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = async file => JSON.parse(await readFile(file, 'utf8'));
@@ -76,6 +77,43 @@ export async function checkSkillImport(root = repositoryRoot) {
   return {skills: skills.length, importedFiles: lock.files.length, references: refs.references};
 }
 
+export function evalControlDigest(text) {
+  const match = /^---\r?\n([\s\S]+?)\r?\n---(?:\r?\n|$)/.exec(text);
+  return match ? digest(match[1].replace(/\r\n/g, '\n').replace(/^append_system_prompt:.*(?:\n|$)/m, '')) : null;
+}
+
+export async function checkEvalAmendments(root = repositoryRoot) {
+  const originalBytes = await readFile(path.join(root, 'source/evals-import.json'));
+  const imported = JSON.parse(originalBytes);
+  const amendment = await json(path.join(root, 'source/evals-sdk1.lock.json'));
+  const config = await json(path.join(root, 'plugin.config.json'));
+  assert.equal(amendment.schemaVersion, 1);
+  assert.equal(amendment.sourceReceiptSha256, digest(originalBytes), 'Historical eval receipt changed');
+  assert.equal(amendment.sourceCommit, imported.commit);
+  assert.equal(amendment.activeSkillsCommit, config.skillsSource.commit);
+  assert.equal(amendment.sdkVersion, '1.0.0'); assert.equal(amendment.network, 'rabdi');
+  assert.ok(Array.isArray(amendment.files) && amendment.files.length > 0);
+  const sources = new Map(), destinations = new Set();
+  for (const row of amendment.files) {
+    for (const field of ['source', 'destination']) assert.ok(row[field].startsWith('evals/') && !row[field].includes('..'), 'Invalid amended eval path');
+    assert.ok(!sources.has(row.source) && !destinations.has(row.destination), 'Duplicate amended eval');
+    sources.set(row.source, row); destinations.add(row.destination);
+    assert.ok(typeof row.reason === 'string' && row.reason.length >= 12);
+    assert.match(row.before.sha256, /^[a-f0-9]{64}$/); assert.ok(row.before.bytes > 0);
+    const original = imported.imported.find(file => file.source === row.source);
+    if (original) {
+      assert.equal(row.before.sha256, original.sha256, 'Historical eval receipt mismatch');
+      assert.equal(row.before.bytes, original.bytes, 'Historical eval receipt mismatch');
+    }
+    const bytes = await readFile(path.join(root, 'plugins/arkiv', row.destination));
+    assert.equal(bytes.length, row.after.bytes, `Amended eval length changed: ${row.destination}`);
+    assert.equal(digest(bytes), row.after.sha256, `Amended eval bytes changed: ${row.destination}`);
+    assert.equal(evalControlDigest(bytes.toString('utf8')), row.before.controlsSha256,
+      `Eval control thresholds or tools changed: ${row.destination}`);
+  }
+  return {imported, sources, amendedFiles: amendment.files.length};
+}
+
 export async function checkEvalSuite(root = repositoryRoot) {
   const base = path.join(root, 'plugins/arkiv/evals');
   const catalog = await json(path.join(base, 'catalog.json'));
@@ -117,10 +155,13 @@ export async function checkEvalSuite(root = repositoryRoot) {
       await readFile(path.join(root, 'plugins/arkiv', source));
     }
   }
-  const imported = await json(path.join(root, 'source/evals-import.json'));
+  const {imported, sources: amendments, amendedFiles} = await checkEvalAmendments(root);
   for (const file of imported.imported) {
-    const bytes = await readFile(path.join(root, 'plugins/arkiv', file.source));
-    assert.equal(bytes.length, file.bytes); assert.equal(digest(bytes), file.sha256, `Imported evaluation changed: ${file.source}`);
+    const amendment = amendments.get(file.source);
+    const destination = amendment?.destination ?? file.source;
+    const expected = amendment?.after ?? file;
+    const bytes = await readFile(path.join(root, 'plugins/arkiv', destination));
+    assert.equal(bytes.length, expected.bytes); assert.equal(digest(bytes), expected.sha256, `Imported evaluation changed: ${file.source}`);
   }
   const tools = await json(path.join(base, 'mocks/arkiv/_tools.json'));
   assert.deepEqual(tools.tools.map(tool => tool.name).sort(), ['read_knowledge', 'server_status']);
@@ -131,12 +172,12 @@ export async function checkEvalSuite(root = repositoryRoot) {
     assert.equal(body.synthetic, true, 'Every fixture must identify synthetic evidence');
     assert.equal(tool.inputSchema.type, 'object');
   }
-  return {cases: ids.length, negatives: negative, mockedCases: mocked, originalFiles: imported.imported.length};
+  return {cases: ids.length, negatives: negative, mockedCases: mocked, originalFiles: imported.imported.length, amendedFiles};
 }
 
 export async function checkStatic(root = repositoryRoot) {
   await generate(root, true);
-  const skills = await checkSkillImport(root), evals = await checkEvalSuite(root);
+  const skills = await checkSkillImport(root), evals = await checkEvalSuite(root), vocabulary = await checkSdkVocabulary(root);
   const plugin = path.join(root, 'plugins/arkiv');
   await assert.rejects(readFile(path.join(plugin, 'CLAUDE.md')), {code: 'ENOENT'});
   const rootPointer = await readFile(path.join(root, 'CLAUDE.md'), 'utf8');
@@ -150,7 +191,7 @@ export async function checkStatic(root = repositoryRoot) {
     && !codexHooks.includes('claude-code'), 'Codex hooks are the Codex context adapter only');
   await assert.rejects(readFile(path.join(codex, 'CLAUDE.md')), {code: 'ENOENT'});
   assert.equal(rootPointer.trim(), '@AGENTS.md', 'Preserve the repository Claude pointer');
-  return {passed: true, skills, evals};
+  return {passed: true, skills, evals, vocabulary};
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
