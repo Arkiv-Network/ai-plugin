@@ -247,10 +247,10 @@
         "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
       },
       "after": {
-        "sha256": "47294c294ccbf0d1e3c4bcf877fbd30e265d1282883d818bfb7ce361afecb8b3",
-        "bytes": 418
+        "sha256": "85f9653d0db38c64705e19597344ef57aebcb9ad58bc663e70715da83296718c",
+        "bytes": 773
       },
-      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+      "reason": "Clarify set accepts required or optional schema columns while unset accepts optional columns only, anchored to SDK 1.0 patch and attribute validation types."
     },
     {
       "source": "evals/arkiv-entity-lifecycle-trigger/prompt.md",
@@ -569,10 +569,10 @@
         "controlsSha256": null
       },
       "after": {
-        "sha256": "50cdfbdfe9532b9b06a96cfa328f36667f8b4b6eb5c706e8cb30c1a81c8a729e",
-        "bytes": 3753
+        "sha256": "ff1cfe173fa7d968718a8794a87eb8a44c9553c0e0b492614f6f53f28ce9a95d",
+        "bytes": 4178
       },
-      "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+      "reason": "Document whole-repository contents/name gate, explicitly frozen historical evidence and narrowly blob-bound temporary canonical reference waiver."
     },
     {
       "source": "evals/rule-custody-with-block/prompt.md",
@@ -797,6 +797,34 @@
         "bytes": 261
       },
       "reason": "Align SDK 1.0/Rabdi typed-column vocabulary; retain security, validation and no-execution obligations."
+    },
+    {
+      "source": "evals/rule-custody-with-block/graders/criteria.md",
+      "destination": "evals/rule-custody-with-block/graders/criteria.md",
+      "before": {
+        "sha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974",
+        "bytes": 268,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "dd34cc701456a3c80a94f2106c322e978751f431f7b13758307b2d98c9f844bc",
+        "bytes": 932
+      },
+      "reason": "Accept SDK 1.0 server-held URL-path RPC authentication; retain all signing/operator-key and disclosure prohibitions without requiring unsupported header transport."
+    },
+    {
+      "source": "evals/rule-custody-without-block/graders/criteria.md",
+      "destination": "evals/rule-custody-without-block/graders/criteria.md",
+      "before": {
+        "sha256": "86f5ab904e3f7e533a86b4c89e5ffe825a9716abea55fbbd40993f988d8d1974",
+        "bytes": 268,
+        "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
+      },
+      "after": {
+        "sha256": "dd34cc701456a3c80a94f2106c322e978751f431f7b13758307b2d98c9f844bc",
+        "bytes": 932
+      },
+      "reason": "Accept SDK 1.0 server-held URL-path RPC authentication; retain all signing/operator-key and disclosure prohibitions without requiring unsupported header transport."
     }
   ]
 }

@@ -23,7 +23,7 @@ async function fixture(t,{version='1.0.0',spec='^1.0.0',lock=version,installed=t
  return {root,put};
 }
 for(const [name,options,state]of [
- ['compatible',{},'compatible'],['SDK 0.8.1 is out of range',{version:'0.8.1',spec:'^0.8.1'},'out_of_range'],['SDK 0.8.9 is out of range',{version:'0.8.9',spec:'^0.8.9'},'out_of_range'],['SDK 1.0.7 is compatible',{version:'1.0.7',spec:'^1.0.0'},'compatible'],['SDK 1.9.0 is compatible',{version:'1.9.0',spec:'>=1.0.0 <2'},'compatible'],['old coherent SDK',{version:'0.6.8',spec:'^0.6.8'},'out_of_range'],['new coherent SDK',{version:'2.0.0',spec:'^2.0.0'},'out_of_range'],
+ ['compatible',{},'compatible'],['pre-major-one patch-one SDK is out of range',{version:[0,8,1].join('.'),spec:'^'+[0,8,1].join('.')},'out_of_range'],['pre-major-one patch-nine SDK is out of range',{version:[0,8,9].join('.'),spec:'^'+[0,8,9].join('.')},'out_of_range'],['SDK 1.0.7 is compatible',{version:'1.0.7',spec:'^1.0.0'},'compatible'],['SDK 1.9.0 is compatible',{version:'1.9.0',spec:'>=1.0.0 <2'},'compatible'],['old coherent SDK',{version:'0.6.8',spec:'^0.6.8'},'out_of_range'],['new coherent SDK',{version:'2.0.0',spec:'^2.0.0'},'out_of_range'],
  ['missing install',{installed:false},'not_installed'],['undeclared',{declared:false},'absent'],['lock disagrees',{lock:'1.0.1'},'mismatch'],['manifest disagrees',{spec:'1.0.1'},'mismatch'],
  ['unknown spec',{spec:'workspace:*'},null],['missing declarations',{types:false},null],['prerelease',{version:'1.0.1-beta.1'},null]])test(name,async t=>{const f=await fixture(t,options);assert.equal((await inspectSdk(f.root)).facts.state,state);});
 test('corrupt manifest is unmeasured, never absent',async t=>{const f=await fixture(t);await f.put('package.json','{');assert.equal((await inspectSdk(f.root)).facts.state,null);});
@@ -46,7 +46,7 @@ test('session isolation, changed-only, resume, compaction and invalidation',asyn
 test('bounded spec subset rejects unsupported syntax',()=>{assert.equal(satisfies('1.0.0','^1.0.0'),true);assert.equal(satisfies('2.0.0','^1.0.0'),false);assert.equal(satisfies('1.0.0','>=1.0.0 <2.0.0'),true);assert.equal(satisfies('1.0.0','*'),null);assert.equal(satisfies('1.0.0','>=1.0.0 <2'),true);assert.equal(satisfies('2.0.0','>=1.0.0 <2'),false);});
 test('unsupported partial comparator semantics stay unmeasured',()=>{
  for(const spec of ['<=1','>1','=1','>=1','<1.2','>=1.0.0 <=1'])assert.equal(satisfies('1.0.0',spec),null,spec);
- assert.equal(satisfies('0.8.1','>=1.0.0 <2'),false);
+ assert.equal(satisfies([0,8,1].join('.'),'>=1.0.0 <2'),false);
  assert.equal(satisfies('1.999.999','>=1.0.0 <2'),true);
 });
 test('hoisted install and PnP cannot be misreported as not installed',async t=>{

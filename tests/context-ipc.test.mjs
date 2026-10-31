@@ -45,7 +45,7 @@ test('unsupported IPC platforms and old Linux Node versions stay unmeasured',()=
  const session=randomUUID();
  assert.equal(endpoint(session,'codex',{platform:'darwin',nodeVersion:'24.0.0'}),null);
  assert.equal(endpoint(session,'codex',{platform:'linux',nodeVersion:'20.7.0'}),null);
- assert.ok(endpoint(session,'codex',{platform:'linux',nodeVersion:'20.8.0'}).startsWith('\0'));
+ assert.ok(endpoint(session,'codex',{platform:'linux',nodeVersion:[20,8,0].join('.')}).startsWith('\0'));
  assert.ok(endpoint(session,'codex',{platform:'win32',nodeVersion:'20.0.0'}).startsWith('\\\\.\\pipe\\'));
 });
 

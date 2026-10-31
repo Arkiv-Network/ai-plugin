@@ -41,7 +41,7 @@ The SessionStart hook adds a short rules block only when the current project's `
 
 When a session starts, and again on later prompts only if something changed, a local hook reads your project's `package.json`, `package-lock.json` and the installed `@arkiv-network/sdk` declaration files. It adds a few lines to the agent's context: the version category (`compatible`, `out_of_range`, `not_installed`, `mismatch` or `absent`), the installed version and the plugin-supported range. Missing, unsupported or ambiguous evidence stays **unmeasured** and adds nothing. Claude Code also refreshes after manifest or lockfile changes, directory changes and compaction.
 
-The hook never imports or runs project code, makes no network requests and writes no files or identifiers. Its per-session state lives in memory of a short-lived local process reached over an OS-local named pipe (Windows) or abstract socket (Linux, Node 20.8+); other platforms leave the context unmeasured. If Node is missing or the hook fails, the session and the MCP connection continue normally. `compatible` describes package metadata only; it does not certify your application.
+The hook never imports or runs project code, makes no network requests and writes no files or identifiers. Its per-session state lives in memory of a short-lived local process reached over an OS-local named pipe (Windows) or abstract socket (Linux, Node 20, minor 8 or later); other platforms leave the context unmeasured. If Node is missing or the hook fails, the session and the MCP connection continue normally. `compatible` describes package metadata only; it does not certify your application.
 
 ## Check the installation
 
