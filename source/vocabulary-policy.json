@@ -96,51 +96,5 @@
       "sha256": "ba7a6b74a5b3792e1347002a93ec34fe9ff77e5fa4b497d219a4b91e07ca9b49",
       "reason": "Original case identity in rename/from or original-source provenance; current destination remains checked."
     }
-  ],
-  "temporaryCanonical": {
-    "revision": "4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc",
-    "reason": "Remove when the upstream canonical reference rename is merged and imported. No general link or code exemption.",
-    "legacyNameParts": [
-      "sdk-",
-      "pay",
-      "load",
-      ".md"
-    ],
-    "links": [
-      {
-        "file": "plugins/arkiv/skills/arkiv-encryption/SKILL.md",
-        "line": 25,
-        "sha256": "b0b0a6ba94c0a76ea366eefcd694d8a7952f92e408ab343c0bbed170ab7a3eeb",
-        "gitBlob": "8b9b887ed268cce5ae47589178da1bfb8e8d9c41"
-      },
-      {
-        "file": "plugins/arkiv-codex/skills/arkiv-encryption/SKILL.md",
-        "line": 25,
-        "sha256": "b0b0a6ba94c0a76ea366eefcd694d8a7952f92e408ab343c0bbed170ab7a3eeb",
-        "gitBlob": "8b9b887ed268cce5ae47589178da1bfb8e8d9c41"
-      }
-    ],
-    "references": [
-      {
-        "host": "arkiv-codex",
-        "sha256": "97edd850426ae6fe1ee03f58026266d874f746701ea6c04f7e50ac30d2c438c2",
-        "gitBlob": "9bb88c5cb2cd85d5630fc78db10a450905cac458"
-      },
-      {
-        "host": "arkiv",
-        "sha256": "97edd850426ae6fe1ee03f58026266d874f746701ea6c04f7e50ac30d2c438c2",
-        "gitBlob": "9bb88c5cb2cd85d5630fc78db10a450905cac458"
-      }
-    ],
-    "lock": {
-      "file": "source/skills.lock.json",
-      "sha256": "cdc8b25cf0b643c4a942005458ce98927c95f8de15b724ba52a4235383bb4b0f",
-      "lines": [
-        115,
-        116,
-        122,
-        123
-      ]
-    }
-  }
+  ]
 }

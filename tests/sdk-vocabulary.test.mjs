@@ -8,7 +8,7 @@ import {checkSdkVocabulary, vocabularyViolations} from '../scripts/check-sdk-voc
 
 const retired = ['pay', 'load'].join('');
 const oldVersion = [0, 8, 1].join('.');
-const symbols = ['encrypt', 'decrypt'].map(prefix => prefix + 'Pay' + 'load');
+const retiredAliases = ['encrypt', 'decrypt'].map(prefix => prefix + 'Pay' + 'load');
 const legacyLink = `[guide](references/sdk-${retired}.md)`;
 
 async function fixture(t) {
@@ -24,7 +24,8 @@ test('every current surface and path passes the SDK 1.0 vocabulary policy', asyn
   const result = await checkSdkVocabulary();
   assert.equal(result.passed, true);
   assert.ok(result.names > result.files);
-  assert.equal(result.temporaryCanonical.links.length, 2);
+  assert.equal(Object.hasOwn(result, 'temporaryCanonical'), false);
+  assert.deepEqual(result.exceptions, []);
   assert.equal(result.historicalFiles.length, 11);
 });
 
@@ -51,13 +52,17 @@ test('every content, name, link and code mutation is executed and rejected', asy
   const other = 'plugins/arkiv/skills/arkiv/SKILL.md';
   cases.push([other, '\n' + legacyLink], [other, '\n`' + legacyLink + '`'],
     [other, '\n```js\nconst text = "' + legacyLink + '";\n```'],
-    [other, '\n' + symbols[0]], [other, '\n' + symbols[0] + 'Extra']);
+    [other, '\n' + retiredAliases[0]], [other, '\n' + retiredAliases[0] + 'Extra']);
   let executed = 0;
   for (const [file, mutation] of cases) {
     const before = await readFile(path.join(root, file));
-    const changed = file.endsWith('.json')
-      ? JSON.stringify({...JSON.parse(before), vocabularyMutation: mutation})
-      : Buffer.concat([before, Buffer.from(mutation)]);
+    let changed = Buffer.concat([before, Buffer.from(mutation)]);
+    if (file.endsWith('.json')) {
+      const value = JSON.parse(before);
+      if (file === 'source/vocabulary-policy.json') value.historicalLines[0].reason += mutation;
+      else value.vocabularyMutation = mutation;
+      changed = JSON.stringify(value);
+    }
     await writeFile(path.join(root, file), changed);
     try { await assert.rejects(checkSdkVocabulary(root), /Obsolete SDK vocabulary/, file); executed++; }
     finally { await writeFile(path.join(root, file), before); }
@@ -75,30 +80,34 @@ test('every content, name, link and code mutation is executed and rejected', asy
   assert.equal((await checkSdkVocabulary(root)).passed, true);
 });
 
-test('temporary canonical waiver binds exact files, line and raw blob; code remains checked', async t => {
+test('a single retired encryption alias fails in every former use site, code and metadata', async t => {
   const root = await fixture(t);
+  const files = ['arkiv', 'arkiv-codex'].flatMap(host => [
+    'plugins/' + host + '/skills/arkiv-encryption/SKILL.md',
+    'plugins/' + host + '/skills/arkiv-security-trust/references/privacy.md']);
+  files.push('README.md', 'AGENTS.md', 'source/sdk-vocabulary-exceptions.json', 'source/skills.lock.json');
+  let executed = 0;
+  for (const file of files) for (const alias of retiredAliases) {
+    const absolute = path.join(root, file), before = await readFile(absolute);
+    const changed = file.endsWith('.json') ? JSON.stringify({...JSON.parse(before), mutation: alias})
+      : Buffer.concat([before, Buffer.from('\n' + alias)]);
+    await writeFile(absolute, changed);
+    await assert.rejects(checkSdkVocabulary(root), /Obsolete SDK vocabulary|deep-equal/);
+    await writeFile(absolute, before); executed++;
+  }
   const file = 'plugins/arkiv/skills/arkiv-encryption/SKILL.md';
-  const before = await readFile(path.join(root, file));
-  for (const replacement of ['\n' + legacyLink, '\n`' + legacyLink + '`', '\n```js\n"' + legacyLink + '"\n```']) {
-    await writeFile(path.join(root, file), Buffer.concat([before, Buffer.from(replacement)]));
-    await assert.rejects(checkSdkVocabulary(root), /Temporary canonical blob changed/);
-    await writeFile(path.join(root, file), before);
+  for (const body of [legacyLink, '\x60' + legacyLink + '\x60', '\x60\x60\x60js\n"' + legacyLink + '"\n\x60\x60\x60']) {
+    const absolute = path.join(root, file), before = await readFile(absolute);
+    await writeFile(absolute, Buffer.concat([before, Buffer.from('\n' + body)]));
+    await assert.rejects(checkSdkVocabulary(root), /Obsolete SDK vocabulary/);
+    await writeFile(absolute, before); executed++;
   }
-  for (const code of [legacyLink, '`' + legacyLink + '`', '```\n' + legacyLink + '\n```']) {
-    assert.ok(vocabularyViolations(code, file).length, 'Unbound raw text always fails, including code');
-  }
-  const policyFile = path.join(root, 'source/vocabulary-policy.json');
-  const original = await readFile(policyFile);
-  for (const change of [policy => { policy.temporaryCanonical.links[0].line++; },
-    policy => { policy.temporaryCanonical.links[0].sha256 = '0'.repeat(64); },
-    policy => { policy.temporaryCanonical.links[0].gitBlob = '0'.repeat(40); },
-    policy => { policy.temporaryCanonical.links[0].file = 'plugins/arkiv/skills/arkiv/SKILL.md'; },
-    policy => { policy.temporaryCanonical.revision = '0'.repeat(40); }]) {
-    const policy = JSON.parse(original); change(policy); await writeFile(policyFile, JSON.stringify(policy));
-    await assert.rejects(checkSdkVocabulary(root));
-    await writeFile(policyFile, original);
-  }
-  t.diagnostic('Executed 3 canonical-file text mutations, 3 raw link/code checks and 5 waiver-binding mutations.');
+  const policyFile = path.join(root, 'source/vocabulary-policy.json'), before = await readFile(policyFile);
+  await writeFile(policyFile, JSON.stringify({...JSON.parse(before), temporaryCanonical: {}}));
+  await assert.rejects(checkSdkVocabulary(root), /deep-equal/); executed++;
+  await writeFile(policyFile, before);
+  assert.equal(executed, 20);
+  t.diagnostic('Executed 16 single-alias mutations, 3 link/code mutations and rejection of a restored waiver.');
 });
 
 test('historical receipts are explicitly frozen and cannot absorb new current guidance', async t => {
@@ -119,20 +128,18 @@ test('historical receipts are explicitly frozen and cannot absorb new current gu
   t.diagnostic('Executed all 11 frozen-file mutations and both mixed-document current/history mutations.');
 });
 
-test('exact published symbols are scoped; gate source and negative fixtures contain no literal old terms', async t => {
+test('semantic exception list stays empty and both current encryption names remain valid', async t => {
   const root = await fixture(t);
   const filename = path.join(root, 'source/sdk-vocabulary-exceptions.json');
   const before = await readFile(filename), config = JSON.parse(before);
-  assert.deepEqual(config.exceptions.map(row => row.symbol).sort(), [...symbols].sort());
-  for (const rule of config.exceptions) assert.ok(rule.reason.length >= 20);
-  assert.deepEqual(vocabularyViolations(symbols.join(' '), 'plugins/arkiv/skills/arkiv-encryption/SKILL.md', config.exceptions), []);
-  assert.equal(vocabularyViolations(symbols[0], 'tests/example.mjs', config.exceptions).length, 1);
+  assert.deepEqual(config.exceptions, []);
+  assert.deepEqual(vocabularyViolations('encryptBytes decryptBytes', 'tests/example.mjs'), []);
   assert.equal(vocabularyViolations(oldVersion, 'tests/example.mjs').length, 1);
-  for (const change of [value => value.exceptions.push({...value.exceptions[0], symbol: retired}),
-    value => value.exceptions[0].files.push('tests/example.mjs'),
-    value => { value.exceptions[0].symbol += 'Extra'; }]) {
-    const value = JSON.parse(before); change(value); await writeFile(filename, JSON.stringify(value));
-    await assert.rejects(checkSdkVocabulary(root), /Invalid SDK vocabulary exception list/);
+  for (const alias of retiredAliases) {
+    assert.equal(vocabularyViolations(alias, 'plugins/arkiv/skills/arkiv-encryption/SKILL.md').length, 1);
+    const value = JSON.parse(before); value.exceptions.push({symbol: alias, files: ['README.md']});
+    await writeFile(filename, JSON.stringify(value));
+    await assert.rejects(checkSdkVocabulary(root), /SDK vocabulary exceptions must remain empty/);
     await writeFile(filename, before);
   }
 });

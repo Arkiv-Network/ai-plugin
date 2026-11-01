@@ -98,7 +98,7 @@ test('R9 Preview output is isolated, retains fixed skills and cannot pass releas
 });
 
 test('R9 canonical skills remain at the required full revision', () => {
-  assert.equal(config.skillsSource.commit, '4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc');
+  assert.equal(config.skillsSource.commit, '67cd84fa234409fa6a76f28b0c901682d990c4da');
 });
 
 test('canonical skill bytes retain General guidance; package explicitly overrides to Mumbai', async () => {

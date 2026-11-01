@@ -17,7 +17,7 @@
   "minimumClaudeCode": "2.1.296",
   "skillsSource": {
     "repository": "https://github.com/Arkiv-Network/skills",
-    "commit": "4a4cff5eb1222c811ac2636f6d8b8e17105a4ddc",
+    "commit": "67cd84fa234409fa6a76f28b0c901682d990c4da",
     "excludedSkills": [
       "arkiv-best-practices"
     ]
