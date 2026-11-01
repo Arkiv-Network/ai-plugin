@@ -82,6 +82,13 @@ export function evalControlDigest(text) {
   return match ? digest(match[1].replace(/\r\n/g, '\n').replace(/^append_system_prompt:.*(?:\n|$)/m, '')) : null;
 }
 
+export function checkWriteSignatureRequirement(markdown) {
+  const sentence = /\bBefore every new signature\b[^.!?\n]*[.!?]/.exec(markdown)?.[0] ?? '';
+  assert.match(sentence, /^Before every new signature \(including the single allowed retry\), obtain a fresh nonce at latest and current gasPrice via eth_gasPrice under exclusive signer custody\.$/,
+    'Every-signature requirement missing: latest nonce, eth_gasPrice and exclusive custody must cover initial and retry signatures');
+  return true;
+}
+
 export async function checkEvalAmendments(root = repositoryRoot) {
   const originalBytes = await readFile(path.join(root, 'source/evals-import.json'));
   const imported = JSON.parse(originalBytes);
@@ -108,6 +115,9 @@ export async function checkEvalAmendments(root = repositoryRoot) {
     const bytes = await readFile(path.join(root, 'plugins/arkiv', row.destination));
     assert.equal(bytes.length, row.after.bytes, `Amended eval length changed: ${row.destination}`);
     assert.equal(digest(bytes), row.after.sha256, `Amended eval bytes changed: ${row.destination}`);
+    if (row.destination === 'evals/arkiv-first-write-trigger/graders/criteria.md') {
+      checkWriteSignatureRequirement(bytes.toString('utf8'));
+    }
     assert.equal(evalControlDigest(bytes.toString('utf8')), row.before.controlsSha256,
       `Eval control thresholds or tools changed: ${row.destination}`);
   }

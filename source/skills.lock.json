@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "repository": "https://github.com/Arkiv-Network/skills",
-  "commit": "67cd84fa234409fa6a76f28b0c901682d990c4da",
+  "commit": "9fcbdc3066563ea05d3973eb1a9c73cecc82f9e3",
   "excludedSkills": [
     "arkiv-best-practices"
   ],
@@ -86,16 +86,16 @@
     {
       "source": "skills/arkiv-data-modeling/references/relationships.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-data-modeling/references/relationships.md",
-      "gitBlob": "7110f2e1a18268ef7ebdb47a80c7a70526759e42",
-      "sha256": "62ead215f79e8749e591767dad5a73997e92bc207ea6ce2da3f6b5dfcabcee47",
-      "bytes": 7163
+      "gitBlob": "139e3594b6bb7a41fe3a98323af36adf07100c56",
+      "sha256": "63386516bbf1fdf51c822c0776fe72d0ec28253887e96f30fa49834d7d55bc84",
+      "bytes": 7466
     },
     {
       "source": "skills/arkiv-data-modeling/references/relationships.md",
       "destination": "plugins/arkiv/skills/arkiv-data-modeling/references/relationships.md",
-      "gitBlob": "7110f2e1a18268ef7ebdb47a80c7a70526759e42",
-      "sha256": "62ead215f79e8749e591767dad5a73997e92bc207ea6ce2da3f6b5dfcabcee47",
-      "bytes": 7163
+      "gitBlob": "139e3594b6bb7a41fe3a98323af36adf07100c56",
+      "sha256": "63386516bbf1fdf51c822c0776fe72d0ec28253887e96f30fa49834d7d55bc84",
+      "bytes": 7466
     },
     {
       "source": "skills/arkiv-data-modeling/SKILL.md",
@@ -114,16 +114,16 @@
     {
       "source": "skills/arkiv-encryption/references/sdk-bytes.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-encryption/references/sdk-bytes.md",
-      "gitBlob": "9b82473dbdb94ad1df3a3d2313b2fe46d4d09531",
-      "sha256": "30f0eb946b1f948add57e7a4f44a86e2980794051f1d944264019683ebf4f804",
-      "bytes": 6951
+      "gitBlob": "968bef26925065bb2561f3980e38a3e62bef3c2e",
+      "sha256": "dcd9d6582292b713567e54c30d4c9dd1834a21ca23eb21acb0df20f757fa2fbd",
+      "bytes": 7254
     },
     {
       "source": "skills/arkiv-encryption/references/sdk-bytes.md",
       "destination": "plugins/arkiv/skills/arkiv-encryption/references/sdk-bytes.md",
-      "gitBlob": "9b82473dbdb94ad1df3a3d2313b2fe46d4d09531",
-      "sha256": "30f0eb946b1f948add57e7a4f44a86e2980794051f1d944264019683ebf4f804",
-      "bytes": 6951
+      "gitBlob": "968bef26925065bb2561f3980e38a3e62bef3c2e",
+      "sha256": "dcd9d6582292b713567e54c30d4c9dd1834a21ca23eb21acb0df20f757fa2fbd",
+      "bytes": 7254
     },
     {
       "source": "skills/arkiv-encryption/SKILL.md",
@@ -142,16 +142,16 @@
     {
       "source": "skills/arkiv-entity-expiration/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-entity-expiration/SKILL.md",
-      "gitBlob": "d5c596924877ff227e06b8ef31750e2c4ddf5074",
-      "sha256": "876cfc987762ef102a8e6d979bac0239aa481f008b50dcc74a4307aa98b75269",
-      "bytes": 10873
+      "gitBlob": "9f79f73254f1fea5fb0db3f8996a77b03953a27f",
+      "sha256": "399c9761d7fbe71470ff3553cfe535478a88f6bf1fddff4abcf1f2de48c24d97",
+      "bytes": 11170
     },
     {
       "source": "skills/arkiv-entity-expiration/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-entity-expiration/SKILL.md",
-      "gitBlob": "d5c596924877ff227e06b8ef31750e2c4ddf5074",
-      "sha256": "876cfc987762ef102a8e6d979bac0239aa481f008b50dcc74a4307aa98b75269",
-      "bytes": 10873
+      "gitBlob": "9f79f73254f1fea5fb0db3f8996a77b03953a27f",
+      "sha256": "399c9761d7fbe71470ff3553cfe535478a88f6bf1fddff4abcf1f2de48c24d97",
+      "bytes": 11170
     },
     {
       "source": "skills/arkiv-entity-lifecycle/references/backup-restore.md",
@@ -170,16 +170,16 @@
     {
       "source": "skills/arkiv-entity-lifecycle/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-entity-lifecycle/SKILL.md",
-      "gitBlob": "deb2de9f484a9764586f34c495a51c7bc80c2ca2",
-      "sha256": "0fd42f7788dff837887eb6178b95d3d48b2573ff1719e9d259891177b0253819",
-      "bytes": 11858
+      "gitBlob": "272aa95a952aeda92edb9ac0466bcac160c00baa",
+      "sha256": "f75cef62eaeec0fd56f08a33c15b4b2f96cf594027171b02119364e9578fc2a4",
+      "bytes": 12155
     },
     {
       "source": "skills/arkiv-entity-lifecycle/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-entity-lifecycle/SKILL.md",
-      "gitBlob": "deb2de9f484a9764586f34c495a51c7bc80c2ca2",
-      "sha256": "0fd42f7788dff837887eb6178b95d3d48b2573ff1719e9d259891177b0253819",
-      "bytes": 11858
+      "gitBlob": "272aa95a952aeda92edb9ac0466bcac160c00baa",
+      "sha256": "f75cef62eaeec0fd56f08a33c15b4b2f96cf594027171b02119364e9578fc2a4",
+      "bytes": 12155
     },
     {
       "source": "skills/arkiv-feedback/references/bug-form.md",
@@ -226,16 +226,16 @@
     {
       "source": "skills/arkiv-first-write/references/estimate.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-first-write/references/estimate.md",
-      "gitBlob": "d2586c9de00728e5952499b5e2a3978ac5ff29aa",
-      "sha256": "2214bccdea3e8f1474a9218bbe8da8829c53772f0b7ac4eb6611fe1ba0523d84",
-      "bytes": 5595
+      "gitBlob": "2b7ee2c64a08bad986b0b2d393e10c9d29db4931",
+      "sha256": "327a03665d5d2af88091301d1f2b1f2f57480e858eff3dd03fe1f35eb5290781",
+      "bytes": 6491
     },
     {
       "source": "skills/arkiv-first-write/references/estimate.md",
       "destination": "plugins/arkiv/skills/arkiv-first-write/references/estimate.md",
-      "gitBlob": "d2586c9de00728e5952499b5e2a3978ac5ff29aa",
-      "sha256": "2214bccdea3e8f1474a9218bbe8da8829c53772f0b7ac4eb6611fe1ba0523d84",
-      "bytes": 5595
+      "gitBlob": "2b7ee2c64a08bad986b0b2d393e10c9d29db4931",
+      "sha256": "327a03665d5d2af88091301d1f2b1f2f57480e858eff3dd03fe1f35eb5290781",
+      "bytes": 6491
     },
     {
       "source": "skills/arkiv-first-write/references/testing.md",
@@ -254,16 +254,16 @@
     {
       "source": "skills/arkiv-first-write/SKILL.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-first-write/SKILL.md",
-      "gitBlob": "b7413491bfb51fe5ba23747db28196feb8186b61",
-      "sha256": "411a555a284ae944c215affcf9c1b1ab4ba0674e0eeef94ec58d0f3274d23241",
-      "bytes": 13463
+      "gitBlob": "f885a49c5c604f7b16357a2a029b2f28db5dc2b6",
+      "sha256": "22f187d6c2cc1be9b03f27b78487325383675b31aac1fafaaeb75ce3bc334a88",
+      "bytes": 13766
     },
     {
       "source": "skills/arkiv-first-write/SKILL.md",
       "destination": "plugins/arkiv/skills/arkiv-first-write/SKILL.md",
-      "gitBlob": "b7413491bfb51fe5ba23747db28196feb8186b61",
-      "sha256": "411a555a284ae944c215affcf9c1b1ab4ba0674e0eeef94ec58d0f3274d23241",
-      "bytes": 13463
+      "gitBlob": "f885a49c5c604f7b16357a2a029b2f28db5dc2b6",
+      "sha256": "22f187d6c2cc1be9b03f27b78487325383675b31aac1fafaaeb75ce3bc334a88",
+      "bytes": 13766
     },
     {
       "source": "skills/arkiv-indexing/references/checkpoint-mirror.md",
@@ -464,16 +464,16 @@
     {
       "source": "skills/arkiv-write-safety/references/resumable-import.md",
       "destination": "plugins/arkiv-codex/skills/arkiv-write-safety/references/resumable-import.md",
-      "gitBlob": "a9830093ff3d7a5a1e33f72c1b33936bd6886f44",
-      "sha256": "1e4ddd8f1452d2c64f272d6596c910f172d4e263c193c6149ee49aa8ac94b3af",
-      "bytes": 33320
+      "gitBlob": "9f9c268c4b4a29d025d119ddac857de59500bf09",
+      "sha256": "df4d30b99d89dbf382fb0d565faa83f1f64d73905c17d2474692ec4139305ca2",
+      "bytes": 33348
     },
     {
       "source": "skills/arkiv-write-safety/references/resumable-import.md",
       "destination": "plugins/arkiv/skills/arkiv-write-safety/references/resumable-import.md",
-      "gitBlob": "a9830093ff3d7a5a1e33f72c1b33936bd6886f44",
-      "sha256": "1e4ddd8f1452d2c64f272d6596c910f172d4e263c193c6149ee49aa8ac94b3af",
-      "bytes": 33320
+      "gitBlob": "9f9c268c4b4a29d025d119ddac857de59500bf09",
+      "sha256": "df4d30b99d89dbf382fb0d565faa83f1f64d73905c17d2474692ec4139305ca2",
+      "bytes": 33348
     },
     {
       "source": "skills/arkiv-write-safety/SKILL.md",

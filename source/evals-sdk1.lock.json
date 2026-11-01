@@ -3,7 +3,7 @@
   "sourceReceiptSha256": "715f8181ef60033970ee87039ac7b7674260c2bc2b008d773f4831796a3c862b",
   "sourceCommit": "a806871335b5afa28297b55c5a12c525b003792e",
   "basePluginCommit": "74ee427f1e615525316d3564af8d64cbe6366bba",
-  "activeSkillsCommit": "67cd84fa234409fa6a76f28b0c901682d990c4da",
+  "activeSkillsCommit": "9fcbdc3066563ea05d3973eb1a9c73cecc82f9e3",
   "sdkVersion": "1.0.0",
   "network": "rabdi",
   "renames": [
@@ -303,10 +303,10 @@
         "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
       },
       "after": {
-        "sha256": "6115b6df78cdd44aa12d38d6f70abcf71a981629afd2c205bdbdb15b987a7572",
-        "bytes": 1347
+        "sha256": "d1526f9e8471f4de1d646793cdaacd0229dba1f8dfacbfbe9d77f1a7ea53c72d",
+        "bytes": 1512
       },
-      "reason": "Align the authorized-write gas, signature and retry obligations with the merged canonical skills contract; preserve all outcome, custody, verification and no-fabrication requirements."
+      "reason": "Require a fresh nonce at latest and current eth_gasPrice under exclusive signer custody before every new signature, including the bounded retry; retain gas, reconciliation, custody, verification and no-fabrication obligations."
     },
     {
       "source": "evals/arkiv-first-write-trigger/prompt.md",
@@ -835,10 +835,10 @@
         "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
       },
       "after": {
-        "sha256": "e5dc61f9ae1dc195bfce19c02f289228c148a7420cdf4e19a6fe86f6c09989d7",
-        "bytes": 1229
+        "sha256": "a7ae93d51cc75f3827e75d66c88b32a4fccfdc59815bf43e09823f28c82d01be",
+        "bytes": 1394
       },
-      "reason": "Align the authorized-write gas, signature and retry obligations with the merged canonical skills contract; preserve all outcome, custody, verification and no-fabrication requirements."
+      "reason": "Require a fresh nonce at latest and current eth_gasPrice under exclusive signer custody before every new signature, including the bounded retry; retain gas, reconciliation, custody, verification and no-fabrication obligations."
     },
     {
       "source": "evals/arkiv-write-safety-trigger/graders/criteria.md",
@@ -849,10 +849,10 @@
         "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
       },
       "after": {
-        "sha256": "46c460b5f2b1a615fe70efbfa83a5fe41fa7d91fbebbb441b8eac7e350a537c7",
-        "bytes": 1479
+        "sha256": "9ee1b6272779a9925d319fd47afc222d0c275b7e20248b079854fb37072dac26",
+        "bytes": 1644
       },
-      "reason": "Align the authorized-write gas, signature and retry obligations with the merged canonical skills contract; preserve all outcome, custody, verification and no-fabrication requirements."
+      "reason": "Require a fresh nonce at latest and current eth_gasPrice under exclusive signer custody before every new signature, including the bounded retry; retain gas, reconciliation, custody, verification and no-fabrication obligations."
     },
     {
       "source": "evals/arkiv-write-safety-outcome/graders/criteria.md",
@@ -863,10 +863,10 @@
         "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
       },
       "after": {
-        "sha256": "53ca724d442e98300a635290599bc3e14e385bcdb1bbcf1d6e6b25382947e5ea",
-        "bytes": 1277
+        "sha256": "ccf4afb2c46e12149215ae0c8fc6cc55d2d1e19bb4147124fb0c80c7c4a87228",
+        "bytes": 1442
       },
-      "reason": "Align the authorized-write gas, signature and retry obligations with the merged canonical skills contract; preserve all outcome, custody, verification and no-fabrication requirements."
+      "reason": "Require a fresh nonce at latest and current eth_gasPrice under exclusive signer custody before every new signature, including the bounded retry; retain gas, reconciliation, custody, verification and no-fabrication obligations."
     },
     {
       "source": "evals/arkiv-entity-expiration-outcome/graders/criteria.md",
@@ -877,10 +877,10 @@
         "controlsSha256": "dac5022878ffa7a10be3a2210eab18a30d2e877bab3f6489d0425ebbbbf85153"
       },
       "after": {
-        "sha256": "f5aef6d965142ec84d320b7efcbab373d0c4d8aa8b77a5fcec3cc822453d6a63",
-        "bytes": 1227
+        "sha256": "6ad32594dfcff71d6841405a4f2d976a601da31c60a06cceb9de3b373572c5b3",
+        "bytes": 1392
       },
-      "reason": "Align the authorized-write gas, signature and retry obligations with the merged canonical skills contract; preserve all outcome, custody, verification and no-fabrication requirements."
+      "reason": "Require a fresh nonce at latest and current eth_gasPrice under exclusive signer custody before every new signature, including the bounded retry; retain gas, reconciliation, custody, verification and no-fabrication obligations."
     }
   ]
 }
