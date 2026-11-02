@@ -1,10 +1,10 @@
 # Verification scope
 
-## 0.5.2 source package: Rabdi log-window guidance, November 3
+## 0.5.2: Rabdi log-window guidance, November 3
 
-Repository packages 0.5.2 import skills [`2bbf731d80c7d8ab201f35f3236ffa800e0044d7`](https://github.com/Arkiv-Network/skills/commit/2bbf731d80c7d8ab201f35f3236ffa800e0044d7) ([PR #71](https://github.com/Arkiv-Network/skills/pull/71)) byte for byte on both hosts. This updates the Rabdi log-window troubleshooting and watcher-recovery guidance only; both connections retain `https://mcp.arkiv.network/mumbai`. The existing source lock and mutation checks bind the imported bytes to this revision and require the `segment_range_of` troubleshooting row in both packages.
+Version 0.5.2 imports skills [`2bbf731d80c7d8ab201f35f3236ffa800e0044d7`](https://github.com/Arkiv-Network/skills/commit/2bbf731d80c7d8ab201f35f3236ffa800e0044d7) ([PR #71](https://github.com/Arkiv-Network/skills/pull/71)) byte for byte on both hosts. This updates the Rabdi log-window troubleshooting and watcher-recovery guidance only; both connections retain `https://mcp.arkiv.network/mumbai`. The existing source lock and mutation checks bind the imported bytes to this revision and require the `segment_range_of` troubleshooting row in both packages.
 
-The published release and public-install/production observations below remain **0.5.1**. Version **0.5.2** is submitted for review and requires separate release authorization; no new public install, production probe or chain operation is claimed here.
+The November 2, 2026 public-install and production observations below apply to **0.5.1 only**.
 
 ## 0.5.1 release: SDK 1.0, Mumbai and privacy prerequisite, November 2
 

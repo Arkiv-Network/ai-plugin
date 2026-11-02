@@ -2,8 +2,6 @@
 
 ## 0.5.2 — November 3, 2026
 
-Source update submitted for review; the published release remains 0.5.1.
-
 - Import canonical skills [`2bbf731d80c7d8ab201f35f3236ffa800e0044d7`](https://github.com/Arkiv-Network/skills/commit/2bbf731d80c7d8ab201f35f3236ffa800e0044d7) ([skills#71](https://github.com/Arkiv-Network/skills/pull/71)) for Rabdi's recent log window: `eth_getLogs` can fail with `-32603 golemdb segment_range_of(transactions): NotImplemented` on blocks with logs about 1,000 blocks behind head. Stop a failed watcher, recreate it at head and reconcile current state with a query; do not split or retry the range or promise log backfill. See [arkiv#283](https://github.com/Arkiv-Network/arkiv/issues/283) and [docs#94](https://github.com/Arkiv-Network/arkiv-starlight-docs/issues/94).
 
 ## 0.5.1 — November 2, 2026
