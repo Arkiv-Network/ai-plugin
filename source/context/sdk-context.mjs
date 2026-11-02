@@ -18,8 +18,10 @@ export function satisfies(version, spec) {
     const high=spec[0]==='~'?`${a}.${b+1}.0`:a?`${a+1}.0.0`:b?`0.${b+1}.0`:`0.0.${c+1}`;
     return cmp(version,low)>=0&&cmp(version,high)<0;
   }
-  const parts=spec.split(/\s+/); if(!parts.length||parts.some(p=>! /^(>=|<=|>|<|=)\d+\.\d+\.\d+$/.test(p)))return null;
-  return parts.every(p=>{const [,op,v]=/^(>=|<=|>|<|=)(.+)$/.exec(p), n=cmp(version,v); return op==='>='?n>=0:op==='<='?n<=0:op==='>'?n>0:op==='<'?n<0:n===0;});
+  // Only a strict major upper bound is added to the existing full-version subset.
+  // Partial <=, > and = comparators have different npm semantics; leave them unmeasured.
+  const parts=spec.split(/\s+/); if(!parts.length||parts.some(p=>! /^(?:(?:>=|<=|>|<|=)\d+\.\d+\.\d+|<\d+)$/.test(p)))return null;
+  return parts.every(p=>{const [,op,v]=/^(>=|<=|>|<|=)(.+)$/.exec(p), n=cmp(version,v.split('.').concat(['0','0']).slice(0,3).join('.')); return op==='>='?n>=0:op==='<='?n<=0:op==='>'?n>0:op==='<'?n<0:n===0;});
 }
 
 // This inspector reads data files only. It never imports the SDK or runs project code.
@@ -52,7 +54,7 @@ export async function inspectSdk(cwd) {
     }
     if(!specs.length){result.state='absent';result.reason=null;}
     else {
-      if(specs.some(s=>typeof s!=='string'||satisfies('0.8.1',s)===null))throw Error('spec');
+      if(specs.some(s=>typeof s!=='string'||satisfies('1.0.0',s)===null))throw Error('spec');
       // Multiple lock formats are detected, never silently treated as equivalent.
       const locks=[];
       for(const name of ['npm-shrinkwrap.json','package-lock.json','pnpm-lock.yaml','yarn.lock','bun.lock','bun.lockb']){
@@ -104,7 +106,7 @@ export async function inspectSdk(cwd) {
         const lockSpecs=fields.filter(f=>Object.hasOwn(lockRoot[f]??{},SDK)).map(f=>lockRoot[f][SDK]);
         if(!lockSpecs.length||lockSpecs.some(s=>typeof s!=='string'||satisfies(installed.version,s)===null))throw Error('lock_spec');
         const identityMismatch=locked.version!==installed.version||specs.some(s=>!satisfies(installed.version,s))||JSON.stringify(specs)!==JSON.stringify(lockSpecs);
-        result.state=identityMismatch?'mismatch':cmp(installed.version,'0.8.1')>=0&&cmp(installed.version,'0.9.0')<0?'compatible':'out_of_range';result.reason=null;
+        result.state=identityMismatch?'mismatch':satisfies(installed.version,'>=1.0.0 <2')?'compatible':'out_of_range';result.reason=null;
       }
     }
   } catch { result.state=null;result.reason='insufficient_evidence'; }
@@ -139,7 +141,7 @@ export function updateContext(previous, observation, event, source) {
     if(fresh||moved||invalidateAll||f[k]!==previous.facts[k]||k==='declarations'&&declarationsChanged)lines.push(`${label}: ${f[k]??'unmeasured'}.`);
   }
   // Name the range that compatible/out_of_range refer to; the category alone is ambiguous.
-  if(['compatible','out_of_range'].includes(f.state))lines.push('Plugin-supported SDK range: >=0.8.1 <0.9.');
+  if(['compatible','out_of_range'].includes(f.state))lines.push('Plugin-supported SDK range: >=1.0.0 <2.');
   lines.push('Scope: local package inspection only. Each field is independent; unmeasured means insufficient local evidence for that field only. Other supplied evidence and skill guidance retain their own scope.');
   return {state,context:lines.join('\n')};
 }

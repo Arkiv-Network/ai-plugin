@@ -5,4 +5,4 @@ allowed_tools: [Read, Glob, Grep, Skill]
 tags: [integration]
 ---
 
-Encrypt an Arkiv payload that expires in seven days. Explain key custody, public attributes, the deadline and renewal permissions without executing.
+Encrypt sensitive bytes into a named Arkiv bytes() column with Entity Expiration in seven days on Rabdi. Explain key custody, public columns, the deadline and Lifetime Extension permissions without executing.

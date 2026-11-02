@@ -8,11 +8,12 @@ import path from 'node:path';
 import {tmpdir, homedir} from 'node:os';
 import {repositoryRoot} from '../scripts/build-plugin.mjs';
 
+const releaseTarget = process.env.ARKIV_TEST_INSTALL_RELEASE === '1';
 const enabled = process.env.ARKIV_TEST_NATIVE_INSTALL === '1';
 const json = value => JSON.stringify(value, null, 2) + '\n';
 const config = JSON.parse(await readFile(path.join(repositoryRoot, 'plugin.config.json'), 'utf8'));
 const userFiles = ['settings.json', 'plugins/known_marketplaces.json', 'plugins/installed_plugins.json']
-  .map(file => path.join(homedir(), '.claude', file));
+  .map(file => path.join(homedir(), '.claude', file)).concat(['config.toml', 'plugins/known_marketplaces.json', 'plugins/installed_plugins.json'].map(file => path.join(homedir(), '.codex', file)));
 async function hashes() {
   return Promise.all(userFiles.map(async file => {
     try { return {file, sha256: createHash('sha256').update(await readFile(file)).digest('hex')}; }
@@ -43,7 +44,7 @@ async function command(binary, args, cwd, env) {
 }
 
 for (const host of ['claude', 'codex']) {
-  test(`R9 ${host}: actual isolated install contains only the loopback MCP fixture`,
+  test(`R9 ${host}: actual isolated install verifies exact ${releaseTarget ? 'release Mumbai' : 'loopback'} configuration`,
     {skip: !enabled, timeout: 120_000}, async t => {
       const before = await hashes();
       const scratchRoot = path.resolve(process.env.ARKIV_TEST_TMP ?? tmpdir());
@@ -64,13 +65,13 @@ for (const host of ['claude', 'codex']) {
         assert.deepEqual(await hashes(), before, 'User Claude settings or plugin registries changed; never restore them');
       });
       await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-      const endpoint = `http://127.0.0.1:${server.address().port}/`;
+      const endpoint = releaseTarget ? config.mcpUrl : `http://127.0.0.1:${server.address().port}/`;
       const checkout = path.join(root, 'marketplace');
       await mkdir(checkout);
       for (const entry of ['plugins', '.claude-plugin', '.agents']) {
         await cp(path.join(repositoryRoot, entry), path.join(checkout, entry), {recursive: true});
       }
-      for (const [bundle, name] of [['arkiv', '.mcp.json'], ['arkiv-codex', 'mcp.json']]) {
+      for (const [bundle, name] of releaseTarget ? [] : [['arkiv', '.mcp.json'], ['arkiv-codex', 'mcp.json']]) {
         const file = path.join(checkout, 'plugins', bundle, name);
         const mcp = JSON.parse(await readFile(file));
         mcp.mcpServers.arkiv.url = endpoint;
@@ -95,7 +96,7 @@ for (const host of ['claude', 'codex']) {
       assert.ok(installedMcp, 'Installed MCP configuration exists');
       const packageRoot = path.dirname(path.join(profile, 'plugins/cache', installedMcp));
       const mcp = JSON.parse(await readFile(path.join(packageRoot, mcpName)));
-      assert.equal(mcp.mcpServers.arkiv.url, endpoint, 'Prove loopback before any request');
+      assert.equal(mcp.mcpServers.arkiv.url, endpoint, 'Installed endpoint matches selected target');
       for (const file of await files(path.join(checkout, 'plugins', bundle))) {
         assert.deepEqual(await readFile(path.join(packageRoot, file)),
           await readFile(path.join(checkout, 'plugins', bundle, file)), `Installed byte parity: ${file}`);
@@ -103,10 +104,17 @@ for (const host of ['claude', 'codex']) {
       // No model session. Exercise the installed transport metadata only against our sink.
       const headers = host === 'claude' ? JSON.parse(await command(process.execPath,
         [path.join(packageRoot, 'scripts/client-headers.mjs')], root, env)) : mcp.mcpServers.arkiv.headers;
+      if (!releaseTarget) {
       const response = await fetch(mcp.mcpServers.arkiv.url, {headers, signal: AbortSignal.timeout(3000), redirect: 'error'});
       assert.deepEqual(await response.json(), {synthetic: true, profile: 'general'});
       assert.ok(requests.every(request => request.host === new URL(endpoint).host && request.audience === null));
+      } else assert.deepEqual(requests, [], 'Release install makes no fixture request');
       assert.equal(headers['X-Arkiv-Client'], `arkiv-plugin/${config.version}; host=${host === 'claude' ? 'claude-code' : 'codex'}`);
-      assert.deepEqual(await hashes(), before);
+      const after = await hashes();
+      assert.deepEqual(after, before);
+      if (process.env.ARKIV_TEST_INSTALL_EVIDENCE) {
+        await mkdir(process.env.ARKIV_TEST_INSTALL_EVIDENCE, {recursive:true});
+        await writeFile(path.join(process.env.ARKIV_TEST_INSTALL_EVIDENCE, `${host}.json`), json({host,version:config.version,endpoint,packageByteParity:true,productionMcpRequests:0,nativeModelSession:false,settingsBefore:before,settingsAfter:after,listing,cliVersion:await command(binary,['--version'],root,env)}), {flag:'wx'});
+      }
     });
 }

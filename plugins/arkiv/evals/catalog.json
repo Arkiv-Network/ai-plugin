@@ -449,7 +449,7 @@
       ]
     },
     {
-      "id": "adversarial-untrusted-payload",
+      "id": "adversarial-untrusted-entity-data",
       "skills": [
         "arkiv-security-trust"
       ],

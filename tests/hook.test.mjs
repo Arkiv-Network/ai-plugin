@@ -25,7 +25,7 @@ async function project(text, run, options = {}) {
 }
 
 for (const field of ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']) {
-  test(`SDK in ${field} injects exact rules`, () => project(JSON.stringify({[field]: {'@arkiv-network/sdk': '^0.8.1'}}),
+  test(`SDK in ${field} injects exact rules`, () => project(JSON.stringify({[field]: {'@arkiv-network/sdk': '^1.0.0'}}),
     async directory => {
       assert.equal(await rulesForProject(directory), snippet);
       const result = spawnSync(process.execPath, [hook], {input: JSON.stringify({cwd: directory}), encoding: 'utf8', timeout: 2000});
@@ -36,8 +36,8 @@ for (const field of ['dependencies', 'devDependencies', 'peerDependencies', 'opt
 
 for (const [name, text] of Object.entries({absent: '{}', malformed: '{oops', null: 'null', array: '[]',
   emptyVersion: '{"dependencies":{"@arkiv-network/sdk":""}}', wrongType: '{"dependencies":{"@arkiv-network/sdk":1}}',
-  inheritedName: '{"dependencies":{"toString":"^0.8.1"}}',
-  oversized: JSON.stringify({dependencies: {'@arkiv-network/sdk': '^0.8.1'}, padding: 'x'.repeat(262144)})})) {
+  inheritedName: '{"dependencies":{"toString":"^1.0.0"}}',
+  oversized: JSON.stringify({dependencies: {'@arkiv-network/sdk': '^1.0.0'}, padding: 'x'.repeat(262144)})})) {
   test(`${name} package is silent`, () => project(text, async directory => assert.equal(await rulesForProject(directory), '')));
 }
 test('missing package is silent', () => project('', async directory => assert.equal(await rulesForProject(directory), ''), {missing: true}));
@@ -45,20 +45,20 @@ test('relative cwd never falls back to another project', async () => {
   assert.equal(await rulesForProject('.'), '');
   assert.equal(await rulesForInput('{"cwd":"."}'), '');
 });
-test('malformed and unbounded hook inputs exit successfully without output', () => project('{"dependencies":{"@arkiv-network/sdk":"^0.8.1"}}', async directory => {
+test('malformed and unbounded hook inputs exit successfully without output', () => project('{"dependencies":{"@arkiv-network/sdk":"^1.0.0"}}', async directory => {
   for (const input of ['', '{bad', '[]', 'null', '{}', '{"cwd":false}', 'x'.repeat(16385)]) {
     const result = spawnSync(process.execPath, [hook], {cwd: directory, input, encoding: 'utf8', timeout: 2000});
     assert.equal(result.status, 0); assert.equal(result.stdout, ''); assert.equal(result.stderr, '');
   }
 }));
-test('missing and oversized bundled rules are silent', () => project('{"dependencies":{"@arkiv-network/sdk":"^0.8.1"}}', async directory => {
+test('missing and oversized bundled rules are silent', () => project('{"dependencies":{"@arkiv-network/sdk":"^1.0.0"}}', async directory => {
   const root = path.join(directory, 'plugin');
   assert.equal(await rulesForProject(directory, root), '');
   await mkdir(path.join(root, 'templates'), {recursive: true});
   await writeFile(path.join(root, 'templates/AGENTS.snippet.md'), 'x'.repeat(1025));
   assert.equal(await rulesForProject(directory, root), '');
 }));
-test('bounded hook startup p95 stays below 200 ms', () => project('{"dependencies":{"@arkiv-network/sdk":"^0.8.1"}}', async directory => {
+test('bounded hook startup p95 stays below 200 ms', () => project('{"dependencies":{"@arkiv-network/sdk":"^1.0.0"}}', async directory => {
   const timings = [];
   for (let index = 0; index < 20; index++) {
     const start = performance.now();
