@@ -18,7 +18,7 @@ claude plugin validate --strict plugins/arkiv
 git diff --check
 ```
 
-An explicit `--mcp-profile general|mumbai` selects and persists one of the two approved production URLs in the configuration and generated host packages. Without it, generation uses the saved selection; with `--check`, a different saved profile is rejected without mutation. The current candidate remains Mumbai. Follow README's November 10 procedure for a separately versioned return release; never switch profiles automatically or accept arbitrary URLs.
+An explicit `--mcp-profile general|mumbai` selects and persists one of the two approved production URLs in the configuration and generated host packages. Without it, generation uses the saved selection; with `--check`, a different saved profile is rejected without mutation. Released 0.5.1 selects the ETHGlobal Mumbai profile: General building guidance plus event rules. Public installs on Claude Code 2.1.316 and Codex CLI 0.163.0 returned Mumbai 2.1.0 in production; see docs/verification.md for the dated release proof. Follow README's November 10 procedure for a separately versioned return release; never switch profiles automatically or accept arbitrary URLs.
 
 Set `ARKIV_TEST_TMP` to an owned temporary directory if the host requires test artifacts in a specific location. Run test files serially so source-import checks do not compete with hook startup measurements. The timing test measures actual Node startup and requires p95 below 200 ms; measurements depend on machine load. Preserve a first failure and diagnose load before repeating it. The hooks perform no network requests or project mutations. Source for the context hooks lives in `source/context/` and is copied byte for byte into both packages by the build; `scripts/prepare-context-candidates.mjs` derives the no-context control from the release packages for ablations.
 
@@ -43,7 +43,7 @@ The historical eval import is pinned separately in `scripts/import-evals.mjs`. `
 - Do not modify service deployments, account settings, user profiles, or the Hub as a side effect of plugin implementation.
 - Repository preparation, static validation, and actual consumer installation are distinct evidence.
 - Keep repository `CLAUDE.md` as its existing `@AGENTS.md` pointer. Never add a `CLAUDE.md` inside `plugins/arkiv`: Claude Code does not load it and strict validation warns.
-- Bump `plugin.config.json` version for any bundled skill, hook, MCP configuration or rule change, then regenerate. Do not repeat the version in the marketplace entry. Tag a verified release with the supported `claude plugin tag` command after checking its current help; never tag an unverified candidate.
+- Bump `plugin.config.json` version for any bundled skill, hook, MCP configuration or rule change, then regenerate. Do not repeat the version in the marketplace entry. Tag a verified release with the supported `claude plugin tag` command after checking its current help; complete verification before tagging.
 - Preserve imported skill license declarations. No repository-wide upstream LICENSE was present at the current source revision; do not invent one or add plugin license metadata until the maintainer confirms the distribution license.
 - Claude skills are `arkiv:<name>`; Codex invokes the router with `$arkiv`. Package-root AGENTS.md does not inject consumer rules; explicit project-rule additions preserve existing instructions. CLI evidence does not certify desktop, IDE or web. The deprecated compatibility stub is intentionally absent in both direct and marketplace loading.
 
