@@ -1,10 +1,10 @@
 # Arkiv plugin for Claude Code and Codex CLI
 
-Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. Released version **0.5.1** targets SDK **>=1.0.0 <2** on **Rabdi** and bundles the [ETHGlobal Mumbai MCP profile](https://mcp.arkiv.network/mumbai) through November 10, 2026: General building guidance plus event rules. No MCP connection key or wallet is required. The plugin does not install the SDK, sign transactions or create another backend.
+Arkiv skills, MCP source discovery, and project rules for the Web3 database, packaged separately for Claude Code and Codex CLI with shared identity `arkiv`. Repository package version **0.5.2** targets SDK **>=1.0.0 <2** on **Rabdi** and bundles the [ETHGlobal Mumbai MCP profile](https://mcp.arkiv.network/mumbai) through November 10, 2026: General building guidance plus event rules. No MCP connection key or wallet is required. The plugin does not install the SDK, sign transactions or create another backend.
 
-**[0.5.1 is released](https://github.com/Arkiv-Network/ai-plugin/releases/tag/v0.5.1).** Public marketplace installations and actual installed-plugin `server_status` calls passed on Windows with Claude Code **2.1.316** and Codex CLI **0.163.0**. Both returned `id: mumbai`, `serverVersion: 2.1.0`, `environment: production` on November 2, 2026. See the [verification scope](docs/verification.md) for the release commit, checks and limits; check your own connection's current status after installing.
+**[0.5.1 is the published release](https://github.com/Arkiv-Network/ai-plugin/releases/tag/v0.5.1).** The 0.5.2 source update is submitted for review; public installation commands still target 0.5.1 until a separate release is authorized. Public marketplace installations and actual installed-plugin `server_status` calls for 0.5.1 passed on Windows with Claude Code **2.1.316** and Codex CLI **0.163.0**. Both returned `id: mumbai`, `serverVersion: 2.1.0`, `environment: production` on November 2, 2026. See the [verification scope](docs/verification.md) for the release commit, checks and limits; check your own connection's current status after installing.
 
-**Known limitation through November 10:** the unchanged canonical `arkiv-mcp` skill describes General as the plugin default. This release explicitly selects the **ETHGlobal Mumbai event profile** instead. Follow the skill's [Discover the actual profile](plugins/arkiv/skills/arkiv-mcp/SKILL.md#discover-the-actual-profile) sequence: read actual `server_status`, confirm `id: mumbai` and the event identity, then check its current sources. The release checks confirmed Mumbai 2.1.0 in production; use your actual response before trusting current event guidance.
+**Known limitation through November 10:** the unchanged canonical `arkiv-mcp` skill describes General as the plugin default. These packages explicitly select the **ETHGlobal Mumbai event profile** instead. Follow the skill's [Discover the actual profile](plugins/arkiv/skills/arkiv-mcp/SKILL.md#discover-the-actual-profile) sequence: read actual `server_status`, confirm `id: mumbai` and the event identity, then check its current sources. The 0.5.1 release checks confirmed Mumbai 2.1.0 in production; use your actual response before trusting current event guidance.
 
 ## Breaking changes in 0.5.1
 
@@ -23,7 +23,7 @@ This repository was named `Arkiv-Network/claude-plugin` until October 27, 2026. 
 
 ## Claude Code: install
 
-Claude package: `plugins/arkiv`, version **0.5.1**. Public installation, strict validation and an actual installed-plugin Mumbai status call passed on Windows with Claude Code **2.1.316**. Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; without Node, automatic project rules are unavailable. Install from the public default branch:
+Claude repository package: `plugins/arkiv`, version **0.5.2**. For the published **0.5.1** release, public installation, strict validation and an actual installed-plugin Mumbai status call passed on Windows with Claude Code **2.1.316**. Node.js **20 or newer** must be on `PATH` to run the project-rules hook and emit the connection header. Earlier missing-Node evidence used Claude Code **2.1.300** and a loopback fixture; without Node, automatic project rules are unavailable. Install the published release from the public default branch:
 
 ```bash
 claude plugin marketplace add Arkiv-Network/ai-plugin
@@ -152,11 +152,11 @@ For MCP-only use, connect to [General](https://mcp.arkiv.network/) using the [Hu
 
 ## Source and verification
 
-Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both packages from merged revision [`9fcbdc3066563ea05d3973eb1a9c73cecc82f9e3`](https://github.com/Arkiv-Network/skills/commit/9fcbdc3066563ea05d3973eb1a9c73cecc82f9e3) ([Arkiv-Network/skills#70](https://github.com/Arkiv-Network/skills/pull/70)). Both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
+Skills are authored in [Arkiv-Network/skills](https://github.com/Arkiv-Network/skills) and imported as real files into both repository packages from merged revision [`2bbf731d80c7d8ab201f35f3236ffa800e0044d7`](https://github.com/Arkiv-Network/skills/commit/2bbf731d80c7d8ab201f35f3236ffa800e0044d7) ([Arkiv-Network/skills#71](https://github.com/Arkiv-Network/skills/pull/71)). Both destinations are bound by the shared Git-blob/SHA-256/size lock. Their original bytes, MIT declarations and cross-skill references are preserved; the deprecated compatibility entrypoint is excluded. Do not edit bundled guidance here. Imported skills retain their license declarations; this repository does not declare an overall distribution license.
 
 ### Return to General on November 10
 
-Make a separately reviewed release; the date does not switch installed connections automatically. Set `plugin.config.json` to the next breaking minor version (for example, **0.6.0** after 0.5.1), update the release expectations in `tests/general.test.mjs` and `tests/build.test.mjs`, and update this README and CHANGELOG for that release. Preserve the canonical skill bytes and SDK fact-line hook text. Then run:
+Make a separately reviewed release; the date does not switch installed connections automatically. Set `plugin.config.json` to the next breaking minor version (for example, **0.6.0** after 0.5.x), update the release expectations in `tests/general.test.mjs` and `tests/build.test.mjs`, and update this README and CHANGELOG for that release. Preserve the canonical skill bytes and SDK fact-line hook text. Then run:
 
 ```bash
 node scripts/build-plugin.mjs --mcp-profile general

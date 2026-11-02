@@ -3,7 +3,7 @@
   "sourceReceiptSha256": "715f8181ef60033970ee87039ac7b7674260c2bc2b008d773f4831796a3c862b",
   "sourceCommit": "a806871335b5afa28297b55c5a12c525b003792e",
   "basePluginCommit": "74ee427f1e615525316d3564af8d64cbe6366bba",
-  "activeSkillsCommit": "9fcbdc3066563ea05d3973eb1a9c73cecc82f9e3",
+  "activeSkillsCommit": "2bbf731d80c7d8ab201f35f3236ffa800e0044d7",
   "sdkVersion": "1.0.0",
   "network": "rabdi",
   "renames": [
