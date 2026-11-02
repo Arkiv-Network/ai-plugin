@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.1 — unreleased
+## 0.5.1 — November 2, 2026
 
 Breaking changes before 1.0 use the next minor version.
 
@@ -13,11 +13,11 @@ Breaking changes before 1.0 use the next minor version.
 - Restore the canonical router prerequisite: load `arkiv-security-trust` and, when appropriate, `arkiv-encryption` before storing sensitive data. Preserve the original privacy assertion and SDK hook fact-line text.
 - Refresh short project rules for typed schema columns, indexed filtering and named bytes columns. Preserve read-only, local-only context inspection and fixed host/version attribution.
 
-This candidate is not published. Merge, tag, release, public-main installation, native Mumbai connection, profile status and tool discovery await production availability and explicit release authorization.
+[0.5.1 is released](https://github.com/Arkiv-Network/ai-plugin/releases/tag/v0.5.1), tagged on merge commit [`afe7f2a`](https://github.com/Arkiv-Network/ai-plugin/commit/afe7f2a0158c112058a1b87d3f012a39d3a8731a). Public marketplace installs and actual installed-plugin `server_status` calls passed on Windows with Claude Code 2.1.316 and Codex CLI 0.163.0. Both returned `id: mumbai`, `serverVersion: 2.1.0`, `environment: production`. The ETHGlobal Mumbai profile combines General building guidance with event rules; check its actual status and current sources before event work.
 
 ### Known limitation through November 10
 
-The byte-preserved canonical `arkiv-mcp` skill still describes General as the plugin default. This candidate explicitly selects the ETHGlobal Mumbai event profile. Follow its existing actual-profile discovery path: read `server_status`, confirm `mumbai` and its event identity, then consult current event sources. Candidate server instructions/status supply that identity; they do not prove production availability. The SDK context hook's fact-line-only output is unchanged.
+The byte-preserved canonical `arkiv-mcp` skill still describes General as the plugin default. This release explicitly selects the ETHGlobal Mumbai event profile. Follow its existing actual-profile discovery path: read `server_status`, confirm `id: mumbai` and its event identity, then consult current event sources. Release checks confirmed Mumbai 2.1.0 in production; use the current connection's response before relying on event guidance. The SDK context hook's fact-line-only output is unchanged.
 
 For the separately reviewed return release, `node scripts/build-plugin.mjs --mcp-profile general` selects exactly the approved General URL in both packages. The [November 10 procedure](README.md#return-to-general-on-november-10) requires a new breaking minor version, regenerated artifacts, checks and isolated installation verification. Selection never publishes or switches an already installed client automatically.
 
