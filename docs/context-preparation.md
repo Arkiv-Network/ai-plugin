@@ -4,7 +4,7 @@ Version 0.3.0 ships the local SDK context hooks in both packages and the canonic
 
 ## Local SDK context
 
-Repository version 0.5.2 targets SDK `>=1.0.0 <2` on Rabdi. Coherent pre-1.0 installations are out of range; stable 1.x installations are compatible. The bounded comparator parser accepts the major-only upper bound `<2`. Earlier ablations above describe their original releases; they are not fresh SDK 1.0 behavioral results.
+Repository version 0.5.3 targets SDK `>=1.0.0 <2` on Rabdi. Coherent pre-1.0 installations are out of range; stable 1.x installations are compatible. The bounded comparator parser accepts the major-only upper bound `<2`. Earlier ablations above describe their original releases; they are not fresh SDK 1.0 behavioral results.
 
 `source/context/sdk-context.mjs` reads package metadata, detected lockfiles and installed declaration files without importing executable project code. The build copies it and `source/context/context-hook.mjs` byte for byte into `plugins/*/scripts/context/`. Categories mean:
 

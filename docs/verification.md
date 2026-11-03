@@ -1,5 +1,11 @@
 # Verification scope
 
+## 0.5.3: SDK 1.0.1 guidance, November 3
+
+Version 0.5.3 imports skills [`c092c4c0b7c71e9e724d57ecba35637e90a02d7e`](https://github.com/Arkiv-Network/skills/commit/c092c4c0b7c71e9e724d57ecba35637e90a02d7e) ([PR #72](https://github.com/Arkiv-Network/skills/pull/72)) byte for byte on both hosts. The canonical guidance targets SDK `>=1.0.0 <2`, with its SDK source and upstream checks updated to 1.0.1. The plugin’s reference SDK metadata and evaluation fixtures use 1.0.1; compatibility still admits coherent 1.x installations, including the range’s lower bound. Both connections retain `https://mcp.arkiv.network/mumbai`.
+
+The plugin checks validate generated packages, source bytes, local context behavior and deterministic evaluation controls. They do not establish SDK transaction behavior or public installation of this version. The dated installation and production observations below keep their original version scope.
+
 ## 0.5.2: Rabdi log-window guidance, November 3
 
 Version 0.5.2 imports skills [`2bbf731d80c7d8ab201f35f3236ffa800e0044d7`](https://github.com/Arkiv-Network/skills/commit/2bbf731d80c7d8ab201f35f3236ffa800e0044d7) ([PR #71](https://github.com/Arkiv-Network/skills/pull/71)) byte for byte on both hosts. This updates the Rabdi log-window troubleshooting and watcher-recovery guidance only; both connections retain `https://mcp.arkiv.network/mumbai`. The existing source lock and mutation checks bind the imported bytes to this revision and require the `segment_range_of` troubleshooting row in both packages.

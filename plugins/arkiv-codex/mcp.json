@@ -5,7 +5,7 @@
       "type": "streamable-http",
       "url": "https://mcp.arkiv.network/mumbai",
       "headers": {
-        "X-Arkiv-Client": "arkiv-plugin/0.5.2; host=codex"
+        "X-Arkiv-Client": "arkiv-plugin/0.5.3; host=codex"
       }
     }
   }

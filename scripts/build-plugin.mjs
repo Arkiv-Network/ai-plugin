@@ -45,7 +45,7 @@ export function validateConfig(config) {
   }
   if (!config.author || config.author.name !== 'Arkiv Network' || Object.keys(config.author).length !== 1) throw new Error('Invalid author');
   if (config.network !== 'rabdi' || config.chainId !== 7794095) throw new Error('Unexpected network');
-  if (config.sdkVersion !== '1.0.0' || config.sdkRange !== '>=1.0.0 <2') throw new Error('Unexpected SDK compatibility');
+  if (config.sdkVersion !== '1.0.1' || config.sdkRange !== '>=1.0.0 <2') throw new Error('Unexpected SDK compatibility');
   if (config.repository !== 'https://github.com/Arkiv-Network/ai-plugin') throw new Error('Unexpected repository');
   const endpoint = new URL(config.mcpUrl);
   if (!Object.values(MCP_PROFILES).includes(config.mcpUrl) || endpoint.username || endpoint.password) throw new Error('Unexpected MCP URL');

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "historicalFiles": [
+    {
+      "file": "tests/fixtures/2026-11-03-sdk-guidance-afd78c4.json",
+      "sha256": "6803834a90ea3f0e92deb75ac68f2e117fe72a9667cc73f8007fc5b18bf3a2cb",
+      "reason": "Dated raw Git baseline from released afd78c4; never used as current guidance."
+    }
+  ],
+  "historicalSections": [
+    {
+      "file": "CHANGELOG.md",
+      "heading": "## 0.5.2",
+      "sha256": "bd6ef3802b814427b3cd257f7bb11231a9f143b0fb0f4264f646858bb4c00a5b",
+      "reason": "Preserved dated release history through plugin 0.5.2."
+    },
+    {
+      "file": "docs/verification.md",
+      "heading": "## 0.5.2",
+      "sha256": "ffc8d09ed953cb6e905a2de2eae42390ffbff25f59115bf388d826df1e1b1531",
+      "reason": "Preserved dated release history through plugin 0.5.2."
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import {repositoryRoot, generate, validateConfig} from './build-plugin.mjs';
 import {diskFiles} from './sync-skills.mjs';
 import {checkSkillReferences} from './check-skill-references.mjs';
 import {checkSdkVocabulary} from './check-sdk-vocabulary.mjs';
+import {checkSdkGuidance} from './check-sdk-guidance.mjs';
 
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = async file => JSON.parse(await readFile(file, 'utf8'));
@@ -98,7 +99,7 @@ export async function checkEvalAmendments(root = repositoryRoot) {
   assert.equal(amendment.sourceReceiptSha256, digest(originalBytes), 'Historical eval receipt changed');
   assert.equal(amendment.sourceCommit, imported.commit);
   assert.equal(amendment.activeSkillsCommit, config.skillsSource.commit);
-  assert.equal(amendment.sdkVersion, '1.0.0'); assert.equal(amendment.network, 'rabdi');
+  assert.equal(amendment.sdkVersion, '1.0.1'); assert.equal(amendment.network, 'rabdi');
   assert.ok(Array.isArray(amendment.files) && amendment.files.length > 0);
   const sources = new Map(), destinations = new Set();
   for (const row of amendment.files) {
@@ -187,7 +188,7 @@ export async function checkEvalSuite(root = repositoryRoot) {
 
 export async function checkStatic(root = repositoryRoot) {
   await generate(root, true);
-  const skills = await checkSkillImport(root), evals = await checkEvalSuite(root), vocabulary = await checkSdkVocabulary(root);
+  const skills = await checkSkillImport(root), evals = await checkEvalSuite(root), vocabulary = await checkSdkVocabulary(root), sdkGuidance = await checkSdkGuidance(root);
   const plugin = path.join(root, 'plugins/arkiv');
   await assert.rejects(readFile(path.join(plugin, 'CLAUDE.md')), {code: 'ENOENT'});
   const rootPointer = await readFile(path.join(root, 'CLAUDE.md'), 'utf8');
@@ -201,7 +202,7 @@ export async function checkStatic(root = repositoryRoot) {
     && !codexHooks.includes('claude-code'), 'Codex hooks are the Codex context adapter only');
   await assert.rejects(readFile(path.join(codex, 'CLAUDE.md')), {code: 'ENOENT'});
   assert.equal(rootPointer.trim(), '@AGENTS.md', 'Preserve the repository Claude pointer');
-  return {passed: true, skills, evals, vocabulary};
+  return {passed: true, skills, evals, vocabulary, sdkGuidance};
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
