@@ -7,10 +7,10 @@ import {tmpdir} from 'node:os';
 import {repositoryRoot} from '../scripts/build-plugin.mjs';
 import {checkSkillImport} from '../scripts/check-static.mjs';
 
-const revision = 'c092c4c0b7c71e9e724d57ecba35637e90a02d7e';
+const revision = '51d22fd0485130d701f2340fe003d71101ad571d';
 // SHA-256 of the existing importer output, verified against raw Git blobs at
 // the reviewed revision. Re-signing a local lock cannot redefine that source.
-const lockDigest = '8f63db873fcf649bf80d66366d8ebc31cfc02693d2bb7eec7291d3555bdcaa9f';
+const lockDigest = '78ed63193d2f83295ee97d954a79f85cfaf9ece8256ec8937e71bf265d6729bd';
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const rowFiles = ['arkiv', 'arkiv-codex'].flatMap(host => [
   `plugins/${host}/skills/arkiv-troubleshooting/SKILL.md`,
@@ -54,6 +54,28 @@ async function fixture(t) {
 
 test('both hosts match the reviewed log-window skills source and retain both troubleshooting rows', async () => {
   assert.ok((await checkPinnedLogGuidance()).importedFiles > 0);
+});
+
+test('the package-guidance sync check is red on released source metadata and green on both current bundles', async t => {
+  const bytes = await readFile(path.join(repositoryRoot, 'tests/fixtures/2026-11-03-skills-sync-2345caa.json'));
+  assert.equal(digest(bytes), '49281b573d654fea5f99ff1b43574ffe1b0f0c2245da34836a798274fa54a3fc', 'Frozen released-source fixture changed');
+  const baseline = JSON.parse(bytes);
+  assert.equal(baseline.observedCommit, '2345caa1d4e961110258b7441453150b04a65290');
+  const {root} = await fixture(t);
+  const configFile = path.join(root, 'plugin.config.json'), lockFile = path.join(root, 'source/skills.lock.json');
+  const currentConfig = await readFile(configFile), currentLock = await readFile(lockFile);
+  try {
+    await writeFile(configFile, baseline.files['plugin.config.json']);
+    await writeFile(lockFile, baseline.files['source/skills.lock.json']);
+    await assert.rejects(checkPinnedLogGuidance(root), /Reviewed skills revision changed/);
+    await writeFile(configFile, currentConfig);
+    await assert.rejects(checkPinnedLogGuidance(root), /Reviewed skills lock revision changed/);
+  } finally {
+    await writeFile(configFile, currentConfig);
+    await writeFile(lockFile, currentLock);
+  }
+  assert.ok((await checkPinnedLogGuidance(root)).importedFiles > 0);
+  t.diagnostic('RED on released 2345caa raw source configuration and lock; GREEN on both current package-guidance bundles. Executed both stale-source metadata regressions.');
 });
 
 test('every imported destination rejects a one-byte change against the reviewed source', async t => {

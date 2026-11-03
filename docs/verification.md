@@ -1,5 +1,11 @@
 # Verification scope
 
+## 0.5.4: published package guidance, November 3
+
+Version 0.5.4 imports skills [`51d22fd0485130d701f2340fe003d71101ad571d`](https://github.com/Arkiv-Network/skills/commit/51d22fd0485130d701f2340fe003d71101ad571d) ([PR #73](https://github.com/Arkiv-Network/skills/pull/73)) byte for byte on both hosts. The source revision identifies the published package releases and their SDK 1.0.1 compatibility, source references and package-specific format/lifetime policies. SDK reference metadata remains 1.0.1, the supported range remains `>=1.0.0 <2`, and both packages retain `https://mcp.arkiv.network/mumbai`.
+
+The new source-sync regression rejects the prior released source metadata and binds both current bundles to the reviewed raw-Git manifest. These offline checks do not establish public installation of this version or a hosted MCP content update. MCP production remains 2.1.0 with its previous SDK instruction revision; the dated observations below keep their original scope.
+
 ## 0.5.3: SDK 1.0.1 guidance, November 3
 
 Version 0.5.3 imports skills [`c092c4c0b7c71e9e724d57ecba35637e90a02d7e`](https://github.com/Arkiv-Network/skills/commit/c092c4c0b7c71e9e724d57ecba35637e90a02d7e) ([PR #72](https://github.com/Arkiv-Network/skills/pull/72)) byte for byte on both hosts. The canonical guidance targets SDK `>=1.0.0 <2`, with its SDK source and upstream checks updated to 1.0.1. The plugin’s reference SDK metadata and evaluation fixtures use 1.0.1; compatibility still admits coherent 1.x installations, including the range’s lower bound. Both connections retain `https://mcp.arkiv.network/mumbai`.
