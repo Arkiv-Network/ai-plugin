@@ -10,8 +10,8 @@ const config = JSON.parse(await readFile(path.join(builder.repositoryRoot, 'plug
 const source = await readFile(path.join(builder.repositoryRoot, 'source/always-on.md'), 'utf8');
 const preview = 'https://arkiv-mcp-general-a1b2c3d4e-golem.vercel.app/';
 
-test('0.5.3 selects Mumbai on both hosts', () => {
-  assert.equal(config.version, '0.5.3');
+test('0.5.4 selects Mumbai on both hosts', () => {
+  assert.equal(config.version, '0.5.4');
   assert.equal(config.mcpUrl, 'https://mcp.arkiv.network/mumbai');
   const artifacts = builder.buildArtifacts(config, source);
   for (const file of ['plugins/arkiv/.mcp.json', 'plugins/arkiv-codex/mcp.json']) {
@@ -98,7 +98,7 @@ test('R9 Preview output is isolated, retains fixed skills and cannot pass releas
 });
 
 test('R9 canonical skills remain at the required full revision', () => {
-  assert.equal(config.skillsSource.commit, 'c092c4c0b7c71e9e724d57ecba35637e90a02d7e');
+  assert.equal(config.skillsSource.commit, '51d22fd0485130d701f2340fe003d71101ad571d');
 });
 
 test('canonical skill bytes retain General guidance; package explicitly overrides to Mumbai', async () => {

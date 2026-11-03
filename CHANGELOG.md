@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.4 — November 3, 2026
+
+- Import canonical skills [`51d22fd0485130d701f2340fe003d71101ad571d`](https://github.com/Arkiv-Network/skills/commit/51d22fd0485130d701f2340fe003d71101ad571d) ([skills#73](https://github.com/Arkiv-Network/skills/pull/73)) for the published SDK 1.0.1-compatible package releases. Refresh package versions, public source references and package-specific peer, format-baseline and lifetime-policy guidance in both host bundles.
+- Retain SDK reference 1.0.1, compatibility `>=1.0.0 <2` and the Mumbai MCP connection. The bundled guidance update is separate from the hosted MCP release.
+
 ## 0.5.3 — November 3, 2026
 
 - Import canonical skills [`c092c4c0b7c71e9e724d57ecba35637e90a02d7e`](https://github.com/Arkiv-Network/skills/commit/c092c4c0b7c71e9e724d57ecba35637e90a02d7e) ([skills#72](https://github.com/Arkiv-Network/skills/pull/72)) for SDK 1.0.1 on Rabdi. Update plugin-owned guidance, evaluation fixtures and source citations to that revision while retaining SDK compatibility `>=1.0.0 <2`.
