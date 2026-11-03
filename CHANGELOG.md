@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.3 — November 3, 2026
+
+- Import canonical skills [`c092c4c0b7c71e9e724d57ecba35637e90a02d7e`](https://github.com/Arkiv-Network/skills/commit/c092c4c0b7c71e9e724d57ecba35637e90a02d7e) ([skills#72](https://github.com/Arkiv-Network/skills/pull/72)) for SDK 1.0.1 on Rabdi. Update plugin-owned guidance, evaluation fixtures and source citations to that revision while retaining SDK compatibility `>=1.0.0 <2`.
+- Explain `ExpirationTime.max()` and `MAX_LIFETIME`, pre-send expiry validation, and the SDK default gas/error behavior through the canonical guidance. Keep the explicit gas, fresh-estimate, half-block and authoritative-revert retry safeguards. Both packages retain the Mumbai MCP connection.
+
 ## 0.5.2 — November 3, 2026
 
 - Import canonical skills [`2bbf731d80c7d8ab201f35f3236ffa800e0044d7`](https://github.com/Arkiv-Network/skills/commit/2bbf731d80c7d8ab201f35f3236ffa800e0044d7) ([skills#71](https://github.com/Arkiv-Network/skills/pull/71)) for Rabdi's recent log window: `eth_getLogs` can fail with `-32603 golemdb segment_range_of(transactions): NotImplemented` on blocks with logs about 1,000 blocks behind head. Stop a failed watcher, recreate it at head and reconcile current state with a query; do not split or retry the range or promise log backfill. See [arkiv#283](https://github.com/Arkiv-Network/arkiv/issues/283) and [docs#94](https://github.com/Arkiv-Network/arkiv-starlight-docs/issues/94).

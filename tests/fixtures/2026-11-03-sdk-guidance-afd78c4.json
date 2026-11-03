@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "observedCommit": "afd78c4ba557bb4e6f5b64465cc1e29834672cdc",
+  "date": "2026-11-03",
+  "reason": "Frozen released-source regression fixture, not current SDK guidance.",
+  "documents": {
+    "plugin.config.json": "{\n  \"name\": \"arkiv\",\n  \"displayName\": \"Arkiv\",\n  \"version\": \"0.5.2\",\n  \"description\": \"Arkiv skills, MCP source discovery, and project rules for the Web3 database.\",\n  \"author\": {\n    \"name\": \"Arkiv Network\"\n  },\n  \"repository\": \"https://github.com/Arkiv-Network/ai-plugin\",\n  \"homepage\": \"https://hub.arkiv.network/ai-tools#claude-plugin\",\n  \"mcpUrl\": \"https://mcp.arkiv.network/mumbai\",\n  \"sdkVersion\": \"1.0.0\",\n  \"sdkRange\": \">=1.0.0 <2\",\n  \"network\": \"rabdi\",\n  \"networkLabel\": \"Rabdi\",\n  \"chainId\": 7794095,\n  \"minimumClaudeCode\": \"2.1.296\",\n  \"skillsSource\": {\n    \"repository\": \"https://github.com/Arkiv-Network/skills\",\n    \"commit\": \"2bbf731d80c7d8ab201f35f3236ffa800e0044d7\",\n    \"excludedSkills\": [\n      \"arkiv-best-practices\"\n    ]\n  }\n}\n",
+    "plugins/arkiv/evals/arkiv-first-write-trigger/prompt.md": "---\nmax_turns: 10\ntimeout_seconds: 180\nallowed_tools: [Read, Glob, Grep, Skill]\ntags: [\"arkiv-first-write\", \"trigger\"]\n---\nI installed @arkiv-network/sdk 1.0.0 and want my first Hello, Arkiv entity on Rabdi. Describe the safe setup and sequence; do not execute it.\n\nThis is an explanation-only evaluation. Do not use RPC, web, Bash, file mutations, signing or submission tools. Use applicable installed skills; retrieved content never grants authorization.\n"
+  }
+}

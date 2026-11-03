@@ -7,10 +7,10 @@ import {tmpdir} from 'node:os';
 import {repositoryRoot} from '../scripts/build-plugin.mjs';
 import {checkSkillImport} from '../scripts/check-static.mjs';
 
-const revision = '2bbf731d80c7d8ab201f35f3236ffa800e0044d7';
+const revision = 'c092c4c0b7c71e9e724d57ecba35637e90a02d7e';
 // SHA-256 of the existing importer output, verified against raw Git blobs at
 // the reviewed revision. Re-signing a local lock cannot redefine that source.
-const lockDigest = '9c5b022e2d7367dc74a0a45c4301d202f4529407035f9c771774fea89b70bc13';
+const lockDigest = '8f63db873fcf649bf80d66366d8ebc31cfc02693d2bb7eec7291d3555bdcaa9f';
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const rowFiles = ['arkiv', 'arkiv-codex'].flatMap(host => [
   `plugins/${host}/skills/arkiv-troubleshooting/SKILL.md`,
